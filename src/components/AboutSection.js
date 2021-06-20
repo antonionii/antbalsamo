@@ -3,9 +3,16 @@ import home1 from "../img/home1.png";
 //Styled
 import styled from "styled-components";
 
+import {
+  BasicLayout,
+  StyledDescription,
+  StyledImage,
+  StlyedHide,
+} from "../styles";
+
 const AboutSection = () => {
   return (
-    <StyledAbout>
+    <BasicLayout>
       <StyledDescription>
         <div className="title">
           <StlyedHide>
@@ -26,41 +33,10 @@ const AboutSection = () => {
       <StyledImage>
         <img src={home1} alt="profile of Anthony" />
       </StyledImage>
-    </StyledAbout>
+    </BasicLayout>
   );
 };
 
-//Styled Component
-const StyledAbout = styled.div`
-  min-height: 90vh;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 5rem 10rem;
-  color: white;
-`;
-
-const StyledDescription = styled.div`
-  flex: 1;
-  padding-right: 5rem;
-  h2 {
-    font-weight: lighter;
-  }
-`;
-
-const StyledImage = styled.div`
-  flex: 1;
-  overflow: hidden;
-
-  img {
-    width: 80%;
-    height: 80vh;
-    object-fit: cover;
-  }
-`;
-
-const StlyedHide = styled.div`
-  overflow: hidden;
-`;
+//Styled Components were here before
 
 export default AboutSection;
