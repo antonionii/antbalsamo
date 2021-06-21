@@ -1,7 +1,7 @@
 import React from "react";
 import home1 from "../img/home1.png";
-//Styled
-import styled from "styled-components";
+//Framer Motion
+import { motion } from "framer-motion";
 
 import {
   BasicLayout,
@@ -11,24 +11,45 @@ import {
 } from "../styles";
 
 const AboutSection = () => {
+  const titleAnim = {
+    hidden: { opacity: 0 },
+    show: { opacity: 1, transition: { duration: 2 } },
+  };
+
+  const container = {
+    hidden: { x: 100 },
+    show: {
+      x: 0,
+      transition: {
+        duration: 0.75,
+        ease: "easeOut",
+        staggerChildren: 0.6,
+      },
+    },
+  };
   return (
     <BasicLayout>
       <StyledDescription>
-        <div className="title">
+        <motion.div
+          variants={container}
+          initial="hidden"
+          animate="show"
+          className="title"
+        >
           <StlyedHide>
-            <h2>Create</h2>
+            <motion.h2 variants={titleAnim}>Create</motion.h2>
           </StlyedHide>
           <StlyedHide>
-            <h2>
+            <motion.h2 variants={titleAnim}>
               <span>Code</span>
-            </h2>
+            </motion.h2>
           </StlyedHide>
           <StlyedHide>
-            <h2>Animate</h2>
+            <motion.h2 variants={titleAnim}>Animate</motion.h2>
           </StlyedHide>
-          <p>Contact me for your ideas and let's give them life. </p>
-          <button>Ping Me</button>
-        </div>
+        </motion.div>
+        <p>Contact me for your ideas and let's give them life. </p>
+        <button>Ping Me</button>
       </StyledDescription>
       <StyledImage>
         <img src={home1} alt="profile of Anthony" />
