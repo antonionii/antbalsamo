@@ -3,6 +3,10 @@ import styled from "styled-components";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { MovieState } from "../movieState";
+//Animation
+import { motion } from "framer-motion";
+import { pageAnimation } from "../animation";
+import { AnimatePresence } from "framer-motion";
 
 const MovieDetail = () => {
   const history = useHistory();
@@ -19,7 +23,13 @@ const MovieDetail = () => {
   return (
     <>
       {movie && (
-        <StyledMovieDetails>
+        <StyledMovieDetails
+          variants={pageAnimation}
+          initial="hidden"
+          animate="show"
+          exit="exit"
+          style={{ background: "#fff" }}
+        >
           <StyledHeadline>
             <h2>{movie.title}</h2>
             <img src={movie.mainImg} alt="movie" />
@@ -42,7 +52,7 @@ const MovieDetail = () => {
   );
 };
 
-const StyledMovieDetails = styled.div`
+const StyledMovieDetails = styled(motion.div)`
   color: white;
 `;
 
@@ -55,6 +65,7 @@ const StyledHeadline = styled.div`
     top: 10%;
     left: 42%;
     transform: translateX(-50%, -10%);
+    color: black;
   }
 
   img {
@@ -65,7 +76,7 @@ const StyledHeadline = styled.div`
 `;
 
 const StyledAwards = styled.div`
-  color: white;
+  color: black;
   min-height: 80vh;
   display: flex;
   margin: 5rem 10rem;
@@ -77,6 +88,7 @@ const StyledAward = styled.div`
   padding: 5rem;
   h3 {
     font-size: 2rem;
+    color: black;
   }
 
   .line {
@@ -87,6 +99,7 @@ const StyledAward = styled.div`
   }
   p {
     padding: 2rem 0rem;
+    color: black;
   }
 `;
 

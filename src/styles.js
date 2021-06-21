@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
-export const BasicLayout = styled.div`
+export const BasicLayout = styled(motion.div)`
   min-height: 90vh;
   display: flex;
   align-items: center;
@@ -9,17 +10,19 @@ export const BasicLayout = styled.div`
   color: white;
 `;
 
-export const StyledDescription = styled.div`
+export const StyledDescription = styled(motion.div)`
   flex: 1;
   padding-right: 5rem;
+  z-index: 2;
   h2 {
     font-weight: lighter;
   }
 `;
 
-export const StyledImage = styled.div`
+export const StyledImage = styled(motion.div)`
   flex: 1;
   overflow: hidden;
+  z-index: 2;
 
   img {
     width: 100%;
@@ -28,6 +31,6 @@ export const StyledImage = styled.div`
   }
 `;
 
-export const StlyedHide = styled.div`
+export const StlyedHide = styled(motion.div)`
   overflow: hidden;
 `;
