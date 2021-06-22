@@ -84,6 +84,9 @@ const Services = styled(BasicLayout)`
 const StyledCards = styled(motion.div)`
   display: flex;
   flex-wrap: wrap;
+  @media (max-width: 1300px) {
+    justify-content: center;
+  }
 `;
 
 const StyledCard = styled(motion.div)`

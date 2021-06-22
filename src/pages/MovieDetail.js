@@ -66,6 +66,18 @@ const StyledHeadline = styled.div`
     left: 42%;
     transform: translateX(-50%, -10%);
     color: black;
+    @media (max-width: 1300px) {
+      left: 38%;
+    }
+    @media (max-width: 1000px) {
+      left: 35%;
+    }
+    @media (max-width: 700px) {
+      left: 30%;
+    }
+    @media (max-width: 300px) {
+      left: 20%;
+    }
   }
 
   img {
@@ -82,6 +94,10 @@ const StyledAwards = styled.div`
   margin: 5rem 10rem;
   align-items: center;
   justify-content: space-around;
+  @media (max-width: 1300px) {
+    display: block;
+    margin: 2rem 2rem;
+  }
 `;
 
 const StyledAward = styled.div`
