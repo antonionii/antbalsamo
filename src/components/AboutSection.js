@@ -6,7 +6,7 @@ import { titleAnim, fade, photoAnim } from "../animation";
 import Wave from "./Wave";
 import ScrollTop from "../components/ScrollTop";
 import ReactPlayer from "react-player";
-import SEFCgif from "../img/SEFCgif.gif";
+import sefcGIF from "../img/sefcGIF.gif";
 
 import {
   BasicLayout,
@@ -21,7 +21,7 @@ const AboutSection = () => {
       <StyledDescription>
         <motion.div>
           <StlyedHide>
-            <motion.img variants={} src={SEFCgif} alt="gif of video" />
+            <motion.img src={sefcGIF} alt="gif of video" />
 
             <motion.h2 variants={titleAnim}>Create</motion.h2>
           </StlyedHide>

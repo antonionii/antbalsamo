@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 //Images
-import athlete from "../img/athlete-small.png";
+import gridTest from "../img/gridTest.gif";
 import theracer from "../img/theracer-small.png";
 import goodtimes from "../img/goodtimes-small.png";
 
@@ -27,30 +27,37 @@ const Work = () => {
 
   return (
     <StyledWork
-      variants={pageAnimation}
+    /*variants={pageAnimation}
       initial="hidden"
       animate="show"
       exit="exit"
       id="workBg"
       style={{}}
-    >
-      <motion.div variants={sliderContainer}>
+             <motion.div variants={sliderContainer}>
         <Frame1 id="pageAnimations" variants={slider}></Frame1>
         <Frame2 id="pageAnimations" variants={slider}></Frame2>
         <Frame3 id="pageAnimations" variants={slider}></Frame3>
         <Frame4 id="pageAnimations" variants={slider}></Frame4>
       </motion.div>
-
+      
+      
+      */
+    >
       <StyledMovie>
         <motion.h2 variants={fade}>The Athlete</motion.h2>
-        <motion.div
-          variants={lineAnim}
-          id="lineAnimations"
-          className="line"
-        ></motion.div>
+        <motion.div>
+          <vertLine />
+
+          <Line
+            transition={{ duration: 0.8 }}
+            initial={{ width: "0%" }}
+            animate={{ width: "100%" }}
+          />
+          <vertLine />
+        </motion.div>
         <Link to="/Work/the-athlete">
           <StyledHide>
-            <motion.img variants={photoAnim} src={athlete} alt="athlete" />
+            <motion.img variants={photoAnim} src={gridTest} alt="gridTestGIF" />
           </StyledHide>
         </Link>
       </StyledMovie>
@@ -90,6 +97,29 @@ const Work = () => {
   );
 };
 
+const Line = styled(motion.div)`
+  height: 0.3rem;
+  background: #120000;
+  width: 0%;
+  position: relative;
+  margin-bottom: 3em;
+  @media (max-width: 1300px) {
+    left: 0%;
+  }
+`;
+
+const vertLine = styled(motion.div)`
+  border-left: 6px solid white;
+  height: 420px;
+  background: white;
+  left: 50%;
+  position: relative;
+  margin-left: 40px;
+  top: 0px;
+  @media (max-width: 1300px) {
+    left: 0%;
+  }
+`;
 const StyledWork = styled(motion.div)`
   min-height: 100vh;
   overflow: hidden;
@@ -109,10 +139,11 @@ const StyledMovie = styled(motion.div)`
     height: 0.3rem;
     background: #23d997;
     margin-bottom: 3rem;
+    width: 0%;
   }
   img {
-    width: 100%;
-    height: 70vh;
+    max-width: 35%;
+    height: auto;
     object-fit: cover;
   }
 `;
