@@ -77,3 +77,15 @@ export const scrollReveal = {
     transition: { duration: 0.5 },
   },
 };
+
+export const navReveal = {
+  hidden: {
+    top: "-10%",
+    top: "100%",
+    transition: { duration: 0.5 },
+  },
+  show: {
+    top: "100%",
+    transition: { duration: 0.5 },
+  },
+};

@@ -20,6 +20,7 @@ function App() {
 
   return (
     <div className="App">
+      <ScrollTop />
       <GlobalStyle />
       <Nav />
       <AnimatePresence exitBeforeEnter>
@@ -37,7 +38,6 @@ function App() {
             <Work />
           </Route>
         </Switch>
-        <ScrollTop />
       </AnimatePresence>
     </div>
   );

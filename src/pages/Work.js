@@ -31,18 +31,23 @@ const Work = () => {
       initial="hidden"
       animate="show"
       exit="exit"
-      style={{ background: "#fff" }}
+      id="workBg"
+      style={{}}
     >
       <motion.div variants={sliderContainer}>
-        <Frame1 variants={slider}></Frame1>
-        <Frame2 variants={slider}></Frame2>
-        <Frame3 variants={slider}></Frame3>
-        <Frame4 variants={slider}></Frame4>
+        <Frame1 id="pageAnimations" variants={slider}></Frame1>
+        <Frame2 id="pageAnimations" variants={slider}></Frame2>
+        <Frame3 id="pageAnimations" variants={slider}></Frame3>
+        <Frame4 id="pageAnimations" variants={slider}></Frame4>
       </motion.div>
 
       <StyledMovie>
         <motion.h2 variants={fade}>The Athlete</motion.h2>
-        <motion.div variants={lineAnim} className="line"></motion.div>
+        <motion.div
+          variants={lineAnim}
+          id="lineAnimations"
+          className="line"
+        ></motion.div>
         <Link to="/Work/the-athlete">
           <StyledHide>
             <motion.img variants={photoAnim} src={athlete} alt="athlete" />
@@ -56,7 +61,11 @@ const Work = () => {
         initial="hidden"
       >
         <h2>The Racer</h2>
-        <motion.div variants={lineAnim} className="line"></motion.div>
+        <motion.div
+          variants={lineAnim}
+          id="lineAnimations"
+          className="line"
+        ></motion.div>
         <Link to="/Work/the-racer">
           <img src={theracer} alt="theracer" />
         </Link>
@@ -68,7 +77,11 @@ const Work = () => {
         initial="hidden"
       >
         <h2>Good Times</h2>
-        <motion.div variants={lineAnim} className="line"></motion.div>
+        <motion.div
+          variants={lineAnim}
+          id="lineAnimations"
+          className="line"
+        ></motion.div>
         <Link to="/Work/good-times">
           <img src={goodtimes} alt="goodtimes" />
         </Link>
@@ -116,20 +129,13 @@ const Frame1 = styled(motion.div)`
   top: 10%;
   width: 100%;
   height: 100vh;
-  background: #fffebf;
   z-index: 2;
 `;
 
-const Frame2 = styled(Frame1)`
-  background: #ff8efb;
-`;
+const Frame2 = styled(Frame1)``;
 
-const Frame3 = styled(Frame1)`
-  background: #8eb2ff;
-`;
+const Frame3 = styled(Frame1)``;
 
-const Frame4 = styled(Frame1)`
-  background: #8effa0;
-`;
+const Frame4 = styled(Frame1)``;
 
 export default Work;

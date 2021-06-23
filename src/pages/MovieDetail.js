@@ -28,7 +28,7 @@ const MovieDetail = () => {
           initial="hidden"
           animate="show"
           exit="exit"
-          style={{ background: "#fff" }}
+          style={{ background: "#d6aa9e" }}
         >
           <StyledHeadline>
             <h2>{movie.title}</h2>
@@ -53,12 +53,12 @@ const MovieDetail = () => {
 };
 
 const StyledMovieDetails = styled(motion.div)`
-  color: white;
+  color: d6aa9e;
 `;
 
 const StyledHeadline = styled.div`
   min-height: 90vh;
-  padding-top: 20vh;
+  padding-top: 30vh;
   position: relative;
   h2 {
     position: absolute;
@@ -109,7 +109,7 @@ const StyledAward = styled.div`
 
   .line {
     width: 100%;
-    background: #23d997;
+    background: #120000;
     height: 0.5rem;
     margin: 1rem 0rem;
   }

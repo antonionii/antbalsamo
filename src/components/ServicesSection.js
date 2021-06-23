@@ -97,7 +97,7 @@ const StyledCard = styled(motion.div)`
     h3 {
       margin-left: 1rem;
       background: white;
-      color: black;
+      color: 120000;
       padding: 1rem;
     }
   }

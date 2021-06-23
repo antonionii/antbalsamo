@@ -1,9 +1,12 @@
 import React from "react";
-import home1 from "../img/home1.png";
+import picofme from "../img/picofme.JPG";
 //Framer Motion
 import { motion } from "framer-motion";
 import { titleAnim, fade, photoAnim } from "../animation";
 import Wave from "./Wave";
+import ScrollTop from "../components/ScrollTop";
+import ReactPlayer from "react-player";
+import SEFCgif from "../img/SEFCgif.gif";
 
 import {
   BasicLayout,
@@ -18,6 +21,8 @@ const AboutSection = () => {
       <StyledDescription>
         <motion.div>
           <StlyedHide>
+            <motion.img variants={} src={SEFCgif} alt="gif of video" />
+
             <motion.h2 variants={titleAnim}>Create</motion.h2>
           </StlyedHide>
           <StlyedHide>
@@ -35,9 +40,12 @@ const AboutSection = () => {
         <motion.button variants={fade}>Ping Me</motion.button>
       </StyledDescription>
       <StyledImage>
-        <motion.img variants={photoAnim} src={home1} alt="profile of Anthony" />
+        <motion.img
+          variants={photoAnim}
+          src={picofme}
+          alt="profile of Anthony"
+        />
       </StyledImage>
-      <Wave />
     </BasicLayout>
   );
 };

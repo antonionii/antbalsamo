@@ -7,6 +7,8 @@ import { motion } from "framer-motion";
 import { pageAnimation } from "../animation";
 import { AnimatePresence } from "framer-motion";
 import { photoAnim } from "framer-motion";
+import ScrollTop from "../components/ScrollTop";
+import ReactPlayer from "react-player";
 
 const AboutMe = () => {
   return (
@@ -16,6 +18,7 @@ const AboutMe = () => {
       animate="show"
       exit="exit"
     >
+      <ScrollTop />
       <AboutSection />
       <ServicesSection />
       <FaqSection />
