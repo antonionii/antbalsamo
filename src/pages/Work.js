@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import gridTest from "../img/gridTest.gif";
 import theracer from "../img/theracer-small.png";
 import goodtimes from "../img/goodtimes-small.png";
+import sefcGIF from "../img/sefcGIF.gif";
+import academyGIF from "../img/academyGIF.gif";
 
 //Animations
 import { motion } from "framer-motion";
@@ -21,13 +23,24 @@ import { AnimatePresence } from "framer-motion";
 import { useScroll } from "../components/useScroll";
 import { scrollReveal } from "../animation";
 
+import {
+  BasicLayout,
+  StyledDescription,
+  StyledImage,
+  StlyedHide,
+} from "../styles";
+
 const Work = () => {
   const [element, controls] = useScroll();
   const [element2, controls2] = useScroll();
 
   return (
     <StyledWork
-    /*variants={pageAnimation}
+      variants={pageAnimation}
+      initial="hidden"
+      animate="show"
+      exit="exit"
+      /*variants={pageAnimation}
       initial="hidden"
       animate="show"
       exit="exit"
@@ -43,87 +56,85 @@ const Work = () => {
       
       */
     >
-      <StyledMovie>
-        <motion.h2 variants={fade}>The Athlete</motion.h2>
-        <motion.div>
-          <vertLine />
+      <workBox class="videoBox">
+        <ul>
+          <li>
+            <videoCard class="videoCard">
+              <div class="cardLine"></div>
+              <motion.img src={academyGIF} alt="gif of video" />
 
-          <Line
-            transition={{ duration: 0.8 }}
-            initial={{ width: "0%" }}
-            animate={{ width: "100%" }}
-          />
-          <vertLine />
-        </motion.div>
-        <Link to="/Work/the-athlete">
-          <StyledHide>
-            <motion.img variants={photoAnim} src={gridTest} alt="gridTestGIF" />
-          </StyledHide>
-        </Link>
-      </StyledMovie>
-      <StyledMovie
-        ref={element}
-        variants={scrollReveal}
-        animate={controls}
-        initial="hidden"
-      >
-        <h2>The Racer</h2>
-        <motion.div
-          variants={lineAnim}
-          id="lineAnimations"
-          className="line"
-        ></motion.div>
-        <Link to="/Work/the-racer">
-          <img src={theracer} alt="theracer" />
-        </Link>
-      </StyledMovie>
-      <StyledMovie
-        ref={element2}
-        variants={scrollReveal}
-        animate={controls2}
-        initial="hidden"
-      >
-        <h2>Good Times</h2>
-        <motion.div
-          variants={lineAnim}
-          id="lineAnimations"
-          className="line"
-        ></motion.div>
-        <Link to="/Work/good-times">
-          <img src={goodtimes} alt="goodtimes" />
-        </Link>
-      </StyledMovie>
+              <motion.h2 variants={titleAnim}></motion.h2>
+              <h3>Academy '21</h3>
+            </videoCard>
+          </li>
+          <li>
+            <videoCard class="videoCard">
+              <div class="cardLine"></div>
+              <motion.img src={sefcGIF} alt="gif of video" />
+
+              <motion.h2 variants={titleAnim}></motion.h2>
+              <h3>Heading 2</h3>
+            </videoCard>
+          </li>
+          <li>
+            <videoCard class="videoCard">
+              <div class="cardLine"></div>
+              <h1>Heading 3</h1>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Consectetur tempora ab laudantium voluptatibus aut eos placeat
+                laborum, quibusdam exercitationem labore.
+              </p>
+            </videoCard>
+          </li>
+          <li>
+            <videoCard class="videoCard">
+              <div class="cardLine"></div>
+              <h1>Heading 4</h1>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Consectetur tempora ab laudantium voluptatibus aut eos placeat
+                laborum, quibusdam exercitationem labore.
+              </p>
+            </videoCard>
+          </li>
+          <li>
+            <videoCard class="videoCard">
+              <div class="cardLine"></div>
+              <h1>Heading 4</h1>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Consectetur tempora ab laudantium voluptatibus aut eos placeat
+                laborum, quibusdam exercitationem labore.
+              </p>
+            </videoCard>
+          </li>
+          <li>
+            <videoCard class="videoCard">
+              <div class="cardLine"></div>
+              <h1>Heading 4</h1>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Consectetur tempora ab laudantium voluptatibus aut eos placeat
+                laborum, quibusdam exercitationem labore.
+              </p>
+            </videoCard>
+          </li>
+        </ul>
+      </workBox>
     </StyledWork>
   );
 };
 
-const Line = styled(motion.div)`
-  height: 0.3rem;
-  background: #120000;
-  width: 0%;
-  position: relative;
-  margin-bottom: 3em;
-  @media (max-width: 1300px) {
-    left: 0%;
-  }
-`;
-
-const vertLine = styled(motion.div)`
-  border-left: 6px solid white;
-  height: 420px;
-  background: white;
-  left: 50%;
-  position: relative;
-  margin-left: 40px;
-  top: 0px;
-  @media (max-width: 1300px) {
-    left: 0%;
-  }
-`;
 const StyledWork = styled(motion.div)`
   min-height: 100vh;
   overflow: hidden;
   padding: 5rem 10rem;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   h2 {
     padding: 1rem 0rem;
   }
@@ -132,41 +143,13 @@ const StyledWork = styled(motion.div)`
   }
 `;
 
-const StyledMovie = styled(motion.div)`
-  padding-bottom: 10rem;
-  overflow: hidden;
-  .line {
-    height: 0.3rem;
-    background: #23d997;
-    margin-bottom: 3rem;
-    width: 0%;
-  }
-  img {
-    max-width: 35%;
-    height: auto;
-    object-fit: cover;
-  }
+const workBox = styled(motion.div)`
+  width: 80%;
+  height: auto;
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
 `;
 
-const StyledHide = styled(motion.div)`
-  overflow: hidden;
-`;
-
-//Frame Animation
-
-const Frame1 = styled(motion.div)`
-  position: fixed;
-  left: 0;
-  top: 10%;
-  width: 100%;
-  height: 100vh;
-  z-index: 2;
-`;
-
-const Frame2 = styled(Frame1)``;
-
-const Frame3 = styled(Frame1)``;
-
-const Frame4 = styled(Frame1)``;
-
+const videoCard = styled(motion.div)``;
 export default Work;
