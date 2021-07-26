@@ -54,6 +54,11 @@ export const lineAnim = {
   show: { width: "100%" },
   transition: { duration: 1 },
 };
+export const vertAnim = {
+  hidden: { height: "0%" },
+  show: { height: "100%" },
+  transition: { duration: 1 },
+};
 
 export const slider = {
   hidden: { x: "-130%", skew: "45deg" },

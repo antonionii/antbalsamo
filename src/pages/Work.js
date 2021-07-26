@@ -21,7 +21,7 @@ import {
 } from "../animation";
 import { AnimatePresence } from "framer-motion";
 import { useScroll } from "../components/useScroll";
-import { scrollReveal } from "../animation";
+import { scrollReveal, vertAnim } from "../animation";
 
 import {
   BasicLayout,
@@ -33,7 +33,8 @@ import {
 const Work = () => {
   const [element, controls] = useScroll();
   const [element2, controls2] = useScroll();
-
+  const w = window.innerWidth;
+  console.log(w);
   return (
     <StyledWork
       variants={pageAnimation}
@@ -62,7 +63,6 @@ const Work = () => {
             <videoCard class="videoCard">
               <div class="cardLine"></div>
               <motion.img src={academyGIF} alt="gif of video" />
-
               <motion.h2 variants={titleAnim}></motion.h2>
               <h3>Academy '21</h3>
             </videoCard>
@@ -71,7 +71,6 @@ const Work = () => {
             <videoCard class="videoCard">
               <div class="cardLine"></div>
               <motion.img src={sefcGIF} alt="gif of video" />
-
               <motion.h2 variants={titleAnim}></motion.h2>
               <h3>Heading 2</h3>
             </videoCard>
@@ -79,45 +78,33 @@ const Work = () => {
           <li>
             <videoCard class="videoCard">
               <div class="cardLine"></div>
-              <h1>Heading 3</h1>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Consectetur tempora ab laudantium voluptatibus aut eos placeat
-                laborum, quibusdam exercitationem labore.
-              </p>
+              <motion.img src={sefcGIF} alt="gif of video" />
+              <motion.h2 variants={titleAnim}></motion.h2>
+              <h3>Heading 3</h3>
             </videoCard>
           </li>
           <li>
             <videoCard class="videoCard">
               <div class="cardLine"></div>
-              <h1>Heading 4</h1>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Consectetur tempora ab laudantium voluptatibus aut eos placeat
-                laborum, quibusdam exercitationem labore.
-              </p>
+              <motion.img src={academyGIF} alt="gif of video" />
+              <motion.h2 variants={titleAnim}></motion.h2>
+              <h3>Heading 4</h3>
             </videoCard>
           </li>
           <li>
             <videoCard class="videoCard">
               <div class="cardLine"></div>
-              <h1>Heading 4</h1>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Consectetur tempora ab laudantium voluptatibus aut eos placeat
-                laborum, quibusdam exercitationem labore.
-              </p>
+              <motion.img src={sefcGIF} alt="gif of video" />
+              <motion.h2 variants={titleAnim}></motion.h2>
+              <h3>Heading 5</h3>
             </videoCard>
           </li>
           <li>
             <videoCard class="videoCard">
               <div class="cardLine"></div>
-              <h1>Heading 4</h1>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Consectetur tempora ab laudantium voluptatibus aut eos placeat
-                laborum, quibusdam exercitationem labore.
-              </p>
+              <motion.img src={sefcGIF} alt="gif of video" />
+              <motion.h2 variants={titleAnim}></motion.h2>
+              <h3>Heading 6</h3>
             </videoCard>
           </li>
         </ul>
@@ -128,7 +115,6 @@ const Work = () => {
 
 const StyledWork = styled(motion.div)`
   min-height: 100vh;
-  overflow: hidden;
   padding: 5rem 10rem;
   min-height: 100vh;
   width: 100%;
@@ -150,6 +136,8 @@ const workBox = styled(motion.div)`
   margin: 0 auto;
   position: relative;
 `;
+
+const videoBox = styled(motion.div)``;
 
 const videoCard = styled(motion.div)``;
 export default Work;

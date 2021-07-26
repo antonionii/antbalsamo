@@ -138,7 +138,7 @@ h2{
   .videoCard .cardLine {
     font-size: 12px;
     font-weight: 300;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
     letter-spacing: 2px;
   }
   @media only screen and (min-width: 768px) {
@@ -148,86 +148,168 @@ h2{
       top: 0;
       left: 50%;
       transform: translateX(-50%);
-      width: .1rem;
+      width: .05rem;
       height: 100%;
       background-color: black;
     }
 
+    
     .videoBox ul li {
       width: 50%;
       position: relative;
       margin-bottom: 50px;
     }
-    .videoBox ul li:nth-child(odd) {
+
+  }
+    
+    .videoBox ul li:nth-child(odd) 
+    {
+      position: relative; 
       float: left;
       clear: right;
       transform: translateX(-40px);
       border-radius: 20px 0px 20px 20px;
 
-    @media  (min-width: 720px){
-    .videoCard .cardLine {
-      top: -1rem;
-      content: "";
-      position: relative;
-      width: 141%;
-      left: 10.3rem;
-      height: .1rem;
-      background: black;
-      transform: translateX(-50%);
 
 
 
-    }}
-    .videoCard h3 {
-    font-size: 1.rem;
-    transform: translateX(-25.5%)
-    
-     }
+      @media screen and (min-width: 1700px){
+        .videoCard .cardLine {
+            top: -1rem;
+            content: "";
+            position: relative;
+            width: 141%;
+            left: 10.3rem;
+            height: .05rem;
+            background: black;
+            transform: translateX(-50%);
 
-     .videoCard {
 
-img{
-    width: 130%;
-    transform: translateX(-20%);
-    padding: 1rem 0rem 0rem 0rem;
-}
-    position: relative;
-}
+            }
+            .videoCard h3 {
+                opacity:1;
+                padding: 1rem 0rem;
+            }
+         }
+         @media screen and (max-width: 1699px){
+
+         .videoCard .cardLine {
+                top: 1.5rem;
+                content: "";
+                position: relative;
+                width: 141%;
+                left: 13.6rem;
+                height: .05rem;
+                background: black;
+                transform: translateX(-50%);
+
+
+                }
+            .videoCard h3 {
+                opacity:1;
+                padding: .5rem 0rem 0rem 0rem;
+                }
+
+         }
+         
+        .videoCard h3 {
+            font-size: 1rem;
+            transform: translateX(-5rem) translateY(-1.5rem)
+         }
+        .videoCard {
+            img{
+                width: 130%;
+                transform: translateX(-20%);
+                padding: 1rem 0rem -2rem 0rem;
+                }
+        }   
     }
-    .videoBox ul li:nth-child(even) {
+
+
+
+
+
+    .videoBox ul li:nth-child(even) 
+    {
       float: right;
       clear: left;
       transform: translateX(30px);
       border-radius: 0px 20px 20px 20px;
-
-      .videoCard .cardLine {
-      top: -1rem;
-      content: "";
       position: relative;
-      width: 141%;
-      left: 13.3rem;
-      height: .1rem;
-      background: black;
-      transform: translateX(-50%);
 
 
+      @media  (min-width: 1700px){
+            .videoCard .cardLine {
+            top: -1rem;
+            content: "";
+            position: relative;
+            width: 141%;
+            left: 13.3rem;
+            height: .05rem;
+            background: black;
+            transform: translateX(-50%);
+            }
 
-    }}
-    .videoCard h3 {
-    font-size: 1.rem;
-    transform: translateX(105%);
+            .videoCard h3 {
+            opacity:1;
+            transform: translateX(-0.4rem) translateY(-1.5rem);
+            padding: 1rem 0rem ;
+            }
+
+        }
+         
+        @media screen and (max-width: 1699px){
+            .videoCard .cardLine {
+                top: 1.5rem;
+                content: "";
+                position: relative;
+                width: 141%;
+                left: 18.6rem;
+                height: .05rem;
+                background: black;
+                transform: translateX(-50%);
+                }
+
+
+                .videoCard h3 {
+                opacity:1;
+                transform: translateX(-.3rem) translateY(-1.5rem);
+                padding: .5rem 0rem 0rem 0rem;
+                }
+        }        
+
+        @media screen and (max-width: 1045px){
+            .videoCard .cardLine {
+                top: -1rem;
+                content: "";
+                position: relative;
+                width: 141%;
+                left: 16.9rem;
+                height: .05rem;
+                background: black;
+                transform: translateX(-50%);
+                }
+        }        
+
+        }
+
+
+            
+
+
+        .videoCard h3 {
+            font-size: 1rem;
+            transform: translateX(-5rem) translateY(-1.5rem)
+         }
+
+        .videoCard {
+            img{
+                width: 130%;
+                transform: translateX(-1%);
+                padding: 1rem 0rem 0rem 0rem;
+                }
+        }
     
-     }
-
-     .videoCard {
-
-img{
-    width: 130%;
-    transform: translateX(-1%);
-    padding: 1rem 0rem 0rem 0rem;
-}
-    position: relative;
-}
     }
 
     .videoBox ul li:nth-child(odd)::before {
