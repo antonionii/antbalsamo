@@ -5,8 +5,9 @@ import { Link } from "react-router-dom";
 import { MovieState } from "../movieState";
 //Animation
 import { motion } from "framer-motion";
-import { pageAnimation } from "../animation";
+import { pageAnimation, rotateText } from "../animation";
 import { AnimatePresence } from "framer-motion";
+import { BasicLayout } from "../styles";
 
 const MovieDetail = () => {
   const history = useHistory();
@@ -23,15 +24,15 @@ const MovieDetail = () => {
   return (
     <>
       {movie && (
-        <StyledMovieDetails
+        <BasicLayout
           variants={pageAnimation}
           initial="hidden"
           animate="show"
           exit="exit"
-          style={{ background: "#d6aa9e" }}
+          style={{}}
         >
           <StyledHeadline>
-            <h2>{movie.title}</h2>
+            <motion.h2 variants={rotateText()}>{movie.title}</motion.h2>
             <img src={movie.mainImg} alt="movie" />
           </StyledHeadline>
           <StyledAwards>
@@ -46,43 +47,40 @@ const MovieDetail = () => {
           <ImageDisplay>
             <img src={movie.secondaryImg} alt="secondary image" />
           </ImageDisplay>
-        </StyledMovieDetails>
+        </BasicLayout>
       )}
     </>
   );
 };
 
 const StyledMovieDetails = styled(motion.div)`
-  color: d6aa9e;
+  background: "var(--background-color)";
 `;
 
 const StyledHeadline = styled.div`
   min-height: 90vh;
-  padding-top: 30vh;
+  margin-top: 15vh;
   position: relative;
+  background: "var(--background-color)";
+  z-index: 10;
+  pointer-events: none;
+
   h2 {
-    position: absolute;
-    top: 10%;
-    left: 42%;
-    transform: translateX(-50%, -10%);
+    font-size: 5.5rem;
+
     color: black;
-    @media (max-width: 1300px) {
-      left: 38%;
+    text-transform: uppercase;
+
+    @media (min-width: 780px) {
     }
-    @media (max-width: 1000px) {
-      left: 35%;
-    }
-    @media (max-width: 700px) {
-      left: 30%;
-    }
-    @media (max-width: 300px) {
-      left: 20%;
+
+    @media (min-width: 1300px) {
     }
   }
 
   img {
-    width: 100%;
-    height: 70vh;
+    width: 80%;
+    height: auto;
     object-fit: cover;
   }
 `;
@@ -94,6 +92,7 @@ const StyledAwards = styled.div`
   margin: 5rem 10rem;
   align-items: center;
   justify-content: space-around;
+  pointer-events: none;
   @media (max-width: 1300px) {
     display: block;
     margin: 2rem 2rem;

@@ -2,23 +2,55 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 
 export const BasicLayout = styled(motion.div)`
-  min-height: 90vh;
+  min-height: 50vh;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 5rem 10rem;
+  justify-content: center;
   color: white;
-  @media (max-width: 1300px) {
+  width: 100%;
+  height: auto;
+
+  img {
+    margin: 10rem 0rem;
+    width: 90%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  @media (max-width: 750px) {
+    h2 {
+      font-size: 5rem;
+    }
+  }
+  @media (min-width: 780px) {
     display: block;
-    padding: 2rem 2rem;
     text-align: center;
+
+    img {
+      width: 70%;
+      height: auto;
+    }
+  }
+  @media (min-width: 1300px) {
+    display: block;
+    text-align: center;
+
+    img {
+      width: 50%;
+      height: auto;
+    }
   }
 `;
 
 export const StyledDescription = styled(motion.div)`
-  flex: 1;
-  padding-right: 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   z-index: 2;
+  pointer-events: none;
+  width: 100%;
+  height: auto;
+
   h2 {
     font-weight: lighter;
   }
@@ -26,22 +58,30 @@ export const StyledDescription = styled(motion.div)`
     padding: 0;
     margin: 2rem 0rem 5rem 0rem;
   }
+
+  show: {
+    transition: {
+      staggerchildren: 2;
+    }
+  }
 `;
 
 export const StyledImage = styled(motion.div)`
-  flex: 1;
   overflow: hidden;
   z-index: 2;
+  padding: 0rem 0rem 0rem 30rem;
   @media (max-width: 1300px) {
-    margin: 0rem 5rem;
+    margin: 0rem 2rem;
   }
   img {
-    width: 100%;
-    height: 80vh;
+    width: 80%;
+    height: auto;
     object-fit: cover;
   }
 `;
 
-export const StlyedHide = styled(motion.div)`
-  overflow: hidden;
+export const StyledHide = styled(motion.div)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;

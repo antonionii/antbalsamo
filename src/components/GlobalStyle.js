@@ -2,6 +2,12 @@ import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
 
+:root {
+  --background-color: #d6aa9e;
+  --text-color: black;
+  --line-color: black;
+}
+
 *{
     margin:0;
     padding: 0;
@@ -9,16 +15,53 @@ const GlobalStyle = createGlobalStyle`
 }
 
 html{
+  overflow-x:hidden;
+  
     @media (max-width: 1700px){
         font-size: 75%;
     }
 
+    
+
 }
 body {
-    background: #d6aa9e;
-    font-family: 'Karla', sans-serif;
-
+    background: var(--background-color);
+    font-family: 'Cormorant Garamond', serif;  
+    font-weight: 700;
     overflow-x: hidden;
+    color: var(--text-color);
+    transition: 0.3s all ease-in-out;
+    position: relative;
+    margin:0;
+    padding: 0;
+    width: 100%;
+
+}
+
+
+
+img {
+  width: 100%;
+  height:auto;
+}
+
+/* ripple stuff */
+.ripple {
+  width: 10px;
+  height: 10px;
+  background-color: transparent;
+  position: fixed;
+  border-radius: 50%;
+  border: 1px solid black;
+  transform: translate3d(-50%, -50%, 0)
+}
+
+@keyframes ripple-effect {
+  to {
+    width: 50px;
+    height: 50px;
+    opacity: 0.01
+  }
 }
 
 button{
@@ -28,9 +71,8 @@ button{
     padding: 1rem 2rem;
     border: 3px solid #120000;
     background: transparent;
-    color: black;
     transition: all 0.5s ease;
-    ffont-family: 'Karla', sans-serif;
+    font-family: 'Karla', sans-serif;
     &:hover{
         background-color:#120000;
         color: white
@@ -38,37 +80,31 @@ button{
 
 }
 
-h2{
+
+
+    h2{
         font-weight: normal;
-        font-size: 4rem;
-        color: #120000;
-    }
-    h3{
-        color: #120000;
+        font-size: 7.5rem;
+        color: var(--text-color);
+        width: "100%";
+        height: "auto";
+   
+
     }
     h4{
         font-weight: bold;
         
         font-size: 2rem;
-        color: #120000;
     }
     span{
         font-weight: bold;
-        color: #120000;    
-    }
-    a{
-        font-size: 1.1.rem;
-        color: #120000;
+            
     }
     p{
         padding: 3rem 0rem;
-        color: #120000;
+        
         font-size: 1.4rem;
         line-height: 150%;
-    }
-
-    #nav {
-        background: #d6aa9e;
     }
 
     #wave{
@@ -77,258 +113,228 @@ h2{
     li {
     padding-left: 6rem;
     position: relative;
-    font-family: 'Lora', serif;    
+    font-family: 'Karla', sans-serif;
     font-weight: regular;
-    color: #120000;
   }
   a {
-    color: white;
+    font-size: 1.3rem;
     text-decoration: none;
-    font-family: 'Lora', serif;    
-    font-weight: regular;    font-weight: 200;
-    color: #120000;
+    font-family: 'Karla', sans-serif;
+    font-weight:600;
+    color: inherit;
 
   }
   #Logo {
     font-size: 1.5rem;
-    font-family: 'Lora', serif;    
-    font-weight: regular;    font-weight: normal;
-    color:#120000;
-  }
-
-  #pageAnimations{
-    background: black;
-
-  }
-
-#lineAnimations {
-    background: black;
-}
-  
-
-  .videoBox {
-    width: 80%;
-    height: auto;
-    max-width: 800px;
-    margin: 0 auto;
-    position: relative;
-  }
-  
-  .videoBox ul {
-    list-style: none;
-  }
-  .videoBox ul li {
-    padding: 1rem;
-    color: white;
-    margin-bottom: 20px;
-    height: 10rem;
-  }
-  .videoBox ul li:last-child {
-    margin-bottom: 0;
-  }
-
-  .videoCard p {
-    font-size: 1rem;
-    line-height: 30px;
-    font-weight: 300;
+    font-family: 'Karla', sans-serif;
+    font-weight:600;
   }
 
 
+/*   
+ /*! locomotive-scroll v4.1.1 | MIT License | https://github.com/locomotivemtl/locomotive-scroll */
+html.has-scroll-smooth {
+  overflow: hidden; }
 
-  .videoCard .cardLine {
-    font-size: 12px;
-    font-weight: 300;
-    margin-bottom: 30px;
-    letter-spacing: 2px;
-  }
-  @media only screen and (min-width: 768px) {
-    .videoBox:before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: .05rem;
-      height: 100%;
-      background-color: black;
-    }
+html.has-scroll-dragging {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
 
-    
-    .videoBox ul li {
-      width: 50%;
-      position: relative;
-      margin-bottom: 50px;
-    }
+.has-scroll-smooth body {
+  overflow: hidden; }
 
-  }
-    
-    .videoBox ul li:nth-child(odd) 
-    {
-      position: relative; 
-      float: left;
-      clear: right;
-      transform: translateX(-40px);
-      border-radius: 20px 0px 20px 20px;
+.has-scroll-smooth [data-scroll-container] {
+  min-height: 100vh; }
 
+[data-scroll-direction="horizontal"] [data-scroll-container] {
+  height: 100vh;
+  display: inline-block;
+  white-space: nowrap; }
 
+[data-scroll-direction="horizontal"] [data-scroll-section] {
+  display: inline-block;
+  vertical-align: top;
+  white-space: nowrap;
+  height: 100%; }
 
+.c-scrollbar {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 11px;
+  height: 100%;
+  transform-origin: center right;
+  transition: transform 0.3s, opacity 0.3s;
+  opacity: 1; }
+  .c-scrollbar:hover {
+    transform: scaleX(1.45); }
+  .c-scrollbar:hover, .has-scroll-scrolling .c-scrollbar, .has-scroll-dragging .c-scrollbar {
+    opacity: 1; }
+  [data-scroll-direction="horizontal"] .c-scrollbar {
+    width: 100%;
+    height: 10px;
+    top: auto;
+    bottom: 0;
+    transform: scaleY(1); }
+    [data-scroll-direction="horizontal"] .c-scrollbar:hover {
+      transform: scaleY(1.3); }
 
-      @media screen and (min-width: 1700px){
-        .videoCard .cardLine {
-            top: -1rem;
-            content: "";
-            position: relative;
-            width: 141%;
-            left: 10.3rem;
-            height: .05rem;
-            background: black;
-            transform: translateX(-50%);
-
-
-            }
-            .videoCard h3 {
-                opacity:1;
-                padding: 1rem 0rem;
-            }
-         }
-         @media screen and (max-width: 1699px){
-
-         .videoCard .cardLine {
-                top: 1.5rem;
-                content: "";
-                position: relative;
-                width: 141%;
-                left: 13.6rem;
-                height: .05rem;
-                background: black;
-                transform: translateX(-50%);
-
-
-                }
-            .videoCard h3 {
-                opacity:1;
-                padding: .5rem 0rem 0rem 0rem;
-                }
-
-         }
-         
-        .videoCard h3 {
-            font-size: 1rem;
-            transform: translateX(-5rem) translateY(-1.5rem)
-         }
-        .videoCard {
-            img{
-                width: 130%;
-                transform: translateX(-20%);
-                padding: 1rem 0rem -2rem 0rem;
-                }
-        }   
-    }
-
-
-
-
-
-    .videoBox ul li:nth-child(even) 
-    {
-      float: right;
-      clear: left;
-      transform: translateX(30px);
-      border-radius: 0px 20px 20px 20px;
-      position: relative;
-
-
-      @media  (min-width: 1700px){
-            .videoCard .cardLine {
-            top: -1rem;
-            content: "";
-            position: relative;
-            width: 141%;
-            left: 13.3rem;
-            height: .05rem;
-            background: black;
-            transform: translateX(-50%);
-            }
-
-            .videoCard h3 {
-            opacity:1;
-            transform: translateX(-0.4rem) translateY(-1.5rem);
-            padding: 1rem 0rem ;
-            }
-
-        }
-         
-        @media screen and (max-width: 1699px){
-            .videoCard .cardLine {
-                top: 1.5rem;
-                content: "";
-                position: relative;
-                width: 141%;
-                left: 18.6rem;
-                height: .05rem;
-                background: black;
-                transform: translateX(-50%);
-                }
-
-
-                .videoCard h3 {
-                opacity:1;
-                transform: translateX(-.3rem) translateY(-1.5rem);
-                padding: .5rem 0rem 0rem 0rem;
-                }
-        }        
-
-        @media screen and (max-width: 1045px){
-            .videoCard .cardLine {
-                top: -1rem;
-                content: "";
-                position: relative;
-                width: 141%;
-                left: 16.9rem;
-                height: .05rem;
-                background: black;
-                transform: translateX(-50%);
-                }
-        }        
-
-        }
-
-
-            
-
-
-        .videoCard h3 {
-            font-size: 1rem;
-            transform: translateX(-5rem) translateY(-1.5rem)
-         }
-
-        .videoCard {
-            img{
-                width: 130%;
-                transform: translateX(-1%);
-                padding: 1rem 0rem 0rem 0rem;
-                }
-        }
-    
-    }
-
-    .videoBox ul li:nth-child(odd)::before {
-      transform: translate(50%, -50%);
-      right: -30px;
-    }
-    .videoBox ul li:nth-child(even)::before {
-      transform: translate(-50%, -50%);
-      left: -30px;
-    }
-
-
+.c-scrollbar_thumb {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: black;
+  opacity: 1;
+  width: 30px;
+  border-radius: 10px;
+  margin: 2px;
+  cursor: -webkit-grab;
+  cursor: grab; }
+  .has-scroll-dragging .c-scrollbar_thumb {
+    cursor: -webkit-grabbing;
+    cursor: grabbing; }
+  [data-scroll-direction="horizontal"] .c-scrollbar_thumb {
+    right: auto;
+    bottom: 0; }
 
 
 
     .timeline ul li:hover::before {
       background-color: aqua;
     }
+  } */
+
+  @keyframes identifier {
+  0% { top: 0; left: 0; }
+  30% { top: 50px; }
+  72% { left: 50px; }
+  100% { top: 100px; left: 100%; }
+}
+
+  @-webkit-keyframes rotating /* Safari and Chrome */ {
+  from {
+    -webkit-transform: rotate(0deg) ;
+    -o-transform: rotate(0deg) ;
+    transform: rotate(0deg) ;
   }
+  to {
+    -webkit-transform: rotate(360deg) ;
+    -o-transform: rotate(360deg) ;
+    transform: rotate(360deg) ;
+  }
+}
+@keyframes rotating {
+  from {
+    -ms-transform: rotate(0deg) ;
+    -moz-transform: rotate(0deg) 0% ;
+    -webkit-transform: rotate(0deg) ;
+    -o-transform: rotate(0deg) ;
+    transform: rotate(0deg) ;
+  }
+  to {
+
+    -ms-transform: rotate(360deg) ;
+    -moz-transform: rotate(360deg) 100%;
+    -webkit-transform: rotate(360deg) ;
+    -o-transform: rotate(360deg) ;
+    transform: rotate(360deg) ;
+  }
+}
+
+.click-around-1 {
+  position: absolute;
+  top: 50vh;
+  transition: 1s all ease-out;
+  pointer-events: none,
+}
+
+
+.circle-size-1 {
+  width: 200px;
+  height: auto;
+}
+
+@media (min-width: 780px) { 
+  .circle-size-1  {
+    width: 460px;
+  }
+
+  .click-around-1 {
+    top: 45vh;
+  }
+}
+
+@media (min-width: 1300px) { 
+  .circle-size-1  {
+    width: 520px;
+  }
+
+  .click-around-1 {
+    top: 33vh;
+  }
+}
+
+.introText{
+  margin: 10rem 0rem 0rem 0rem;
+}
+
+@media (min-width: 780px) {
+  .introText{
+  margin: 13rem 0rem 0rem 0rem;
+}
+}
+
+@media (mid-width: 1300px){
+  .introText{
+  margin: 8rem 0rem 0rem 0rem;
+}
+
+}
+.rotating {
+  pointer-events: none;
+
+
+  -webkit-animation: rotating 30s linear infinite;
+  -moz-animation: rotating 30s linear infinite;
+  -ms-animation: rotating 30s linear infinite;
+  -o-animation: rotating 30s linear infinite;
+  animation: rotating 30s linear infinite;
+}
+
+svg .cls-1 {
+  fill: var(--text-color, #000);
+}
+
+
+
+#midCircle {
+    width:300px;
+    height:300px;
+  }
+
+
+  * {
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--background-color);
+;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--text-color);
+  }
+
+
+
+
+  .marqueeWrapper {
+    display: block;
+    width: 100%;
+    max-width: 100%;
   `;
 
 export default GlobalStyle;

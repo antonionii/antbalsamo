@@ -9,10 +9,10 @@ import theracer2 from "./img/the-racer2.jpg";
 export const MovieState = () => {
   return [
     {
-      title: "The Athlete",
+      title: "JLL Academy Event",
       mainImg: athlete,
       secondaryImg: athlete2,
-      url: "/Work/the-athlete",
+      url: "/Work/jll-academy-event",
       awards: [
         {
           title: "Truly A masterpiece",

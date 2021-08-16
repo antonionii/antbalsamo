@@ -21,19 +21,116 @@ export const pageAnimation = {
   },
 };
 
-export const titleAnim = {
+export const leftcircleAnim = ({
+  delay = 0,
+  startXPos = -400,
+  endXPos = -150,
+} = {}) => ({
+  hidden: {
+    opacity: 0,
+    transform: `translateX(${startXPos}px)`,
+  },
+
+  show: {
+    delay,
+    opacity: 1,
+    transform: `translateX(${endXPos}px)`,
+    transition: { duration: 1, ease: "easeOut", delay },
+  },
+});
+
+export const thumbnailAnim = (delay = 0) => ({
+  hidden: {
+    opacity: 0.2,
+    padding: "0 40px",
+    transform: "perspective(42rem) rotateX(-90deg) scale3d(1,1,1)",
+    transformOrigin: "top center",
+  },
+  show: {
+    opacity: 1,
+    transform: "perspective(42rem) rotateX(0deg) scale3d(1,1,1)",
+    transition: { duration: 1, ease: "easeOut", delay },
+  },
+});
+
+export const rotateText = (delay = 0.0) => ({
+  hidden: {
+    opacity: 0.2,
+    padding: "0 40px",
+    transform: "perspective(42rem) rotateX(90deg) scale3d(1,1,1)",
+    transformOrigin: "top center",
+  },
+  show: {
+    opacity: 1,
+    transform: "perspective(42rem) rotateX(0deg) scale3d(1,1,1)",
+    transition: { duration: 1, ease: "easeOut", delay },
+  },
+});
+
+export const slideText = {
   hidden: { y: 200 },
   show: {
     y: 0,
-    transition: { duratoin: 0.75, ease: "easeOut" },
+    transition: { duration: 0.75, ease: "easeOut" },
   },
 };
 
+export const slidedownAnim = (delay = 0) => ({
+  hidden: { y: -60, opacity: 0 },
+  show: {
+    y: 0,
+    opacity: 1,
+
+    transition: { duration: 0.5, ease: "easeOut", delay },
+  },
+});
+
+export const sliderightAnim = {
+  hidden: { x: -100, opacity: 0 },
+  show: {
+    x: 0,
+    opacity: 1,
+
+    transition: { duration: 0.5, ease: "easeOut" },
+  },
+};
+
+export const slideleftAnim = {
+  hidden: { x: 100, opacity: 0 },
+  show: {
+    x: 0,
+    opacity: 1,
+
+    transition: { duration: 0.5, ease: "easeOut", delay: 1 },
+  },
+};
 export const fade = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
     transition: { ease: "easeOut", duration: 0.75 },
+  },
+};
+
+export const textFade = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: { duration: 1.2 },
+  },
+};
+
+export const circle = {
+  hidden: {
+    opacity: 0.2,
+    padding: "0 40px",
+    transform: "rotateX(-90deg) scale3d(1,1,1)",
+    transformOrigin: "top center",
+  },
+  show: {
+    opacity: 1,
+    transform: "rotateX(0deg) scale3d(1,1,1)",
+    transition: { duration: 1, ease: "easeOut" },
   },
 };
 
@@ -86,7 +183,6 @@ export const scrollReveal = {
 export const navReveal = {
   hidden: {
     top: "-10%",
-    top: "100%",
     transition: { duration: 0.5 },
   },
   show: {

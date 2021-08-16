@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 //Animations
 import { motion } from "framer-motion";
-import { pageAnimation, titleAnim } from "../animation";
+import { pageAnimation, slideText } from "../animation";
 import { AnimatePresence } from "framer-motion";
 
 const ContactMe = () => {
@@ -17,12 +17,12 @@ const ContactMe = () => {
     >
       <StyledTitle>
         <Hide>
-          <motion.h2 variants={titleAnim}>Let's talk.</motion.h2>
+          <motion.h2 variants={slideText}>Let's talk.</motion.h2>
         </Hide>
       </StyledTitle>
       <div>
         <Hide>
-          <StyledSocial variants={titleAnim}>
+          <StyledSocial variants={slideText}>
             <Circle />
             <h2>Send me an email.</h2>
           </StyledSocial>
@@ -30,7 +30,7 @@ const ContactMe = () => {
       </div>
       <div>
         <Hide>
-          <StyledSocial variants={titleAnim}>
+          <StyledSocial variants={slideText}>
             <Circle />
             <h2>Call my line.</h2>
           </StyledSocial>
@@ -38,7 +38,7 @@ const ContactMe = () => {
       </div>
       <div>
         <Hide>
-          <StyledSocial variants={titleAnim}>
+          <StyledSocial variants={slideText}>
             <Circle />
             <h2>Follow Me.</h2>
           </StyledSocial>

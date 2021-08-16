@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 //Import Icons
 import clock from "../img/clock.svg";
 import diaphragm from "../img/diaphragm.svg";
@@ -11,16 +11,18 @@ import { useInView } from "react-intersection-observer";
 import { useAnimation, motion } from "framer-motion";
 import { scrollReveal } from "../animation";
 import { useScroll } from "./useScroll";
+import { useIntersection } from "react-use";
 
 import {
   BasicLayout,
   StyledDescription,
   StyledImage,
-  StlyedHide,
+  StyledHide,
 } from "../styles";
 
 const ServicesSection = () => {
   const [element, controls] = useScroll();
+
   return (
     <Services
       variants={scrollReveal}
