@@ -66,15 +66,16 @@ img {
 
 button{
     font-weight: bold;
-    font-size: 1.1rem;
+    color: var(--text-color);
     cursor: pointer;
+    font-size: 2rem;
     padding: 1rem 2rem;
-    border: 3px solid #120000;
+    border: 3px solid var(--text-color);
     background: transparent;
     transition: all 0.5s ease;
     font-family: 'Karla', sans-serif;
     &:hover{
-        background-color:#120000;
+        background-color: var(--background-color);
         color: white
     }
 
@@ -98,6 +99,7 @@ button{
     }
     span{
         font-weight: bold;
+        
             
     }
     p{
@@ -122,6 +124,8 @@ button{
     font-family: 'Karla', sans-serif;
     font-weight:600;
     color: inherit;
+    pointer-events:auto;
+
 
   }
   #Logo {
@@ -243,6 +247,94 @@ html.has-scroll-dragging {
   }
 }
 
+
+.slider {
+  position:relative;
+  height:40vh;
+  display: flex;
+  padding: 0rem 0rem 0rem 2.7rem;
+  justify-content: center;
+  align-items: center;
+  pointer-events: auto;
+
+  @media (min-width:780px) {
+    margin: 4rem 4rem;
+
+  }
+  @media (min-width:1300px) {
+    margin: 6rem 6rem;
+
+  }
+}
+
+.slideImage {
+  width:100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.right-arrow {
+  position: absolute;
+  top: 80%;
+  right: 60px;
+  font-size: 3rem;
+  color: var(--text-color);
+  z-index: 10;
+  cursor:pointer;
+  pointer-events: auto;
+  user-select: none;
+
+  @media (min-width:780px){
+    top:50%;
+    font-size: 5rem;
+
+    right: 32px;
+  }
+
+  @media (min-width:1300px){
+    top:50%;
+    font-size: 5rem;
+
+    right: 230px;
+  }
+}
+
+.left-arrow {
+  position: absolute;
+  top: 80%;
+  left: 60px;
+  font-size: 3rem;
+  color: var(--text-color);
+  z-index: 10;
+  cursor: pointer;
+  pointer-events:auto;
+  user-select: none;
+
+  @media (min-width:780px){
+    top:50%;
+    font-size: 5rem;
+
+    left: 65px;
+  }
+  @media (min-width:1300px){
+    top:50%;
+    font-size: 5rem;
+
+    left: 270px;
+  }
+}
+
+.slide {
+  opacity: 0;
+  transition-duration: 1s ease;
+}
+
+.slide.active {
+  opacity: 1;
+  transition-duration: 1s;
+  transform: scale(1.08);
+}
+
 .click-around-1 {
   position: absolute;
   top: 50vh;
@@ -254,6 +346,37 @@ html.has-scroll-dragging {
 .circle-size-1 {
   width: 200px;
   height: auto;
+  pointer-events:auto,
+}
+
+.click-around-2 {
+  position: absolute;
+  top: 58vh;
+  transition: 1s all ease-out;
+  pointer-events: none,
+}
+
+.circle-size-2 {
+  width: 450px;
+  height: auto;
+}
+
+.player-wrapper {
+    display: flex;
+    width: 100%;
+    height:auto;
+    max-width: 1200px;
+    margin: 0 auto;
+    z-index:10;
+    padding: 2vh 0 0;
+
+    
+  }
+
+  .react-player {
+pointer-events: auto;
+z-index:10;
+
 }
 
 @media (min-width: 780px) { 
@@ -261,8 +384,17 @@ html.has-scroll-dragging {
     width: 460px;
   }
 
+  .circle-size-2 {
+  width: 800px;
+  height: auto;
+}
+
   .click-around-1 {
     top: 45vh;
+  }
+
+  .click-around-2{
+    top:50vh;
   }
 }
 
@@ -271,8 +403,17 @@ html.has-scroll-dragging {
     width: 520px;
   }
 
+  .circle-size-2 {
+  width: 1300px;
+  height: auto;
+}
+
   .click-around-1 {
     top: 33vh;
+  }
+
+  .click-around-2{
+    top:50vh;
   }
 }
 
@@ -335,6 +476,40 @@ svg .cls-1 {
     display: block;
     width: 100%;
     max-width: 100%;
-  `;
 
+
+.profileText{
+  display: block;
+  width: 100%;
+  margin: 30rem 0rem 0rem 0rem;
+  pointer-events: auto;
+  box-sizing: border-box;
+}
+
+.profileImage{
+  overflow: hidden;
+  z-index: 2;
+  padding: 0rem 0rem 0rem 50rem;
+  display: block;
+
+  img {
+    width: 50%;
+    height: auto;
+    object-fit: cover;
+  }
+}
+
+.aboutContainer{
+  display:flex;
+@media (min-width: 780px) {
+display: flex;
+}
+
+@media (mid-width: 1300px){
+display: flex;
+}
+}
+
+
+`;
 export default GlobalStyle;

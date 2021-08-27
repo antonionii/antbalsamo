@@ -110,6 +110,30 @@ const WorkBox = styled(motion.div)`
       /*width: 100%;
       transform: translateX(100%) translateY(-50%); */
     }
+
+    ul li:nth-child(odd) .gifWrapper {
+      position: absolute;
+      left: 40px;
+      right: 60px;
+    }
+
+    ul li:nth-child(even) .gifWrapper {
+      position: absolute;
+      left: 60px;
+      right: 40px;
+    }
+
+    ul li .thumbnailImg {
+      width: 100%;
+      object-fit: cover;
+      transition: all 1s ease-out;
+    }
+
+    ul li .thumbnailGif {
+      width: 100%;
+      object-fit: cover;
+      transition: all 1s ease-out;
+    }
   }
 `;
 
@@ -125,13 +149,10 @@ const StyledVideoCard = styled(motion.div)`
     font-family: "Karla", sans-serif;
     font-weight: 700;
   }
-
   img {
     width: 100%;
-    height: auto;
     object-fit: cover;
   }
-
   .titleWrapper {
     display: flex;
     align-items: center;
@@ -175,13 +196,36 @@ const VideoCard = ({ thumbnailImage, gif, label, title, linkTo }) => {
         onMouseOver={handleMouseOver}
         onMouseOut={handleMouseOut}
       >
-        <motion.img
+        {/* <motion.img
           src={isMouseOver ? gif : thumbnailImage}
           alt={label}
           width={640}
           height={360}
           variants={thumbnailAnim()}
+        /> */}
+        <motion.img
+          src={thumbnailImage}
+          alt={label}
+          width={640}
+          height={360}
+          variants={thumbnailAnim()}
+          style={{
+            opacity: isMouseOver ? "0" : "1",
+          }}
+          className="thumbnailImg"
         />
+        {isLargeDisplay && (
+          <div className="gifWrapper">
+            <motion.img
+              src={gif}
+              alt={label}
+              className="thumbnailGif"
+              style={{
+                opacity: isMouseOver ? "1" : "0",
+              }}
+            />
+          </div>
+        )}
 
         <div className="titleWrapper">
           {isMouseOver ? (
@@ -234,8 +278,8 @@ const Work = () => {
             // data-scroll-position="top"
             >
               <VideoCard
-                thumbnailImage="https://imgur.com/SdYzPQu.jpg"
-                gif="https://imgur.com/ccQhVIs.gif"
+                thumbnailImage="https://image.mux.com/UtcFf00t6a6IN3NI500e9s16vkg3XVwAjq4IUPk31SGdE/thumbnail.png?width=640&height=360&fit_mode=smartcrop&time=33"
+                gif="https://image.mux.com/UtcFf00t6a6IN3NI500e9s16vkg3XVwAjq4IUPk31SGdE/animated.gif?start=32&end=37"
                 linkTo="/Work/jll-academy-event"
                 label="gif of video"
                 title="JLL ACADEMY EVENT"
@@ -248,8 +292,8 @@ const Work = () => {
             // data-scroll-position="top"
             >
               <VideoCard
-                thumbnailImage="https://imgur.com/ak5EkSu.jpg"
-                gif="https://imgur.com/7NGClAn.gif"
+                thumbnailImage="https://image.mux.com/9e3J1zOm01c00warTLiITcT01AVnXl8TlaJoImu4NN6784/thumbnail.png?width=640&height=360&fit_mode=smartcrop&time=40"
+                gif="https://image.mux.com/9e3J1zOm01c00warTLiITcT01AVnXl8TlaJoImu4NN6784/animated.gif?start=05&end=10"
                 linkTo="/Work/jll-industrial-tech"
                 label="gif of video"
                 title="JLL INDUSTRIAL TECH "
@@ -262,8 +306,8 @@ const Work = () => {
             // data-scroll-position="top"
             >
               <VideoCard
-                thumbnailImage="https://imgur.com/iIpyoZM.jpg"
-                gif="https://imgur.com/dhgntZX.gif"
+                thumbnailImage="https://image.mux.com/E3atw01lGC8qxz21FL59qp8x6005xJkHpJn7bAgbMxpXQ/thumbnail.png?width=640&height=360&fit_mode=smartcrop&time=1"
+                gif="https://image.mux.com/E3atw01lGC8qxz21FL59qp8x6005xJkHpJn7bAgbMxpXQ/animated.gif"
                 linkTo="/Work/coming-out-fearless-website-design"
                 label="gif of video"
                 title="COMING OUT FEARLESS WEBSITE DESIGN"
@@ -276,9 +320,9 @@ const Work = () => {
             // data-scroll-position="top"
             >
               <VideoCard
-                thumbnailImage="https://imgur.com/q2D4m5T.jpg"
-                gif="https://imgur.com/0qQh5uq.gif"
-                linkTo="/Work/the-athlete"
+                thumbnailImage="https://image.mux.com/qdUIrnh5wjsvZTP001f00o7dArfYZmOXveZiAqvtOuQpE/thumbnail.png?width=640&height=360&fit_mode=smartcrop&time=2"
+                gif="https://image.mux.com/qdUIrnh5wjsvZTP001f00o7dArfYZmOXveZiAqvtOuQpE/animated.gif"
+                linkTo="/Work/my-little-tattoo"
                 label="gif of video"
                 title="MY LITTLE TATTOO"
               />
@@ -290,9 +334,9 @@ const Work = () => {
             // data-scroll-position="top"
             >
               <VideoCard
-                thumbnailImage="https://imgur.com/irsks3Z.jpg"
-                gif="https://imgur.com/1g97bYo.gif"
-                linkTo="/Work/the-athlete"
+                thumbnailImage="https://image.mux.com/ANh02Tm1rh8XxOLQ6ZHdH00KwDdm1lW2V8kj7xUlIb2u4/thumbnail.png?width=640&height=360&fit_mode=smartcrop&time=45"
+                gif="https://image.mux.com/ANh02Tm1rh8XxOLQ6ZHdH00KwDdm1lW2V8kj7xUlIb2u4/animated.gif?start=5"
+                linkTo="/Work/adobe-max-2019"
                 label="gif of video"
                 title="ADOBE MAX 2019"
               />
@@ -304,9 +348,9 @@ const Work = () => {
             // data-scroll-position="top"
             >
               <VideoCard
-                thumbnailImage="https://imgur.com/IIohS3r.jpg"
-                gif="https://imgur.com/gQQ11tW.gif"
-                linkTo="/Work/the-athlete"
+                thumbnailImage="https://image.mux.com/K7ltcJE3jhqAUcAYTjCAHPCCzM01qEiy21stgME6j9fo/thumbnail.png?width=640&height=360&fit_mode=smartcrop&time=2"
+                gif="https://image.mux.com/K7ltcJE3jhqAUcAYTjCAHPCCzM01qEiy21stgME6j9fo/animated.gif?start=11&end=16"
+                linkTo="/Work/jll-life-sciences"
                 label="gif of video"
                 title="JLL LIFE SCIENCES"
               />
@@ -318,11 +362,11 @@ const Work = () => {
             // data-scroll-position="top"
             >
               <VideoCard
-                thumbnailImage="https://imgur.com/61uvEmy.jpg"
-                gif="https://imgur.com/IAlPgpF.gif"
-                linkTo="/Work/the-athlete"
+                thumbnailImage="https://image.mux.com/Mhak00CKbxc02WfQ01OFyiNxpinmKIpLH8gK9rWtRPQCSc/thumbnail.png?width=640&height=360&fit_mode=smartcrop&time=2"
+                gif="https://image.mux.com/Mhak00CKbxc02WfQ01OFyiNxpinmKIpLH8gK9rWtRPQCSc/animated.gif?start=09&end=14"
+                linkTo="/Work/oakbrook-reserve-property-teaser"
                 label="gif of video"
-                title="JLL OAKBROOK RESERVE PROPERTY TEASER"
+                title="OAKBROOK RESERVE PROPERTY TEASER"
               />
             </li>
           </ul>

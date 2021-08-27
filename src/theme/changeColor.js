@@ -8,7 +8,7 @@ export const colorSchemes = {
   light: [
     {
       id: "1",
-      backgroundColor: "#d6aa9e",
+      backgroundColor: "#D9BDAD",
       textColor: "black",
       lineColor: "black",
     },
@@ -18,11 +18,24 @@ export const colorSchemes = {
       textColor: "#e83c38",
       lineColor: "#e83c38",
     },
+
     {
       id: "3",
-      backgroundColor: "#916cad",
-      textColor: "#adf182",
-      lineColor: "#ff8c28",
+      backgroundColor: "#B1BF93",
+      textColor: "#384001",
+      lineColor: "black",
+    },
+    {
+      id: "4",
+      backgroundColor: "#0061FC",
+      textColor: "white",
+      lineColor: "white",
+    },
+    {
+      id: "5",
+      backgroundColor: "#4a4a4a",
+      textColor: "#ffffff",
+      lineColor: "#ffffff",
     },
   ],
 };

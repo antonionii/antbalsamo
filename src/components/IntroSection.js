@@ -67,7 +67,7 @@ const IntroSection = () => {
   let endXPosForCircle1;
 
   if (isMediumDisplay) {
-    endXPosForCircle1 = -220;
+    endXPosForCircle1 = -230;
   } else if (isLargeDisplay) {
     endXPosForCircle1 = -200;
   } else {
@@ -79,6 +79,7 @@ const IntroSection = () => {
       <motion.div
         style={{
           left: circle1XPos,
+          pointerEvents: "none",
         }}
         className="click-around-1"
         variants={leftcircleAnim({
@@ -137,7 +138,7 @@ const IntroSection = () => {
           style={{
             position: "absolute",
             right: getCircleXPosition2(),
-            top: "69%",
+            top: "52%",
           }}
         />
 

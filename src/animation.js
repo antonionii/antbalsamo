@@ -41,17 +41,31 @@ export const leftcircleAnim = ({
 
 export const thumbnailAnim = (delay = 0) => ({
   hidden: {
-    opacity: 0.2,
+    // opacity: 0.2,
     padding: "0 40px",
     transform: "perspective(42rem) rotateX(-90deg) scale3d(1,1,1)",
     transformOrigin: "top center",
   },
   show: {
-    opacity: 1,
+    // opacity: 1,
     transform: "perspective(42rem) rotateX(0deg) scale3d(1,1,1)",
     transition: { duration: 1, ease: "easeOut", delay },
   },
 });
+
+export const demoAnim = {
+  hidden: {
+    // opacity: 0.2,
+    padding: "0 40px",
+    transform: "perspective(42rem) rotateX(-90deg) scale3d(1,1,1)",
+    transformOrigin: "top center",
+  },
+  visible: {
+    // opacity: 1,
+    transform: "perspective(42rem) rotateX(0deg) scale3d(1,1,1)",
+    transition: { duration: 1, ease: "easeOut" },
+  },
+};
 
 export const rotateText = (delay = 0.0) => ({
   hidden: {
@@ -95,15 +109,15 @@ export const sliderightAnim = {
   },
 };
 
-export const slideleftAnim = {
+export const slideleftAnim = (delay = 0) => ({
   hidden: { x: 100, opacity: 0 },
   show: {
     x: 0,
     opacity: 1,
 
-    transition: { duration: 0.5, ease: "easeOut", delay: 1 },
+    transition: { duration: 0.5, ease: "easeOut", delay },
   },
-};
+});
 export const fade = {
   hidden: { opacity: 0 },
   show: {

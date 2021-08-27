@@ -173,7 +173,11 @@ const Nav = ({ colorSchemeType, setColorSchemeType }) => {
           />
         </li>
         <li>
-          <motion.div initial="hidden" animate="show" variants={slideleftAnim}>
+          <motion.div
+            initial="hidden"
+            animate="show"
+            variants={slideleftAnim(1)}
+          >
             <div
               id="animationContainer"
               ref={animationContainer}
@@ -220,6 +224,7 @@ const StyledNav = styled(motion.div)`
     flex-direction: column;
     padding: 2rem 1rem;
     background: var(--background-color);
+    transition: 0.3s all ease-in-out;
 
     #Logo {
       display: inline-block;

@@ -55,7 +55,10 @@ function App() {
   };
 
   useEffect(() => {
-    changeColor("light");
+    if (colorSchemeType === "light") {
+      // change color will pick a new light color
+      changeColor("light");
+    }
   }, [location]);
 
   return (

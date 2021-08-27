@@ -13,24 +13,58 @@ import { useScroll } from "./useScroll";
 import { scrollReveal } from "../animation";
 import Marquee from "react-fast-marquee";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   const [element, controls] = useScroll();
   return (
     <div>
       <FooterDiv>
-        <div>
+        <div
+          style={{
+            position: "relative",
+            zIndex: "10",
+          }}
+        >
           <p>
-            <span>antbalsamo</span>
-            <span>@gmail.com</span>
-            <span>(954) 234-3133</span>
+            <span>
+              <a href="mailto: antbalsamo@gmail.com" target="_blank">
+                antbalsamo
+              </a>
+            </span>
+            <span>
+              <a href="mailto: antbalsamo@gmail.com" target="_blank">
+                @gmail.com
+              </a>
+            </span>
+            <span>
+              <a href="tel:5554280940">(954) 234-3133</a>
+            </span>
           </p>
         </div>
-        <div>
+        <div
+          style={{
+            position: "relative",
+            zIndex: "10",
+          }}
+        >
           <p>
-            <span>instagram</span>
-            <span>linkedin</span>
-            <span>vimeo</span>
+            <span>
+              <a href="https://www.instagram.com/anthonionii/" target="_blank">
+                instagram
+              </a>
+            </span>
+            <span>
+              {" "}
+              <a href="https://www.linkedin.com/in/antbalsamo/" target="_blank">
+                linkedin
+              </a>
+            </span>
+            <span>
+              <a href="https://www.twitch.tv/antonionii/videos" target="_blank">
+                Twitch
+              </a>
+            </span>
           </p>
         </div>
       </FooterDiv>
@@ -151,8 +185,14 @@ const FooterDiv = styled(motion.div)`
     padding: 0rem 4rem;
   }
 
-  p span {
+  span {
     display: block;
+
+    font-size: 1.1rem;
+  }
+
+  a {
+    font-size: 1.1rem;
   }
 `;
 
