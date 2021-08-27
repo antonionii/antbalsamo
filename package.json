@@ -53,6 +53,7 @@
     ]
   },
   "devDependencies": {
+    "html-webpack-plugin": "^5.3.2",
     "postcss": "^8.3.6",
     "postcss-easings": "^3.0.1"
   }
