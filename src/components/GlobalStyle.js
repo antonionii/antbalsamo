@@ -337,14 +337,14 @@ html.has-scroll-dragging {
 
 .click-around-1 {
   position: absolute;
-  top: 50vh;
+  top: 46vh;
   transition: 1s all ease-out;
   pointer-events: none,
 }
 
 
 .circle-size-1 {
-  width: 200px;
+  width: 180px;
   height: auto;
   pointer-events:auto,
 }

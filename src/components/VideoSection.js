@@ -34,7 +34,7 @@ const VideoSection = () => {
     <BasicLayout>
       <DemoContainer>
         <motion.img
-          src="https://image.mux.com/01OXzd01e2502qD00P2wNOFbvUqe54IonzO1y024GzxzoeM4/animated.gif?start=10&end=14"
+          src="https://image.mux.com/00c01ueogq01fHfB9E9GIkMvOShYvaSG600N6mY9a02ztgJM/animated.gif?start=10&end=14"
           variants={thumbnailAnim(2)}
           alt="gif of video"
           onClick={() => setIsFullScreenVideoShown(true)}
@@ -96,7 +96,7 @@ const VideoSection = () => {
                 maxWidth: 1600,
               }}
             >
-              <VideoPlayer playbackUrl="https://stream.mux.com/01OXzd01e2502qD00P2wNOFbvUqe54IonzO1y024GzxzoeM4.m3u8" />
+              <VideoPlayer playbackUrl="https://stream.mux.com/00c01ueogq01fHfB9E9GIkMvOShYvaSG600N6mY9a02ztgJM.m3u8" />
             </motion.div>
           </motion.div>
         )}
