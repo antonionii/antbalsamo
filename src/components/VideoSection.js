@@ -5,6 +5,26 @@ import { thumbnailAnim } from "../animation";
 // import { uuid } from "uuidv4";
 import { BasicLayout } from "../styles";
 import VideoPlayer from "./VideoPlayer";
+import styled from "styled-components";
+
+const DemoContainer = styled(motion.div)`
+  position: relative;
+  padding: 0rem 0rem 0rem 0rem;
+  left: 20px;
+  bottom: 80px;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+
+  @media (min-width: 750px) {
+    left: 0px;
+    bottom: 0px;
+    top: 50px;
+  }
+
+  @media (min-width: 1300px) {
+  }
+`;
 
 const VideoSection = () => {
   //Ref for our element
@@ -12,17 +32,19 @@ const VideoSection = () => {
 
   return (
     <BasicLayout>
-      <motion.img
-        src="https://image.mux.com/01OXzd01e2502qD00P2wNOFbvUqe54IonzO1y024GzxzoeM4/animated.gif?start=10&end=14"
-        variants={thumbnailAnim(2)}
-        alt="gif of video"
-        onClick={() => setIsFullScreenVideoShown(true)}
-        style={{
-          maxWidth: "600px",
-          pointerEvents: "auto",
-          cursor: "pointer",
-        }}
-      />
+      <DemoContainer>
+        <motion.img
+          src="https://image.mux.com/01OXzd01e2502qD00P2wNOFbvUqe54IonzO1y024GzxzoeM4/animated.gif?start=10&end=14"
+          variants={thumbnailAnim(2)}
+          alt="gif of video"
+          onClick={() => setIsFullScreenVideoShown(true)}
+          style={{
+            maxWidth: "600px",
+            pointerEvents: "auto",
+            cursor: "pointer",
+          }}
+        />
+      </DemoContainer>
 
       <AnimatePresence>
         {isFullScreenVideoShown && (
