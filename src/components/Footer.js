@@ -1,19 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
-import Toggle from "./Toggle";
-import {
-  BasicLayout,
-  StyledDescription,
-  StyledImage,
-  StyledHide,
-} from "../styles";
-
-import { AnimateSharedLayout } from "framer-motion";
 import { useScroll } from "./useScroll";
 import { scrollReveal } from "../animation";
 import Marquee from "react-fast-marquee";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
 
 const Footer = () => {
   const [element, controls] = useScroll();
@@ -28,12 +18,20 @@ const Footer = () => {
         >
           <p>
             <span>
-              <a href="mailto: antbalsamo@gmail.com" target="_blank">
+              <a
+                href="mailto: antbalsamo@gmail.com"
+                target="_blank"
+                rel="noreferrer"
+              >
                 antbalsamo
               </a>
             </span>
             <span>
-              <a href="mailto: antbalsamo@gmail.com" target="_blank">
+              <a
+                href="mailto: antbalsamo@gmail.com"
+                target="_blank"
+                rel="noreferrer"
+              >
                 @gmail.com
               </a>
             </span>
@@ -50,18 +48,30 @@ const Footer = () => {
         >
           <p>
             <span>
-              <a href="https://www.instagram.com/anthonionii/" target="_blank">
+              <a
+                href="https://www.instagram.com/anthonionii/"
+                target="_blank"
+                rel="noreferrer"
+              >
                 instagram
               </a>
             </span>
             <span>
               {" "}
-              <a href="https://www.linkedin.com/in/antbalsamo/" target="_blank">
+              <a
+                href="https://www.linkedin.com/in/antbalsamo/"
+                target="_blank"
+                rel="noreferrer"
+              >
                 linkedin
               </a>
             </span>
             <span>
-              <a href="https://www.twitch.tv/antonionii/videos" target="_blank">
+              <a
+                href="https://www.twitch.tv/antonionii/videos"
+                target="_blank"
+                rel="noreferrer"
+              >
                 Twitch
               </a>
             </span>
@@ -159,10 +169,6 @@ const Footer = () => {
 //   </AnimateSharedLayout>
 // </StyledFaq>
 
-const InfoPadding = styled(motion.div)`
-  display: block;
-  box-sizing: border-box;
-`;
 const FooterDiv = styled(motion.div)`
   display: block;
   width: 100%;
@@ -246,36 +252,5 @@ const MarqueeFooter = styled(motion.div)`
     /* outline: 1px solid red; */
   }
 `;
-const StyledFaq = styled(BasicLayout)`
-  width: 80%;
-  height: auto;
-  display: block;
-  z-index: 10;
-  pointer-events: auto;
-  span {
-    display: block;
-  }
-  h2 {
-    padding-bottom: 2rem;
-    font-weight: lighter;
-  }
-  .faq-line {
-    background: #cccccc;
-    height: 0.2rem;
-    margin: 2rem 0rem;
-    width: 100%;
-  }
 
-  .question {
-    padding: 3rem 0rem;
-    cursor: pointer;
-  }
-
-  .answer {
-    padding: 2rem 0rem;
-    p {
-      padding: 1rem 0rem;
-    }
-  }
-`;
 export default Footer;

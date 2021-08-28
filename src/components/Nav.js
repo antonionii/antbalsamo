@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -6,13 +6,7 @@ import { useLocation } from "react-router-dom";
 import { useScroll } from "./useScroll";
 import { useIntersection } from "react-use";
 import lottie from "lottie-web";
-import {
-  slidedownAnim,
-  sliderightAnim,
-  fade,
-  slideleftAnim,
-  textFade,
-} from "../animation";
+import { slidedownAnim, slideleftAnim, textFade } from "../animation";
 
 import { changeColor } from "../theme/changeColor";
 

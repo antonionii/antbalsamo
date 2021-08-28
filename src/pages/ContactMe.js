@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-
 //Animations
 import { motion } from "framer-motion";
 import { pageAnimation, slideText, leftcircleAnim } from "../animation";
-import { AnimatePresence } from "framer-motion";
 import { useWindowScroll, useMediaQuery } from "beautiful-react-hooks";
 import useDebounce from "../hooks/use-debounce";
 import { ReactComponent as ClickAround } from "../img/ClickAround.svg";
@@ -81,6 +79,7 @@ const ContactMe = () => {
             style={{ position: "relative", zIndex: 10 }}
             href="mailto: antbalsamo@gmail.com"
             target="_blank"
+            rel="noreferrer"
           >
             {" "}
             <h2>Email me at antbalsamo@gmail.com</h2>
@@ -103,6 +102,7 @@ const ContactMe = () => {
               style={{ position: "relative", zIndex: 10 }}
               href="https://www.linkedin.com/in/antbalsamo/"
               target="_blank"
+              rel="noreferrer"
             >
               <h2>Message me on LinkedIn</h2>
             </a>

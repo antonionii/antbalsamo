@@ -1,19 +1,9 @@
 import React from "react";
 import { motion } from "framer-motion";
-import {
-  rotateText,
-  fade,
-  photoAnim,
-  thumbnailAnim,
-  pageAnimation,
-  sliderightAnim,
-  slideleftAnim,
-} from "../animation";
+import { pageAnimation, sliderightAnim, slideleftAnim } from "../animation";
 import picofme from "../img/picofme.JPG";
-import sefcGIF from "../img/sefcGIF.gif";
 import styled from "styled-components";
-
-import { BasicLayout, StyledDescription, StyledHide } from "../styles";
+import { BasicLayout } from "../styles";
 
 const ProfileImage = styled(motion.div)`
   overflow: hidden;

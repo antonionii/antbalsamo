@@ -5,29 +5,10 @@ import { Link } from "react-router-dom";
 
 //Animations
 import { motion } from "framer-motion";
-import {
-  pageAnimation,
-  titleAnim,
-  fade,
-  photoAnim,
-  lineAnim,
-  slider,
-  sliderContainer,
-  rotateText,
-} from "../animation";
-import { AnimatePresence } from "framer-motion";
-import { useScroll } from "../components/useScroll";
-import { scrollReveal, vertAnim, thumbnailAnim } from "../animation";
+import { pageAnimation } from "../animation";
+import { thumbnailAnim } from "../animation";
 import { useMediaQuery } from "beautiful-react-hooks";
 import Marquee from "react-fast-marquee";
-import Footer from "../components/Footer.js";
-
-import {
-  BasicLayout,
-  StyledDescription,
-  StyledImage,
-  StyledHide,
-} from "../styles";
 
 const WorkBox = styled(motion.div)`
   width: 95%;
@@ -259,7 +240,7 @@ const Work = () => {
 
   const isLargeDisplay = useMediaQuery("(min-width: 48rem)");
 
-  const col2ScrollSpeed = isLargeDisplay ? "2" : "1";
+  // const col2ScrollSpeed = isLargeDisplay ? "2" : "1";
 
   return (
     <StyledWork

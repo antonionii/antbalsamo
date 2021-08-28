@@ -1,5 +1,3 @@
-import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
 import { Component } from "react";
 import { withRouter } from "react-router";
 

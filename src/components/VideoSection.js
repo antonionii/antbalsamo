@@ -1,18 +1,9 @@
-import React, { useRef, useState } from "react";
-import picofme from "../img/picofme.JPG";
+import React, { useState } from "react";
 //Framer Motion
 import { motion, AnimatePresence } from "framer-motion";
-import { fade, photoAnim, thumbnailAnim, demoAnim } from "../animation";
-import sefcGIF from "../img/sefcGIF.gif";
-import { useWindowScroll } from "beautiful-react-hooks";
-import { InView } from "react-intersection-observer";
-import { uuid } from "uuidv4";
-import {
-  BasicLayout,
-  StyledDescription,
-  StyledImage,
-  StyledHide,
-} from "../styles";
+import { thumbnailAnim } from "../animation";
+// import { uuid } from "uuidv4";
+import { BasicLayout } from "../styles";
 import VideoPlayer from "./VideoPlayer";
 
 const VideoSection = () => {
@@ -66,7 +57,7 @@ const VideoSection = () => {
             }}
           >
             <button
-              key={uuid()}
+              // key={uuid()}
               style={{
                 position: "absolute",
                 top: 40,

@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 //Import Icons
 import clock from "../img/clock.svg";
 import diaphragm from "../img/diaphragm.svg";
@@ -7,18 +7,11 @@ import teamwork from "../img/teamwork.svg";
 import home2 from "../img/home2.png";
 import styled from "styled-components";
 //Test
-import { useInView } from "react-intersection-observer";
-import { useAnimation, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { scrollReveal } from "../animation";
 import { useScroll } from "./useScroll";
-import { useIntersection } from "react-use";
 
-import {
-  BasicLayout,
-  StyledDescription,
-  StyledImage,
-  StyledHide,
-} from "../styles";
+import { BasicLayout, StyledDescription, StyledImage } from "../styles";
 
 const ServicesSection = () => {
   const [element, controls] = useScroll();

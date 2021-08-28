@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 //GlobalStyle
 import GlobalStyle from "./components/GlobalStyle";
 //Import Pages
@@ -11,12 +11,12 @@ import MovieDetail from "./pages/MovieDetail";
 //Animation
 import { AnimatePresence } from "framer-motion";
 import ScrollToTop from "./components/ScrollToTop";
-import { LocomotiveScrollProvider } from "react-locomotive-scroll";
-import { useHistory } from "react-router-dom";
+// import { LocomotiveScrollProvider } from "react-locomotive-scroll";
+// import { useHistory } from "react-router-dom";
 
 //Router
 import { Switch, Route, useLocation } from "react-router-dom";
-import { changeColor, colorSchemes } from "./theme/changeColor";
+import { changeColor } from "./theme/changeColor";
 import Footer from "./components/Footer";
 
 function App() {
@@ -25,7 +25,7 @@ function App() {
 
   // const history = useHistory();
 
-  const containerRef = useRef(null);
+  // const containerRef = useRef(null);
 
   const [colorSchemeType, setColorSchemeType] = useState("light");
 

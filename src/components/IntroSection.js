@@ -1,21 +1,10 @@
-import React, { useState, useRef, useEffect } from "react";
-import picofme from "../img/picofme.JPG";
+import React, { useState, useEffect } from "react";
 //Framer Motion
 import { motion } from "framer-motion";
-import {
-  rotateText,
-  fade,
-  photoAnim,
-  circle,
-  leftcircleAnim,
-} from "../animation";
-import sefcGIF from "../img/sefcGIF.gif";
+import { rotateText, leftcircleAnim } from "../animation";
 import { ReactComponent as ClickAround } from "../img/ClickAround.svg";
 import { useWindowScroll, useMediaQuery } from "beautiful-react-hooks";
-import { InView } from "react-intersection-observer";
-
-import { BasicLayout, StyledDescription, StyledImage } from "../styles";
-import styled from "styled-components";
+import { BasicLayout, StyledDescription } from "../styles";
 import useDebounce from "../hooks/use-debounce";
 
 const IntroSection = () => {

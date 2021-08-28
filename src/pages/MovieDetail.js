@@ -1,18 +1,13 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
-import { Link } from "react-router-dom";
 import { MovieState } from "../movieState";
 //Animation
 import { motion } from "framer-motion";
 import { pageAnimation } from "../animation";
-import { AnimatePresence } from "framer-motion";
-import ReactPlayer from "react-player";
 import VideoPlayer from "../components/VideoPlayer";
-import { BasicLayout } from "../styles";
 import Marquee from "react-fast-marquee";
 import ImageSlider from "../components/ImageSlider";
-import { SliderData } from "../components/SliderData";
 
 const MovieDetail = () => {
   const history = useHistory();
@@ -74,7 +69,7 @@ const MovieDetail = () => {
             ))}
           </StyledAwards>
           <ImageDisplay>
-            <img src={movie.secondaryImg} />
+            <img src={movie.secondaryImg} alt="" />
           </ImageDisplay>
         </StyledMovieDetails>
       )}
