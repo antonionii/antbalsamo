@@ -158,6 +158,10 @@ const StyledHeadline = styled.div`
   @media (min-width: 1300px) {
     padding: 0rem 5rem 0rem 5rem;
   }
+
+  @media (max-height: 750px) {
+    margin: 1rem 0rem;
+  }
 `;
 
 const StyledAwards = styled.div`

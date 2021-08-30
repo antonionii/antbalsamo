@@ -10,6 +10,7 @@
     "bodymovin": "^4.13.0",
     "framer-motion": "^4.1.17",
     "locomotive-scroll": "^4.1.1",
+    "lottie-colorify": "^0.8.0",
     "lottie-ios": "^3.0.3",
     "lottie-react-native": "^3.0.2",
     "lottie-web": "^5.7.12",

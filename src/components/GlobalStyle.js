@@ -337,7 +337,7 @@ html.has-scroll-dragging {
 
 .click-around-1 {
   position: absolute;
-  top: 46vh;
+  top: 51vh;
   transition: 1s all ease-out;
   pointer-events: none,
 }
@@ -377,6 +377,12 @@ html.has-scroll-dragging {
 pointer-events: auto;
 z-index:10;
 
+}
+
+@media (max-height: 750px){
+  .click-around-1 {
+    top: 60vh;
+  }
 }
 
 @media (min-width: 780px) { 
@@ -448,7 +454,10 @@ svg .cls-1 {
   fill: var(--text-color, #000);
 }
 
+svg .cls-2 {
+  fill: var(--text-color, #000);
 
+}
 
 #midCircle {
     width:300px;
@@ -467,6 +476,78 @@ svg .cls-1 {
   }
   ::-webkit-scrollbar-thumb {
     background-color: var(--text-color);
+  }
+
+}
+
+
+   .cls-3{
+    fill: var(--text-color);
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* align-items: center; */
+
+    z-index: 15;
+
+position: absolute;
+margin-left: auto;
+margin-right: auto;
+left: 12px;
+right: 0px;
+top:10vh;
+text-align: center;
+  z-index: 2;
+  max-width: 500px;
+      cursor: pointer;
+  pointer-events: auto;
+
+
+    }
+
+  @media (min-width:780px) {
+    .cls-3{
+    /* flex-direction: column;
+    align-items: center; */
+    z-index: 15;
+
+position: absolute;
+margin-left: auto;
+margin-right: auto;
+left: 60px;
+right: 0px;
+top:10vh;
+text-align: center;
+  z-index: 2;
+  max-width: 500px;
+      cursor: pointer;
+  pointer-events: auto;
+    /* padding: 30rem 0rem 0rem 0rem;
+    margin: 10rem 0rem 0rem 0rem; */
+
+    }
+  } 
+
+
+
+  @media (min-width: 1300px) {
+    .cls-3{
+      z-index: 15;
+
+position: absolute;
+margin-left: auto;
+margin-right: auto;
+left: 60px;
+right: 0px;
+top:10vh;
+text-align: center;
+  z-index: 2;
+  max-width: 500px;
+      cursor: pointer;
+  pointer-events: auto;
+    /* flex-direction: column;
+    align-items: center; */
+
+    }
   }
 
 
@@ -509,6 +590,8 @@ display: flex;
 display: flex;
 }
 }
+
+
 
 
 `;

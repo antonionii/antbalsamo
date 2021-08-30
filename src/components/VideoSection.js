@@ -6,33 +6,89 @@ import { thumbnailAnim } from "../animation";
 import { BasicLayout } from "../styles";
 import VideoPlayer from "./VideoPlayer";
 import styled from "styled-components";
+import lottie from "lottie-web";
+import PlayReel from "../img/PlayReel.json";
 
 const DemoContainer = styled(motion.div)`
   position: relative;
-  padding: 0rem 0rem 0rem 0rem;
-  left: 20px;
-  bottom: 80px;
+  padding: 0rem 0rem 0rem 1rem;
+
   justify-content: center;
   width: 100%;
   height: auto;
-
   @media (min-width: 750px) {
     left: 0px;
     bottom: 0px;
     top: 50px;
   }
-
   @media (min-width: 1300px) {
   }
 `;
 
 const VideoSection = () => {
+  const [direction, setDirection] = useState(1);
+
+  let reelStyleContainer = React.createRef();
+
+  const [anim, setAnim] = useState(null);
+
+  React.useEffect(() => {
+    let newDirection = 1;
+
+    if (newDirection !== direction) {
+      setDirection(newDirection);
+      startAnimation();
+    }
+  }, []);
+  React.useEffect(() => {
+    if (anim) {
+      return;
+    }
+
+    let tempAnim = lottie.loadAnimation({
+      container: reelStyleContainer.current,
+      renderer: "svg",
+      loop: false,
+      autoplay: false,
+      path: "https://assets10.lottiefiles.com/packages/lf20_tvlmtbna.json",
+    });
+
+    setAnim(tempAnim);
+    console.log("anim is set");
+  }, []);
+
+  function startAnimation() {
+    if (!anim) {
+      return;
+    }
+    anim.setDirection(direction);
+    anim.play();
+    if (direction === -1) {
+      // from dark to light
+      anim.setSpeed(2);
+    } else {
+      // from light to dark
+      anim.setSpeed(1);
+    }
+    // change direction
+    setDirection(direction * -1);
+  }
+
   //Ref for our element
   const [isFullScreenVideoShown, setIsFullScreenVideoShown] = useState(false);
 
   return (
     <BasicLayout>
       <DemoContainer>
+        <motion.div
+          id="reelStyleContainer"
+          ref={reelStyleContainer}
+          onMouseOver={startAnimation}
+          onMouseOut={startAnimation}
+          onClick={() => setIsFullScreenVideoShown(true)}
+          className="cls-3"
+          variants={thumbnailAnim(2)}
+        ></motion.div>
         <motion.img
           src="https://image.mux.com/00c01ueogq01fHfB9E9GIkMvOShYvaSG600N6mY9a02ztgJM/animated.gif?start=10&end=14"
           variants={thumbnailAnim(2)}

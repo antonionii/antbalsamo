@@ -201,11 +201,9 @@ const StyledNav = styled(motion.div)`
   background: var(--background-color);
   transition: 0.3s all ease-in-out;
   pointer-events: none;
-
   h1 {
     pointer-events: auto;
   }
-
   ul {
     display: flex;
     justify-content: flex-end;
@@ -213,13 +211,11 @@ const StyledNav = styled(motion.div)`
     list-style: none;
     pointer-events: auto;
   }
-
   @media (max-width: 1200px) {
     flex-direction: column;
     padding: 2rem 1rem;
     background: var(--background-color);
     transition: 0.3s all ease-in-out;
-
     #Logo {
       display: inline-block;
       margin: 0.5rem;
@@ -228,7 +224,6 @@ const StyledNav = styled(motion.div)`
       padding: 2rem;
       justify-content: space-around;
       width: 100%;
-
       li {
         padding: 0;
       }
