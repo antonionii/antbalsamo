@@ -79,7 +79,7 @@ const VideoSection = () => {
 
   return (
     <BasicLayout>
-      <DemoContainer>
+      <DemoContainer style={{ pointerEvents: "none", zIndex: 10 }}>
         <motion.div
           id="reelStyleContainer"
           ref={reelStyleContainer}
