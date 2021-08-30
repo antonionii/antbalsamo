@@ -382,7 +382,7 @@ z-index:10;
     and (device-height: 844px) 
     and (-webkit-device-pixel-ratio: 3) {
       .click-around-1 {
-        top: 47vh;
+        top: 49vh;
       }
   }
 
