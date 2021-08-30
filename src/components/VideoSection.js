@@ -11,15 +11,14 @@ import PlayReel from "../img/PlayReel.json";
 
 const DemoContainer = styled(motion.div)`
   position: relative;
-  padding: 0rem 0rem 0rem 1rem;
-
+  padding: 0rem 0rem 0rem 3rem;
   justify-content: center;
   width: 100%;
   height: auto;
   @media (min-width: 750px) {
     left: 0px;
     bottom: 0px;
-    top: 50px;
+    top: 30px;
   }
   @media (min-width: 1300px) {
   }

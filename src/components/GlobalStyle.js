@@ -346,7 +346,7 @@ html.has-scroll-dragging {
 .circle-size-1 {
   width: 180px;
   height: auto;
-  pointer-events:auto,
+  pointer-events: auto,
 }
 
 .click-around-2 {
@@ -369,21 +369,22 @@ html.has-scroll-dragging {
     margin: 0 auto;
     z-index:10;
     padding: 2vh 0 0;
-
-    
   }
 
   .react-player {
 pointer-events: auto;
 z-index:10;
-
 }
 
-@media (max-height: 750px){
-  .click-around-1 {
-    top: 60vh;
+
+@media only screen 
+    and (device-width: 390px) 
+    and (device-height: 844px) 
+    and (-webkit-device-pixel-ratio: 3) {
+      .click-around-1 {
+        top: 47vh;
+      }
   }
-}
 
 @media (min-width: 780px) { 
   .circle-size-1  {
@@ -486,41 +487,39 @@ svg .cls-2 {
     /* display: flex; */
     /* flex-direction: column; */
     /* align-items: center; */
-
     z-index: 15;
-
-position: absolute;
-margin-left: auto;
-margin-right: auto;
-left: 12px;
-right: 0px;
-top:10vh;
-text-align: center;
-  z-index: 2;
-  max-width: 500px;
-      cursor: pointer;
-  pointer-events: auto;
-
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 38px;
+    right: 0px;
+    top:10vh;
+    text-align: center;
+    z-index: 2;
+    max-width: 500px;
+    cursor: pointer;
+    pointer-events: auto;
 
     }
+
+    
 
   @media (min-width:780px) {
     .cls-3{
     /* flex-direction: column;
     align-items: center; */
     z-index: 15;
-
-position: absolute;
-margin-left: auto;
-margin-right: auto;
-left: 60px;
-right: 0px;
-top:10vh;
-text-align: center;
-  z-index: 2;
-  max-width: 500px;
-      cursor: pointer;
-  pointer-events: auto;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 60px;
+    right: 0px;
+    top:10vh;
+    text-align: center;
+    z-index: 2;
+    max-width: 500px;
+    cursor: pointer;
+    pointer-events: auto;
     /* padding: 30rem 0rem 0rem 0rem;
     margin: 10rem 0rem 0rem 0rem; */
 
@@ -529,16 +528,15 @@ text-align: center;
 
 
 
-  @media (min-width: 1300px) {
+  @media (min-width: 1100px) {
     .cls-3{
       z-index: 15;
-
 position: absolute;
 margin-left: auto;
 margin-right: auto;
-left: 60px;
+left: 95px;
 right: 0px;
-top:10vh;
+top:6vh;
 text-align: center;
   z-index: 2;
   max-width: 500px;
