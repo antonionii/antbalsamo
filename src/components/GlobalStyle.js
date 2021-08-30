@@ -534,7 +534,7 @@ svg .cls-2 {
 position: absolute;
 margin-left: auto;
 margin-right: auto;
-left: 95px;
+left: 65px;
 right: 0px;
 top:6vh;
 text-align: center;

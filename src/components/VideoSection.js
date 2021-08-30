@@ -15,10 +15,11 @@ const DemoContainer = styled(motion.div)`
   justify-content: center;
   width: 100%;
   height: auto;
-  @media (min-width: 750px) {
+  @media (min-width: 780px) {
     left: 0px;
     bottom: 0px;
     top: 30px;
+    padding: 0rem 0rem 0rem 1rem;
   }
   @media (min-width: 1300px) {
   }
