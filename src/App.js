@@ -20,20 +20,26 @@ import Footer from "./components/Footer";
 //Google analytics
 import ReactGA from "react-ga";
 
-let options = "";
-ReactGA.initialize("G-4K8HW5T28C", [options]);
+// let options = "";
+// ReactGA.initialize("UA-206389421-1", [options]);
 
-const pageViewsTracking = (props) => {
-  const pathname = props.match.path;
+// const pageViewsTracking = (props) => {
+//   const pathname = props.match.path;
 
-  let pageView;
-  if (pathname === "*") pageView = "/not-found";
-  else pageView = pathname;
+//   let pageView;
+//   if (pathname === "*") pageView = "/not-found";
+//   else pageView = pathname;
 
-  //Sending GA page views
-  ReactGA.pageview(pageView);
-};
+//   //Sending GA page views
+//   ReactGA.pageview(pageView);
+// };
 function App() {
+  useEffect(() => {
+    ReactGA.initialize("UA-206389421-1");
+    //To report page view
+    ReactGA.pageview("/");
+  }, []);
+
   const location = useLocation();
   console.log(location);
 
