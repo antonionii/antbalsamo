@@ -98,7 +98,9 @@ const AboutMe = () => {
         <ProfileImage className="profileImage">
           <motion.img
             variants={slideleftAnim()}
-            src={picofme}
+            src={
+              "https://image.mux.com/qIrGaTbptemJ7b4AGbhECkUC6Ss1onaxlavFm00bde2s/animated.gif"
+            }
             alt="profile of Anthony"
           />
         </ProfileImage>
