@@ -7,7 +7,6 @@ import { BasicLayout } from "../styles";
 import VideoPlayer from "./VideoPlayer";
 import styled from "styled-components";
 import lottie from "lottie-web";
-import PlayReel from "../img/PlayReel.json";
 
 const DemoContainer = styled(motion.div)`
   position: relative;

@@ -13,12 +13,26 @@ import { AnimatePresence } from "framer-motion";
 import ScrollToTop from "./components/ScrollToTop";
 // import { LocomotiveScrollProvider } from "react-locomotive-scroll";
 // import { useHistory } from "react-router-dom";
-
 //Router
 import { Switch, Route, useLocation } from "react-router-dom";
 import { changeColor } from "./theme/changeColor";
 import Footer from "./components/Footer";
+//Google analytics
+import ReactGA from "react-ga";
 
+let options = "";
+ReactGA.initialize("G-4K8HW5T28C", [options]);
+
+const pageViewsTracking = (props) => {
+  const pathname = props.match.path;
+
+  let pageView;
+  if (pathname === "*") pageView = "/not-found";
+  else pageView = pathname;
+
+  //Sending GA page views
+  ReactGA.pageview(pageView);
+};
 function App() {
   const location = useLocation();
   console.log(location);
