@@ -3,16 +3,16 @@ import { motion } from "framer-motion";
 
 export const BasicLayout = styled(motion.div)`
   min-height: 50vh;
-  display: block;
-  align-items: center;
+  display: flex;
+  align-items: left;
   justify-content: center;
   color: white;
   width: 100%;
-  height: auto;
-  padding: 2rem 0rem;
+  height: fit;
+  padding: 0rem 0rem;
 
   img {
-    margin: 10rem 0rem;
+    margin: 4rem 0rem;
     width: 90%;
     height: auto;
     object-fit: cover;
@@ -26,7 +26,7 @@ export const BasicLayout = styled(motion.div)`
   }
   @media (min-width: 780px) {
     display: block;
-    text-align: center;
+    text-align: left;
     padding: 0rem 0rem;
 
     img {
@@ -36,7 +36,7 @@ export const BasicLayout = styled(motion.div)`
   }
   @media (min-width: 1300px) {
     display: block;
-    text-align: center;
+    text-align: left;
     padding: 0rem 0rem;
 
     img {

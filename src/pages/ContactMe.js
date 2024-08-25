@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 import { pageAnimation, slideText, leftcircleAnim } from "../animation";
 import { useWindowScroll, useMediaQuery } from "beautiful-react-hooks";
 import useDebounce from "../hooks/use-debounce";
-import { ReactComponent as ClickAround } from "../img/ClickAround.svg";
 
 const ContactMe = () => {
   const [scrollY, setScrollY] = useState(window.scrollY);
@@ -109,19 +108,6 @@ const ContactMe = () => {
           </StyledSocial>
         </Hide>
       </div>
-      <motion.div
-        style={{
-          left: circle1XPos,
-          pointerEvents: "none",
-        }}
-        className="click-around-2"
-        variants={leftcircleAnim({
-          startXPos: 1300,
-          endXPos: endXPosForCircle1,
-        })}
-      >
-        <ClickAround className="rotating circle-size-2" />
-      </motion.div>
     </StyledContact>
   );
 };

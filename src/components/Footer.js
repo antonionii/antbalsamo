@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import { useScroll } from "./useScroll";
 import { scrollReveal } from "../animation";
-import Marquee from "react-fast-marquee";
 import { motion } from "framer-motion";
 
 const Footer = () => {
@@ -23,20 +22,8 @@ const Footer = () => {
                 target="_blank"
                 rel="noreferrer"
               >
-                antbalsamo
+                antbalsamo@gmail.com
               </a>
-            </span>
-            <span>
-              <a
-                href="mailto: antbalsamo@gmail.com"
-                target="_blank"
-                rel="noreferrer"
-              >
-                @gmail.com
-              </a>
-            </span>
-            <span>
-              <a href="tel:5554280940">(954) 234-3133</a>
             </span>
           </p>
         </div>
@@ -47,32 +34,14 @@ const Footer = () => {
           }}
         >
           <p>
+       
             <span>
-              <a
-                href="https://www.instagram.com/anthonionii/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                instagram
-              </a>
-            </span>
-            <span>
-              {" "}
               <a
                 href="https://www.linkedin.com/in/antbalsamo/"
                 target="_blank"
                 rel="noreferrer"
               >
-                linkedin
-              </a>
-            </span>
-            <span>
-              <a
-                href="https://www.twitch.tv/antonionii/videos"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Twitch
+                LinkedIn
               </a>
             </span>
           </p>
@@ -81,39 +50,19 @@ const Footer = () => {
       <FooterDiv2>
         <div>
           <p>
-            <span>site by me</span>
+            <span>i made this website</span>
 
           </p>
         </div>
         <div>
           <p>
 
-            <span>(-.-)Zzz...</span>
+            <span>&lt;source code here&gt;</span>
           </p>
         </div>
       </FooterDiv2>
 
-      <MarqueeFooter
-      // variants={scrollReveal}
-      // animate={controls}
-      // ref={element}
-      // initial="hidden"
-      >
-        <Marquee
-          variants={scrollReveal}
-          animate={controls}
-          ref={element}
-          initial="hidden"
-          direction="left"
-          gradient={false}
-          classname="marqueeWrapper"
-          speed={"75"}
-        >
-          <h1>
-            &nbsp;&nbsp;&nbsp;&nbsp;welcome&nbsp;&nbsp;&nbsp;&nbsp;moshi moshi
-          </h1>
-        </Marquee>
-      </MarqueeFooter>
+     
     </div>
   );
 };

@@ -4,14 +4,14 @@ export const MovieState = () => {
       title: "JLL ACADEMY EVENT",
       // mainImg: none,
       // secondaryImg: none,
-      url: "/Work/jll-academy-event",
+      url: "/Projects/jll-academy-event",
       videoURL:
         "https://stream.mux.com/UtcFf00t6a6IN3NI500e9s16vkg3XVwAjq4IUPk31SGdE.m3u8",
       awards: [
         {
           title: "",
           description:
-            "A hype video to open up an internal event for JLL. Pulling from the swiss graphic design style, I was able to play with abstract geometric patterns, two tone color combinations and bold kinetic text to create this upbeat fast moving video. This JLL project allowed for the most creative freedom yet and for that reason is my favorite video I've created with them.",
+            "A hype video to open up an internal event for JLL. Pulling from the swiss graphic design style, I was able to play with abstract geometric patterns, two tone color combinations and bold kinetic text to create this upbeat fast moving video. This JLL Projects allowed for the most creative freedom yet and for that reason is my favorite video I've created with them.",
         },
         {
           title: "",
@@ -25,7 +25,7 @@ export const MovieState = () => {
     },
     {
       title: "JLL INDUSTRIAL TECH",
-      url: "/Work/jll-industrial-tech",
+      url: "/Projects/jll-industrial-tech",
       // mainImg: none,
       // secondaryImg: none,
       videoURL:
@@ -48,7 +48,7 @@ export const MovieState = () => {
     },
     {
       title: "COMING OUT FEARLESS WEBSITE DESIGN",
-      url: "/Work/coming-out-fearless-website-design",
+      url: "/Projects/coming-out-fearless-website-design",
       mainImg: "https://antbalsamo.b-cdn.net/COF%20THUMB0.png",
       hasSlider: true,
       sliderData: [
@@ -81,7 +81,7 @@ export const MovieState = () => {
     },
     {
       title: "MY LITTLE TATTOO",
-      url: "/Work/my-little-tattoo",
+      url: "/Projects/my-little-tattoo",
       // mainImg: none,
       // secondaryImg: none,
       videoURL:
@@ -104,7 +104,7 @@ export const MovieState = () => {
     },
     {
       title: "ADOBE MAX 2019",
-      url: "/Work/adobe-max-2019",
+      url: "/Projects/adobe-max-2019",
       // mainImg: none,
       // secondaryImg: none,
       videoURL:
@@ -127,7 +127,7 @@ export const MovieState = () => {
     },
     {
       title: "JLL LIFE SCIENCES",
-      url: "/Work/jll-life-sciences",
+      url: "/Projects/jll-life-sciences",
       // mainImg: none,
       // secondaryImg: none,
       videoURL:
@@ -150,7 +150,7 @@ export const MovieState = () => {
     },
     {
       title: "OAKBROOK RESERVE PROPERTY TEASER",
-      url: "/Work/oakbrook-reserve-property-teaser",
+      url: "/Projects/oakbrook-reserve-property-teaser",
       // mainImg: none,
       // secondaryImg: none,
       videoURL:

@@ -4,38 +4,40 @@ export const colorSchemes = {
     backgroundColor: "#4a4a4a",
     textColor: "#ffffff",
     lineColor: "#ffffff",
+    textShadow: "black"
   },
   light: [
+   
     {
       id: "1",
-      backgroundColor: "#D9BDAD",
+      backgroundColor: "#F0C865",
       textColor: "black",
       lineColor: "black",
-    },
-    {
-      id: "2",
-      backgroundColor: "#c6ddd9",
-      textColor: "#e83c38",
-      lineColor: "#e83c38",
+      textShadow: "white"
     },
 
     {
-      id: "3",
+      id: "2",
       backgroundColor: "#B1BF93",
-      textColor: "#384001",
+      textColor: "black",
       lineColor: "black",
+      textShadow: "white"
     },
     {
-      id: "4",
+      id: "3",
       backgroundColor: "#0061FC",
       textColor: "white",
       lineColor: "white",
+      textShadow: "black"
+
     },
     {
-      id: "5",
+      id: "4",
       backgroundColor: "#4a4a4a",
       textColor: "#ffffff",
       lineColor: "#ffffff",
+      textShadow: "black"
+
     },
   ],
 };
@@ -70,6 +72,10 @@ const changeColor = (themeType = "light") => {
   document.documentElement.style.setProperty(
     "--line-color",
     toBeAppliedScheme.lineColor
+  );
+  document.documentElement.style.setProperty(
+    "--shadow-color",
+    toBeAppliedScheme.textShadow
   );
 };
 

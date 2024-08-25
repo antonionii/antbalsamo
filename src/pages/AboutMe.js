@@ -24,6 +24,34 @@ const ProfileImage = styled(motion.div)`
   }
 `;
 
+const StyledContact = styled(motion.div)`
+  padding: 4rem 4rem;
+  color: #353535;
+  min-height: 90vh;
+
+  @media (min-width: 1300px) {
+    padding: 2rem;
+    font-size: 1rem;
+  }
+    `;
+    const StyledSocial = styled(motion.div)`
+    display: flex;
+    align-items: center;
+    h2 {
+      font-family: karla;
+      font-size: 1.5rem;
+  
+      margin: 1rem;
+  
+      @media (min-width: 780px) {
+        font-size: 4rem;
+      }
+  
+      @media (min-width: 1300px) {
+        font-size: 4.5rem;
+      }
+    }
+  `;
 const AboutContainer = styled(motion.div)`
   @media (min-width: 780px) {
     display: flex;
@@ -31,6 +59,7 @@ const AboutContainer = styled(motion.div)`
   @media (min-width: 1300px) {
     display: flex;
   }
+    padding: 2rem 0rem  0rem  0rem
 `;
 
 const ProfileText = styled(motion.div)`
@@ -41,7 +70,7 @@ const ProfileText = styled(motion.div)`
   /* outline: 2px solid green; */
   align-items: center;
   justify-content: center;
-  padding: 6rem 4rem;
+  padding: 0rem 4rem 0rem 4rem;
   overflow: hidden;
 
   h3 {
@@ -77,22 +106,35 @@ const AboutMe = () => {
       animate="show"
       exit="exit"
     >
+
       <AboutContainer className="aboutContainer">
+
         <ProfileText className="profileText">
+
           <motion.h3 variants={sliderightAnim}>
-            <b>Anthony Balsamo (b.1990)</b> is a senior motion designer and
-            programmer currently based in Chicago. <br></br>
-            <br></br>With a start in video production and currently
-            professionally working in motion graphic design, I've spent the last
-            few years studying programming to take on other creative endeavors.
-            Inspired by a wide range of styles and mediums, I find myself
-            pulling from 90s nostalgia, otaku culture, the zine scene to art
-            history. <br></br>
-            <br></br>
-            Feel free to reach out to me about any projects you have that you'd
-            think I'd be a right fit for. The best way to find me is on my
-            morning walks to get iced coffee.. <br></br>
-            <br></br>every morning..
+            <b>Currently a Product Designer at Willow. </b>
+             Spending my nights descoping personal
+             game dev projects.
+             <br/><br/><br/>
+             <a
+            style={{ position: "relative", zIndex: 10 }}
+            href="mailto: antbalsamo@gmail.com"
+            target="_blank"
+            rel="noreferrer"
+          >
+            {" "}
+            Email me at antbalsamo@gmail.com
+          </a>
+          <br/><a
+            style={{ position: "relative", zIndex: 10 }}
+          
+            href="https://www.linkedin.com/in/antbalsamo/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            {" "}
+            Message me on LinkedIn
+          </a>
           </motion.h3>
         </ProfileText>
         <ProfileImage className="profileImage">
@@ -104,10 +146,14 @@ const AboutMe = () => {
             alt="profile of Anthony"
           />
         </ProfileImage>
+        
       </AboutContainer>
 
       {/* <div style={{ padding: 30 }}>something else here</div> */}
+      
     </BasicLayout>
+
+    
   );
 };
 export default AboutMe;

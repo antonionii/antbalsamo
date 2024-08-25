@@ -10,7 +10,7 @@ import { thumbnailAnim } from "../animation";
 import { useMediaQuery } from "beautiful-react-hooks";
 import Marquee from "react-fast-marquee";
 
-const WorkBox = styled(motion.div)`
+const ProjectsBox = styled(motion.div)`
   width: 95%;
   max-width: 1400px;
   margin: 100px auto;
@@ -82,8 +82,7 @@ const WorkBox = styled(motion.div)`
     }
 
     ul li:nth-child(odd) a > div {
-      border-right: 1px solid var(--line-color, "#000");
-      padding-right: 20px;
+            padding-right: 20px;
     }
     ul li:nth-child(even) a > div {
       padding-left: 20px;
@@ -145,16 +144,9 @@ const StyledVideoCard = styled(motion.div)`
     right: 0;
   }
 
-  .marqueeWrapper {
-    display: block;
-    width: 100%;
-    max-width: 100%;
-    /* outline: 1px solid red; */
-  }
 
-  @media screen and (min-width: 750px) {
-    border-bottom: 1px solid var(--line-color, #000);
-  }
+
+
 `;
 
 const VideoCard = ({ thumbnailImage, gif, label, title, linkTo }) => {
@@ -189,7 +181,6 @@ const VideoCard = ({ thumbnailImage, gif, label, title, linkTo }) => {
           alt={label}
           width={640}
           height={360}
-          variants={thumbnailAnim()}
           style={{
             opacity: isMouseOver ? "0" : "1",
           }}
@@ -228,7 +219,7 @@ const VideoCard = ({ thumbnailImage, gif, label, title, linkTo }) => {
   );
 };
 
-const Work = () => {
+const Projects = () => {
   // const [element, controls] = useScroll();
   // const [element2, controls2] = useScroll();
   const w = window.innerWidth;
@@ -243,14 +234,14 @@ const Work = () => {
   // const col2ScrollSpeed = isLargeDisplay ? "2" : "1";
 
   return (
-    <StyledWork
+    <StyledProjects
       variants={pageAnimation}
       initial="hidden"
       animate="show"
       exit="exit"
     >
       <div>
-        <WorkBox>
+        <ProjectsBox>
           <ul data-scroll-section>
             <li
             // data-scroll
@@ -261,7 +252,7 @@ const Work = () => {
               <VideoCard
                 thumbnailImage="https://image.mux.com/UtcFf00t6a6IN3NI500e9s16vkg3XVwAjq4IUPk31SGdE/thumbnail.png?width=640&height=360&fit_mode=smartcrop&time=33"
                 gif="https://image.mux.com/UtcFf00t6a6IN3NI500e9s16vkg3XVwAjq4IUPk31SGdE/animated.gif?start=32&end=37"
-                linkTo="/Work/jll-academy-event"
+                linkTo="/Projects/jll-academy-event"
                 label="gif of video"
                 title="JLL ACADEMY EVENT"
               />
@@ -275,7 +266,7 @@ const Work = () => {
               <VideoCard
                 thumbnailImage="https://image.mux.com/9e3J1zOm01c00warTLiITcT01AVnXl8TlaJoImu4NN6784/thumbnail.png?width=640&height=360&fit_mode=smartcrop&time=40"
                 gif="https://image.mux.com/9e3J1zOm01c00warTLiITcT01AVnXl8TlaJoImu4NN6784/animated.gif?start=05&end=10"
-                linkTo="/Work/jll-industrial-tech"
+                linkTo="/Projects/jll-industrial-tech"
                 label="gif of video"
                 title="JLL INDUSTRIAL TECH "
               />
@@ -289,7 +280,7 @@ const Work = () => {
               <VideoCard
                 thumbnailImage="https://image.mux.com/E3atw01lGC8qxz21FL59qp8x6005xJkHpJn7bAgbMxpXQ/thumbnail.png?width=640&height=360&fit_mode=smartcrop&time=1"
                 gif="https://image.mux.com/E3atw01lGC8qxz21FL59qp8x6005xJkHpJn7bAgbMxpXQ/animated.gif"
-                linkTo="/Work/coming-out-fearless-website-design"
+                linkTo="/Projects/coming-out-fearless-website-design"
                 label="gif of video"
                 title="COMING OUT FEARLESS WEBSITE DESIGN"
               />
@@ -303,7 +294,7 @@ const Work = () => {
               <VideoCard
                 thumbnailImage="https://image.mux.com/qdUIrnh5wjsvZTP001f00o7dArfYZmOXveZiAqvtOuQpE/thumbnail.png?width=640&height=360&fit_mode=smartcrop&time=2"
                 gif="https://image.mux.com/qdUIrnh5wjsvZTP001f00o7dArfYZmOXveZiAqvtOuQpE/animated.gif"
-                linkTo="/Work/my-little-tattoo"
+                linkTo="/Projects/my-little-tattoo"
                 label="gif of video"
                 title="MY LITTLE TATTOO"
               />
@@ -317,7 +308,7 @@ const Work = () => {
               <VideoCard
                 thumbnailImage="https://image.mux.com/ANh02Tm1rh8XxOLQ6ZHdH00KwDdm1lW2V8kj7xUlIb2u4/thumbnail.png?width=640&height=360&fit_mode=smartcrop&time=45"
                 gif="https://image.mux.com/ANh02Tm1rh8XxOLQ6ZHdH00KwDdm1lW2V8kj7xUlIb2u4/animated.gif?start=5"
-                linkTo="/Work/adobe-max-2019"
+                linkTo="/Projects/adobe-max-2019"
                 label="gif of video"
                 title="ADOBE MAX 2019"
               />
@@ -331,7 +322,7 @@ const Work = () => {
               <VideoCard
                 thumbnailImage="https://image.mux.com/K7ltcJE3jhqAUcAYTjCAHPCCzM01qEiy21stgME6j9fo/thumbnail.png?width=640&height=360&fit_mode=smartcrop&time=2"
                 gif="https://image.mux.com/K7ltcJE3jhqAUcAYTjCAHPCCzM01qEiy21stgME6j9fo/animated.gif?start=11&end=16"
-                linkTo="/Work/jll-life-sciences"
+                linkTo="/Projects/jll-life-sciences"
                 label="gif of video"
                 title="JLL LIFE SCIENCES"
               />
@@ -345,19 +336,19 @@ const Work = () => {
               <VideoCard
                 thumbnailImage="https://image.mux.com/Mhak00CKbxc02WfQ01OFyiNxpinmKIpLH8gK9rWtRPQCSc/thumbnail.png?width=640&height=360&fit_mode=smartcrop&time=2"
                 gif="https://image.mux.com/Mhak00CKbxc02WfQ01OFyiNxpinmKIpLH8gK9rWtRPQCSc/animated.gif?start=09&end=14"
-                linkTo="/Work/oakbrook-reserve-property-teaser"
+                linkTo="/Projects/oakbrook-reserve-property-teaser"
                 label="gif of video"
                 title="OAKBROOK RESERVE PROPERTY TEASER"
               />
             </li>
           </ul>
-        </WorkBox>
+        </ProjectsBox>
       </div>
-    </StyledWork>
+    </StyledProjects>
   );
 };
 
-const StyledWork = styled(motion.div)`
+const StyledProjects = styled(motion.div)`
   min-height: 100vh;
   padding: 5rem 10rem;
   min-height: 100vh;
@@ -371,4 +362,4 @@ const StyledWork = styled(motion.div)`
     padding: 2rem 2rem;
   }
 `;
-export default Work;
+export default Projects;

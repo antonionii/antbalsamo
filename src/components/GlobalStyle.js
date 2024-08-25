@@ -4,9 +4,9 @@ const GlobalStyle = createGlobalStyle`
 
 :root {
   --background-color: #d6aa9e;
-  --text-color: black;
-  --line-color: black;
-}
+  --text-color: shadow-color;
+  --line-color: shadow-color;
+  --shadow-color: white; /* Default shadow color */ ;}
 
 *{
     margin:0;
@@ -26,7 +26,7 @@ html{
 }
 body {
     background: var(--background-color);
-    font-family: 'Karla', sans-serif;
+    font-family: "Pixelify Sans", system-ui;
     font-weight: 700;
     overflow-x: hidden;
     color: var(--text-color);
@@ -38,7 +38,27 @@ body {
 
 }
 
-
+.freewareAbout {
+  font-weight: bold;
+  font-size: 20px;
+  font-family: "Josefin Sans", sans-serif;
+  width: 300px; /* Set the desired width of the square */
+  height: auto;
+  border-radius: 5px;
+  box-shadow: 6px 6px 0px var(--shadow-color), 
+              5px 5px 0px var(--shadow-color),
+              4px 4px 0px var(--shadow-color), 
+              3px 3px 0px var(--shadow-color), 
+              2px 2px 0px var(--shadow-color),
+              1px 1px 0px var(--shadow-color);
+  text-align: center;
+  color: black;
+  background-color: white;
+  margin: auto 0; /* Centers the square horizontally */
+  position: relative;
+  top: 50%; /* Centers the square vertically */
+  transform: translateY(-50%); /* Adjusts for true vertical centering */
+}
 
 img {
   width: 100%;
@@ -52,7 +72,7 @@ img {
   background-color: transparent;
   position: fixed;
   border-radius: 50%;
-  border: 1px solid black;
+  border: 1px solid shadow-color;
   transform: translate3d(-50%, -50%, 0)
 }
 
@@ -84,12 +104,13 @@ button{
 
 
     h2{
-        font-weight: normal;
+        font-weight: bolder;
         font-size: 7.5rem;
         color: var(--text-color);
         width: "100%";
         height: "auto";
-   
+        text-shadow: 6px 0px var(--shadow-color);
+
 
     }
     h4{
@@ -189,7 +210,7 @@ html.has-scroll-dragging {
   position: absolute;
   top: 0;
   right: 0;
-  background-color: black;
+  background-color: shadow-color;
   opacity: 1;
   width: 30px;
   border-radius: 10px;

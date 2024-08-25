@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 //Framer Motion
 import { motion } from "framer-motion";
 import { rotateText, leftcircleAnim, slidedownAnim, slideleftAnim } from "../animation";
-import { ReactComponent as ClickAround } from "../img/ClickAround.svg";
 import { useWindowScroll, useMediaQuery } from "beautiful-react-hooks";
 import { BasicLayout, StyledDescription } from "../styles";
 import useDebounce from "../hooks/use-debounce";
@@ -65,20 +64,7 @@ const IntroSection = () => {
 
   return (
     <BasicLayout>
-      <motion.div
-        style={{
-          left: circle1XPos,
-          pointerEvents: "none",
-          display: "none"
-        }}
-        className="click-around-1"
-        variants={leftcircleAnim({
-          startXPos: -600,
-          endXPos: endXPosForCircle1,
-        })}
-      >
-        <ClickAround className="rotating circle-size-1" />
-      </motion.div>
+    
 
       
       <StyledDescription>
@@ -91,7 +77,7 @@ const IntroSection = () => {
             }}
             variants={slideleftAnim(0.5)}
           >
-            making
+            make
           </motion.h2>
 
           <motion.h2
@@ -113,16 +99,8 @@ const IntroSection = () => {
           </motion.h2>
         </motion.div>
 
-        <ClickAround
-          className={" rotating clickAround2"}
-          id={"midCircle"}
-          style={{
-            position: "absolute",
-            right: getCircleXPosition2(),
-            top: "52%",
-            display: "none",
-          }}
-        />
+
+        
 
         {/* <motion.p variants={fade}>
           Contact me for your ideas and let's give them life.{" "}

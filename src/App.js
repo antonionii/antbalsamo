@@ -6,7 +6,7 @@ import Nav from "./components/Nav";
 import Home from "./pages/Home";
 import AboutMe from "./pages/AboutMe";
 import ContactMe from "./pages/ContactMe";
-import Work from "./pages/Work";
+import Projects from "./pages/Projects";
 import MovieDetail from "./pages/MovieDetail";
 //Animation
 import { AnimatePresence } from "framer-motion";
@@ -107,11 +107,11 @@ function App() {
               <Route path="/ContactMe">
                 <ContactMe />
               </Route>
-              <Route path="/work/:id">
+              <Route path="/Projects/:id">
                 <MovieDetail />
               </Route>
-              <Route path="/Work" exact>
-                <Work />
+              <Route path="/Projects" exact>
+                <Projects />
 
                 {/* <LocomotiveScrollProvider
                 options={{
@@ -121,7 +121,7 @@ function App() {
                 containerRef={containerRef}
               >
                 <main data-scroll-container ref={containerRef}>
-                  <Work />
+                  <Projects />
                 </main>
               </LocomotiveScrollProvider> */}
               </Route>

@@ -94,7 +94,7 @@ const Nav = ({ colorSchemeType, setColorSchemeType }) => {
       >
         <h1>
           <Link id="Logo" to="/">
-            ANTHONY BALSAMO
+            Anthony Balsamo
           </Link>
         </h1>
       </motion.div>
@@ -108,7 +108,7 @@ const Nav = ({ colorSchemeType, setColorSchemeType }) => {
             animate="show"
             variants={slidedownAnim()}
           >
-            <Link to="/AboutMe">ABOUT ME</Link>
+            <Link to="/AboutMe">About</Link>
           </motion.div>
           <Line
             transition={{ duration: 0.5 }}
@@ -122,7 +122,7 @@ const Nav = ({ colorSchemeType, setColorSchemeType }) => {
           />
         </li>
         <li
-          onMouseOver={() => sethoveredMenuItem("/Work")}
+          onMouseOver={() => sethoveredMenuItem("/Projects")}
           onMouseOut={() => sethoveredMenuItem("")}
         >
           <motion.div
@@ -130,7 +130,7 @@ const Nav = ({ colorSchemeType, setColorSchemeType }) => {
             animate="show"
             variants={slidedownAnim(0.3)}
           >
-            <Link to="/Work">WORK </Link>
+            <Link to="/Projects">Projects </Link>
           </motion.div>
 
           <Line
@@ -138,34 +138,13 @@ const Nav = ({ colorSchemeType, setColorSchemeType }) => {
             initial={{ width: "0%" }}
             animate={{
               width:
-                pathname === "/Work" || hoveredMenuItem === "/Work"
+                pathname === "/Projects" || hoveredMenuItem === "/Projects"
                   ? "50%"
                   : "0%",
             }}
           />
         </li>
-        <li
-          onMouseOver={() => sethoveredMenuItem("/ContactMe")}
-          onMouseOut={() => sethoveredMenuItem("")}
-        >
-          <motion.div
-            initial="hidden"
-            animate="show"
-            variants={slidedownAnim(0.5)}
-          >
-            <Link to="/ContactMe">CONTACT ME </Link>
-          </motion.div>
-          <Line
-            transition={{ duration: 0.5 }}
-            initial={{ width: "0%" }}
-            animate={{
-              width:
-                pathname === "/ContactMe" || hoveredMenuItem === "/ContactMe"
-                  ? "50%"
-                  : "0%",
-            }}
-          />
-        </li>
+ 
         <li>
           <motion.div
             initial="hidden"
