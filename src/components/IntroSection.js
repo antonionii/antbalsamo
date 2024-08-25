@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 //Framer Motion
 import { motion } from "framer-motion";
-import { rotateText, leftcircleAnim } from "../animation";
+import { rotateText, leftcircleAnim, slidedownAnim, slideleftAnim } from "../animation";
 import { ReactComponent as ClickAround } from "../img/ClickAround.svg";
 import { useWindowScroll, useMediaQuery } from "beautiful-react-hooks";
 import { BasicLayout, StyledDescription } from "../styles";
@@ -51,7 +51,7 @@ const IntroSection = () => {
     setCircle1XPos(
       debouncedScrollY > screenHeight / 3 ? getCircleXPosition1() : 0
     );
-  }, [debouncedScrollY]);
+  }, [debouncedScrollY,getCircleXPosition1, screenHeight]);
 
   let endXPosForCircle1;
 
@@ -69,6 +69,7 @@ const IntroSection = () => {
         style={{
           left: circle1XPos,
           pointerEvents: "none",
+          display: "none"
         }}
         className="click-around-1"
         variants={leftcircleAnim({
@@ -79,16 +80,7 @@ const IntroSection = () => {
         <ClickAround className="rotating circle-size-1" />
       </motion.div>
 
-      {/* <ClickAround
-        className={"rotating"}
-        style={{
-          position: "absolute",
-          left: getCircleXPosition1(),
-          top: "22%",
-          height: "300px",
-          width: "300px",
-        }}
-      /> */}
+      
       <StyledDescription>
         <motion.div className={"introText"}>
           <motion.h2
@@ -97,9 +89,9 @@ const IntroSection = () => {
               width: "100%",
               height: "auto",
             }}
-            variants={rotateText(0.5)}
+            variants={slideleftAnim(0.5)}
           >
-            ANIMATE
+            making
           </motion.h2>
 
           <motion.h2
@@ -108,16 +100,16 @@ const IntroSection = () => {
               width: "100%",
               height: "auto",
             }}
-            variants={rotateText(1)}
+            variants={slideleftAnim(1)}
           >
-            CODE
+            some
           </motion.h2>
 
           <motion.h2
-            variants={rotateText(1.5)}
+            variants={slideleftAnim(1.5)}
             style={{ width: "100%", height: "auto" }}
           >
-            & DESIGN
+            things
           </motion.h2>
         </motion.div>
 
@@ -128,6 +120,7 @@ const IntroSection = () => {
             position: "absolute",
             right: getCircleXPosition2(),
             top: "52%",
+            display: "none",
           }}
         />
 
@@ -140,6 +133,5 @@ const IntroSection = () => {
   );
 };
 
-//Styled Components were here before
 
 export default IntroSection;

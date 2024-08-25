@@ -221,7 +221,7 @@ const StyledNav = styled(motion.div)`
       margin: 0.5rem;
     }
     ul {
-      padding: 2rem;
+      padding: 1rem;
       justify-content: space-around;
       width: 100%;
       li {

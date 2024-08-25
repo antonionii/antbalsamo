@@ -81,15 +81,13 @@ const Footer = () => {
       <FooterDiv2>
         <div>
           <p>
-            <span>Coded</span>
-            <span>by</span>
-            <span>hand</span>
+            <span>site by me</span>
+
           </p>
         </div>
         <div>
           <p>
-            <span>no webflow</span>
-            <span>just react</span>
+
             <span>(-.-)Zzz...</span>
           </p>
         </div>
@@ -183,7 +181,6 @@ const FooterDiv = styled(motion.div)`
     box-sizing: border-box;
   }
   p {
-    text-transform: uppercase;
     margin: 0;
     font-family: "Karla", sans-serif;
     font-size: 1.1rem;
@@ -216,7 +213,6 @@ const FooterDiv2 = styled(motion.div)`
     box-sizing: border-box;
   }
   p {
-    text-transform: uppercase;
     margin: 0;
     font-family: "Karla", sans-serif;
     font-size: 1.1rem;

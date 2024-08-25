@@ -80,7 +80,7 @@ function App() {
       // change color will pick a new light color
       changeColor("light");
     }
-  }, [location]);
+  }, [location, colorSchemeType]);
 
   return (
     <div className="App">

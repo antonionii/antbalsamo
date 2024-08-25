@@ -6,7 +6,6 @@ import { thumbnailAnim } from "../animation";
 import { BasicLayout } from "../styles";
 import VideoPlayer from "./VideoPlayer";
 import styled from "styled-components";
-import lottie from "lottie-web";
 
 const DemoContainer = styled(motion.div)`
   position: relative;
@@ -39,38 +38,10 @@ const VideoSection = () => {
       startAnimation();
     }
   }, []);
-  React.useEffect(() => {
-    if (anim) {
-      return;
-    }
 
-    let tempAnim = lottie.loadAnimation({
-      container: reelStyleContainer.current,
-      renderer: "svg",
-      loop: false,
-      autoplay: false,
-      path: "https://assets10.lottiefiles.com/packages/lf20_tvlmtbna.json",
-    });
-
-    setAnim(tempAnim);
-    console.log("anim is set");
-  }, []);
-
+  
   function startAnimation() {
-    if (!anim) {
-      return;
-    }
-    anim.setDirection(direction);
-    anim.play();
-    if (direction === -1) {
-      // from dark to light
-      anim.setSpeed(2);
-    } else {
-      // from light to dark
-      anim.setSpeed(1);
-    }
-    // change direction
-    setDirection(direction * -1);
+
   }
 
   //Ref for our element

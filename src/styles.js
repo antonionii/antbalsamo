@@ -56,7 +56,7 @@ export const StyledDescription = styled(motion.div)`
   height: auto;
 
   h2 {
-    font-weight: lighter;
+    font-weight: medium;
   }
   @media (max-width: 1300px) {
     padding: 0;

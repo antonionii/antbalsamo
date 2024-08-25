@@ -98,16 +98,15 @@ export const slidedownAnim = (delay = 0) => ({
     transition: { duration: 0.5, ease: "easeOut", delay },
   },
 });
-
-export const sliderightAnim = {
-  hidden: { x: -100, opacity: 0 },
+export const sliderightAnim = (delay = 0) => ({
+  hidden: { x: -50, opacity: 0 },
   show: {
     x: 0,
     opacity: 1,
 
-    transition: { duration: 0.5, ease: "easeOut" },
+    transition: { duration: 0.5, ease: "easeOut", delay },
   },
-};
+});
 
 export const slideleftAnim = (delay = 0) => ({
   hidden: { x: 100, opacity: 0 },

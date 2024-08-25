@@ -26,7 +26,7 @@ html{
 }
 body {
     background: var(--background-color);
-    font-family: 'Cormorant Garamond', serif;  
+    font-family: 'Karla', sans-serif;
     font-weight: 700;
     overflow-x: hidden;
     color: var(--text-color);
@@ -113,7 +113,7 @@ button{
         stroke: "120000";
     }
     li {
-    padding-left: 6rem;
+    padding-left: 3rem;
     position: relative;
     font-family: 'Karla', sans-serif;
     font-weight: regular;
