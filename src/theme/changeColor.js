@@ -31,14 +31,6 @@ export const colorSchemes = {
       textShadow: "black"
 
     },
-    {
-      id: "4",
-      backgroundColor: "#4a4a4a",
-      textColor: "#ffffff",
-      lineColor: "#ffffff",
-      textShadow: "black"
-
-    },
   ],
 };
 

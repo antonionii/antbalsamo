@@ -6,7 +6,12 @@ const GlobalStyle = createGlobalStyle`
   --background-color: #d6aa9e;
   --text-color: shadow-color;
   --line-color: shadow-color;
-  --shadow-color: white; /* Default shadow color */ ;}
+  --shadow-color: white; /* Default shadow color */ ;
+    --green: #28c074;
+    --red: #ff4062;
+    --black: #050914;
+    --white: #fff5eb;
+    --gray: #7a7a7a;}
 
 *{
     margin:0;

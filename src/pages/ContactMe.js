@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, {useEffect, useState} from "react";
 import styled from "styled-components";
 //Animations
-import { motion } from "framer-motion";
-import { pageAnimation, slideText, leftcircleAnim } from "../animation";
-import { useWindowScroll, useMediaQuery } from "beautiful-react-hooks";
+import {motion} from "framer-motion";
+import {pageAnimation, slideText} from "../animation";
+import {useMediaQuery, useWindowScroll} from "beautiful-react-hooks";
 import useDebounce from "../hooks/use-debounce";
 
 const ContactMe = () => {

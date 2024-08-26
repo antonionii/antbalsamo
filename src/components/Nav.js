@@ -1,14 +1,13 @@
-import React, { useRef, useState } from "react";
+import React, {useRef, useState} from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
-import { useLocation } from "react-router-dom";
-import { useScroll } from "./useScroll";
-import { useIntersection } from "react-use";
+import {Link, useLocation} from "react-router-dom";
+import {motion} from "framer-motion";
+import {useScroll} from "./useScroll";
+import {useIntersection} from "react-use";
 import lottie from "lottie-web";
-import { slidedownAnim, slideleftAnim, textFade } from "../animation";
+import {slidedownAnim, slideleftAnim, textFade} from "../animation";
 
-import { changeColor } from "../theme/changeColor";
+import {changeColor} from "../theme/changeColor";
 
 const Nav = ({ colorSchemeType, setColorSchemeType }) => {
   let animObj = null;
@@ -76,12 +75,7 @@ const Nav = ({ colorSchemeType, setColorSchemeType }) => {
     }
     // change direction
     setDirection(direction * -1);
-
-    // This seems to fire immediately,å before the icon has completed its animation?
-    // anim.addEventListener('loopComplete', complete(icon));
-
-    // Suggestion
-    // https://github.com/bodymovin/bodymovin/issues/622#issuecomment-331753202
+    
   }
 
   return (

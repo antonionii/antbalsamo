@@ -1,8 +1,7 @@
 import React from "react";
 import IntroSection from "../components/IntroSection";
-import VideoSection from "../components/VideoSection";
 //Animations
-import { motion } from "framer-motion";
+import {motion} from "framer-motion";
 import AboutMe from "./AboutMe";
 
 const Home = () => {

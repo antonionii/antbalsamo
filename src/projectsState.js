@@ -1,4 +1,4 @@
-export const MovieState = () => {
+export const ProjectsState = () => {
   return [
     {
       title: "JLL ACADEMY EVENT",

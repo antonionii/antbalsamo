@@ -1,21 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, {useEffect, useState} from "react";
 //GlobalStyle
 import GlobalStyle from "./components/GlobalStyle";
 //Import Pages
 import Nav from "./components/Nav";
 import Home from "./pages/Home";
 import AboutMe from "./pages/AboutMe";
-import ContactMe from "./pages/ContactMe";
 import Projects from "./pages/Projects";
 import MovieDetail from "./pages/MovieDetail";
 //Animation
-import { AnimatePresence } from "framer-motion";
+import {AnimatePresence} from "framer-motion";
 import ScrollToTop from "./components/ScrollToTop";
 // import { LocomotiveScrollProvider } from "react-locomotive-scroll";
 // import { useHistory } from "react-router-dom";
 //Router
-import { Switch, Route, useLocation } from "react-router-dom";
-import { changeColor } from "./theme/changeColor";
+import {Route, Switch, useLocation} from "react-router-dom";
+import {changeColor} from "./theme/changeColor";
 import Footer from "./components/Footer";
 //Google analytics
 import ReactGA from "react-ga";
@@ -104,26 +103,11 @@ function App() {
               <Route path="/AboutMe">
                 <AboutMe />
               </Route>
-              <Route path="/ContactMe">
-                <ContactMe />
-              </Route>
               <Route path="/Projects/:id">
                 <MovieDetail />
               </Route>
               <Route path="/Projects" exact>
                 <Projects />
-
-                {/* <LocomotiveScrollProvider
-                options={{
-                  smooth: true,
-                }}
-                watch={[]}
-                containerRef={containerRef}
-              >
-                <main data-scroll-container ref={containerRef}>
-                  <Projects />
-                </main>
-              </LocomotiveScrollProvider> */}
               </Route>
             </Switch>
           </AnimatePresence>

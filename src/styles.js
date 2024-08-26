@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { motion } from "framer-motion";
+import {motion} from "framer-motion";
 
 export const BasicLayout = styled(motion.div)`
   min-height: 50vh;
@@ -10,8 +10,10 @@ export const BasicLayout = styled(motion.div)`
   width: 100%;
   height: fit;
   padding: 0rem 0rem;
+    
+    
 
-  img {
+    img {
     margin: 4rem 0rem;
     width: 90%;
     height: auto;

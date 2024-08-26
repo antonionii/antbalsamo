@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, {useEffect, useState} from "react";
 import styled from "styled-components";
-import { useHistory } from "react-router-dom";
-import { MovieState } from "../movieState";
+import {useHistory} from "react-router-dom";
+import {ProjectsState} from "../projectsState";
 //Animation
-import { motion } from "framer-motion";
-import { pageAnimation } from "../animation";
+import {motion} from "framer-motion";
+import {pageAnimation} from "../animation";
 import VideoPlayer from "../components/VideoPlayer";
 import Marquee from "react-fast-marquee";
 import ImageSlider from "../components/ImageSlider";
@@ -12,7 +12,7 @@ import ImageSlider from "../components/ImageSlider";
 const MovieDetail = () => {
   const history = useHistory();
   const url = history.location.pathname;
-  const [movies, setMovies] = useState(MovieState);
+  const [movies, setMovies] = useState(ProjectsState);
   const [movie, setMovie] = useState(null);
 
   //useEffect
