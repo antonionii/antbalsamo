@@ -5,7 +5,7 @@ import { motion, } from "framer-motion";
 import { pageAnimation } from "../animation"; // Import your animation
 
 // Card container with styles for hover effects, box shadow, and border radius
-const Card = styled(Link)`
+const Card = styled(motion(Link))`
   background-color: white;
   box-shadow: 1rem 0.6rem 0rem 0rem black;
   border-radius: 12px;
@@ -15,19 +15,14 @@ const Card = styled(Link)`
   color: black;
   height: auto;
   width: 20rem;
-`;
 
-const HoverableCard = ({ children, ...props }) => (
-  <motion.div
-    {...props}
-    whileHover={{
-      boxShadow: "4rem 0.6rem 0rem 0rem black",
-      translateY: -5,
-    }}
-  >
-    {children}
-  </motion.div>
-);
+  &:hover{
+    background-color: black !important;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2) !important;
+    transform: translateY(-15px) !important;
+
+    }
+`;
 
 
 // Style for the image inside the card
@@ -49,6 +44,9 @@ const CardGrid = styled(motion.div)`
   max-width: 60rem;
   margin: 0rem auto;
   padding: 8rem 4rem;
+
+  
+
 `;
 
 const CardText = styled.p`
