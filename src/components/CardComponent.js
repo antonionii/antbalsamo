@@ -16,12 +16,10 @@ const Card = styled(motion(Link))`
   height: auto;
   width: 20rem;
 
-  &:hover{
-    background-color: black !important;
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2) !important;
-    transform: translateY(-15px) !important;
-
-    }
+   &:hover {
+    box-shadow: 2rem 1rem 0rem 0rem black ;
+    transform: translateY(-10px);
+  }
 `;
 
 
