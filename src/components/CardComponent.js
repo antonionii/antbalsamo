@@ -15,6 +15,11 @@ const Card = styled(Link)`
   color: black;
   height: auto;
   width: 20rem;
+
+   &:hover {
+    box-shadow: 2rem 1rem 0rem 0rem black ;
+    transform: translateY(-10px);
+  }
 `;
 
 const HoverableCard = ({ children, ...props }) => (
