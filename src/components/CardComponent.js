@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { motion, } from "framer-motion";
 import { pageAnimation } from "../animation"; // Import your animation
 
-// Card container with styles for hover effects, box shadow, and border radius
 const Card = styled(motion(Link))`
   background-color: white;
   box-shadow: 1rem 0.6rem 0rem 0rem black;
@@ -23,7 +22,6 @@ const Card = styled(motion(Link))`
 `;
 
 
-// Style for the image inside the card
 const CardImage = styled.img`
   width: 100%;
   height: auto;
@@ -33,7 +31,6 @@ const CardImage = styled.img`
   object-fit: cover;
 `;
 
-// Style for the container of the cards to manage layout in grid
 const CardGrid = styled(motion.div)`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
