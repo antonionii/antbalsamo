@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 //GlobalStyle
 import GlobalStyle from "./components/GlobalStyle";
 //Import Pages
@@ -8,13 +8,13 @@ import AboutMe from "./pages/AboutMe";
 import Projects from "./pages/Projects";
 import MovieDetail from "./pages/MovieDetail";
 //Animation
-import {AnimatePresence} from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import ScrollToTop from "./components/ScrollToTop";
 // import { LocomotiveScrollProvider } from "react-locomotive-scroll";
 // import { useHistory } from "react-router-dom";
 //Router
-import {Route, Switch, useLocation} from "react-router-dom";
-import {changeColor} from "./theme/changeColor";
+import { Route, Switch, useLocation } from "react-router-dom";
+import { changeColor } from "./theme/changeColor";
 import Footer from "./components/Footer";
 //Google analytics
 import ReactGA from "react-ga";
@@ -82,12 +82,12 @@ function App() {
   }, [location, colorSchemeType]);
 
   return (
-    <div className="App">
+    <div className="App" onClick={(evt) => handleBgClick(evt)}>
       <ScrollToTop>
-        <div
+        {/* <div
           onClick={(evt) => handleBgClick(evt)}
-          style={{ position: "fixed", inset: 0, zIndex: 0 }}
-        ></div>
+          style={{ position: "fixed", inset: 0, zIndex: 0, pointerEvents: "none" }}
+        ></div> */}
         <GlobalStyle />
         <Nav
           colorSchemeType={colorSchemeType}
