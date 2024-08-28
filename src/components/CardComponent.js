@@ -46,7 +46,6 @@ const Card = styled(motion(Link))`
   }
 `;
 
-
 const CardImage = styled.img`
   width: 100%;
   height: auto;
