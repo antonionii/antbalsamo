@@ -21,7 +21,7 @@ const Bubble = styled.div`
   transition: box-shadow 0.3s ease, transform 0.3s ease; /* Add transition for smooth hover effect */
 `;
 
-// Define the Card component after Bubble
+// Define the Card component after Bubble.
 const Card = styled(motion(Link))`
   background-color: white;
   box-shadow: 1rem 0.6rem 0rem 0rem black;
