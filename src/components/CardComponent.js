@@ -41,7 +41,7 @@ const Card = styled(motion(Link))`
     /* Apply hover effect to the bubble when card is hovered */
     ${Bubble} {
       box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-      transform: translateY(-5px);
+      transform: translateY(-10px);
     }
   }
 `;
