@@ -84,10 +84,6 @@ function App() {
   return (
     <div className="App" onClick={(evt) => handleBgClick(evt)}>
       <ScrollToTop>
-        {/* <div
-          onClick={(evt) => handleBgClick(evt)}
-          style={{ position: "fixed", inset: 0, zIndex: 0, pointerEvents: "none" }}
-        ></div> */}
         <GlobalStyle />
         <Nav
           colorSchemeType={colorSchemeType}

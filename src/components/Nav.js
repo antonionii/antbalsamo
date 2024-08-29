@@ -56,7 +56,10 @@ const Nav = ({ colorSchemeType, setColorSchemeType }) => {
     console.log("anim is set");
   }, []);
 
-  function startAnimation() {
+  function startAnimation(event) {
+    if(event) {
+      event.stopPropagation()
+    }
     if (!anim) {
       return;
     }
@@ -148,7 +151,7 @@ const Nav = ({ colorSchemeType, setColorSchemeType }) => {
             <div
               id="animationContainer"
               ref={animationContainer}
-              onClick={startAnimation}
+              onClick={(event) => startAnimation(event)}
               style={{ width: 30, height: 30, cursor: "pointer" }}
             ></div>
           </motion.div>
