@@ -4,6 +4,18 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { pageAnimation } from "../animation"; // Import your animation
 
+const CardGrid = styled(motion.div)`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr)); /* Ensure the grid items are flexible */
+  gap: 4rem 2rem; /* 4rem top/bottom, 2rem left/right */
+  width: 100%; /* Full width for the grid */
+  max-width: 60rem; /* Maximum width of the grid */
+  margin: 0 auto; /* Center the grid horizontally */
+  padding: 8rem 2rem; /* Add padding to ensure space on small screens */
+  grid-auto-rows: minmax(auto, auto); /* Set the minimum and maximum row height */
+
+`;
+
 const Card = styled(motion.div)`
   background-color: white;
   box-shadow: 1rem 0.6rem 0rem 0rem black;
@@ -13,10 +25,10 @@ const Card = styled(motion.div)`
   text-decoration: none;
   color: black;
   height: auto;
-  width: 24rem;
+  width: 100%; /* Ensure the card takes up the full width of its grid column */
 
   &:hover {
-    box-shadow: 2rem 2rem 0rem 0rem black;
+    box-shadow: 2rem 1rem 0rem 0rem black;
     transform: translateY(-10px);
   }
 `;
@@ -49,15 +61,6 @@ const Bubble = styled.div`
   transition: box-shadow 0.3s ease, transform 0.3s ease;
 `;
 
-const CardGrid = styled(motion.div)`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); /* Adjusted min-width */
-  gap: 4rem 8rem; /* 4rem top/bottom, 2rem left/right */
-  width: calc(100% - 8rem); /* Adjusted to fit padding */
-  max-width: 60rem;
-  margin: 0rem auto;
-  padding: 8rem 4rem;
-`;
 
 const CardText = styled.p`
   font-size: 1.2rem;

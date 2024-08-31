@@ -19,7 +19,7 @@ const cardData = [
   },
   {
     title: "Mingo",
-    image: "https://s3.ezgif.com/tmp/ezgif-3-03929f97a4.gif",
+    image: "https://i.imgur.com/UUYRNC8.gif",
     text: "Description for Card 2",
     linkTo: "/destination2",
     bubbleText: "Open Project",
