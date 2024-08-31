@@ -4,31 +4,49 @@ export const colorSchemes = {
     backgroundColor: "#4a4a4a",
     textColor: "#ffffff",
     lineColor: "#ffffff",
-    textShadow: "black"
+    textShadow: "black",
+    accentColor: "red"
   },
   light: [
    
     {
+      //Yellow
       id: "1",
-      backgroundColor: "#F0C865",
+      backgroundColor: "#ffde00",
       textColor: "black",
       lineColor: "black",
-      textShadow: "white"
+      textShadow: "white",
+      accentColor: "red"
     },
 
     {
+      //Green
       id: "2",
-      backgroundColor: "#B1BF93",
+      backgroundColor: "#cef79f",
       textColor: "black",
       lineColor: "black",
-      textShadow: "white"
+      textShadow: "white",
+      accentColor: "#ff1f1c"
+
     },
     {
+      //Blue
       id: "3",
       backgroundColor: "#0061FC",
       textColor: "white",
       lineColor: "white",
-      textShadow: "black"
+      textShadow: "black",
+      accentColor: "black"
+
+    },
+    {
+      //Red
+      id: "4",
+      backgroundColor: "#ff0000",
+      textColor: "#FCF0DE",
+      lineColor: "#FCF0DE",
+      textShadow: "black",
+      accentColor: "black"
 
     },
   ],
@@ -39,7 +57,7 @@ const changeColor = (themeType = "light") => {
   if (themeType === "light") {
     const currentSchemeId = document.documentElement.style.getPropertyValue(
       "--theme-id"
-    );
+    ).trim();
     const nextLightThemes = colorSchemes.light.filter(
       (item) => item.id !== currentSchemeId
     );
@@ -68,6 +86,10 @@ const changeColor = (themeType = "light") => {
   document.documentElement.style.setProperty(
     "--shadow-color",
     toBeAppliedScheme.textShadow
+  );
+  document.documentElement.style.setProperty(
+    "--accent-color",
+    toBeAppliedScheme.accentColor
   );
 };
 

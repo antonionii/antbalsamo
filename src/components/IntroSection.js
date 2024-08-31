@@ -69,7 +69,7 @@ const IntroSection = () => {
       
       <StyledDescription>
         <motion.div className={"introText"}>
-          <motion.h2
+          <motion.h1
             style={{
               margin: "0rem 0rem -2rem 0rem",
               width: "100%",
@@ -77,10 +77,10 @@ const IntroSection = () => {
             }}
             variants={slideleftAnim(0.5)}
           >
-            The
-          </motion.h2>
+            a
+          </motion.h1>
 
-          <motion.h2
+          <motion.h1
             style={{
               margin: "0rem 0rem -2rem 0rem",
               width: "100%",
@@ -88,15 +88,15 @@ const IntroSection = () => {
             }}
             variants={slideleftAnim(1)}
           >
-            Depressed
-          </motion.h2>
+            placeholder
+          </motion.h1>
 
-          <motion.h2
+          <motion.h1
             variants={slideleftAnim(1.5)}
             style={{ width: "100%", height: "auto" }}
           >
-            Designer
-          </motion.h2>
+            here
+          </motion.h1>
         </motion.div>
 
 

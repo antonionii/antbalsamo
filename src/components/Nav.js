@@ -48,6 +48,7 @@ const Nav = ({ colorSchemeType, setColorSchemeType }) => {
     let tempAnim = lottie.loadAnimation({
       container: animationContainer.current,
       renderer: "svg",
+      
       loop: false,
       autoplay: false,
       path: "https://assets1.lottiefiles.com/packages/lf20_ebutdyzo.json",
@@ -89,39 +90,26 @@ const Nav = ({ colorSchemeType, setColorSchemeType }) => {
         animate="show"
         variants={textFade}
       >
-        <h1>
+        <h2>
           <Link id="Logo" to="/">
             Anthony Balsamo
           </Link>
-        </h1>
+        </h2>
       </motion.div>
       <ul>
-        <li
-          onMouseOver={() => sethoveredMenuItem("/")}
-          onMouseOut={() => sethoveredMenuItem("")}
-        >
-          <motion.div
-            initial="hidden"
-            animate="show"
-            variants={slidedownAnim()}
-          >
+      <NavItem isActive={pathname === "/AboutMe"}>
+          <motion.div initial="hidden" animate="show" variants={slidedownAnim()}>
             <Link to="/AboutMe">About</Link>
           </motion.div>
           <Line
             transition={{ duration: 0.5 }}
             initial={{ width: "0%" }}
             animate={{
-              width:
-                pathname === "/AboutMe" || hoveredMenuItem === "/"
-                  ? "50%"
-                  : "0%",
+              width: pathname === "/AboutMe" ? "50%" : "0%",
             }}
           />
-        </li>
-        <li
-          onMouseOver={() => sethoveredMenuItem("/Projects")}
-          onMouseOut={() => sethoveredMenuItem("")}
-        >
+        </NavItem>
+        <NavItem isActive={pathname === "/Projects"}>
           <motion.div
             initial="hidden"
             animate="show"
@@ -134,14 +122,27 @@ const Nav = ({ colorSchemeType, setColorSchemeType }) => {
             transition={{ duration: 0.5 }}
             initial={{ width: "0%" }}
             animate={{
-              width:
-                pathname === "/Projects" || hoveredMenuItem === "/Projects"
-                  ? "50%"
-                  : "0%",
+              width: pathname === "/Projects" ? "50%" : "0%",
             }}
           />
-        </li>
- 
+        </NavItem>
+        <NavItem isActive={pathname === "/Resume"}>
+          <motion.div
+            initial="hidden"
+            animate="show"
+            variants={slidedownAnim(0.3)}
+          >
+            <Link to="/Resume">Resume </Link>
+          </motion.div>
+
+          <Line
+            transition={{ duration: 0.5 }}
+            initial={{ width: "0%" }}
+            animate={{
+              width: pathname === "/Resume" ? "50%" : "0%",
+            }}
+          />
+        </NavItem>
         <li>
           <motion.div
             initial="hidden"
@@ -207,8 +208,25 @@ const StyledNav = styled(motion.div)`
   }
 `;
 
+const NavItem = styled.li`
+  position: relative;
+
+  a {
+
+      font-family: ${(props) => (props.isActive ? "Rubik, sans-serif" : "inherit")};
+      font-size: ${(props) => (props.isActive ? "2.2rem" : "1.8rem")};
+      color: ${(props) => (props.isActive ? "var(--accent-color)" : "inherit")};
+      text-shadow: ${(props) =>
+      props.isActive ? "2.2px 1.5px var(--text-color)" : "none"};
+      font-weight: ${(props) =>
+      props.isActive ? "900" : "regular"};
+      
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+  }
+`;
+
 const Line = styled(motion.div)`
-  height: 1px;
+  height: .8rem;
   background: var(--line-color, "#000");
   width: 0%;
   position: absolute;

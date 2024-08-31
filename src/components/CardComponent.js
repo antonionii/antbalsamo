@@ -7,7 +7,7 @@ import { pageAnimation } from "../animation"; // Import your animation
 const CardGrid = styled(motion.div)`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr)); /* Ensure the grid items are flexible */
-  gap: 4rem 2rem; /* 4rem top/bottom, 2rem left/right */
+  gap: 4rem 4rem; /* 4rem top/bottom, 2rem left/right */
   width: 90%; /* Full width for the grid */
   max-width: 60rem; /* Maximum width of the grid */
   margin: 0 auto; /* Center the grid horizontally */

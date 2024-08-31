@@ -31,7 +31,7 @@ html{
 }
 body {
     background: var(--background-color);
-  font-family: "Rubik", sans-serif;
+    font-family: "Rubik", sans-serif;
     font-weight: 900;
     overflow-x: hidden;
     color: var(--text-color);
@@ -46,28 +46,6 @@ body {
   font-style: normal;
 }
 
-}
-
-.freewareAbout {
-  font-weight: bold;
-  font-size: 20px;
-  font-family: "Josefin Sans", sans-serif;
-  width: 300px; /* Set the desired width of the square */
-  height: auto;
-  border-radius: 5px;
-  box-shadow: 6px 6px 0px var(--shadow-color), 
-              5px 5px 0px var(--shadow-color),
-              4px 4px 0px var(--shadow-color), 
-              3px 3px 0px var(--shadow-color), 
-              2px 2px 0px var(--shadow-color),
-              1px 1px 0px var(--shadow-color);
-  text-align: center;
-  color: black;
-  background-color: white;
-  margin: auto 0; /* Centers the square horizontally */
-  position: relative;
-  top: 50%; /* Centers the square vertically */
-  transform: translateY(-50%); /* Adjusts for true vertical centering */
 }
 
 img {
@@ -113,13 +91,12 @@ button{
 
 
 
-    h2{
+    h1{
         font-weight: bolder;
         font-size: 7.5rem;
         color: var(--text-color);
         width: "100%";
         height: "auto";
-        text-shadow: 6px 0px var(--shadow-color);
 
 
     }
@@ -144,25 +121,25 @@ button{
         stroke: "120000";
     }
     li {
+    font-family: "Inter", system-ui;
     padding-left: 3rem;
     position: relative;
-  font-family: "Inter", system-ui;
+    font-family: "Inter", system-ui;
     font-weight: regular;
   }
   a {
-    font-size: 1.3rem;
+    font-family: "Inter", system-ui;
+    font-size: 1.8rem;
     text-decoration: none;
-  font-family: "Inter", system-ui;
-      font-weight:800;
+    font-weight:800;
     color: inherit;
     pointer-events:auto;
 
-
   }
   #Logo {
-    font-size: 1.5rem;
-  font-family: "Inter", system-ui;
-      font-weight:800;
+    font-size: 2rem;
+    font-family: "Inter", system-ui;
+    font-weight:800;
   }
 
 
