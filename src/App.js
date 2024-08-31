@@ -66,6 +66,8 @@ function App() {
   };
 
   const handleBgClick = (evt) => {
+    const isNavLink = evt.target.closest('a')
+    if(!isNavLink) {
     setColorSchemeType("light");
     changeColor("light");
     doRippleEffect(evt);
@@ -73,13 +75,16 @@ function App() {
       doRippleEffect(evt);
     }, 240);
   };
+  };
 
   useEffect(() => {
     if (colorSchemeType === "light") {
       // change color will pick a new light color
       changeColor("light");
+    } else {
+      changeColor("dark");
     }
-  }, [location, colorSchemeType]);
+  }, [colorSchemeType]);
 
   return (
     <div className="App" onClick={(evt) => handleBgClick(evt)}>

@@ -90,16 +90,6 @@ button{
 }
 
 
-
-    h1{
-        font-weight: bolder;
-        font-size: 7.5rem;
-        color: var(--text-color);
-        width: "100%";
-        height: "auto";
-
-
-    }
     h4{
         font-weight: bold;
         

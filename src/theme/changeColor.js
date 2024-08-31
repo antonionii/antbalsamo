@@ -5,7 +5,7 @@ export const colorSchemes = {
     textColor: "#ffffff",
     lineColor: "#ffffff",
     textShadow: "black",
-    accentColor: "red"
+    accentColor: "#ffffff"
   },
   light: [
    
@@ -16,7 +16,7 @@ export const colorSchemes = {
       textColor: "black",
       lineColor: "black",
       textShadow: "white",
-      accentColor: "red"
+      accentColor: "black"
     },
 
     {
@@ -26,7 +26,7 @@ export const colorSchemes = {
       textColor: "black",
       lineColor: "black",
       textShadow: "white",
-      accentColor: "#ff1f1c"
+      accentColor: "black"
 
     },
     {
@@ -36,7 +36,7 @@ export const colorSchemes = {
       textColor: "white",
       lineColor: "white",
       textShadow: "black",
-      accentColor: "black"
+      accentColor: "white"
 
     },
     {
@@ -46,7 +46,7 @@ export const colorSchemes = {
       textColor: "#FCF0DE",
       lineColor: "#FCF0DE",
       textShadow: "black",
-      accentColor: "black"
+      accentColor: "#FCF0DE"
 
     },
   ],

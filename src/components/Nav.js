@@ -15,6 +15,7 @@ const Nav = ({ colorSchemeType, setColorSchemeType }) => {
   const { pathname } = useLocation();
 
   const [direction, setDirection] = useState(1);
+  const [isLight, setIsLight] = useState(false);
 
   const [hoveredMenuItem, sethoveredMenuItem] = useState("");
 
@@ -32,10 +33,12 @@ const Nav = ({ colorSchemeType, setColorSchemeType }) => {
   const [anim, setAnim] = useState(null);
 
   React.useEffect(() => {
+    setIsLight(colorSchemeType === "light");
     const newDirection = colorSchemeType === "light" ? 1 : -1;
 
     if (newDirection !== direction) {
       setDirection(newDirection);
+      setIsLight(newDirection === 1)
       startAnimation();
     }
   }, [colorSchemeType]);
@@ -71,11 +74,13 @@ const Nav = ({ colorSchemeType, setColorSchemeType }) => {
       anim.setSpeed(2);
       changeColor("light");
       setColorSchemeType("light");
+      setIsLight(true)
     } else {
       // from light to dark
       anim.setSpeed(1);
       changeColor("dark");
       setColorSchemeType("dark");
+      setIsLight(false)
     }
     // change direction
     setDirection(direction * -1);
@@ -83,7 +88,7 @@ const Nav = ({ colorSchemeType, setColorSchemeType }) => {
   }
 
   return (
-    <StyledNav id="nav">
+    <StyledNav id="nav" isLight= {isLight}>
       <motion.div
         transition-delay="2s"
         initial="hidden"
@@ -143,17 +148,18 @@ const Nav = ({ colorSchemeType, setColorSchemeType }) => {
             }}
           />
         </NavItem>
-        <li>
+        <li style={{display: "flex", alignItems: "flex-end", justifyContent: "flex-end", flex: "1" }}>
           <motion.div
             initial="hidden"
             animate="show"
             variants={slideleftAnim(1)}
           >
-            <div
+            <div className="anime-contain"
               id="animationContainer"
               ref={animationContainer}
               onClick={(event) => startAnimation(event)}
-              style={{ width: 30, height: 30, cursor: "pointer" }}
+              style={{ width: 30, height: 30, cursor: "pointer",
+                boxShadow: isLight ? "0px 4px 8px rgba(0,0,0,1)" : "none", borderRadius: isLight ? "50%" : "0" }}
             ></div>
           </motion.div>
         </li>
@@ -181,6 +187,9 @@ const StyledNav = styled(motion.div)`
   h1 {
     pointer-events: auto;
   }
+ .anime-contain {
+  
+  }
   ul {
     display: flex;
     justify-content: flex-end;
@@ -188,19 +197,26 @@ const StyledNav = styled(motion.div)`
     list-style: none;
     pointer-events: auto;
   }
-  @media (max-width: 1200px) {
+  @media (max-width: 667px) {
     flex-direction: column;
     padding: 2rem 1rem;
     background: var(--background-color);
     transition: 0.3s all ease-in-out;
+
+    
     #Logo {
       display: inline-block;
       margin: 0.5rem;
     }
     ul {
       padding: 1rem;
-      justify-content: space-around;
-      width: 100%;
+      width: 100%;      
+      //justify-content: space-around;
+      gap:5%;
+      margin: auto;
+      justify-content:center;
+      align-items: center;
+
       li {
         padding: 0;
       }
@@ -216,8 +232,7 @@ const NavItem = styled.li`
       font-family: ${(props) => (props.isActive ? "Rubik, sans-serif" : "inherit")};
       font-size: ${(props) => (props.isActive ? "2.2rem" : "1.8rem")};
       color: ${(props) => (props.isActive ? "var(--accent-color)" : "inherit")};
-      text-shadow: ${(props) =>
-      props.isActive ? "2.2px 1.5px var(--text-color)" : "none"};
+
       font-weight: ${(props) =>
       props.isActive ? "900" : "regular"};
       
@@ -226,12 +241,10 @@ const NavItem = styled.li`
 `;
 
 const Line = styled(motion.div)`
-  height: .8rem;
+  height: .5rem;
   background: var(--line-color, "#000");
   width: 0%;
   position: absolute;
-  bottom: -1rem;
-  right: 0;
 `;
 
 const NavLine = styled(motion.div)`

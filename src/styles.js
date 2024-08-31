@@ -51,14 +51,17 @@ export const BasicLayout = styled(motion.div)`
 export const StyledDescription = styled(motion.div)`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: left;
   z-index: 2;
   pointer-events: none;
   width: 100%;
   height: auto;
 
-  h2 {
-    font-weight: medium;
+  h1 {
+      font-weight: bolder;
+        color: var(--text-color);
+        width: "100%";
+        height: "auto";
   }
   @media (max-width: 1300px) {
     padding: 0;

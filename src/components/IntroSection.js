@@ -71,7 +71,6 @@ const IntroSection = () => {
         <motion.div className={"introText"}>
           <motion.h1
             style={{
-              margin: "0rem 0rem -2rem 0rem",
               width: "100%",
               height: "auto",
             }}
@@ -82,7 +81,6 @@ const IntroSection = () => {
 
           <motion.h1
             style={{
-              margin: "0rem 0rem -2rem 0rem",
               width: "100%",
               height: "auto",
             }}
@@ -93,7 +91,8 @@ const IntroSection = () => {
 
           <motion.h1
             variants={slideleftAnim(1.5)}
-            style={{ width: "100%", height: "auto" }}
+            style={{ width: "100%", height: "auto"
+            }}
           >
             here
           </motion.h1>
