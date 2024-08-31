@@ -31,8 +31,8 @@ html{
 }
 body {
     background: var(--background-color);
-    font-family: "Pixelify Sans", system-ui;
-    font-weight: 700;
+  font-family: "Rubik", sans-serif;
+    font-weight: 900;
     overflow-x: hidden;
     color: var(--text-color);
     transition: 0.3s all ease-in-out;
@@ -40,6 +40,11 @@ body {
     margin:0;
     padding: 0;
     width: 100%;
+
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+}
 
 }
 
@@ -98,7 +103,7 @@ button{
     border: 3px solid var(--text-color);
     background: transparent;
     transition: all 0.5s ease;
-    font-family: 'Karla', sans-serif;
+  font-family: "Inter", system-ui;
     &:hover{
         background-color: var(--background-color);
         color: white
@@ -141,14 +146,14 @@ button{
     li {
     padding-left: 3rem;
     position: relative;
-    font-family: 'Karla', sans-serif;
+  font-family: "Inter", system-ui;
     font-weight: regular;
   }
   a {
     font-size: 1.3rem;
     text-decoration: none;
-    font-family: 'Karla', sans-serif;
-    font-weight:600;
+  font-family: "Inter", system-ui;
+      font-weight:800;
     color: inherit;
     pointer-events:auto;
 
@@ -156,8 +161,8 @@ button{
   }
   #Logo {
     font-size: 1.5rem;
-    font-family: 'Karla', sans-serif;
-    font-weight:600;
+  font-family: "Inter", system-ui;
+      font-weight:800;
   }
 
 

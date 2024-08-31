@@ -77,7 +77,7 @@ const IntroSection = () => {
             }}
             variants={slideleftAnim(0.5)}
           >
-            make
+            The
           </motion.h2>
 
           <motion.h2
@@ -88,14 +88,14 @@ const IntroSection = () => {
             }}
             variants={slideleftAnim(1)}
           >
-            some
+            Depressed
           </motion.h2>
 
           <motion.h2
             variants={slideleftAnim(1.5)}
             style={{ width: "100%", height: "auto" }}
           >
-            things
+            Designer
           </motion.h2>
         </motion.div>
 
