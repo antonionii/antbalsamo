@@ -58,8 +58,9 @@ const AboutContainer = styled(motion.div)`
   @media (min-width: 1300px) {
     display: flex;
   }
-    padding: 2rem 0rem  0rem  0rem
+  margin: 6rem 0rem 0rem 0rem; /* Reduce top margin */
 `;
+
 
 const ProfileText = styled(motion.div)`
   display: block;

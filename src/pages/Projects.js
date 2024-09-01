@@ -68,6 +68,16 @@ const cardData = [
   },
   // Add more cards as needed
 ];
+
+const ProjectsContainer = styled(motion.div)`
+  @media (min-width: 780px) {
+    display: flex;
+  }
+  @media (min-width: 1300px) {
+    display: flex;
+  }
+  margin: 10rem 0rem 0rem 0rem; /* Reduce top margin */
+`;
 const Projects = () => {
   // const [element, controls] = useScroll();
   // const [element2, controls2] = useScroll();
@@ -83,8 +93,8 @@ const Projects = () => {
   // const col2ScrollSpeed = isLargeDisplay ? "2" : "1";
 
   return (
-    <div>
-  <CardComponent cards={cardData} /> {/* Only show 4 cards */}  </div>
+    <ProjectsContainer>
+  <CardComponent cards={cardData} /> {/* Only show 4 cards */}  </ProjectsContainer>
   );
 };
 

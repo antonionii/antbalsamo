@@ -421,6 +421,7 @@ z-index:10;
     top:50vh;
   }
 }
+  
 
 .introText {
   margin: 8rem 0rem 0rem 0rem; /* Reduce top margin */
@@ -578,18 +579,15 @@ text-align: center;
 }
 
 .aboutContainer{
+  margin: 8rem 0rem 0rem 0rem; /* Reduce top margin */
   display:flex;
-@media (min-width: 780px) {
-display: flex;
+  @media (min-width: 780px) {
 }
+
 
 @media (mid-width: 1300px){
 display: flex;
 }
 }
-
-
-
-
 `;
 export default GlobalStyle;
