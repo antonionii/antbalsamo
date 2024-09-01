@@ -35,7 +35,6 @@ body {
     font-weight: 900;
     overflow-x: hidden;
     color: var(--text-color);
-    transition: 0.3s all ease-in-out;
     position: relative;
     margin:0;
     padding: 0;

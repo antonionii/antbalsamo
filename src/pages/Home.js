@@ -1,10 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";import IntroSection from "../components/IntroSection";
+import { Link } from "react-router-dom";
+import PageHeaderText from "../components/PageHeaderText";
 //Animations
 import {motion} from "framer-motion";
 import AboutMe from "./AboutMe";
 import CardComponent from "../components/CardComponent";
 import Button from "../components/ButtonComponent";
+import { useHistory } from "react-router-dom";
 
 const cardData = [
   {
@@ -64,16 +66,20 @@ const cardData = [
     bubbleText: "Open Project",
   },
   // Add more cards as needed
-];
-const Home = () => {
+];const Home = () => {
+  const history = useHistory();
+
+  const handleClick = (event) => {
+    event.preventDefault(); // Prevent the default scrolling behavior
+    history.push("/Projects"); // Navigate to the /projects path
+  };
   return (
     <motion.div initial="hidden" animate="show" exit="exit">
-      <IntroSection />
-      <CardComponent cards={cardData.slice(0, 4)} /> {/* Only show 4 cards */}
-      <Link to="/Projects">
-        <Button>See All Projects</Button>
-      </Link>
-    </motion.div>
+  <PageHeaderText
+      numOfItems={1}
+      itemsText={["Home"]}
+    />      <CardComponent cards={cardData.slice(0, 4)} /> {/* Only show 4 cards */}
+      <Button onClick={handleClick}>See All Projects</Button>    </motion.div>
   );
 };
 

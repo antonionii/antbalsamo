@@ -8,6 +8,8 @@ import {pageAnimation} from "../animation";
 import {useMediaQuery} from "beautiful-react-hooks";
 import Marquee from "react-fast-marquee";
 import CardComponent from "../components/CardComponent";
+import PageHeaderText from "../components/PageHeaderText";
+
 
 const cardData = [
   {
@@ -70,13 +72,8 @@ const cardData = [
 ];
 
 const ProjectsContainer = styled(motion.div)`
-  @media (min-width: 780px) {
-    display: flex;
-  }
-  @media (min-width: 1300px) {
-    display: flex;
-  }
-  margin: 10rem 0rem 0rem 0rem; /* Reduce top margin */
+
+  margin: 8rem 0rem 0rem 0rem; /* Reduce top margin */
 `;
 const Projects = () => {
   // const [element, controls] = useScroll();
@@ -94,6 +91,11 @@ const Projects = () => {
 
   return (
     <ProjectsContainer>
+      <motion.div initial="hidden" animate="show" exit="exit">
+        <PageHeaderText
+      numOfItems={1}
+      itemsText={["Projects"]}/>
+      </motion.div>
   <CardComponent cards={cardData} /> {/* Only show 4 cards */}  </ProjectsContainer>
   );
 };

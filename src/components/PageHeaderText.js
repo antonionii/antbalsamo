@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 // Framer Motion
 import { motion } from "framer-motion";
-import { rotateText, leftcircleAnim, slidedownAnim, slideleftAnim } from "../animation";
+import { slideleftAnim } from "../animation";
 import { useWindowScroll, useMediaQuery } from "beautiful-react-hooks";
-import { BasicLayout, StyledDescription } from "../styles";
+import { StyledDescription } from "../styles";
 import useDebounce from "../hooks/use-debounce";
 
-const IntroSection = () => {
+const PageHeaderText = ({ numOfItems, itemsText }) => {
   const [scrollY, setScrollY] = useState(window.scrollY);
   const [screenHeight, setScreenHeight] = useState(null);
   const [circle1XPos, setCircle1XPos] = useState(0);
@@ -32,16 +32,6 @@ const IntroSection = () => {
     return targetPositionX1;
   };
 
-  const getCircleXPosition2 = () => {
-    let targetPositionX2 = -300 + scrollY / 6;
-
-    if (targetPositionX2 > 100) {
-      targetPositionX2 = 100;
-    }
-
-    return targetPositionX2;
-  };
-
   useEffect(() => {
     setCircle1XPos(
       debouncedScrollY > screenHeight / 3 ? getCircleXPosition1() : 0
@@ -58,25 +48,24 @@ const IntroSection = () => {
     endXPosForCircle1 = -100;
   }
 
+  // Ensure itemsText has enough text items for numOfItems
+  const items = itemsText.slice(0, numOfItems);
+
   return (
-      <StyledDescription style={{ display: "flex", alignItems: "center", marginBottom: 0 }}>
-        <motion.div className={"introText"} style={{ display: "flex", marginBottom: 0 }}>
-          <motion.h1 style={{ display: "inline-block", marginRight: "10px" }} variants={slideleftAnim(0.1)}>
-            a
+    <StyledDescription style={{ display: "flex", alignItems: "center", marginBottom: 0 }}>
+      <motion.div className={"introText"} style={{ display: "flex", marginBottom: 0 }}>
+        {items.map((text, index) => (
+          <motion.h1
+            key={index}
+            style={{ display: "inline-block", marginRight: "10px" }}
+            variants={slideleftAnim(0.1 * (index + 1))}
+          >
+            {text}
           </motion.h1>
-
-          <motion.h1 style={{ display: "inline-block", marginRight: "10px" }} variants={slideleftAnim(0.2)}>
-            placeholder
-          </motion.h1>
-
-          <motion.h1 style={{ display: "inline-block", marginRight: "10px" }} variants={slideleftAnim(0.3)}>
-            here
-          </motion.h1>
-        
-
-        </motion.div>
-      </StyledDescription>
+        ))}
+      </motion.div>
+    </StyledDescription>
   );
 };
 
-export default IntroSection;
+export default PageHeaderText;

@@ -111,19 +111,6 @@ const Nav = ({ colorSchemeType, setColorSchemeType }) => {
 </NavItem>
         </motion.div>
       <ul>
-
-      <NavItem isActive={pathname === "/AboutMe"}>
-          <motion.div initial="hidden" animate="show" variants={slidedownAnim()}>
-            <Link to="/AboutMe">About</Link>
-          </motion.div>
-          <Line
-            transition={{ duration: 0.5 }}
-            initial={{ width: "0%" }}
-            animate={{
-              width: pathname === "/AboutMe" ? "80%" : "0%",
-            }}
-          />
-        </NavItem>
         <NavItem isActive={pathname === "/Projects"}>
           <motion.div
             initial="hidden"
@@ -155,6 +142,19 @@ const Nav = ({ colorSchemeType, setColorSchemeType }) => {
             initial={{ width: "0%" }}
             animate={{
               width: pathname === "/Resume" ? "80%" : "0%",
+            }}
+          />
+        </NavItem>
+        
+      <NavItem isActive={pathname === "/AboutMe"}>
+          <motion.div initial="hidden" animate="show" variants={slidedownAnim()}>
+            <Link to="/AboutMe">About</Link>
+          </motion.div>
+          <Line
+            transition={{ duration: 0.5 }}
+            initial={{ width: "0%" }}
+            animate={{
+              width: pathname === "/AboutMe" ? "80%" : "0%",
             }}
           />
         </NavItem>

@@ -3,6 +3,7 @@ import {motion} from "framer-motion";
 import {pageAnimation, slideleftAnim, sliderightAnim} from "../animation";
 import styled from "styled-components";
 import {BasicLayout} from "../styles";
+import PageHeaderText from "../components/PageHeaderText";
 
 const ProfileImage = styled(motion.div)`
   overflow: hidden;
@@ -58,7 +59,7 @@ const AboutContainer = styled(motion.div)`
   @media (min-width: 1300px) {
     display: flex;
   }
-  margin: 6rem 0rem 0rem 0rem; /* Reduce top margin */
+  margin: 0rem 0rem 0rem 0rem; /* Reduce top margin */
 `;
 
 
@@ -70,7 +71,7 @@ const ProfileText = styled(motion.div)`
   /* outline: 2px solid green; */
   align-items: center;
   justify-content: center;
-  padding: 0rem 4rem 0rem 4rem;
+  padding: 4rem 4rem 0rem 4rem;
   overflow: hidden;
 
   h3 {
@@ -100,15 +101,20 @@ const ProfileText = styled(motion.div)`
 
 const AboutMe = () => {
   return (
+    
     <BasicLayout
       variants={pageAnimation}
       initial="hidden"
       animate="show"
       exit="exit"
     >
-
+ <motion.div initial="hidden" animate="show" exit="exit">
+        <PageHeaderText
+      numOfItems={1}
+      itemsText={["About"]}/>
+      </motion.div>
       <AboutContainer className="aboutContainer">
-
+     
         <ProfileText className="profileText">
 
           <motion.h3 variants={sliderightAnim}>

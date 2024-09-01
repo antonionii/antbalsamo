@@ -6,6 +6,8 @@ import Nav from "./components/Nav";
 import Home from "./pages/Home";
 import AboutMe from "./pages/AboutMe";
 import Projects from "./pages/Projects";
+import Resume from "./pages/Resume";
+
 import MovieDetail from "./pages/MovieDetail";
 //Animation
 import { AnimatePresence } from "framer-motion";
@@ -32,6 +34,8 @@ import ReactGA from "react-ga";
 //   //Sending GA page views
 //   ReactGA.pageview(pageView);
 // };
+
+
 function App() {
   useEffect(() => {
     ReactGA.initialize("UA-206389421-1");
@@ -109,6 +113,9 @@ function App() {
               </Route>
               <Route path="/Projects" exact>
                 <Projects />
+              </Route>
+              <Route path="/Resume">
+                <Resume />
               </Route>
             </Switch>
           </AnimatePresence>

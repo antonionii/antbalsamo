@@ -3,7 +3,6 @@ import {motion} from "framer-motion";
 
 export const BasicLayout = styled(motion.div)`
   min-height: 50vh;
-  display: flex;
   align-items: left;
   justify-content: center;
   color: white;
@@ -25,7 +24,6 @@ export const BasicLayout = styled(motion.div)`
     }
   }
   @media (min-width: 780px) {
-    display: block;
     text-align: left;
     padding: 0rem 0rem;
 
@@ -35,7 +33,6 @@ export const BasicLayout = styled(motion.div)`
     }
   }
   @media (min-width: 1300px) {
-    display: block;
     text-align: left;
     padding: 0rem 0rem;
 
