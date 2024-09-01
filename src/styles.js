@@ -56,16 +56,19 @@ export const StyledDescription = styled(motion.div)`
   pointer-events: none;
   width: 100%;
   height: auto;
+  margin-bottom: 0;  // Remove bottom margin
+  padding-bottom: 0; // Remove bottom padding
 
   h1 {
       font-weight: bolder;
-        color: var(--text-color);
-        width: "100%";
-        height: "auto";
+      color: var(--text-color);
+      width: "100%";
+      height: "auto";
   }
+
   @media (max-width: 1300px) {
     padding: 0;
-    margin: 2rem 0rem 5rem 0rem;
+    margin: 0;  // Remove or reduce bottom margin
   }
 
   show: {
@@ -74,6 +77,7 @@ export const StyledDescription = styled(motion.div)`
     }
   }
 `;
+
 
 export const StyledImage = styled(motion.div)`
   overflow: hidden;

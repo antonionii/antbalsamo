@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-//Framer Motion
+// Framer Motion
 import { motion } from "framer-motion";
 import { rotateText, leftcircleAnim, slidedownAnim, slideleftAnim } from "../animation";
 import { useWindowScroll, useMediaQuery } from "beautiful-react-hooks";
@@ -20,7 +20,7 @@ const IntroSection = () => {
 
   useEffect(() => {
     if (!window) {
-      return; /// do not fail on Servwer Side Render (in future)
+      return; // do not fail on Server Side Render (in future)
     }
     setScreenHeight(window.screen.availHeight);
   }, []);
@@ -28,11 +28,7 @@ const IntroSection = () => {
   const debouncedScrollY = useDebounce(scrollY, 300);
 
   const getCircleXPosition1 = () => {
-    // 400 - 0
-    // 401 - little bit to left
-
     let targetPositionX1 = 0 - (scrollY - screenHeight / 2 / 1.5);
-
     return targetPositionX1;
   };
 
@@ -50,7 +46,7 @@ const IntroSection = () => {
     setCircle1XPos(
       debouncedScrollY > screenHeight / 3 ? getCircleXPosition1() : 0
     );
-  }, [debouncedScrollY,getCircleXPosition1, screenHeight]);
+  }, [debouncedScrollY, getCircleXPosition1, screenHeight]);
 
   let endXPosForCircle1;
 
@@ -63,52 +59,29 @@ const IntroSection = () => {
   }
 
   return (
-    <BasicLayout>
-    
-
-      
-      <StyledDescription>
-        <motion.div className={"introText"}>
-          <motion.h1
-            style={{
-              width: "100%",
-              height: "auto",
-            }}
-            variants={slideleftAnim(0.5)}
-          >
-            a
+      <StyledDescription style={{ display: "flex", alignItems: "center", marginBottom: 0 }}>
+        <motion.div className={"introText"} style={{ display: "flex", marginBottom: 0 }}>
+          <motion.h1 style={{ display: "inline-block", marginRight: "10px" }} variants={slideleftAnim(0.5)}>
+            welcome
           </motion.h1>
 
-          <motion.h1
-            style={{
-              width: "100%",
-              height: "auto",
-            }}
-            variants={slideleftAnim(1)}
-          >
-            placeholder
+          <motion.h1 style={{ display: "inline-block", marginRight: "10px" }} variants={slideleftAnim(1)}>
+            to
           </motion.h1>
 
-          <motion.h1
-            variants={slideleftAnim(1.5)}
-            style={{ width: "100%", height: "auto"
-            }}
-          >
-            here
+          <motion.h1 style={{ display: "inline-block", marginRight: "10px" }} variants={slideleftAnim(1.5)}>
+            the
+          </motion.h1>
+          <motion.h1 style={{ display: "inline-block", marginRight: "10px" }} variants={slideleftAnim(2.0)}>
+            tone
+          </motion.h1>
+
+          <motion.h1 style={{ display: "inline-block" }} variants={slideleftAnim(2.5)}>
+            zone
           </motion.h1>
         </motion.div>
-
-
-        
-
-        {/* <motion.p variants={fade}>
-          Contact me for your ideas and let's give them life.{" "}
-        </motion.p>
-        <motion.button variants={fade}>Ping Me</motion.button> */}
       </StyledDescription>
-    </BasicLayout>
   );
 };
-
 
 export default IntroSection;

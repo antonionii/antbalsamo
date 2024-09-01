@@ -11,7 +11,7 @@ export const pageAnimation = {
       duration: 0.2,
       ease: "easeOut", // Easing for the show state
       when: "beforeChildren",
-      staggerChildren: 0.15,
+      staggerChildren: 0.55,
     },
   },
   exit: {

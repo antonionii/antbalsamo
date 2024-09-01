@@ -422,19 +422,20 @@ z-index:10;
   }
 }
 
-.introText{
-  margin: 10rem 0rem 0rem 0rem;
+.introText {
+  margin: 5rem 0rem 0rem 0rem; /* Reduce top margin */
 }
 
 @media (min-width: 780px) {
-  .introText{
-  margin: 13rem 0rem 0rem 0rem;
-}
+  .introText {
+    margin: 6rem 0rem 0rem 0rem; /* Reduce margin for medium screens */
+  }
 }
 
-@media (mid-width: 1300px){
-  .introText{
-  margin: 8rem 0rem 0rem 0rem;
+@media (min-width: 1300px) {
+  .introText {
+    margin: 4rem 0rem 0rem 0rem; /* Reduce margin for large screens */
+  }
 }
 
 }

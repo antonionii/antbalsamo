@@ -5,7 +5,8 @@ export const colorSchemes = {
     textColor: "#ffffff",
     lineColor: "#ffffff",
     textShadow: "black",
-    accentColor: "#ffffff"
+    accentColor: "#ffffff",
+    cardColor: "white"
   },
   light: [
    
@@ -16,7 +17,8 @@ export const colorSchemes = {
       textColor: "black",
       lineColor: "black",
       textShadow: "white",
-      accentColor: "black"
+      accentColor: "black",
+      cardColor: "white"
     },
 
     {
@@ -26,7 +28,8 @@ export const colorSchemes = {
       textColor: "black",
       lineColor: "black",
       textShadow: "white",
-      accentColor: "black"
+      accentColor: "black",
+      cardColor: "white"
 
     },
     {
@@ -36,17 +39,19 @@ export const colorSchemes = {
       textColor: "white",
       lineColor: "white",
       textShadow: "black",
-      accentColor: "white"
+      accentColor: "white",
+      cardColor: "white"
 
     },
     {
-      //Red
+      //Cream
       id: "4",
       backgroundColor: "#fff5eb",
       textColor: "#28c074",
       lineColor: "#28c074",
       textShadow: "black",
-      accentColor: "#28c074"
+      accentColor: "#28c074",
+      cardColor: "#28c074"
 
     },
   ],
@@ -90,6 +95,10 @@ const changeColor = (themeType = "light") => {
   document.documentElement.style.setProperty(
     "--accent-color",
     toBeAppliedScheme.accentColor
+  );
+  document.documentElement.style.setProperty(
+    "--card-color",
+    toBeAppliedScheme.cardColor
   );
 };
 

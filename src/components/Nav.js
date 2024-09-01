@@ -118,7 +118,7 @@ const Nav = ({ colorSchemeType, setColorSchemeType }) => {
           <motion.div
             initial="hidden"
             animate="show"
-            variants={slidedownAnim(0.3)}
+            variants={slidedownAnim(0.1)}
           >
             <Link to="/Projects">Projects </Link>
           </motion.div>
@@ -135,7 +135,7 @@ const Nav = ({ colorSchemeType, setColorSchemeType }) => {
           <motion.div
             initial="hidden"
             animate="show"
-            variants={slidedownAnim(0.3)}
+            variants={slidedownAnim(0.2)}
           >
             <Link to="/Resume">Resume </Link>
           </motion.div>
@@ -152,7 +152,7 @@ const Nav = ({ colorSchemeType, setColorSchemeType }) => {
           <motion.div
             initial="hidden"
             animate="show"
-            variants={slideleftAnim(1)}
+            variants={slideleftAnim(0.4)}
           >
             <div className="anime-contain"
               id="animationContainer"
@@ -244,6 +244,7 @@ const Line = styled(motion.div)`
   background: var(--line-color, "#000");
   width: 0%;
   position: absolute;
+  border-radius: 6rem;
 `;
 
 const NavLine = styled(motion.div)`

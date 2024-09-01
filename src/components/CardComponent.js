@@ -7,17 +7,17 @@ import { pageAnimation } from "../animation"; // Import your animation
 const CardGrid = styled(motion.div)`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr)); /* Ensure the grid items are flexible */
-  gap: 4rem 4rem; /* 4rem top/bottom, 2rem left/right */
+  gap: 4rem 4rem; /* 4rem top/bottom, 4rem left/right */
   width: 90%; /* Full width for the grid */
   max-width: 60rem; /* Maximum width of the grid */
   margin: 0 auto; /* Center the grid horizontally */
-  padding: 8rem 2rem; /* Add padding to ensure space on small screens */
-  grid-auto-rows: minmax(auto, auto); /* Set the minimum and maximum row height */
-
+  padding: 4rem 2rem; /* Adjust padding if necessary */
 `;
 
+
+
 const Card = styled(motion.div)`
-  background-color: white;
+  background-color: var(--card-color);
   box-shadow: 1rem 0.6rem 0rem 0rem black;
   border-radius: 12px;
   padding: 1rem 2rem;

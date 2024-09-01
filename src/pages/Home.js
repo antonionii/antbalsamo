@@ -66,10 +66,9 @@ const cardData = [
 ];
 const Home = () => {
   return (
-    <motion.div initial="hidden" animate="show" exit="exit">
+    <motion.div  initial="hidden" animate="show" exit="exit">
       <IntroSection />
-      <div>
-      <CardComponent cards={cardData} /> {/* Only show 4 cards */}  </div>
+  <CardComponent cards={cardData} /> {/* Only show 4 cards */} 
      <AboutMe></AboutMe>
     </motion.div>
   );
