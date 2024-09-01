@@ -423,7 +423,7 @@ z-index:10;
 }
 
 .introText {
-  margin: 5rem 0rem 0rem 0rem; /* Reduce top margin */
+  margin: 8rem 0rem 0rem 0rem; /* Reduce top margin */
 }
 
 @media (min-width: 780px) {
