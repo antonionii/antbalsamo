@@ -90,18 +90,28 @@ const Nav = ({ colorSchemeType, setColorSchemeType }) => {
   return (
     <StyledNav id="nav" isLight= {isLight}>
       <motion.div
-        transition-delay="2s"
+        transition-delay="0s"
         initial="hidden"
         animate="show"
         variants={textFade}
       >
-        <h2>
-          <Link id="Logo" to="/">
-            Anthony Balsamo
-          </Link>
-        </h2>
-      </motion.div>
+
+   
+<NavItem style={{ paddingLeft: "0" }} isActive={pathname === "/"} >
+  <motion.div initial="hidden" animate="show" variants={slidedownAnim()}>
+    <Link to="/">Anthony Balsamo</Link>
+  </motion.div>
+  <Line
+    transition={{ duration: 0.5 }}
+    initial={{ width: "0%" }}
+    animate={{
+      width: pathname === "/" ? "80%" : "0%",
+    }}
+  />
+</NavItem>
+        </motion.div>
       <ul>
+
       <NavItem isActive={pathname === "/AboutMe"}>
           <motion.div initial="hidden" animate="show" variants={slidedownAnim()}>
             <Link to="/AboutMe">About</Link>
@@ -110,7 +120,7 @@ const Nav = ({ colorSchemeType, setColorSchemeType }) => {
             transition={{ duration: 0.5 }}
             initial={{ width: "0%" }}
             animate={{
-              width: pathname === "/AboutMe" ? "50%" : "0%",
+              width: pathname === "/AboutMe" ? "80%" : "0%",
             }}
           />
         </NavItem>
@@ -127,7 +137,7 @@ const Nav = ({ colorSchemeType, setColorSchemeType }) => {
             transition={{ duration: 0.5 }}
             initial={{ width: "0%" }}
             animate={{
-              width: pathname === "/Projects" ? "50%" : "0%",
+              width: pathname === "/Projects" ? "80%" : "0%",
             }}
           />
         </NavItem>
@@ -144,7 +154,7 @@ const Nav = ({ colorSchemeType, setColorSchemeType }) => {
             transition={{ duration: 0.5 }}
             initial={{ width: "0%" }}
             animate={{
-              width: pathname === "/Resume" ? "50%" : "0%",
+              width: pathname === "/Resume" ? "80%" : "0%",
             }}
           />
         </NavItem>
@@ -186,6 +196,7 @@ const StyledNav = styled(motion.div)`
   h1 {
     pointer-events: auto;
   }
+    
  .anime-contain {
   
   }
@@ -227,17 +238,21 @@ const NavItem = styled.li`
   position: relative;
 
   a {
-
-      font-family: ${(props) => (props.isActive ? "Rubik, sans-serif" : "inherit")};
-      font-size: ${(props) => (props.isActive ? "2.2rem" : "1.8rem")};
-      color: ${(props) => (props.isActive ? "var(--accent-color)" : "inherit")};
-
-      font-weight: ${(props) =>
-      props.isActive ? "900" : "regular"};
-      
+    font-family: ${(props) => (props.isActive ? "Rubik, sans-serif" : "inherit")};
+    font-size: ${(props) =>
+      props.noResize
+        ? "1.8rem" // Force font size to 1.8rem if noResize is true
+        : props.isActive
+        ? "2.2rem"
+        : "1.8rem"};
+    color: ${(props) => (props.isActive ? "var(--accent-color)" : "inherit")};
+    font-weight: ${(props) => (props.isActive ? "900" : "regular")};
     transition: color 0.3s ease, text-shadow 0.3s ease;
   }
 `;
+
+
+
 
 const Line = styled(motion.div)`
   height: .5rem;

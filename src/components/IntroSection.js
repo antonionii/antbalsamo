@@ -61,23 +61,23 @@ const IntroSection = () => {
   return (
       <StyledDescription style={{ display: "flex", alignItems: "center", marginBottom: 0 }}>
         <motion.div className={"introText"} style={{ display: "flex", marginBottom: 0 }}>
-          <motion.h1 style={{ display: "inline-block", marginRight: "10px" }} variants={slideleftAnim(0.5)}>
-            welcome
-          </motion.h1>
-
-          <motion.h1 style={{ display: "inline-block", marginRight: "10px" }} variants={slideleftAnim(1)}>
-            to
-          </motion.h1>
-
-          <motion.h1 style={{ display: "inline-block", marginRight: "10px" }} variants={slideleftAnim(1.5)}>
-            the
-          </motion.h1>
-          <motion.h1 style={{ display: "inline-block", marginRight: "10px" }} variants={slideleftAnim(2.0)}>
+          <motion.h1 style={{ display: "inline-block", marginRight: "10px" }} variants={slideleftAnim(0.1)}>
             tone
           </motion.h1>
 
-          <motion.h1 style={{ display: "inline-block" }} variants={slideleftAnim(2.5)}>
+          <motion.h1 style={{ display: "inline-block", marginRight: "10px" }} variants={slideleftAnim(0.2)}>
+            -
+          </motion.h1>
+
+          <motion.h1 style={{ display: "inline-block", marginRight: "10px" }} variants={slideleftAnim(0.3)}>
             zone
+          </motion.h1>
+          <motion.h1 style={{ display: "inline-block", marginRight: "10px" }} variants={slideleftAnim(0.4)}>
+            .
+          </motion.h1>
+
+          <motion.h1 style={{ display: "inline-block" }} variants={slideleftAnim(0.5)}>
+            com
           </motion.h1>
         </motion.div>
       </StyledDescription>

@@ -1,9 +1,10 @@
 import React from "react";
-import IntroSection from "../components/IntroSection";
+import { Link } from "react-router-dom";import IntroSection from "../components/IntroSection";
 //Animations
 import {motion} from "framer-motion";
 import AboutMe from "./AboutMe";
 import CardComponent from "../components/CardComponent";
+import Button from "../components/ButtonComponent";
 
 const cardData = [
   {
@@ -66,10 +67,12 @@ const cardData = [
 ];
 const Home = () => {
   return (
-    <motion.div  initial="hidden" animate="show" exit="exit">
+    <motion.div initial="hidden" animate="show" exit="exit">
       <IntroSection />
-  <CardComponent cards={cardData} /> {/* Only show 4 cards */} 
-     <AboutMe></AboutMe>
+      <CardComponent cards={cardData.slice(0, 4)} /> {/* Only show 4 cards */}
+      <Link to="/Projects">
+        <Button>See All Projects</Button>
+      </Link>
     </motion.div>
   );
 };
