@@ -158,8 +158,7 @@ const Nav = ({ colorSchemeType, setColorSchemeType }) => {
               id="animationContainer"
               ref={animationContainer}
               onClick={(event) => startAnimation(event)}
-              style={{ width: 30, height: 30, cursor: "pointer",
-                boxShadow: isLight ? "0px 4px 8px rgba(0,0,0,1)" : "none", borderRadius: isLight ? "50%" : "0" }}
+              style={{ width: 30, height: 30, cursor: "pointer" }}
             ></div>
           </motion.div>
         </li>

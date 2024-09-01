@@ -12,7 +12,7 @@ export const colorSchemes = {
     {
       //Yellow
       id: "1",
-      backgroundColor: "#ffde00",
+      backgroundColor: "#F0C865",
       textColor: "black",
       lineColor: "black",
       textShadow: "white",
@@ -22,7 +22,7 @@ export const colorSchemes = {
     {
       //Green
       id: "2",
-      backgroundColor: "#cef79f",
+      backgroundColor: "#B1BF93",
       textColor: "black",
       lineColor: "black",
       textShadow: "white",
@@ -42,11 +42,11 @@ export const colorSchemes = {
     {
       //Red
       id: "4",
-      backgroundColor: "#ff0000",
-      textColor: "#FCF0DE",
-      lineColor: "#FCF0DE",
+      backgroundColor: "#fff5eb",
+      textColor: "#28c074",
+      lineColor: "#28c074",
       textShadow: "black",
-      accentColor: "#FCF0DE"
+      accentColor: "#28c074"
 
     },
   ],
