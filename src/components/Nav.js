@@ -97,7 +97,7 @@ const Nav = ({ colorSchemeType, setColorSchemeType }) => {
       >
 
    
-<NavItem style={{ paddingLeft: "0" }} isActive={pathname === "/"} >
+<NavItem style={{ paddingLeft: "0", marginBottom: '0.8rem', marginTop: "1rem"  }} isActive={pathname === "/"} >
   <motion.div initial="hidden" animate="show" variants={slidedownAnim()}>
     <Link to="/">Anthony Balsamo</Link>
   </motion.div>
@@ -110,9 +110,9 @@ const Nav = ({ colorSchemeType, setColorSchemeType }) => {
   />
 </NavItem>
         </motion.div>
-      <ul>
+      <ul  style={{marginBottom: "0.8rem", marginTop: "1rem"}}>
 
-      <NavItem isActive={pathname === "/AboutMe"}>
+      <NavItem isActive={pathname === "/AboutMe"} >
           <motion.div initial="hidden" animate="show" variants={slidedownAnim()}>
             <Link to="/AboutMe">About</Link>
           </motion.div>
@@ -191,7 +191,6 @@ const StyledNav = styled(motion.div)`
   right: 0;
   z-index: 15;
   background: var(--background-color);
-  transition: 0.3s all ease-in-out;
   pointer-events: none;
   h1 {
     pointer-events: auto;
@@ -236,6 +235,7 @@ const StyledNav = styled(motion.div)`
 
 const NavItem = styled.li`
   position: relative;
+  list-style: none;
 
   a {
     font-family: ${(props) => (props.isActive ? "Rubik, sans-serif" : "inherit")};
@@ -247,7 +247,6 @@ const NavItem = styled.li`
         : "1.8rem"};
     color: ${(props) => (props.isActive ? "var(--accent-color)" : "inherit")};
     font-weight: ${(props) => (props.isActive ? "900" : "regular")};
-    transition: color 0.3s ease, text-shadow 0.3s ease;
   }
 `;
 

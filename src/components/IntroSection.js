@@ -62,23 +62,18 @@ const IntroSection = () => {
       <StyledDescription style={{ display: "flex", alignItems: "center", marginBottom: 0 }}>
         <motion.div className={"introText"} style={{ display: "flex", marginBottom: 0 }}>
           <motion.h1 style={{ display: "inline-block", marginRight: "10px" }} variants={slideleftAnim(0.1)}>
-            tone
+            a
           </motion.h1>
 
           <motion.h1 style={{ display: "inline-block", marginRight: "10px" }} variants={slideleftAnim(0.2)}>
-            -
+            placeholder
           </motion.h1>
 
           <motion.h1 style={{ display: "inline-block", marginRight: "10px" }} variants={slideleftAnim(0.3)}>
-            zone
+            here
           </motion.h1>
-          <motion.h1 style={{ display: "inline-block", marginRight: "10px" }} variants={slideleftAnim(0.4)}>
-            .
-          </motion.h1>
+        
 
-          <motion.h1 style={{ display: "inline-block" }} variants={slideleftAnim(0.5)}>
-            com
-          </motion.h1>
         </motion.div>
       </StyledDescription>
   );
