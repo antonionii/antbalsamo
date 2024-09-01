@@ -10,8 +10,6 @@ export const BasicLayout = styled(motion.div)`
   width: 100%;
   height: fit;
   padding: 0rem 0rem;
-    
-    
 
     img {
     margin: 4rem 0rem;
