@@ -210,7 +210,6 @@ const StyledNav = styled(motion.div)`
     flex-direction: column;
     padding: 2rem 1rem;
     background: var(--background-color);
-    transition: 0.3s all ease-in-out;
 
     
     #Logo {
