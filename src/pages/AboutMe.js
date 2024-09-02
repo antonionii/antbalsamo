@@ -110,8 +110,8 @@ const AboutMe = () => {
     >
  <motion.div initial="hidden" animate="show" exit="exit">
         <PageHeaderText
-      numOfItems={1}
-      itemsText={["About"]}/>
+      numOfItems={6}
+      itemsText={["📫","Very","active","gmail","user.","📫"]}/>
       </motion.div>
       <AboutContainer className="aboutContainer">
      

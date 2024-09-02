@@ -55,10 +55,13 @@ export const StyledDescription = styled(motion.div)`
   padding-bottom: 0; // Remove bottom padding
 
   h1 {
-      font-weight: bolder;
+      font-weight: bold;
       color: var(--text-color);
       width: "100%";
       height: "auto";
+      font-size: 1.6rem;
+        font-family: "Inter", system-ui;
+
   }
 
   @media (max-width: 1300px) {

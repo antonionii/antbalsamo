@@ -9,7 +9,7 @@ import {useMediaQuery} from "beautiful-react-hooks";
 import Marquee from "react-fast-marquee";
 import CardComponent from "../components/CardComponent";
 import PageHeaderText from "../components/PageHeaderText";
-
+import {BasicLayout} from "../styles";
 
 const cardData = [
   {
@@ -90,13 +90,20 @@ const Projects = () => {
   // const col2ScrollSpeed = isLargeDisplay ? "2" : "1";
 
   return (
-    <ProjectsContainer>
+    <BasicLayout
+    variants={pageAnimation}
+    initial="hidden"
+    animate="show"
+    exit="exit"
+    >
+
       <motion.div initial="hidden" animate="show" exit="exit">
         <PageHeaderText
-      numOfItems={1}
-      itemsText={["Projects"]}/>
+      numOfItems={8}
+      itemsText={["🐸","I'm","endlessly","adding","to","this","page.","🐸" ]}/>
       </motion.div>
-  <CardComponent cards={cardData} /> {/* Only show 4 cards */}  </ProjectsContainer>
+  <CardComponent cards={cardData} /> {/* Only show 4 cards */}  </BasicLayout>
+
   );
 };
 

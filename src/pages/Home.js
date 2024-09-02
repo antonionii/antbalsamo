@@ -7,6 +7,8 @@ import AboutMe from "./AboutMe";
 import CardComponent from "../components/CardComponent";
 import Button from "../components/ButtonComponent";
 import { useHistory } from "react-router-dom";
+import {BasicLayout} from "../styles";
+import {pageAnimation, slideleftAnim, sliderightAnim} from "../animation";
 
 const cardData = [
   {
@@ -74,12 +76,18 @@ const cardData = [
     history.push("/Projects"); // Navigate to the /projects path
   };
   return (
+    <BasicLayout
+variants={pageAnimation}
+initial="hidden"
+animate="show"
+exit="exit"
+>
     <motion.div initial="hidden" animate="show" exit="exit">
   <PageHeaderText
-      numOfItems={1}
-      itemsText={["Home"]}
+      numOfItems={7}
+      itemsText={["👇","Here","are","some","recent","highlights.","👇",]}
     />      <CardComponent cards={cardData.slice(0, 4)} /> {/* Only show 4 cards */}
-      <Button onClick={handleClick}>See All Projects</Button>    </motion.div>
+      <Button onClick={handleClick}>See All Projects</Button>    </motion.div></BasicLayout>
   );
 };
 

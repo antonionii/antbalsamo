@@ -57,7 +57,7 @@ const PageHeaderText = ({ numOfItems, itemsText }) => {
         {items.map((text, index) => (
           <motion.h1
             key={index}
-            style={{ display: "inline-block", marginRight: "10px" }}
+            style={{ display: "inline-block", marginRight: ".6rem" }}
             variants={slideleftAnim(0.1 * (index + 1))}
           >
             {text}
