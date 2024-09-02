@@ -36,7 +36,7 @@ const Card = styled(motion.div)`
 
 const CardImage = styled.img`
   width: calc(100% + 4rem) !important;; /* Adjust width to compensate for the padding in the Card */
-  height: auto !important;
+  //height: auto !important;
   max-height: 14rem !important;
   margin-top: 1rem !important;
   margin-left: -2rem !important; /* Offset to the left to account for the card's padding */

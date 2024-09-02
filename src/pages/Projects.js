@@ -90,7 +90,7 @@ const Projects = () => {
   // const col2ScrollSpeed = isLargeDisplay ? "2" : "1";
 
   return (
-    <BasicLayout
+    <div
     variants={pageAnimation}
     initial="hidden"
     animate="show"
@@ -102,7 +102,7 @@ const Projects = () => {
       numOfItems={8}
       itemsText={["🐸","I'm","endlessly","adding","to","this","page.","🐸" ]}/>
       </motion.div>
-  <CardComponent cards={cardData} /> {/* Only show 4 cards */}  </BasicLayout>
+  <CardComponent cards={cardData} /> {/* Only show 4 cards */}  </div>
 
   );
 };

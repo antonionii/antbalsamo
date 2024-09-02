@@ -76,7 +76,7 @@ const cardData = [
     history.push("/Projects"); // Navigate to the /projects path
   };
   return (
-    <BasicLayout
+    <div
 variants={pageAnimation}
 initial="hidden"
 animate="show"
@@ -87,7 +87,7 @@ exit="exit"
       numOfItems={7}
       itemsText={["👇","Here","are","some","recent","highlights.","👇",]}
     />      <CardComponent cards={cardData.slice(0, 4)} /> {/* Only show 4 cards */}
-      <Button onClick={handleClick}>See All Projects</Button>    </motion.div></BasicLayout>
+      <Button onClick={handleClick}>See All Projects</Button>    </motion.div></div>
   );
 };
 
