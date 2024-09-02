@@ -17,15 +17,16 @@ const CardGrid = styled(motion.div)`
 
 
 const Card = styled(motion.div)`
+
   background-color: var(--card-color);
   box-shadow: 1rem 0.6rem 0rem 0rem black;
   border-radius: 12px;
-  padding: 1rem 2rem;
+  padding: 1rem 2rem !important;
   text-align: left;
   text-decoration: none;
   color: black;
-  height: auto;
-  width: 100%; /* Ensure the card takes up the full width of its grid column */
+  height: auto !important;
+  width: 100% !important; /* Ensure the card takes up the full width of its grid column */
 
   &:hover {
     box-shadow: 2rem 1rem 0rem 0rem black;
@@ -34,28 +35,28 @@ const Card = styled(motion.div)`
 `;
 
 const CardImage = styled.img`
-  width: calc(100% + 4rem); /* Adjust width to compensate for the padding in the Card */
-  height: auto;
-  max-height: 14rem;
-  margin-top: 1rem;
-  margin-left: -2rem; /* Offset to the left to account for the card's padding */
-  margin-right: -2rem; /* Offset to the right to account for the card's padding */
-  object-fit: cover;
+  width: calc(100% + 4rem) !important;; /* Adjust width to compensate for the padding in the Card */
+  height: auto !important;
+  max-height: 14rem !important;
+  margin-top: 1rem !important;
+  margin-left: -2rem !important; /* Offset to the left to account for the card's padding */
+  margin-right: -2rem !important;/* Offset to the right to account for the card's padding */
+  object-fit: cover !important;
 `;
 
 const Bubble = styled.div`
   border-color:black;
   border-width: 6px;
-  border-radius: 6px;
-  margin-top: 1rem;
-  padding: .7rem;
-  width: auto;
+  border-radius: 6px ;
+  margin-top: 1rem !important;
+  padding: .7rem !important;
+  width: auto !important;
   max-width: 55%;
-  margin-left: auto;
-  margin-right: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
 
   background-color: var(--background-color);
   transition: box-shadow 0.3s ease, transform 0.3s ease;

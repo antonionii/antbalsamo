@@ -55,7 +55,7 @@ export const StyledDescription = styled(motion.div)`
   padding-bottom: 0; // Remove bottom padding
 
   h1 {
-      font-weight: bold;
+      font-weight: bolder;
       color: var(--text-color);
       width: "100%";
       height: "auto";
