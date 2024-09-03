@@ -21,6 +21,8 @@ const Tags = () => {
     <div className="link-container">
       <motion.a
         variants={sliderightAnim(0.3)}
+        initial="hidden"
+        animate="show"
         className="link twitter"
         href="https://www.linkedin.com/in/antbalsamo/"
       >
@@ -28,6 +30,8 @@ const Tags = () => {
       </motion.a>
       <motion.a
         variants={sliderightAnim(0.4)}
+        initial="hidden"
+        animate="show"
         className="link github"
         href="https://github.com/antonionii/"
       >
@@ -36,6 +40,8 @@ const Tags = () => {
       <motion.div
         onClick={handleEmailClick}
         variants={sliderightAnim(0.5)}
+        initial="hidden"
+        animate="show"
         className="link dribbble"
         style={{
           cursor: "pointer",
@@ -44,11 +50,14 @@ const Tags = () => {
           textAlign: "center",
           borderRadius: "8px", // Add border radius for a smoother look
         }}
-        initial={{ opacity: 1 }}
-        animate={{ opacity: isCopied ? 0.8 : 1 }}
-        transition={{ ease: "easeInOut", duration: 0.3 }}
       >
-        <a style={{ display: "block", whiteSpace: "nowrap" }}>{emailText}</a>
+        <motion.a
+          style={{ display: "block", whiteSpace: "nowrap" }}
+          animate={{ opacity: isCopied ? 0.8 : 1 }}
+          transition={{ ease: "easeInOut", duration: 0.3 }}
+        >
+          {emailText}
+        </motion.a>
       </motion.div>
     </div>
   );

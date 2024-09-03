@@ -163,10 +163,20 @@ display: flex;
 
 .link-container {
   max-width: 600px;
-  margin: 2rem auto 0rem auto;
+  margin: 1rem auto 0rem auto;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+    margin: 1rem auto 0rem auto;
+  @media (min-width: 780px) {
+    margin: 1rem 0rem -1rem 0rem;
+
+}
+
+
+@media (mid-width: 1300px){
+display: flex;
+}
 }
 
 .link {
