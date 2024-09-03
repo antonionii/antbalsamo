@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useWindowScroll, useMediaQuery } from "beautiful-react-hooks";
 import { StyledDescription } from "../styles/styles";
 import useDebounce from "../hooks/use-debounce";
+import styled from "styled-components";
 
 const HeroText = ({ numOfItems, itemsText, variant, fontSize, fontColor, fontWeight }) => {
   const [scrollY, setScrollY] = useState(window.scrollY);
@@ -58,11 +59,10 @@ const HeroText = ({ numOfItems, itemsText, variant, fontSize, fontColor, fontWei
         style={{ display: "flex" }}
       >
         {items.map((text, index) => (
-          <motion.h1
+          <StyledMotionH1  
             key={index}
             style={{
               fontWeight: fontWeight || "700", // Apply the fontWeight prop or default to "400"
-              marginTop: "2rem",
               display: "inline-block",
               marginRight: ".6rem",
               fontSize: fontSize || "2rem", // Apply the fontSize prop or default to "2rem"
@@ -75,11 +75,21 @@ const HeroText = ({ numOfItems, itemsText, variant, fontSize, fontColor, fontWei
             }
           >
             {text}
-          </motion.h1>
-        ))}
+            </StyledMotionH1>        ))}
       </motion.div>
     </StyledDescription>
   );
 };
 
+const StyledMotionH1 = styled(motion.h1)`
+  margin-top: .2rem;
+
+  @media (min-width: 780px) {
+    margin-top: 1rem;
+  }
+
+  @media (min-width: 1300px) {
+    margin-top: 1rem;
+  }
+`;
 export default HeroText;

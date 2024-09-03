@@ -79,6 +79,8 @@ const Projects = () => {
   // const [element, controls] = useScroll();
   // const [element2, controls2] = useScroll();
   const w = window.innerWidth;
+  const accentTextColor = getComputedStyle(document.documentElement).getPropertyValue('--accentText-color').trim();
+
   console.log(w);
 
   useEffect(() => {
@@ -104,7 +106,7 @@ const Projects = () => {
         itemsText={["🐸","I'm","endlessly","adding","to","this","page.","🐸" ]}
         variant={slidedownAnim} 
         fontSize="1.4rem" 
-        fontColor= "var(--text-color)"
+        fontColor={accentTextColor}
 
       />
       </motion.div>

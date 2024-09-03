@@ -144,18 +144,8 @@ const Nav = ({ colorSchemeType, setColorSchemeType }) => {
           />
         </NavItem>
         
-      <NavItem isActive={pathname === "/Contact"}>
-          <motion.div initial="hidden" animate="show" variants={slidedownAnim()}>
-            <Link to="/Contact">Contact</Link>
-          </motion.div>
-          <Line
-            transition={{ duration: 0.5 }}
-            initial={{ width: "0%" }}
-            animate={{
-              width: pathname === "/Contact" ? "80%" : "0%",
-            }}
-          />
-        </NavItem>
+     
+
         <li style={{display: "flex", alignItems: "flex-end", justifyContent: "flex-end", flex: "1" }}>
           <motion.div
             initial="hidden"

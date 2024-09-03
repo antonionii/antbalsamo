@@ -207,7 +207,6 @@ display: flex;
 }
 
 .bg-section {
-  box-shadow: 1rem 0.6rem 0rem 0rem black;
 
     background-color: var(--card-color); /* Equivalent to bg-gray-100 */
 }

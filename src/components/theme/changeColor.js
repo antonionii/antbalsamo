@@ -24,7 +24,9 @@ export const colorSchemes = {
       cardColor: "white"
     },
 
-    {
+    
+      /*
+      {
       //Green
       id: "2",
       backgroundColor: "#B1BF93",
@@ -36,7 +38,7 @@ export const colorSchemes = {
 
       cardColor: "white"
 
-    },
+    },*/
     {
       //Blue
       id: "3",

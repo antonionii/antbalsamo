@@ -71,7 +71,6 @@ const cardData = [
   },
   // Add more cards as needed
 ];const Home = () => {
-  const textColor = getComputedStyle(document.documentElement).getPropertyValue('var(--text-color)').trim();
 
   const accentTextColor = getComputedStyle(document.documentElement).getPropertyValue('--accentText-color').trim();
   const history = useHistory();
@@ -89,7 +88,10 @@ const cardData = [
         variant={slideleftAnim} 
         fontColor={accentTextColor}
       />
+            <HeroImage src={"https://i.imgur.com/kxtX2ZX.png"} alt={"picture of me"} />
+
       <Tags />
+
     </StyledSection>
   
     <div style={{  textAlign: "center" }}>
@@ -108,30 +110,49 @@ const cardData = [
   
   );
 };
+const HeroImage = styled.img`
+  width: calc(100% + 2rem); /* Make the image wider to cover padding */
+  height: auto;
+  max-height: 20rem;
+  margin-top: 1rem;
+  margin-left: -1rem; /* Offset to the left to account for the section's padding */
+  margin-right: -1rem; /* Offset to the right to account for the section's padding */
+  object-fit: cover;
+
+  object-position: center 16%; /* Move the image up */
+  @media (min-width: 780px) {
+  width: calc(100% + 4rem); /* Make the image wider to cover padding */
+  margin-left: -2rem; /* Offset to the left to account for the section's padding */
+  }
+
+  @media (min-width: 1300px) {
+  width: calc(100% + 4rem); /* Make the image wider to cover padding */
+  }
+`;
+
 
 const StyledSection = styled.section`
   width: 80%;
   margin: 12rem auto 0 auto;  /* Auto margins for centering */
-  padding: 1rem;
+    padding: 1rem;
   border-radius: 1rem;
   background-color: var(--card-color);
   color: var(--text-color);
   box-sizing: border-box;
+  overflow: hidden; /* Ensures that content, like the image, stays within the section */
 
   @media (min-width: 780px) {
     width: 55%;
     margin: 12rem auto 0 auto; /* Maintain top margin consistency */
-    padding: 2rem;
+    padding: 0rem 2rem 2rem 2rem;
   }
 
   @media (min-width: 1300px) {
     width: 35%;
     margin: 12rem auto 0 auto; /* Maintain top margin consistency */
-    padding: 2rem;
+    padding: 0rem 2rem 2rem 2rem;
   }
 `;
-
-
 const ResponsiveHeroText = styled(HeroText)`
   h1 {
     font-size: 1.5rem;

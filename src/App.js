@@ -4,7 +4,6 @@ import GlobalStyle from "./styles/GlobalStyle";
 //Import Pages
 import Nav from "./components/Nav";
 import Home from "./pages/Home";
-import Contact from "./pages/Contact";
 import Projects from "./pages/Projects";
 import Resume from "./pages/Resume";
 
@@ -93,9 +92,6 @@ function App() {
               </Route>
               <Route path="/Resume">
                 <Resume />
-              </Route>
-              <Route path="/Contact">
-                <Contact />
               </Route>
             </Switch>
           </AnimatePresence>
