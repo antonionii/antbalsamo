@@ -81,14 +81,17 @@ const cardData = [
   };
   return (
     <motion.div initial="hidden" animate="show" exit="exit" style={{ display: 'block' }}>
-    <StyledSection className="bg-section">
+    <StyledSection className="bg-section" >
       <ResponsiveHeroText 
         numOfItems={5} 
-        itemsText={["Designing", "scalable", "products",]} 
+        itemsText={["Product", "+","Game", "Designer",]} 
         variant={slideleftAnim} 
         fontColor={accentTextColor}
+        
       />
             <HeroImage src={"https://i.imgur.com/kxtX2ZX.png"} alt={"picture of me"} />
+            <CardText> Bringing creative and delightful experiences into scalable products.</CardText>
+            <CardText> If you'd like to work together, drop me a message at my email below.</CardText>
 
       <Tags />
 
@@ -110,6 +113,16 @@ const cardData = [
   
   );
 };
+
+
+const CardText = styled.p`
+  font-size: 1.2rem;
+  color: black;
+  font-weight: 500;
+  margin-top: 5px;
+  padding: 0.5rem 0rem 0rem 0rem;
+  transition: font-weight 0.3s ease, text-shadow 0.3s ease;
+`;
 const HeroImage = styled.img`
   width: calc(100% + 2rem); /* Make the image wider to cover padding */
   height: auto;
@@ -154,8 +167,10 @@ const StyledSection = styled.section`
   }
 `;
 const ResponsiveHeroText = styled(HeroText)`
+  text-align: left; /* Ensure the hero text aligns to the left */
   h1 {
     font-size: 1.5rem;
+    text-align: left; /* Align individual h1 elements to the left */
 
     @media (min-width: 780px) {
       font-size: 2.2rem;
@@ -166,4 +181,5 @@ const ResponsiveHeroText = styled(HeroText)`
     }
   }
 `;
+
 export default Home;

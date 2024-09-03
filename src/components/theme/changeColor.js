@@ -33,7 +33,7 @@ export const colorSchemes = {
       textColor: "black",
       lineColor: "black",
       textShadow: "white",
-      accentColor: "black",
+      accentColor: "black",y
       accentTextColor: "black",
 
       cardColor: "white"
@@ -56,8 +56,8 @@ export const colorSchemes = {
       //Cream
       id: "4",
       backgroundColor: "#fff5eb",
-      textColor: "#28c074",
-      lineColor: "#28c074",
+      textColor: "black",
+      lineColor: "black",
       textShadow: "black",
       accentColor: "#28c074",
       accentTextColor: "black",

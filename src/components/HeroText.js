@@ -52,10 +52,9 @@ const HeroText = ({ numOfItems, itemsText, variant, fontSize, fontColor, fontWei
 
   return (
     <StyledDescription
-      style={{ display: "flex", alignItems: "center", marginBottom: 0 }}
+      style={{ display: "flex", alignItems: "left", marginBottom: 0 }}
     >
       <motion.div
-        className={"introText"}
         style={{ display: "flex" }}
       >
         {items.map((text, index) => (

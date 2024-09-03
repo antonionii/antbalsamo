@@ -234,7 +234,7 @@ const NavItem = styled.li`
         : props.isActive
         ? "2.2rem"
         : "1.8rem"};
-    color: ${(props) => (props.isActive ? "var(--accent-color)" : "inherit")};
+    color: ${(props) => (props.isActive ? "var(--text-color)" : "inherit")};
     font-weight: ${(props) => (props.isActive ? "900" : "regular")};
   }
 `;
