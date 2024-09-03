@@ -97,7 +97,8 @@ const Projects = () => {
     exit="exit"
     >
 
-      <motion.div initial="hidden" animate="show" exit="exit">
+      <motion.div initial="hidden" animate="show" exit="exit" style={{  textAlign: "center" }}>
+
       <PageHeaderText 
         numOfItems={8} 
         itemsText={["🐸","I'm","endlessly","adding","to","this","page.","🐸" ]}

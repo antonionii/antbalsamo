@@ -36,7 +36,7 @@ const Resume = () => {
 
   return (
     <div>
-      <motion.div initial="hidden" animate="show" exit="exit">
+      <motion.div initial="hidden" animate="show" exit="exit" style={{  textAlign: "center" }}>
       <PageHeaderText
       numOfItems={4}
       variant={slidedownAnim} 

@@ -207,10 +207,8 @@ display: flex;
 }
 
 .bg-section {
-margin 12rem 0rem 0rem 0rem;
   box-shadow: 1rem 0.6rem 0rem 0rem black;
 
-  padding: 0rem 0rem 2rem 0rem;
     background-color: var(--card-color); /* Equivalent to bg-gray-100 */
 }
 

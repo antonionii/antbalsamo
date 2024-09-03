@@ -93,12 +93,12 @@ export const slideText = {
 };
 
 export const slidedownAnim = (delay = 0) => ({
-  hidden: { y: -60, opacity: 0 },
+  hidden: { y: -15, opacity: 0 },
   show: {
     y: 0,
     opacity: 1,
 
-    transition: { duration: 0.5, ease: "easeOut", delay },
+    transition: { duration: 0.2, ease: "easeOut", delay },
   },
 });
 export const sliderightAnim = (delay = 0) => ({

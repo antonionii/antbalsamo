@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useWindowScroll, useMediaQuery } from "beautiful-react-hooks";
 import { StyledDescription } from "../styles/styles";
 import useDebounce from "../hooks/use-debounce";
+import styled from "styled-components";
 
 const PageHeaderText = ({ numOfItems, itemsText, variant, fontSize, fontColor, fontWeight }) => {
   const [scrollY, setScrollY] = useState(window.scrollY);
@@ -48,39 +49,52 @@ const PageHeaderText = ({ numOfItems, itemsText, variant, fontSize, fontColor, f
 
   // Ensure itemsText has enough text items for numOfItems
   const items = itemsText.slice(0, numOfItems);
-
+  
   return (
-    <StyledDescription
-      style={{ display: "flex", alignItems: "center", marginBottom: 0 }}
-    >
-      <motion.div
-        className={"introText"}
-        style={{ display: "flex", }}
-      >
-        {items.map((text, index) => (
-          <motion.h1
-            key={index}
-            style={{
-              marginTop: "2rem",
-              display: "inline-block",
-              marginRight: ".6rem",
-              fontWeight: fontWeight || "600", // Apply the fontWeight prop or default to "400"
-              fontSize: fontSize || "4rem", // Apply the fontSize prop or default to "2rem"
-              color: fontColor || "var(--text-color)"
-              , // Apply the fontColor prop or default to a CSS variable
-            }}
-            variants={
-              typeof variant === "function"
-                ? variant(0.1 * (index + 1))
-                : variant
-            }
-          >
-            {text}
-          </motion.h1>
-        ))}
-      </motion.div>
-    </StyledDescription>
+    <StyledMotionText>
+      <StyledDescription style={{ display: "flex", alignItems: "center" }}>
+        <motion.div className={"introText"} style={{ display: "flex", gap: "0.4rem" }}>
+          {items.map((text, index) => (
+            <motion.h1
+              key={index}
+              style={{
+                display: "inline-block",
+
+                fontWeight: fontWeight || "600",
+                fontSize: fontSize || "4rem",
+                color: fontColor || "var(--accentText-color)"
+              }}
+              variants={typeof variant === "function" ? variant(0.1 * (index + 1)) : variant}
+            >
+              {text}
+            </motion.h1>
+          ))}
+        </motion.div>
+      </StyledDescription>
+    </StyledMotionText>
   );
 };
+
+
+const StyledMotionText = styled.section`
+  display: inline-block; /* Ensure the width and height hug the content */
+  margin: 8rem auto 0 auto;  /* Center horizontally and set top margin */
+  padding: .5rem .5rem; /* Add padding for better visual spacing */
+  border-radius: 1rem;
+  background-color: var(--card-color);
+  color: var(--text-color);
+  box-sizing: border-box;
+  text-align: center; /* Center text content */
+  box-shadow: .6rem 0.6rem 0rem 0rem black;
+
+  @media (min-width: 780px) {
+    padding: .5rem .5rem; /* Increase padding on larger screens */
+  }
+
+  @media (min-width: 1300px) {
+    padding: .5rem .5rem; /* Increase padding on larger screens */
+  }
+`;
+
 
 export default PageHeaderText;

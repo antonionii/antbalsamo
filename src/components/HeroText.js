@@ -61,7 +61,6 @@ const HeroText = ({ numOfItems, itemsText, variant, fontSize, fontColor, fontWei
           <motion.h1
             key={index}
             style={{
-              fontFamily: '"Rubik", sans-serif', // Apply the Rubik font family
               fontWeight: fontWeight || "700", // Apply the fontWeight prop or default to "400"
               marginTop: "2rem",
               display: "inline-block",

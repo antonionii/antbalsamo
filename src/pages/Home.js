@@ -1,4 +1,5 @@
 import React from "react";
+import styled from "styled-components";
 import { Link } from "react-router-dom";
 import PageHeaderText from "../components/PageHeaderText";
 import HeroText from "../components/HeroText";
@@ -80,37 +81,68 @@ const cardData = [
     history.push("/Projects"); // Navigate to the /projects path
   };
   return (
-    <div
-variants={pageAnimation}
-initial="hidden"
-animate="show"
-exit="exit"
->
-
-    <motion.div initial="hidden" animate="show" exit="exit">
-      <section style = {{width: "45%", margin: "12rem auto auto auto", borderRadius: "1rem"}}className="bg-section">
-    <HeroText 
+    <motion.div initial="hidden" animate="show" exit="exit" style={{ display: 'block' }}>
+    <StyledSection className="bg-section">
+      <ResponsiveHeroText 
         numOfItems={5} 
         itemsText={["Designing", "scalable", "products",]} 
         variant={slideleftAnim} 
-        fontSize="2.2rem" 
         fontColor={accentTextColor}
       />
-    <Tags />
-    </section>
-    <div style={{margin:"6rem 0rem 0rem 0rem"}}>
-    <PageHeaderText 
+      <Tags />
+    </StyledSection>
+  
+    <div style={{  textAlign: "center" }}>
+      <PageHeaderText 
         numOfItems={7} 
-        itemsText={["👇","Here","are","some","recent","highlights.","👇",]}
+        itemsText={["👇","Here ","are ","some ","recent ","highlights.","👇",]}
         variant={slidedownAnim} 
         fontSize="1.4rem"
-        fontColor= "var(--text-color)"
-
+        fontColor={accentTextColor}
       />
-      </div>
-      <CardComponent cards={cardData.slice(0, 4)} /> {/* Only show 4 cards */}
-      <Button onClick={handleClick}>See All Projects</Button>    </motion.div></div>
+    </div>
+  
+    <CardComponent cards={cardData.slice(0, 4)} />
+    <Button onClick={handleClick}>See All Projects</Button>
+  </motion.div>
+  
   );
 };
 
+const StyledSection = styled.section`
+  width: 80%;
+  margin: 12rem auto 0 auto;  /* Auto margins for centering */
+  padding: 1rem;
+  border-radius: 1rem;
+  background-color: var(--card-color);
+  color: var(--text-color);
+  box-sizing: border-box;
+
+  @media (min-width: 780px) {
+    width: 55%;
+    margin: 12rem auto 0 auto; /* Maintain top margin consistency */
+    padding: 2rem;
+  }
+
+  @media (min-width: 1300px) {
+    width: 35%;
+    margin: 12rem auto 0 auto; /* Maintain top margin consistency */
+    padding: 2rem;
+  }
+`;
+
+
+const ResponsiveHeroText = styled(HeroText)`
+  h1 {
+    font-size: 1.5rem;
+
+    @media (min-width: 780px) {
+      font-size: 2.2rem;
+    }
+
+    @media (min-width: 1300px) {
+      font-size: 3rem;
+    }
+  }
+`;
 export default Home;
