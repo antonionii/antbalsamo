@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 //Images
 //Animations
 import {motion} from "framer-motion";
-import {pageAnimation} from "../styles/animation";
+import {pageAnimation, slidedownAnim} from "../styles/animation";
 import {useMediaQuery} from "beautiful-react-hooks";
 import Marquee from "react-fast-marquee";
 import CardComponent from "../components/CardComponent";
@@ -98,9 +98,14 @@ const Projects = () => {
     >
 
       <motion.div initial="hidden" animate="show" exit="exit">
-        <PageHeaderText
-      numOfItems={8}
-      itemsText={["🐸","I'm","endlessly","adding","to","this","page.","🐸" ]}/>
+      <PageHeaderText 
+        numOfItems={8} 
+        itemsText={["🐸","I'm","endlessly","adding","to","this","page.","🐸" ]}
+        variant={slidedownAnim} 
+        fontSize="1.4rem" 
+        fontColor= "var(--text-color)"
+
+      />
       </motion.div>
   <CardComponent cards={cardData} /> {/* Only show 4 cards */}  </div>
 

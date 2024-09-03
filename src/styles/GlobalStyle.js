@@ -130,18 +130,18 @@ button{
 
 
 .introText {
-  margin: 8rem 0rem 0rem 0rem; /* Reduce top margin */
+  margin: auto; /* Reduce top margin */
 }
 
 @media (min-width: 780px) {
   .introText {
-    margin: 6rem 0rem 0rem 0rem; /* Reduce margin for medium screens */
+    margin: auto; /* Reduce margin for medium screens */
   }
 }
 
 @media (min-width: 1300px) {
   .introText {
-    margin: 4rem 0rem 0rem 0rem; /* Reduce margin for large screens */
+    margin: auto; /* Reduce margin for large screens */
   }
 }
 
@@ -159,5 +159,93 @@ button{
 display: flex;
 }
 }
+
+
+.link-container {
+  max-width: 600px;
+  margin: 2rem auto 0rem auto;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.link {
+  margin: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.375rem; /* Equivalent to rounded in Tailwind */
+  text-decoration: none;
+  color: #1a202c; /* Default text color */
+  display: inline-block;
+  transition: background-color 0.3s ease;
+}
+
+.twitter {
+  background-color: #cfe8ff; /* bg-blue-200 */
+}
+
+.twitter:hover {
+  background-color: #9bd0ff; /* hover:bg-blue-300 */
+  color: #1a202c; /* text-blue-800 */
+}
+
+.github {
+  background-color: #e2e8f0; /* bg-gray-300 */
+}
+
+.github:hover {
+  background-color: #cbd5e0; /* hover:bg-gray-400 */
+  color: #1a202c; /* text-gray-800 */
+}
+
+.dribbble {
+  background-color: #fed7e2; /* bg-pink-200 */
+}
+
+.dribbble:hover {
+  background-color: #fbb6ce; /* hover:bg-pink-300 */
+  color: #702459; /* text-pink-800 */
+}
+
+.bg-section {
+margin 12rem 0rem 0rem 0rem;
+  box-shadow: 1rem 0.6rem 0rem 0rem black;
+
+  padding: 0rem 0rem 2rem 0rem;
+    background-color: var(--card-color); /* Equivalent to bg-gray-100 */
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 1rem;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 4rem 0;
+    margin-bottom:auto;
+
+}
+
+.heading {
+  font-size: 2.5rem; /* Equivalent to text-4xl */
+  font-weight: bold;
+  margin-top: 0.5rem; /* Equivalent to mt-2 */
+    margin-bottom:auto;
+        color: var(--accentText-color);
+
+
+}
+
+.subheading {
+  font-size: 1.5rem; /* Equivalent to text-2xl */
+    color: var(--accentText-color);
+  text-align: center;
+  margin-bottom:auto;
+}
+
+
 `;
 export default GlobalStyle;

@@ -44,6 +44,8 @@ export const AboutLayout = styled(motion.div)`
 `;
 
 export const StyledDescription = styled(motion.div)`
+  margin: 0 auto;
+
   display: flex;
   flex-direction: column;
   align-items: left;
@@ -61,12 +63,14 @@ export const StyledDescription = styled(motion.div)`
       height: "auto";
       font-size: 1.6rem;
         font-family: "Inter", system-ui;
+        
 
   }
 
   @media (max-width: 1300px) {
     padding: 0;
-    margin: 0;  // Remove or reduce bottom margin
+  margin: 0 auto;
+  
   }
 
   show: {

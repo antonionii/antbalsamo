@@ -1,6 +1,6 @@
 import React from "react";
 import {motion} from "framer-motion";
-import {pageAnimation, slideleftAnim, sliderightAnim} from "../styles/animation";
+import {pageAnimation, slideleftAnim, sliderightAnim, slidedownAnim} from "../styles/animation";
 import styled from "styled-components";
 import {AboutLayout} from "../styles/styles";
 import PageHeaderText from "../components/PageHeaderText";
@@ -112,9 +112,12 @@ const Contact = () => {
       exit="exit"
     >
  <motion.div initial="hidden" animate="show" exit="exit">
-        <PageHeaderText
+      <PageHeaderText 
       numOfItems={6}
-      itemsText={["📫","Very","active","gmail","user.","📫"]}/>
+      itemsText={["📫","Very","active","gmail","user.","📫"]}
+        variant={slidedownAnim} 
+        fontSize="1.4rem" 
+      />
       </motion.div>
       <ContactContainer className="contactContainer">
      

@@ -26,9 +26,11 @@ const StyledButton = styled.button`
   word-break: break-word; /* Ensure text wraps inside the box */
   overflow: hidden; /* Prevent overflowing content */
   &:hover {
+    background-color: var(--card-color);
+
     box-shadow: 1rem 1rem 0rem 0rem black;
     transform: translateY(-10px);
-    color: var(--text-color); /* Use a variable for text color, or a specific color */
+    color: black; /* Use a variable for text color, or a specific color */
   }
 `;
 

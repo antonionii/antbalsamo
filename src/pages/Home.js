@@ -1,14 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import PageHeaderText from "../components/PageHeaderText";
+import HeroText from "../components/HeroText";
+
 //Animations
 import {motion} from "framer-motion";
 import CardComponent from "../components/CardComponent";
 import Button from "../components/ButtonComponent";
 import { useHistory } from "react-router-dom";
 import {BasicLayout} from "../styles/styles";
-import {pageAnimation, slideleftAnim, sliderightAnim} from "../styles/animation";
-import Hero from "../components/hero";
+import {pageAnimation, slidedownAnim, slideleftAnim, sliderightAnim} from "../styles/animation";
+import Tags from "../components/Tags";
 const cardData = [
   {
     title: "Notification System",
@@ -68,6 +70,9 @@ const cardData = [
   },
   // Add more cards as needed
 ];const Home = () => {
+  const textColor = getComputedStyle(document.documentElement).getPropertyValue('var(--text-color)').trim();
+
+  const accentTextColor = getComputedStyle(document.documentElement).getPropertyValue('--accentText-color').trim();
   const history = useHistory();
 
   const handleClick = (event) => {
@@ -81,12 +86,29 @@ initial="hidden"
 animate="show"
 exit="exit"
 >
+
     <motion.div initial="hidden" animate="show" exit="exit">
-    <Hero />
-  <PageHeaderText
-      numOfItems={7}
-      itemsText={["👇","Here","are","some","recent","highlights.","👇",]}
-    />      <CardComponent cards={cardData.slice(0, 4)} /> {/* Only show 4 cards */}
+      <section style = {{width: "45%", margin: "12rem auto auto auto", borderRadius: "1rem"}}className="bg-section">
+    <HeroText 
+        numOfItems={5} 
+        itemsText={["Designing", "scalable", "products",]} 
+        variant={slideleftAnim} 
+        fontSize="2.2rem" 
+        fontColor={accentTextColor}
+      />
+    <Tags />
+    </section>
+    <div style={{margin:"6rem 0rem 0rem 0rem"}}>
+    <PageHeaderText 
+        numOfItems={7} 
+        itemsText={["👇","Here","are","some","recent","highlights.","👇",]}
+        variant={slidedownAnim} 
+        fontSize="1.4rem"
+        fontColor= "var(--text-color)"
+
+      />
+      </div>
+      <CardComponent cards={cardData.slice(0, 4)} /> {/* Only show 4 cards */}
       <Button onClick={handleClick}>See All Projects</Button>    </motion.div></div>
   );
 };

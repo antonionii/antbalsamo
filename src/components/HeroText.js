@@ -5,7 +5,7 @@ import { useWindowScroll, useMediaQuery } from "beautiful-react-hooks";
 import { StyledDescription } from "../styles/styles";
 import useDebounce from "../hooks/use-debounce";
 
-const PageHeaderText = ({ numOfItems, itemsText, variant, fontSize, fontColor, fontWeight }) => {
+const HeroText = ({ numOfItems, itemsText, variant, fontSize, fontColor, fontWeight }) => {
   const [scrollY, setScrollY] = useState(window.scrollY);
   const [screenHeight, setScreenHeight] = useState(null);
   const [circle1XPos, setCircle1XPos] = useState(0);
@@ -55,19 +55,19 @@ const PageHeaderText = ({ numOfItems, itemsText, variant, fontSize, fontColor, f
     >
       <motion.div
         className={"introText"}
-        style={{ display: "flex", }}
+        style={{ display: "flex" }}
       >
         {items.map((text, index) => (
           <motion.h1
             key={index}
             style={{
+              fontFamily: '"Rubik", sans-serif', // Apply the Rubik font family
+              fontWeight: fontWeight || "700", // Apply the fontWeight prop or default to "400"
               marginTop: "2rem",
               display: "inline-block",
               marginRight: ".6rem",
-              fontWeight: fontWeight || "600", // Apply the fontWeight prop or default to "400"
-              fontSize: fontSize || "4rem", // Apply the fontSize prop or default to "2rem"
-              color: fontColor || "var(--text-color)"
-              , // Apply the fontColor prop or default to a CSS variable
+              fontSize: fontSize || "2rem", // Apply the fontSize prop or default to "2rem"
+              color: fontColor || "var(--accentText-color)", // Apply the fontColor prop or default to a CSS variable
             }}
             variants={
               typeof variant === "function"
@@ -83,4 +83,4 @@ const PageHeaderText = ({ numOfItems, itemsText, variant, fontSize, fontColor, f
   );
 };
 
-export default PageHeaderText;
+export default HeroText;
