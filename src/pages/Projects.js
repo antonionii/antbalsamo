@@ -4,12 +4,12 @@ import {Link} from "react-router-dom";
 //Images
 //Animations
 import {motion} from "framer-motion";
-import {pageAnimation} from "../animation";
+import {pageAnimation} from "../styles/animation";
 import {useMediaQuery} from "beautiful-react-hooks";
 import Marquee from "react-fast-marquee";
 import CardComponent from "../components/CardComponent";
 import PageHeaderText from "../components/PageHeaderText";
-import {BasicLayout} from "../styles";
+import {BasicLayout} from "../styles/styles";
 
 const cardData = [
   {

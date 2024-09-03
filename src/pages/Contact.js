@@ -1,8 +1,8 @@
 import React from "react";
 import {motion} from "framer-motion";
-import {pageAnimation, slideleftAnim, sliderightAnim} from "../animation";
+import {pageAnimation, slideleftAnim, sliderightAnim} from "../styles/animation";
 import styled from "styled-components";
-import {BasicLayout} from "../styles";
+import {AboutLayout} from "../styles/styles";
 import PageHeaderText from "../components/PageHeaderText";
 
 const ProfileImage = styled(motion.div)`
@@ -52,7 +52,7 @@ const StyledContact = styled(motion.div)`
       }
     }
   `;
-const AboutContainer = styled(motion.div)`
+const ContactContainer = styled(motion.div)`
   @media (min-width: 780px) {
     display: flex;
   }
@@ -65,7 +65,7 @@ const AboutContainer = styled(motion.div)`
 
 const ProfileText = styled(motion.div)`
   display: block;
-  width: 100%;
+  width: 90%;
   margin: 0;
   pointer-events: auto;
   /* outline: 2px solid green; */
@@ -82,27 +82,30 @@ const ProfileText = styled(motion.div)`
     color: var(--text-color);
     font-weight: 400;
     text-align: left;
+      padding: 0rem 0rem 0rem 4rem;
+
   }
   @media (min-width: 780px) {
     display: inline-flex;
     width: 50%;
 
     h3 {
-      font-size: 2rem;
+      font-size: 2.5rem;
       text-overflow: hidden;
       word-break: break-word;
       font-family: karla;
       color: var(--text-color);
       font-weight: 400;
       text-align: left;
+      width: 100%
     }
   }
 `;
 
-const AboutMe = () => {
+const Contact = () => {
   return (
     
-    <BasicLayout
+    <AboutLayout
       variants={pageAnimation}
       initial="hidden"
       animate="show"
@@ -113,12 +116,12 @@ const AboutMe = () => {
       numOfItems={6}
       itemsText={["📫","Very","active","gmail","user.","📫"]}/>
       </motion.div>
-      <AboutContainer className="aboutContainer">
+      <ContactContainer className="contactContainer">
      
         <ProfileText className="profileText">
 
           <motion.h3 variants={sliderightAnim}>
-            <b>Currently a Product Designer at Willow. </b>
+            <b>Currently a Product Designer at Willow. </b><br></br>
              Spending my nights descoping personal
              game dev projects.
              <br/><br/><br/>
@@ -153,13 +156,13 @@ const AboutMe = () => {
           />
         </ProfileImage>
         
-      </AboutContainer>
+      </ContactContainer>
 
       {/* <div style={{ padding: 30 }}>something else here</div> */}
       
-    </BasicLayout>
+    </AboutLayout>
 
     
   );
 };
-export default AboutMe;
+export default Contact;

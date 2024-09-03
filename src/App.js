@@ -1,39 +1,23 @@
 import React, { useEffect, useState } from "react";
 //GlobalStyle
-import GlobalStyle from "./components/GlobalStyle";
+import GlobalStyle from "./styles/GlobalStyle";
 //Import Pages
 import Nav from "./components/Nav";
 import Home from "./pages/Home";
-import AboutMe from "./pages/AboutMe";
+import Contact from "./pages/Contact";
 import Projects from "./pages/Projects";
 import Resume from "./pages/Resume";
 
-import MovieDetail from "./pages/MovieDetail";
 //Animation
 import { AnimatePresence } from "framer-motion";
 import ScrollToTop from "./components/ScrollToTop";
-// import { LocomotiveScrollProvider } from "react-locomotive-scroll";
-// import { useHistory } from "react-router-dom";
 //Router
 import { Route, Switch, useLocation } from "react-router-dom";
-import { changeColor } from "./theme/changeColor";
+import { changeColor } from "./components/theme/changeColor";
 import Footer from "./components/Footer";
 //Google analytics
 import ReactGA from "react-ga";
 
-// let options = "";
-// ReactGA.initialize("UA-206389421-1", [options]);
-
-// const pageViewsTracking = (props) => {
-//   const pathname = props.match.path;
-
-//   let pageView;
-//   if (pathname === "*") pageView = "/not-found";
-//   else pageView = pathname;
-
-//   //Sending GA page views
-//   ReactGA.pageview(pageView);
-// };
 
 
 function App() {
@@ -46,10 +30,6 @@ function App() {
 
   const location = useLocation();
   console.log(location);
-
-  // const history = useHistory();
-
-  // const containerRef = useRef(null);
 
   const [colorSchemeType, setColorSchemeType] = useState("light");
 
@@ -71,7 +51,9 @@ function App() {
 
   const handleBgClick = (evt) => {
     const isNavLink = evt.target.closest('a')
-    if(!isNavLink) {
+    const isButton = evt.target.closest('button')
+
+    if(!isNavLink && !isButton) {
     setColorSchemeType("light");
     changeColor("light");
     doRippleEffect(evt);
@@ -105,17 +87,14 @@ function App() {
               <Route path="/" exact>
                 <Home />
               </Route>
-              <Route path="/AboutMe">
-                <AboutMe />
-              </Route>
-              <Route path="/Projects/:id">
-                <MovieDetail />
-              </Route>
               <Route path="/Projects" exact>
                 <Projects />
               </Route>
               <Route path="/Resume">
                 <Resume />
+              </Route>
+              <Route path="/Contact">
+                <Contact />
               </Route>
             </Switch>
           </AnimatePresence>

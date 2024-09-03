@@ -2,12 +2,11 @@ import React, {useRef, useState} from "react";
 import styled from "styled-components";
 import {Link, useLocation} from "react-router-dom";
 import {motion} from "framer-motion";
-import {useScroll} from "./useScroll";
 import {useIntersection} from "react-use";
 import lottie from "lottie-web";
-import {slidedownAnim, slideleftAnim, textFade} from "../animation";
+import {slidedownAnim, slideleftAnim, textFade} from "../styles/animation";
 
-import {changeColor} from "../theme/changeColor";
+import {changeColor} from "./theme/changeColor";
 
 const Nav = ({ colorSchemeType, setColorSchemeType }) => {
   let animObj = null;
@@ -19,7 +18,6 @@ const Nav = ({ colorSchemeType, setColorSchemeType }) => {
 
   const [hoveredMenuItem, sethoveredMenuItem] = useState("");
 
-  const [element, controls] = useScroll();
   const sectionRef = useRef(null);
   // All the reg to be observed
   const intersection = useIntersection(sectionRef, {
@@ -146,15 +144,15 @@ const Nav = ({ colorSchemeType, setColorSchemeType }) => {
           />
         </NavItem>
         
-      <NavItem isActive={pathname === "/AboutMe"}>
+      <NavItem isActive={pathname === "/Contact"}>
           <motion.div initial="hidden" animate="show" variants={slidedownAnim()}>
-            <Link to="/AboutMe">About</Link>
+            <Link to="/Contact">Contact</Link>
           </motion.div>
           <Line
             transition={{ duration: 0.5 }}
             initial={{ width: "0%" }}
             animate={{
-              width: pathname === "/AboutMe" ? "80%" : "0%",
+              width: pathname === "/Contact" ? "80%" : "0%",
             }}
           />
         </NavItem>
@@ -168,7 +166,7 @@ const Nav = ({ colorSchemeType, setColorSchemeType }) => {
               id="animationContainer"
               ref={animationContainer}
               onClick={(event) => startAnimation(event)}
-              style={{ width: 30, height: 30, cursor: "pointer" }}
+              style={{ width: 30, height: 30, marginBottom:".5rem", cursor: "pointer" }}
             ></div>
           </motion.div>
         </li>
@@ -196,7 +194,7 @@ const StyledNav = styled(motion.div)`
     pointer-events: auto;
   }
     
- .anime-contain {
+ anime-contain {
   
   }
   ul {

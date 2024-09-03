@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 // Framer Motion
 import { motion } from "framer-motion";
-import { slideleftAnim } from "../animation";
+import { slideleftAnim } from "../styles/animation";
 import { useWindowScroll, useMediaQuery } from "beautiful-react-hooks";
-import { StyledDescription } from "../styles";
+import { StyledDescription } from "../styles/styles";
 import useDebounce from "../hooks/use-debounce";
 
 const PageHeaderText = ({ numOfItems, itemsText }) => {

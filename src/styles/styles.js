@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import {motion} from "framer-motion";
 
-export const BasicLayout = styled(motion.div)`
+export const AboutLayout = styled(motion.div)`
   min-height: 50vh;
   align-items: left;
   justify-content: center;

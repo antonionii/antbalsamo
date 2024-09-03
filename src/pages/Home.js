@@ -3,13 +3,12 @@ import { Link } from "react-router-dom";
 import PageHeaderText from "../components/PageHeaderText";
 //Animations
 import {motion} from "framer-motion";
-import AboutMe from "./AboutMe";
 import CardComponent from "../components/CardComponent";
 import Button from "../components/ButtonComponent";
 import { useHistory } from "react-router-dom";
-import {BasicLayout} from "../styles";
-import {pageAnimation, slideleftAnim, sliderightAnim} from "../animation";
-
+import {BasicLayout} from "../styles/styles";
+import {pageAnimation, slideleftAnim, sliderightAnim} from "../styles/animation";
+import Hero from "../components/hero";
 const cardData = [
   {
     title: "Notification System",
@@ -83,6 +82,7 @@ animate="show"
 exit="exit"
 >
     <motion.div initial="hidden" animate="show" exit="exit">
+    <Hero />
   <PageHeaderText
       numOfItems={7}
       itemsText={["👇","Here","are","some","recent","highlights.","👇",]}

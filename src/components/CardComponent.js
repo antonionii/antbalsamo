@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { pageAnimation } from "../animation"; // Import your animation
+import { pageAnimation } from "../styles/animation"; // Import your animation
 
 const CardGrid = styled(motion.div)`
   display: grid;

@@ -4,12 +4,12 @@ import {Link} from "react-router-dom";
 //Images
 //Animations
 import {motion} from "framer-motion";
-import {pageAnimation} from "../animation";
+import {pageAnimation} from "../styles/animation";
 import {useMediaQuery} from "beautiful-react-hooks";
 import Marquee from "react-fast-marquee";
 import CardComponent from "../components/CardComponent";
 import PageHeaderText from "../components/PageHeaderText";
-import {BasicLayout} from "../styles";
+import {BasicLayout} from "../styles/styles";
 
 const ProjectsContainer = styled(motion.div)`
   @media (min-width: 780px) {
@@ -35,13 +35,13 @@ const Resume = () => {
   // const col2ScrollSpeed = isLargeDisplay ? "2" : "1";
 
   return (
-    <BasicLayout>
+    <div>
       <motion.div initial="hidden" animate="show" exit="exit">
       <PageHeaderText
       numOfItems={4}
       itemsText={["📄","Another","One","📄"]}
     />
-      </motion.div></BasicLayout>
+      </motion.div></div>
   );
 };
 
