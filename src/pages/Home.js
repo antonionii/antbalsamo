@@ -1,9 +1,8 @@
-import React from "react";
-import styled from "styled-components";
+import React, { useState } from "react";import styled from "styled-components";
 import { Link } from "react-router-dom";
 import PageHeaderText from "../components/PageHeaderText";
 import HeroText from "../components/HeroText";
-
+import { Snackbar } from "@mui/material";
 //Animations
 import {motion} from "framer-motion";
 import CardComponent from "../components/CardComponent";
@@ -12,6 +11,8 @@ import { useHistory } from "react-router-dom";
 import {BasicLayout} from "../styles/styles";
 import {pageAnimation, slidedownAnim, slideleftAnim, sliderightAnim} from "../styles/animation";
 import Tags from "../components/Tags";
+import StyledSnackbar from "../components/StyledSnackbar";
+
 const cardData = [
   {
     title: "Notification System",
@@ -70,50 +71,95 @@ const cardData = [
     bubbleText: "Open Project",
   },
   // Add more cards as needed
-];const Home = () => {
+];
 
+const Home = () => {
   const accentTextColor = getComputedStyle(document.documentElement).getPropertyValue('--accentText-color').trim();
+  const cardColor = getComputedStyle(document.documentElement).getPropertyValue('--card-color').trim();
+  
   const history = useHistory();
+  const [icon, setIcon] = useState("link");
+  const [openSnackbar, setOpenSnackbar] = useState(false);
+  const [isWiggling, setIsWiggling] = useState(false);
+  
+  const handleCloseSnackbar = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpenSnackbar(false);
+  };
 
   const handleClick = (event) => {
-    event.preventDefault(); // Prevent the default scrolling behavior
-    history.push("/Projects"); // Navigate to the /projects path
+    event.preventDefault();
+    history.push("/Projects");
   };
+
+  const handleIconClick = () => {
+    setIsWiggling(true); 
+    setIcon("sentiment_satisfied");
+    navigator.clipboard.writeText(window.location.href);
+    setOpenSnackbar(true);
+
+    setTimeout(() => {
+      setIcon("link");
+    }, 1000); // Change back to "link" before the animation ends
+
+    setTimeout(() => {
+      setIsWiggling(false);
+    }, 1500); // End the wiggle animation after 1.2 seconds
+
+  };
+
   return (
     <motion.div initial="hidden" animate="show" exit="exit" style={{ display: 'block' }}>
-    <StyledSection className="bg-section" >
-      <ResponsiveHeroText 
-        numOfItems={5} 
-        itemsText={["Product", "+","Game", "Designer",]} 
-        variant={slideleftAnim} 
-        fontColor={accentTextColor}
-        
+      <StyledSection className="bg-section">
+        <HeroContainer>
+          <ResponsiveHeroText
+            numOfItems={5}
+            itemsText={["Product", "+", "Game", "Designer"]}
+            variant={slideleftAnim}
+            fontColor={accentTextColor}
+          />
+          <StyledIcon
+            className="material-symbols-outlined"
+            animate={isWiggling ? { rotate: [0, 30, -30, 30, -30, 0] } : {}}
+            transition={{ type: "spring", stiffness: 500, damping: 2, duration: 2 }}
+            onClick={handleIconClick}
+          >
+            {icon}
+          </StyledIcon>
+        </HeroContainer>
+        <HeroImage src={"https://i.imgur.com/kxtX2ZX.png"} alt={"picture of me"} />
+        <CardText>Designing creative and delightful experiences into scalable products.</CardText>
+        <CardText>If you'd like to work together, drop me a message at my email below.</CardText>
+        <Tags />
+      </StyledSection>
+      <StyledSnackbar
+        open={openSnackbar}
+        onClose={handleCloseSnackbar}
+        message="New Link Aquired: Tony's Website"
       />
-            <HeroImage src={"https://i.imgur.com/kxtX2ZX.png"} alt={"picture of me"} />
-            <CardText> Bringing creative and delightful experiences into scalable products.</CardText>
-            <CardText> If you'd like to work together, drop me a message at my email below.</CardText>
-
-      <Tags />
-
-    </StyledSection>
-  
-    <div style={{  textAlign: "center" }}>
-      <PageHeaderText 
-        numOfItems={7} 
-        itemsText={["👇","Here ","are ","some ","recent ","highlights.","👇",]}
-        variant={slidedownAnim} 
-        fontSize="1.4rem"
-        fontColor={accentTextColor}
-      />
-    </div>
-  
-    <CardComponent cards={cardData.slice(0, 4)} />
-    <Button onClick={handleClick}>See All Projects</Button>
-  </motion.div>
-  
+      <div style={{ textAlign: "center" }}>
+        <PageHeaderText 
+          numOfItems={7} 
+          itemsText={["👇", "Here ", "are ", "some ", "recent ", "highlights.", "👇"]} 
+          variant={slidedownAnim} 
+          fontSize="1.4rem" 
+          fontColor={accentTextColor}
+        />
+      </div>
+      <CardComponent cards={cardData.slice(0, 4)} />
+      <Button onClick={handleClick}>See All Projects</Button>
+    </motion.div>
   );
 };
 
+const HeroContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+`;
 
 const CardText = styled.p`
   font-size: 1.2rem;
@@ -123,63 +169,72 @@ const CardText = styled.p`
   padding: 0.5rem 0rem 0rem 0rem;
   transition: font-weight 0.3s ease, text-shadow 0.3s ease;
 `;
+
 const HeroImage = styled.img`
-  width: calc(100% + 2rem); /* Make the image wider to cover padding */
+  width: calc(100% + 2rem);
   height: auto;
   max-height: 20rem;
   margin-top: 1rem;
-  margin-left: -1rem; /* Offset to the left to account for the section's padding */
-  margin-right: -1rem; /* Offset to the right to account for the section's padding */
+  margin-left: -1rem;
+  margin-right: -1rem;
   object-fit: cover;
-
-  object-position: center 16%; /* Move the image up */
+  object-position: center 16%;
   @media (min-width: 780px) {
-  width: calc(100% + 4rem); /* Make the image wider to cover padding */
-  margin-left: -2rem; /* Offset to the left to account for the section's padding */
+    width: calc(100% + 4rem);
+    margin-left: -2rem;
   }
-
   @media (min-width: 1300px) {
-  width: calc(100% + 4rem); /* Make the image wider to cover padding */
+    width: calc(100% + 4rem);
   }
 `;
 
-
 const StyledSection = styled.section`
   width: 80%;
-  margin: 12rem auto 0 auto;  /* Auto margins for centering */
-    padding: 1rem;
+  margin: 12rem auto 0 auto;
+  padding: 1rem;
   border-radius: 1rem;
   background-color: var(--card-color);
   color: var(--text-color);
   box-sizing: border-box;
-  overflow: hidden; /* Ensures that content, like the image, stays within the section */
-
+  overflow: hidden;
   @media (min-width: 780px) {
     width: 55%;
-    margin: 12rem auto 0 auto; /* Maintain top margin consistency */
+    margin: 12rem auto 0 auto;
     padding: 0rem 2rem 2rem 2rem;
   }
-
   @media (min-width: 1300px) {
     width: 35%;
-    margin: 12rem auto 0 auto; /* Maintain top margin consistency */
+    margin: 12rem auto 0 auto;
     padding: 0rem 2rem 2rem 2rem;
   }
 `;
+
 const ResponsiveHeroText = styled(HeroText)`
-  text-align: left; /* Ensure the hero text aligns to the left */
+  text-align: left;
   h1 {
     font-size: 1.5rem;
-    text-align: left; /* Align individual h1 elements to the left */
-
+    text-align: left;
     @media (min-width: 780px) {
       font-size: 2.2rem;
     }
-
     @media (min-width: 1300px) {
       font-size: 3rem;
     }
   }
 `;
 
+const StyledIcon = styled(motion.span)`
+  font-size: 2rem;
+  display: inline-block;
+  vertical-align: middle;
+  margin-top: 0.8rem;
+  color: var(--accentText-color);
+  cursor: pointer;
+  padding: .5rem;
+  border-radius: 10%;
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+  }
+`;
 export default Home;

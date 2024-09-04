@@ -19,15 +19,7 @@ const Tags = () => {
 
   return (
     <div className="link-container">
-      <motion.a
-        variants={sliderightAnim(0.3)}
-        initial="hidden"
-        animate="show"
-        className="link twitter"
-        href="https://www.linkedin.com/in/antbalsamo/"
-      >
-        LinkedIn
-      </motion.a>
+ 
       <motion.a
         variants={sliderightAnim(0.4)}
         initial="hidden"
@@ -36,6 +28,15 @@ const Tags = () => {
         href="https://github.com/antonionii/"
       >
         GitHub
+      </motion.a>
+      <motion.a
+        variants={sliderightAnim(0.3)}
+        initial="hidden"
+        animate="show"
+        className="link twitter"
+        href="https://www.linkedin.com/in/antbalsamo/"
+      >
+        LinkedIn
       </motion.a>
       <motion.div
         onClick={handleEmailClick}
@@ -59,6 +60,8 @@ const Tags = () => {
           {emailText}
         </motion.a>
       </motion.div>
+
+   
     </div>
   );
 };

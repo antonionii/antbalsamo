@@ -85,7 +85,6 @@ const StyledMotionText = styled.section`
   color: var(--text-color);
   box-sizing: border-box;
   text-align: center; /* Center text content */
-  box-shadow: .6rem 0.6rem 0rem 0rem black;
 
   @media (min-width: 780px) {
     padding: .5rem .5rem; /* Increase padding on larger screens */

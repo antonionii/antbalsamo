@@ -52,8 +52,9 @@ function App() {
   const handleBgClick = (evt) => {
     const isNavLink = evt.target.closest('a')
     const isButton = evt.target.closest('button')
-
-    if(!isNavLink && !isButton) {
+    const isIcon = evt.target.closest('StyledIcon')
+    
+    if(!isNavLink && !isButton && !isIcon) {
     setColorSchemeType("light");
     changeColor("light");
     doRippleEffect(evt);

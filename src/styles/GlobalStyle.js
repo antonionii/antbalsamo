@@ -252,7 +252,5 @@ display: flex;
   text-align: center;
   margin-bottom:auto;
 }
-
-
 `;
 export default GlobalStyle;
