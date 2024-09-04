@@ -52,8 +52,7 @@ function App() {
   const handleBgClick = (evt) => {
     const isNavLink = evt.target.closest('a')
     const isButton = evt.target.closest('button')
-    const isIcon = evt.target.closest('StyledIcon')
-    
+    const isIcon = evt.target.closest('[data-icon="true"]');  // Use the data attribute to identify the icon    
     if(!isNavLink && !isButton && !isIcon) {
     setColorSchemeType("light");
     changeColor("light");

@@ -120,8 +120,10 @@ const Home = () => {
             variant={slideleftAnim}
             fontColor={accentTextColor}
           />
+          
           <StyledIcon
             className="material-symbols-outlined"
+            data-icon="true"  // Add this attribute to identify the icon
             animate={isWiggling ? { rotate: [0, 30, -30, 30, -30, 0] } : {}}
             transition={{ type: "spring", stiffness: 500, damping: 2, duration: 2 }}
             onClick={handleIconClick}
@@ -248,9 +250,9 @@ const StyledIcon = styled(motion.span)`
   }
 
   @media (max-width: 780px) {
-    margin-top: 0.5rem; /* Reduce the margin above the icon */
+    margin-top: 0.5rem;
     &:hover {
-      background-color: transparent; /* Remove hover background on small screens */
+      background-color: transparent; 
     }
   }
 `;
