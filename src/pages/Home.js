@@ -159,7 +159,13 @@ const HeroContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 1rem;
+
+  @media (max-width: 780px) {
+    flex-direction: column-reverse; /* Reverse the order of children (Icon above Text) */
+    align-items: flex-end; /* Align items to the start (left) */
+  }
 `;
+
 
 const CardText = styled.p`
   font-size: 1.2rem;
