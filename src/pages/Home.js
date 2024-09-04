@@ -163,8 +163,10 @@ const HeroContainer = styled.div`
   @media (max-width: 780px) {
     flex-direction: column-reverse; /* Reverse the order of children (Icon above Text) */
     align-items: flex-end; /* Align items to the start (left) */
+    margin-top: -1.5rem; /* Decrease space above the link button */
   }
 `;
+
 
 
 const CardText = styled.p`
@@ -229,6 +231,7 @@ const ResponsiveHeroText = styled(HeroText)`
   }
 `;
 
+
 const StyledIcon = styled(motion.span)`
   font-size: 2rem;
   display: inline-block;
@@ -238,9 +241,17 @@ const StyledIcon = styled(motion.span)`
   cursor: pointer;
   padding: .5rem;
   border-radius: 10%;
+  
   &:hover {
     background-color: rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s ease;
+  }
+
+  @media (max-width: 780px) {
+    margin-top: 0.5rem; /* Reduce the margin above the icon */
+    &:hover {
+      background-color: transparent; /* Remove hover background on small screens */
+    }
   }
 `;
 export default Home;
