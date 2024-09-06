@@ -121,7 +121,6 @@ const HeaderContainter = styled.div`
   @media (max-width: 780px) {
     flex-direction: column-reverse;
     align-items: flex-end;
-    margin-top: -1.5rem;
   }
 `;
 
