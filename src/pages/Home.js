@@ -2,7 +2,6 @@ import React, { useState } from "react";import styled from "styled-components";
 import { Link } from "react-router-dom";
 import PageHeaderText from "../components/PageHeaderText";
 import HeroText from "../components/HeroText";
-import { Snackbar } from "@mui/material";
 //Animations
 import {motion} from "framer-motion";
 import CardComponent from "../components/CardComponent";

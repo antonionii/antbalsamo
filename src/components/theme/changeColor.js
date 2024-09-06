@@ -7,7 +7,8 @@ export const colorSchemes = {
     textShadow: "black",
     accentColor: "#ffffff",
     accentTextColor: "black",
-    cardColor: "white"
+    cardColor: "white",
+    linkColor: "#ff4062",
   },
   light: [
    
@@ -20,8 +21,8 @@ export const colorSchemes = {
       textShadow: "white",
       accentColor: "black",
       accentTextColor: "black",
-
-      cardColor: "white"
+      cardColor: "white",
+      linkColor: "#ff4062",
     },
 
     
@@ -48,8 +49,8 @@ export const colorSchemes = {
       textShadow: "black",
       accentColor: "white",
       accentTextColor: "black",
-
-      cardColor: "white"
+      cardColor: "white",
+      linkColor: "#ff4062",
 
     },
     {
@@ -61,8 +62,8 @@ export const colorSchemes = {
       textShadow: "black",
       accentColor: "#28c074",
       accentTextColor: "black",
-
-      cardColor: "#28c074"
+      cardColor: "#28c074",
+      linkColor: "#000050",
 
     },
   ],
@@ -114,6 +115,10 @@ const changeColor = (themeType = "light") => {
   document.documentElement.style.setProperty(
     "--accentText-color",
     toBeAppliedScheme.accentTextColor
+  );
+  document.documentElement.style.setProperty(
+    "--link-color",
+    toBeAppliedScheme.linkColor
   );
 };
 

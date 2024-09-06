@@ -7,7 +7,7 @@ const Footer = () => {
             <FooterDiv>
                 <ContentDiv>
                     <p>
-                        <span><a style= {{textDecoration:"underline"}}href={"https://github.com/antonionii/antbalsamo"} target="_blank" rel="noopener noreferrer">
+                        <span><a href={"https://github.com/antonionii/antbalsamo"} target="_blank" rel="noopener noreferrer">
 &lt;source code here&gt;
 </a></span>
                     </p>
@@ -36,10 +36,10 @@ const ContentDiv = styled.div`
     border-bottom: none; 
     box-sizing: border-box;
     width: auto;
-    color: var(--accentText-color);
-    font-weight: normal;
-
-
+    color: var(--link-color);
+    font-weight: bold;
+&:hover {
+text-decoration: underline;
 `;
 
 

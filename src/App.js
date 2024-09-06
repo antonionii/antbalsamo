@@ -5,7 +5,7 @@ import GlobalStyle from "./styles/GlobalStyle";
 import Nav from "./components/Nav";
 import Home from "./pages/Home";
 import Projects from "./pages/Projects";
-import Resume from "./pages/Resume";
+import Blog from "./pages/Blog";
 
 
 //Animation
@@ -90,8 +90,8 @@ function App() {
               <Route path="/Projects" exact>
                 <Projects />
               </Route>
-              <Route path="/Resume">
-                <Resume />
+              <Route path="/Blog">
+                <Blog />
               </Route>
             </Switch>
           </AnimatePresence>
