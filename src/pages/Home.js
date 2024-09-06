@@ -13,6 +13,7 @@ import {pageAnimation, slidedownAnim, slideleftAnim, sliderightAnim} from "../st
 import Tags from "../components/Tags";
 import StyledSnackbar from "../components/StyledSnackbar";
 
+
 const cardData = [
   {
     title: "Notification System",
@@ -46,21 +47,14 @@ const cardData = [
     title: "Activity Feed",
     image: "https://i.imgur.com/Kp9t8OG.png",
     text: "Description for Card 2",
-    linkTo: "/destination2",
+    linkTo: "https://sudsy-scarf-562.notion.site/Activity-Feed-f1e49709532546b8959c5c3d69070e71?pvs=4",
     bubbleText: "Open Project",
   },
   {
     title: "Monitor Diagnostics",
     image: "https://i.imgur.com/YOch4l7.png",
     text: "Description for Card 2",
-    linkTo: "/destination2",
-    bubbleText: "Open Project",
-  },
-  {
-    title: "Campus Viewer",
-    image: "https://i.imgur.com/SIuy1xj.png",
-    text: "Description for Card 2",
-    linkTo: "/destination2",
+    linkTo: "https://sudsy-scarf-562.notion.site/Monitor-Diagnostics-3d08e0534d344646821003dbb27b8f12?pvs=4",
     bubbleText: "Open Project",
   },
   {
@@ -82,6 +76,7 @@ const Home = () => {
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const [isWiggling, setIsWiggling] = useState(false);
   
+  
   const handleCloseSnackbar = (event, reason) => {
     if (reason === 'clickaway') {
       return;
@@ -102,11 +97,11 @@ const Home = () => {
 
     setTimeout(() => {
       setIcon("link");
-    }, 1000); // Change back to "link" before the animation ends
+    }, 1500); // Change back to "link" before the animation ends
 
     setTimeout(() => {
       setIsWiggling(false);
-    }, 1500); // End the wiggle animation after 1.2 seconds
+    }, 2000); // End the wiggle animation after 1.2 seconds
 
   };
 
@@ -139,7 +134,7 @@ const Home = () => {
       <StyledSnackbar
         open={openSnackbar}
         onClose={handleCloseSnackbar}
-        message="New Link Aquired: Tony's Website"
+        message="Copied link: Tony's Website"
       />
       <div style={{ textAlign: "center" }}>
         <PageHeaderText 

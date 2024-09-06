@@ -44,21 +44,14 @@ const cardData = [
     title: "Activity Feed",
     image: "https://i.imgur.com/Kp9t8OG.png",
     text: "Description for Card 2",
-    linkTo: "/destination2",
+    linkTo: "https://sudsy-scarf-562.notion.site/Activity-Feed-f1e49709532546b8959c5c3d69070e71?pvs=4",
     bubbleText: "Open Project",
   },
   {
     title: "Monitor Diagnostics",
     image: "https://i.imgur.com/YOch4l7.png",
     text: "Description for Card 2",
-    linkTo: "/destination2",
-    bubbleText: "Open Project",
-  },
-  {
-    title: "Campus Viewer",
-    image: "https://i.imgur.com/SIuy1xj.png",
-    text: "Description for Card 2",
-    linkTo: "/destination2",
+    linkTo: "https://sudsy-scarf-562.notion.site/Monitor-Diagnostics-3d08e0534d344646821003dbb27b8f12?pvs=4",
     bubbleText: "Open Project",
   },
   {
