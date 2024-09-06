@@ -64,7 +64,7 @@ const Bubble = styled.div`
 
 
 const CardText = styled.p`
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: 500;
   margin-top: 5px;
   padding: 0.5rem 0rem 0rem 0rem;
@@ -90,7 +90,14 @@ const CardComponent = ({ cards }) => {
         const CardContent = (
           <>
             <h4>{card.title}</h4>
-            <CardText>{card.text}</CardText>
+            <CardText>
+              {card.text.split("\n").map((line, i) => (
+                <React.Fragment key={i}>
+                  {line}
+                  <br />
+                </React.Fragment>
+              ))}
+            </CardText>
             <CardImage src={card.image} alt={card.title} />
             <Bubble>
               <BubbleText>{card.bubbleText}</BubbleText>
@@ -113,5 +120,6 @@ const CardComponent = ({ cards }) => {
     </CardGrid>
   );
 };
+
 
 export default CardComponent;
