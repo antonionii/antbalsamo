@@ -1,87 +1,94 @@
 import React from "react";
 import styled from "styled-components";
-import {motion} from "framer-motion";
+import { motion } from "framer-motion";
 import PageHeaderText from "../components/PageHeaderText";
 import HeroText from "../components/HeroText";
-import { slidedownAnim, slideleftAnim } from "../styles/animation";
+import { pageAnimation, cardAnimation, slideleftAnim, slidedownAnim } from "../styles/animation";
 
 const Blog = () => {
   const accentTextColor = getComputedStyle(document.documentElement).getPropertyValue('--accentText-color').trim();
 
   // The blog data
   const blogs = [
-
     {
       title: "Overscoping a memory match coding exercise",
       link: "https://github.com/antonionii/antbalsamo",
-      date: "Aug 30, 2024"
+      date: "Sept 6, 2024",
     },
     {
       title: "The line between scalable UX patterns and trends.",
       link: "https://github.com/antonionii/antbalsamo",
-      date: "July 15, 2024"
-    }
+      date: "Sept 1, 2024",
+    },
   ];
 
   // Separate out the most recent blog and filter for 2024 blogs
   const mostRecentBlog = blogs[0];
-  const blogsIn2024 = blogs.filter(blog => blog.date.includes("2024"));
+  const blogsIn2024 = blogs.filter((blog) => blog.date.includes("2024"));
 
   return (
-    <div>
-      <motion.div initial="hidden" animate="show" exit="exit" style={{ textAlign: "center" }}>
-        <PageHeaderText
-          numOfItems={4}
-          variant={slidedownAnim}
-          itemsText={["✏️", "Occasionally", "Blogging", "✏️"]}
-          fontSize="1.4rem"
-        />
-      </motion.div>
+    <motion.div
+      variants={pageAnimation}
+      initial="hidden"
+      animate="show"
+      exit="exit"
+      style={{ textAlign: "center" }}
+    >
+      {/* Page Header */}
+      <PageHeaderText
+        numOfItems={4}
+        variant={slidedownAnim}
+        itemsText={["✏️", "Occasionally", "Blogging", "✏️"]}
+        fontSize="1.4rem"
+      />
 
-      {/* Most Recent Section */}
-      <motion.div initial="hidden" animate="show" exit="exit" style={{ display: 'block' }}>
-        <StyledSection className="bg-section">
-          <HeaderContainter>
-            <ResponsiveHeroText
-              numOfItems={2}
-              itemsText={["Most", "Recent"]}
-              variant={slideleftAnim}
-              fontColor={accentTextColor}
-            />
-          </HeaderContainter>
+      {/* Parent container to control the animation sequence */}
+      <motion.div variants={pageAnimation} initial="hidden" animate="show" exit="exit">
+        {/* Most Recent Section */}
+        <motion.div variants={cardAnimation} style={{ display: "block" }}>
+          <StyledSection>
+            <HeaderContainter>
+              <ResponsiveHeroText
+                numOfItems={2}
+                itemsText={["Most", "Recent"]}
+                variant={slideleftAnim}
+                fontColor={accentTextColor}
+              />
+            </HeaderContainter>
 
-          <BlogItemContainer>
-            <BlogLink href={mostRecentBlog.link} target="_blank" rel="noopener noreferrer">
-              {mostRecentBlog.title}
-            </BlogLink>
-            <BlogDate>{mostRecentBlog.date}</BlogDate>
-          </BlogItemContainer>
-        </StyledSection>
-      </motion.div>
-
-      {/* 2024 Blogs Section */}
-      <motion.div initial="hidden" animate="show" exit="exit" style={{ display: 'block' }}>
-        <StyledSection className="bg-section">
-          <HeaderContainter>
-            <ResponsiveHeroText
-              numOfItems={2}
-              itemsText={["2024"]}
-              variant={slideleftAnim}
-              fontColor={accentTextColor}
-            />
-          </HeaderContainter>
-
-          {blogsIn2024.map((blog, index) => (
-            <BlogItemContainer key={index}>
-              <BlogLink href={blog.link} target="_blank" rel="noopener noreferrer">
-                {blog.title}
+            <BlogItemContainer>
+              <BlogLink href={mostRecentBlog.link} target="_blank" rel="noopener noreferrer">
+                {mostRecentBlog.title}
               </BlogLink>
-              <BlogDate>{blog.date}</BlogDate>
+              <BlogDate>{mostRecentBlog.date}</BlogDate>
             </BlogItemContainer>
-          ))}
-        </StyledSection>
+          </StyledSection>
+        </motion.div>
+
+        {/* 2024 Blogs Section */}
+        <motion.div variants={cardAnimation} style={{ display: "block" }}>
+          <StyledSection>
+            <HeaderContainter>
+              <ResponsiveHeroText
+                numOfItems={2}
+                itemsText={["2024"]}
+                variant={slideleftAnim}
+                fontColor={accentTextColor}
+              />
+            </HeaderContainter>
+
+            {blogsIn2024.map((blog, index) => (
+              <BlogItemContainer key={index}>
+                <BlogLink href={blog.link} target="_blank" rel="noopener noreferrer">
+                  {blog.title}
+                </BlogLink>
+                <BlogDate>{blog.date}</BlogDate>
+              </BlogItemContainer>
+            ))}
+          </StyledSection>
+        </motion.div>
       </motion.div>
-    </div>
+    </motion.div>
   );
 };
 
@@ -97,6 +104,8 @@ const BlogLink = styled.a`
   font-size: 1.2rem;
   color: var(--link-color);
   font-weight: bold;
+  text-align: left;
+  padding: 0rem 2rem 0rem 0rem;
 
   &:hover {
     text-decoration: underline;
@@ -106,10 +115,9 @@ const BlogLink = styled.a`
 const BlogDate = styled.span`
   font-size: 1rem;
   color: var(--accentText-color);
-  margin-left: auto;
-    font-weight: bold;
-    font-family: Inter;
-
+  text-align: right;
+  font-weight: bold;
+  font-family: Inter;
 `;
 
 const HeaderContainter = styled.div`
@@ -124,9 +132,9 @@ const HeaderContainter = styled.div`
   }
 `;
 
-const StyledSection = styled.section`
+const StyledSection = styled(motion.div)`
   width: 80%;
-  margin: 12rem auto 0 auto;
+  margin: 4rem auto 0 auto;
   padding: 1rem;
   border-radius: 1rem;
   background-color: var(--card-color);
@@ -136,13 +144,11 @@ const StyledSection = styled.section`
 
   @media (min-width: 780px) {
     width: 55%;
-    margin: 12rem auto 0 auto;
     padding: 0rem 2rem 2rem 2rem;
   }
 
   @media (min-width: 1300px) {
-    width: 35%;
-    margin: 12rem auto 0 auto;
+    width: 45%;
     padding: 0rem 2rem 2rem 2rem;
   }
 `;

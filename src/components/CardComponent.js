@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { pageAnimation } from "../styles/animation"; // Import your animation
+import { pageAnimation,cardAnimation  } from "../styles/animation"; // Import your animation
 
 const CardGrid = styled(motion.div)`
   display: grid;
@@ -29,8 +29,10 @@ const Card = styled(motion.div)`
   width: 100% !important; /* Ensure the card takes up the full width of its grid column */
 
   &:hover {
-    box-shadow: 2rem 1rem 0rem 0rem black;
-    transform: translateY(-10px);
+    box-shadow: 2rem 1rem 0rem 0rem rgba(0, 0, 0, 1); // Use rem for hover state
+    transform: translateY(-1rem); // Use rem for translate as well
+    border-color: #f9ec5c;
+    border-width: 0.6rem; // Use rem for border-width as well
   }
 `;
 
@@ -106,7 +108,17 @@ const CardComponent = ({ cards }) => {
         );
 
         return (
-          <Card key={index}>
+          <Card 
+            key={index} 
+            variants={cardAnimation}
+            initial={{ boxShadow: "1rem 0.6rem 0rem 0rem rgba(0, 0, 0, 1)" }} // Set the initial box shadow
+            animate={{ boxShadow: "1rem 0.6rem 0rem 0rem rgba(0, 0, 0, 1)" }} // Maintain the default box shadow
+            whileHover={{ 
+              translateY: "-2rem", 
+              bordeWidth: "1rem",
+              borderColor: "#f9ec5c",
+              boxShadow: "2rem 1rem 0rem 0rem rgba(0, 0, 0, 1)"            }}      
+            >
             {isExternal ? (
               <a href={card.linkTo} target="_blank" rel="noopener noreferrer">
                 {CardContent}

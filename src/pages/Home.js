@@ -2,13 +2,14 @@ import React, { useState } from "react";import styled from "styled-components";
 import { Link } from "react-router-dom";
 import PageHeaderText from "../components/PageHeaderText";
 import HeroText from "../components/HeroText";
+import { Snackbar } from "@mui/material";
 //Animations
 import {motion} from "framer-motion";
 import CardComponent from "../components/CardComponent";
 import Button from "../components/ButtonComponent";
 import { useHistory } from "react-router-dom";
 import {BasicLayout} from "../styles/styles";
-import {pageAnimation, slidedownAnim, slideleftAnim, sliderightAnim} from "../styles/animation";
+import {pageAnimation, cardAnimation, slidedownAnim, slideleftAnim, sliderightAnim} from "../styles/animation";
 import Tags from "../components/Tags";
 import StyledSnackbar from "../components/StyledSnackbar";
 import projectCardData from "../data/projectCardData"; 
@@ -53,8 +54,14 @@ const Home = () => {
   };
 
   return (
-    <motion.div initial="hidden" animate="show" exit="exit" style={{ display: 'block' }}>
-      <StyledSection className="bg-section">
+    <motion.div 
+    variants={pageAnimation} 
+    initial="hidden" 
+    animate="show" 
+    exit="exit" 
+    style={{ display: 'block' }}
+    >
+      <StyledSection variants={cardAnimation} className="bg-section">
         <HeroContainer>
           <ResponsiveHeroText
             numOfItems={5}
@@ -140,7 +147,7 @@ const HeroImage = styled.img`
   }
 `;
 
-const StyledSection = styled.section`
+const StyledSection = styled(motion.div)`
   width: 80%;
   margin: 12rem auto 0 auto;
   padding: 1rem;

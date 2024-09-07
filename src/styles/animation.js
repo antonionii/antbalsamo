@@ -8,10 +8,9 @@ export const pageAnimation = {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.2,
       ease: "easeOut", // Easing for the show state
       when: "beforeChildren",
-      staggerChildren: 0.55,
+      staggerChildren: 0.20,
     },
   },
   exit: {
@@ -20,6 +19,18 @@ export const pageAnimation = {
     transition: {
       duration: 0.5,
       ease: "easeIn", // Easing for the exit state
+    },
+  },
+};
+
+export const cardAnimation = {
+  hidden: { opacity: 0, y: 50 }, // Initial state, cards are hidden and slightly down
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.3, // Individual card animation duration
+      ease: "easeOut",
     },
   },
 };

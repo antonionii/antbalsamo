@@ -33,6 +33,22 @@ function App() {
 
   const [colorSchemeType, setColorSchemeType] = useState("light");
 
+
+    // This effect triggers the scroll after navigation and animation completes
+    useEffect(() => {
+      const scrollToTop = () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      };
+
+    // Call scrollToTop after a slight delay (to ensure animation completes)
+    const timeout = setTimeout(() => {
+      scrollToTop();
+    }, 500); // Adjust this delay to match the exit animation duration
+
+    return () => clearTimeout(timeout); // Cleanup the timeout
+  }, [location]); // Runs when location (path) changes
+
+  
   const doRippleEffect = (evt) => {
     const ripple = document.createElement("div");
 
