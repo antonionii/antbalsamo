@@ -1,10 +1,11 @@
+"use client"
 import React, {useEffect, useState} from "react";
 import styled from "styled-components";
 //Animations
 import {motion} from "framer-motion";
 import {pageAnimation, slideText} from "../styles/animation";
 import {useMediaQuery, useWindowScroll} from "beautiful-react-hooks";
-import useDebounce from "../hooks/use-debounce";
+import useDebounce from "../../../../src/hooks/use-debounce";
 
 const ContactMe = () => {
   const [scrollY, setScrollY] = useState(window.scrollY);

@@ -1,6 +1,9 @@
+"use client";
+
 import React, {useRef, useState} from "react";
 import styled from "styled-components";
-import {Link, useLocation} from "react-router-dom";
+import Link from 'next/link';
+import { useRouter } from 'next/navigation'; 
 import {motion} from "framer-motion";
 import {useIntersection} from "react-use";
 import lottie from "lottie-web";
@@ -11,22 +14,25 @@ import {changeColor} from "./theme/changeColor";
 const Nav = ({ colorSchemeType, setColorSchemeType }) => {
   let animObj = null;
   let animBox = null;
-  const { pathname } = useLocation();
+  const router = useRouter();
+  const { pathname } = router; 
+
+  console.log('Current pathname:', pathname);
 
   const [direction, setDirection] = useState(1);
   const [isLight, setIsLight] = useState(false);
+  const [activeItem, setActiveItem] = useState('/');
 
   const [hoveredMenuItem, sethoveredMenuItem] = useState("");
 
   const sectionRef = useRef(null);
-  // All the reg to be observed
   const intersection = useIntersection(sectionRef, {
     root: null,
     rootMargin: "200px",
     threshold: 1,
   });
 
-  let animationContainer = React.createRef();
+  let animationContainer = useRef();
 
   const [anim, setAnim] = useState(null);
 
@@ -95,51 +101,51 @@ const Nav = ({ colorSchemeType, setColorSchemeType }) => {
       >
 
    
-<NavItem style={{ paddingLeft: "0"  }} isActive={pathname === "/"} >
+<NavItem style={{ paddingLeft: "0"  }} isActive={activeItem === '/'} onClick={() => setActiveItem('/')} >
   <motion.div initial="hidden" animate="show" variants={slidedownAnim()}>
-    <Link to="/">Anthony Balsamo</Link>
+    <Link href="/" onClick={() => setActiveItem('/')}>Anthony Balsamo</Link>
   </motion.div>
   <Line
     transition={{ duration: 0.5 }}
     initial={{ width: "0%" }}
     animate={{
-      width: pathname === "/" ? "100%" : "0%",
+      width: activeItem === "/" ? "100%" : "0%",
     }}
   />
 </NavItem>
         </motion.div>
       <ul>
-        <NavItem isActive={pathname === "/Projects"}>
+        <NavItem isActive={activeItem === '/Projects'}>
           <motion.div
             initial="hidden"
             animate="show"
             variants={slidedownAnim(0.1)}
           >
-            <Link to="/Projects">Projects </Link>
+            <Link href="/Projects" onClick={() => setActiveItem('/Projects')}>Projects </Link>
           </motion.div>
 
           <Line
             transition={{ duration: 0.5 }}
             initial={{ width: "0%" }}
             animate={{
-              width: pathname === "/Projects" ? "80%" : "0%",
+              width: activeItem === "/Projects" ? "80%" : "0%",
             }}
           />
         </NavItem>
-        <NavItem isActive={pathname === "/Blog"}>
+        <NavItem isActive={activeItem === "/Blog"}>
           <motion.div
             initial="hidden"
             animate="show"
             variants={slidedownAnim(0.2)}
           >
-            <Link to="/Blog">Blog </Link>
+            <Link href="/Blog" onClick={() => setActiveItem('/Blog')}>Blog </Link>
           </motion.div>
 
           <Line
             transition={{ duration: 0.5 }}
             initial={{ width: "0%" }}
             animate={{
-              width: pathname === "/Blog" ? "65%" : "0%",
+              width: activeItem === "/Blog" ? "65%" : "0%",
             }}
           />
         </NavItem>
@@ -230,7 +236,7 @@ const NavItem = styled.li`
     font-family: ${(props) => (props.isActive ? "Rubik, sans-serif" : "inherit")};
     font-size: ${(props) =>
       props.noResize
-        ? "1.8rem" // Force font size to 1.8rem if noResize is true
+        ? "1.8rem" 
         : props.isActive
         ? "2.2rem"
         : "1.8rem"};

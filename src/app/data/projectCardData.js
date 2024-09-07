@@ -10,7 +10,7 @@ const projectCardData = [
         title: "Mingo",
         image: "https://i.imgur.com/UUYRNC8.gif",
         text: "A Platforming Space Odyssey.\n",
-        linkTo: "/destination2",
+        linkTo: "/Articles",
         bubbleText: "Open Project",
       },
       {

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { slideleftAnim, sliderightAnim } from "../styles/animation";
-import StyledSnackbar from "../components/StyledSnackbar"; // Import StyledSnackbar
+import StyledSnackbar from "./StyledSnackbar"; // Import StyledSnackbar
 
 const Tags = () => {
   const [emailText, setEmailText] = useState("antbalsamo@gmail.com");

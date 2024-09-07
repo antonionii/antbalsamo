@@ -1,18 +1,18 @@
+"use client";
 import React, { useState } from "react";import styled from "styled-components";
 import { Link } from "react-router-dom";
-import PageHeaderText from "../components/PageHeaderText";
-import HeroText from "../components/HeroText";
-import { Snackbar } from "@mui/material";
+import PageHeaderText from "./components/PageHeaderText";
+import HeroText from "./components/HeroText";
 //Animations
 import {motion} from "framer-motion";
-import CardComponent from "../components/CardComponent";
-import Button from "../components/ButtonComponent";
+import CardComponent from "./components/CardComponent";
+import Button from "./components/ButtonComponent";
 import { useHistory } from "react-router-dom";
-import {BasicLayout} from "../styles/styles";
-import {pageAnimation, cardAnimation, slidedownAnim, slideleftAnim, sliderightAnim} from "../styles/animation";
-import Tags from "../components/Tags";
-import StyledSnackbar from "../components/StyledSnackbar";
-import projectCardData from "../data/projectCardData"; 
+import {BasicLayout} from "./styles/styles";
+import {pageAnimation, slidedownAnim, slideleftAnim, sliderightAnim} from "./styles/animation";
+import Tags from "./components/Tags";
+import StyledSnackbar from "./components/StyledSnackbar";
+import projectCardData from "./data/projectCardData"; 
 
 
 const Home = () => {

@@ -1,3 +1,5 @@
+"use client"
+
 import React from "react";
 import {motion} from "framer-motion";
 import {pageAnimation, slideleftAnim, sliderightAnim, slidedownAnim} from "../styles/animation";

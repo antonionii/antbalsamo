@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import Link from 'next/link';
 import { motion } from "framer-motion";
 import { pageAnimation,cardAnimation  } from "../styles/animation"; // Import your animation
 
@@ -124,7 +124,7 @@ const CardComponent = ({ cards }) => {
                 {CardContent}
               </a>
             ) : (
-              <Link to={card.linkTo}>{CardContent}</Link>
+              <Link href={card.linkTo}>{CardContent}</Link>
             )}
           </Card>
         );

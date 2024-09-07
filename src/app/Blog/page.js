@@ -1,3 +1,4 @@
+"use client"
 import React from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
@@ -92,7 +93,6 @@ const Blog = () => {
   );
 };
 
-// Blog item container to hold the blog link and date
 const BlogItemContainer = styled.div`
   display: flex;
   justify-content: space-between;

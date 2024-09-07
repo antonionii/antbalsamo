@@ -1,6 +1,7 @@
+"use client"
 import React, {useEffect, useState} from "react";
 import styled from "styled-components";
-import {Link} from "react-router-dom";
+import Link from 'next/link';
 //Images
 //Animations
 import {motion} from "framer-motion";
