@@ -261,9 +261,9 @@ display: flex;
 }
 
 .heading {
-  font-size: 2.5rem; /* Equivalent to text-4xl */
+  font-size: 2.5rem; 
   font-weight: bold;
-  margin-top: 0.5rem; /* Equivalent to mt-2 */
+  margin-top: 0.5rem; 
     margin-bottom:auto;
         color: var(--accentText-color);
 
@@ -271,7 +271,7 @@ display: flex;
 }
 
 .subheading {
-  font-size: 1.5rem; /* Equivalent to text-2xl */
+  font-size: 1.5rem; 
     color: var(--accentText-color);
   text-align: center;
   margin-bottom:auto;

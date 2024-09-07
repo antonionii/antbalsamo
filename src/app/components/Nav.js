@@ -26,7 +26,6 @@ const Nav = ({ colorSchemeType, setColorSchemeType }) => {
   const [hoveredMenuItem, sethoveredMenuItem] = useState("");
 
   const sectionRef = useRef(null);
-  // All the reg to be observed
   const intersection = useIntersection(sectionRef, {
     root: null,
     rootMargin: "200px",
