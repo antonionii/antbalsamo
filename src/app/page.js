@@ -9,7 +9,7 @@ import CardComponent from "./components/CardComponent";
 import Button from "./components/ButtonComponent";
 import { useHistory } from "react-router-dom";
 import {BasicLayout} from "./styles/styles";
-import {pageAnimation, slidedownAnim, slideleftAnim, sliderightAnim} from "./styles/animation";
+import {pageAnimation, slidedownAnim, slideleftAnim, sliderightAnim, cardAnimation} from "./styles/animation";
 import Tags from "./components/Tags";
 import StyledSnackbar from "./components/StyledSnackbar";
 import projectCardData from "./data/projectCardData"; 

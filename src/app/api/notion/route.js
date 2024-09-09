@@ -4,7 +4,7 @@ import { Client } from '@notionhq/client';
 const notion = new Client({ auth: process.env.NOTION_API_KEY });
 
 export async function GET() {
-  const pageId = '6b1bc9b868234ef5bb5effe45d6d68bc';
+  const pageId = '80e79e864f4f4c57b029a0b3439b4889';
   console.log(pageId);
 
   try {

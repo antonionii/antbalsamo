@@ -17,7 +17,6 @@ const Nav = ({ colorSchemeType, setColorSchemeType }) => {
   const router = useRouter();
   const { pathname } = router; 
 
-  console.log('Current pathname:', pathname);
 
   const [direction, setDirection] = useState(1);
   const [isLight, setIsLight] = useState(false);

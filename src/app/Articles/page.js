@@ -32,8 +32,8 @@ const Articles = () => {
       <h1>Notion Page Data</h1>
       {pageData ? (
         <div>
-          <h2>{pageData.properties.title.title[0].plain_text}</h2>
-
+          {/* <h2>{pageData.properties.title.title[0].plain_text}</h2> */}
+          
           <p>
             Page created on: {new Date(pageData.created_time).toLocaleString()}
           </p>
