@@ -42,21 +42,6 @@ export default function RootLayout({ children }) {
   }, [location]); // Runs when location (path) changes
 
   
-  const doRippleEffect = (evt) => {
-    const ripple = document.createElement("div");
-
-    ripple.className = "ripple";
-
-    document.body.appendChild(ripple);
-
-    ripple.style.cssText = `
-      left: ${evt.clientX}px;
-      top: ${evt.clientY}px;
-      animation: .5s ease-in-out ripple-effect;
-      z-index: 20;
-    `;
-    ripple.onanimationend = () => document.body.removeChild(ripple);
-  };
 
   const handleBgClick = (evt) => {
     const isNavLink = evt.target.closest('a')
