@@ -22,10 +22,16 @@ const getPageMetadata = async (pageId) => {
 
 const getChildBlock = async (blockId) => {
   try {
-    const response = await notion.blocks.children.list({ block_id: blockId });
-    console.log('Block children response:', response);
+    let allChildren = [];
+    let nextCursor = undefined;
+    do {
+      const response = await notion.blocks.children.list({ block_id: blockId, start_cursor: nextCursor });
+      allChildren = allChildren.concat(response.results);
+      nextCursor = response.next_cursor;
+    } while (nextCursor);
+    
     const childBlock = await Promise.all(
-      response.results.map(async (block) => {
+      allChildren.map(async (block) => {
         if (block.has_children) {
           const children = await getChildBlock(block.id);
           return { ...block, children };
@@ -40,8 +46,10 @@ const getChildBlock = async (blockId) => {
   }
 };
 
+
 export async function GET() {
-  const pageId = 'a8fe00e4af834fd9a82b97606ef882df'; 
+  // const pageId = 'a8fe00e4af834fd9a82b97606ef882df'; 
+  const pageId = url.searchParams.get('pageId');
 
   try {
     const [metadata, blocks] = await Promise.all([
