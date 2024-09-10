@@ -50,10 +50,10 @@ export default function RootLayout({ children }) {
     if(!isNavLink && !isButton && !isIcon) {
     setColorSchemeType("light");
     changeColor("light");
-    doRippleEffect(evt);
-    setTimeout(() => {
-      doRippleEffect(evt);
-    }, 240);
+    // doRippleEffect(evt);
+    // setTimeout(() => {
+    //   doRippleEffect(evt);
+    // }, 240);
   };
   };
 
