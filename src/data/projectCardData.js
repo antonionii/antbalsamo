@@ -9,7 +9,7 @@ const projectCardData = [
       {
         title: "Mingo",
         image: "https://i.imgur.com/UUYRNC8.gif",
-        text: "A Platforming Space Odyssey.\n",
+        text: "A Platforming Space Odyssey for All-Ages.\n",
         linkTo: "https://antonioni.itch.io/mingo-tech-demo",
         bubbleText: "View Test Build",
       },
