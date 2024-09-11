@@ -44,11 +44,11 @@ const Home = () => {
 
     setTimeout(() => {
       setIcon("link");
-    }, 1500); // Change back to "link" before the animation ends
+    }, 1500);
 
     setTimeout(() => {
       setIsWiggling(false);
-    }, 2000); // End the wiggle animation after 1.2 seconds
+    }, 2000); 
 
   };
 
