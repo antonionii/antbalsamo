@@ -51,7 +51,7 @@ const Bubble = styled.div`
   margin-top: 1rem !important;
   padding: .7rem !important;
   width: auto !important;
-  max-width: 55%;
+  max-width: 65%;
   margin-left: auto !important;
   margin-right: auto !important;
   display: flex !important;

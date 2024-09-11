@@ -126,7 +126,7 @@ const Nav = ({ colorSchemeType, setColorSchemeType }) => {
             }}
           />
         </NavItem>
-        <NavItem isActive={pathname === "/Blog"}>
+        {/* <NavItem isActive={pathname === "/Blog"}>
           <motion.div
             initial="hidden"
             animate="show"
@@ -142,7 +142,7 @@ const Nav = ({ colorSchemeType, setColorSchemeType }) => {
               width: pathname === "/Blog" ? "65%" : "0%",
             }}
           />
-        </NavItem>
+        </NavItem> */}
         
      
 
