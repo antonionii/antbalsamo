@@ -72,7 +72,7 @@ const Home = () => {
           
           <StyledIcon
             className="material-symbols-outlined"
-            data-icon="true"  // Add this attribute to identify the icon
+            data-icon="true" 
             animate={isWiggling ? { rotate: [0, 30, -30, 30, -30, 0] } : {}}
             transition={{ type: "spring", stiffness: 500, damping: 2, duration: 2 }}
             onClick={handleIconClick}

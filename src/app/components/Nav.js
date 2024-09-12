@@ -1,6 +1,6 @@
 "use client";
 
-import React, {useRef, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import styled from "styled-components";
 import Link from 'next/link';
 import { useRouter } from 'next/navigation'; 
@@ -46,7 +46,7 @@ const Nav = ({ colorSchemeType, setColorSchemeType }) => {
     }
   }, [colorSchemeType]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (anim) {
       return;
     }
@@ -61,7 +61,7 @@ const Nav = ({ colorSchemeType, setColorSchemeType }) => {
     });
     setAnim(tempAnim);
     console.log("anim is set");
-  }, []);
+  }, [anim]);
 
   function startAnimation(event) {
     if(event) {
