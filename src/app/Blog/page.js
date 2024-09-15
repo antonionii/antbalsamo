@@ -44,6 +44,7 @@ const Blog = () => {
         exit="exit"
         style={{ textAlign: "center" }}
       >
+        <BlogsHeaderContainer>
         {/* Page Header */}
         <PageHeaderText
           numOfItems={4}
@@ -51,7 +52,7 @@ const Blog = () => {
           itemsText={["✏️", "Occasionally", "Blogging", "✏️"]}
           fontSize="1.4rem"
         />
-
+        </BlogsHeaderContainer>
         {/* Parent container to control the animation sequence */}
         <motion.div variants={pageAnimation} initial="hidden" animate="show" exit="exit">
           {/* Most Recent Section */}
@@ -130,7 +131,9 @@ const BlogLink = styled(Link)`
     text-decoration: underline;
   }
 `;
-
+const BlogsHeaderContainer = styled(motion.div)`
+  margin: 4rem 0rem 0rem 0rem; /* Reduce top margin */
+`;
 
 const BlogDate = styled.span`
   font-size: 1rem;

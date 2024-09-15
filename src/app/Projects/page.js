@@ -48,6 +48,7 @@ const Projects = () => {
         exit="exit"
         style={{ textAlign: "center" }}
       >
+        <ProjectsContainer>
         <PageHeaderText
           numOfItems={8}
           itemsText={["🐸", "I'm", "endlessly", "adding", "to", "this", "page.", "🐸"]}
@@ -55,6 +56,7 @@ const Projects = () => {
           fontSize="1.4rem"
           fontColor={accentTextColor} // Value only available client-side
         />
+        </ProjectsContainer>
       </motion.div>
       <CardComponent cards={projectCardData} /> {/* Render the project cards */}
     </motion.div>
@@ -63,7 +65,7 @@ const Projects = () => {
 
 // Styled components
 const ProjectsContainer = styled(motion.div)`
-  margin: 8rem 0rem 0rem 0rem; /* Reduce top margin */
+  margin: 4rem 0rem 0rem 0rem; /* Reduce top margin */
 `;
 
 export default Projects;
