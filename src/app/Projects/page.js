@@ -1,63 +1,69 @@
-"use client"
-import React, {useEffect, useState} from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import Link from 'next/link';
-//Images
-//Animations
-import {motion} from "framer-motion";
-import {pageAnimation, slidedownAnim} from "../styles/animation";
-import {useMediaQuery} from "beautiful-react-hooks";
-import Marquee from "react-fast-marquee";
-import CardComponent from "../components/CardComponent";
+import { motion } from "framer-motion";
 import PageHeaderText from "../components/PageHeaderText";
-import {BasicLayout} from "../styles/styles";
-import projectCardData from "../data/projectCardData"; 
+import { pageAnimation, slidedownAnim } from "../styles/animation";
+import CardComponent from "../components/CardComponent";
+import projectCardData from "../data/projectCardData";
 
-
-
-const ProjectsContainer = styled(motion.div)`
-
-  margin: 8rem 0rem 0rem 0rem; /* Reduce top margin */
-`;
 const Projects = () => {
-  // const [element, controls] = useScroll();
-  // const [element2, controls2] = useScroll();
-  const w = window.innerWidth;
-  const accentTextColor = getComputedStyle(document.documentElement).getPropertyValue('--accentText-color').trim();
-
-  console.log(w);
+  const [accentTextColor, setAccentTextColor] = useState("");
+  const [windowWidth, setWindowWidth] = useState(null);
 
   useEffect(() => {
-    console.log("rendered!");
-  });
+    // Ensure code runs only on the client-side
+    if (typeof window !== "undefined") {
+      // Fetch computed styles safely on the client
+      const accentColor = getComputedStyle(document.documentElement).getPropertyValue('--accentText-color').trim();
+      setAccentTextColor(accentColor);
 
-  const isLargeDisplay = useMediaQuery("(min-width: 48rem)");
+      // Get window width
+      setWindowWidth(window.innerWidth);
 
-  // const col2ScrollSpeed = isLargeDisplay ? "2" : "1";
+      // Add event listener for resizing
+      const handleResize = () => setWindowWidth(window.innerWidth);
+      window.addEventListener("resize", handleResize);
+
+      // Cleanup on component unmount
+      return () => window.removeEventListener("resize", handleResize);
+    }
+  }, []); // Empty dependency array ensures it runs once on mount
+
+  // Only render content when `accentTextColor` is available (client-side render)
+  if (!accentTextColor) {
+    return null; // Prevent rendering until window-based data is available
+  }
 
   return (
-    <div
-    variants={pageAnimation}
-    initial="hidden"
-    animate="show"
-    exit="exit"
+    <motion.div
+      variants={pageAnimation}
+      initial="hidden"
+      animate="show"
+      exit="exit"
     >
-
-      <motion.div initial="hidden" animate="show" exit="exit" style={{  textAlign: "center" }}>
-
-      <PageHeaderText 
-        numOfItems={8} 
-        itemsText={["🐸","I'm","endlessly","adding","to","this","page.","🐸" ]}
-        variant={slidedownAnim} 
-        fontSize="1.4rem" 
-        fontColor={accentTextColor}
-
-      />
+      <motion.div
+        initial="hidden"
+        animate="show"
+        exit="exit"
+        style={{ textAlign: "center" }}
+      >
+        <PageHeaderText
+          numOfItems={8}
+          itemsText={["🐸", "I'm", "endlessly", "adding", "to", "this", "page.", "🐸"]}
+          variant={slidedownAnim}
+          fontSize="1.4rem"
+          fontColor={accentTextColor} // Value only available client-side
+        />
       </motion.div>
-  <CardComponent cards={projectCardData} /> {/* Only show 4 cards */}  </div>
-
+      <CardComponent cards={projectCardData} /> {/* Render the project cards */}
+    </motion.div>
   );
 };
 
+// Styled components
+const ProjectsContainer = styled(motion.div)`
+  margin: 8rem 0rem 0rem 0rem; /* Reduce top margin */
+`;
 
 export default Projects;

@@ -3,9 +3,9 @@ const projectCardData = [
         title: "Notification System",
         image: "https://i.imgur.com/9Fd7bXq.png",
         text: "Robust and deeply configurable notification system built for admins and workgroups.",
-        linkTo: "/Blocks/a8fe00e4af834fd9a82b97606ef882df",
+        linkTo: "/Blocks/80e79e864f4f4c57b029a0b3439b4889",
         bubbleText: "Open Project",
-        pageId: 'a8fe00e4af834fd9a82b97606ef882df'
+        pageId: '80e79e864f4f4c57b029a0b3439b4889'
       },
       {
         title: "Mingo",

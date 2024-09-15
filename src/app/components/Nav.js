@@ -1,97 +1,87 @@
 "use client";
 
-import React, {useEffect, useRef, useState} from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-import Link from 'next/link';
-import { useRouter } from 'next/navigation'; 
-import {motion} from "framer-motion";
+import Link from "next/link";
 import {useIntersection} from "react-use";
-import lottie from "lottie-web";
-import {slidedownAnim, slideleftAnim, textFade} from "../styles/animation";
-
-import {changeColor} from "./theme/changeColor";
+import { useRouter } from "next/navigation";
+import { motion } from "framer-motion";
+import lottie from "lottie-web"; // Regular import
+import { slidedownAnim, slideleftAnim, textFade } from "../styles/animation";
+import { changeColor } from "./theme/changeColor";
 
 const Nav = ({ colorSchemeType, setColorSchemeType }) => {
-  let animObj = null;
-  let animBox = null;
   const router = useRouter();
-  const { pathname } = router; 
-
-
+  const { pathname } = router;
   const [direction, setDirection] = useState(1);
   const [isLight, setIsLight] = useState(false);
-  const [activeItem, setActiveItem] = useState('/');
-
+  const [activeItem, setActiveItem] = useState("/");
+  const animationContainer = useRef(null);
+  const animRef = useRef(null); // Use a ref to hold the animation instance
   const [hoveredMenuItem, sethoveredMenuItem] = useState("");
-
   const sectionRef = useRef(null);
   const intersection = useIntersection(sectionRef, {
     root: null,
     rootMargin: "200px",
     threshold: 1,
   });
-
-  let animationContainer = useRef();
-
-  const [anim, setAnim] = useState(null);
-
-  React.useEffect(() => {
+  // Handle color scheme changes
+  useEffect(() => {
     setIsLight(colorSchemeType === "light");
     const newDirection = colorSchemeType === "light" ? 1 : -1;
-
     if (newDirection !== direction) {
       setDirection(newDirection);
-      setIsLight(newDirection === 1)
       startAnimation();
     }
   }, [colorSchemeType]);
 
+  // Load and initialize the lottie animation on the client side
   useEffect(() => {
-    if (anim) {
-      return;
+    if (!animRef.current && typeof window !== "undefined") {
+      animRef.current = lottie.loadAnimation({
+        container: animationContainer.current,
+        renderer: "svg",
+        loop: false,
+        autoplay: false,
+        path: "https://assets1.lottiefiles.com/packages/lf20_ebutdyzo.json",
+      });
     }
 
-    let tempAnim = lottie.loadAnimation({
-      container: animationContainer.current,
-      renderer: "svg",
-      
-      loop: false,
-      autoplay: false,
-      path: "https://assets1.lottiefiles.com/packages/lf20_ebutdyzo.json",
-    });
-    setAnim(tempAnim);
-    console.log("anim is set");
-  }, [anim]);
+    // Cleanup function to destroy the animation when the component unmounts
+    return () => {
+      if (animRef.current) {
+        animRef.current.destroy();
+        animRef.current = null; // Set it to null to avoid re-initialization
+      }
+    };
+  }, []);
 
   function startAnimation(event) {
-    if(event) {
-      event.stopPropagation()
+    if (event) {
+      event.stopPropagation();
     }
-    if (!anim) {
+    if (!animRef.current) {
       return;
     }
-    anim.setDirection(direction);
-    anim.play();
+    animRef.current.setDirection(direction);
+    animRef.current.play();
     if (direction === -1) {
-      // from dark to light
-      anim.setSpeed(2);
+      animRef.current.setSpeed(2);
       changeColor("light");
       setColorSchemeType("light");
-      setIsLight(true)
+      setIsLight(true);
     } else {
-      // from light to dark
-      anim.setSpeed(1);
+      animRef.current.setSpeed(1);
       changeColor("dark");
       setColorSchemeType("dark");
-      setIsLight(false)
+      setIsLight(false);
     }
-    // change direction
     setDirection(direction * -1);
-    
   }
 
   return (
-    <StyledNav id="nav" isLight= {isLight}>
+    <div className="nav-container">
+   <StyledNav id="nav" isLight= {isLight}>
       <motion.div
         transition-delay="0s"
         initial="hidden"
@@ -149,29 +139,26 @@ const Nav = ({ colorSchemeType, setColorSchemeType }) => {
           />
         </NavItem>
         
-     
-
-        <li style={{display: "flex", alignItems: "flex-end", justifyContent: "flex-end", flex: "1" }}>
-          <motion.div
-            initial="hidden"
-            animate="show"
-            variants={slideleftAnim(0.4)}
-          >
-            <div className="anime-contain"
-              id="animationContainer"
+        <li style={{ display: "flex", justifyContent: "flex-end", flex: 1 }}>
+          <motion.div initial="hidden" animate="show" variants={slideleftAnim(0.4)}>
+            <div
+              className="anime-contain"
               ref={animationContainer}
-              onClick={(event) => startAnimation(event)}
-              style={{ width: 30, height: 30, marginBottom:".5rem", cursor: "pointer" }}
+              onClick={startAnimation}
+              style={{ width: 30, height: 30, marginBottom: ".5rem", cursor: "pointer" }}
             ></div>
           </motion.div>
         </li>
       </ul>
-      <NavLine id="bm" />
+      <NavLine />
     </StyledNav>
+    </div>
   );
 };
 
 const StyledNav = styled(motion.div)`
+  .nav-container & {
+
   min-height: 7vh;
   display: flex;
   margin: auto;
@@ -188,10 +175,6 @@ const StyledNav = styled(motion.div)`
   h1 {
     pointer-events: auto;
   }
-    
- anime-contain {
-  
-  }
   ul {
     display: flex;
     justify-content: flex-end;
@@ -203,26 +186,19 @@ const StyledNav = styled(motion.div)`
     flex-direction: column;
     padding: 2rem 1rem;
     background: var(--background-color);
-
-    
-    #Logo {
-      display: inline-block;
-      margin: 0.5rem;
-    }
     ul {
       padding: 1rem;
-      width: 100%;      
-      //justify-content: space-around;
-      gap:5%;
+      width: 100%;
+      gap: 5%;
       margin: auto;
-      justify-content:center;
+      justify-content: center;
       align-items: center;
-
       li {
         padding: 0;
       }
     }
   }
+}
 `;
 
 const NavItem = styled.li`
@@ -230,25 +206,17 @@ const NavItem = styled.li`
   list-style: none;
   height: 2.8rem;
   line-height: 2.1rem;
-
   a {
     font-family: ${(props) => (props.isActive ? "Rubik, sans-serif" : "inherit")};
     font-size: ${(props) =>
-      props.noResize
-        ? "1.8rem" 
-        : props.isActive
-        ? "2.2rem"
-        : "1.8rem"};
+      props.noResize ? "1.8rem" : props.isActive ? "2.2rem" : "1.8rem"};
     color: ${(props) => (props.isActive ? "var(--text-color)" : "inherit")};
     font-weight: ${(props) => (props.isActive ? "900" : "regular")};
   }
 `;
 
-
-
-
 const Line = styled(motion.div)`
-  height: .5rem;
+  height: 0.5rem;
   background: var(--line-color, "#000");
   width: 0%;
   position: absolute;

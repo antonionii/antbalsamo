@@ -82,7 +82,7 @@ const Home = () => {
         </HeroContainer>
         <HeroImage src={"https://i.imgur.com/kxtX2ZX.png"} alt={"picture of me"} />
         <CardText>Designing creative and delightful experiences into scalable products.</CardText>
-        <CardText>If you'd like to work together, drop me a message at my email below.</CardText>
+        <CardText>If you&apos;d like to work together, drop me a message at my email below.</CardText>
         <Tags />
       </StyledSection>
       <StyledSnackbar

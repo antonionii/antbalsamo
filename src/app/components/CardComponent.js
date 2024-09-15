@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import Link from 'next/link';
+import Link from "next/link";
 import { motion } from "framer-motion";
-import { pageAnimation,cardAnimation  } from "../styles/animation"; // Import your animation
+import { pageAnimation, cardAnimation } from "../styles/animation"; // Import your animation
 
 const CardGrid = styled(motion.div)`
   display: grid;
@@ -14,17 +14,18 @@ const CardGrid = styled(motion.div)`
   padding: 4rem 2rem; /* Adjust padding if necessary */
 `;
 
-
+const CardLink = styled.a`
+  text-decoration: none; /* Remove underline for the link */
+  color: inherit; /* Inherit text color */
+  display: block; /* Make the entire card clickable */
+`;
 
 const Card = styled(motion.div)`
-
   background-color: var(--card-color);
   box-shadow: 1rem 0.6rem 0rem 0rem black;
   border-radius: 12px;
   padding: 1rem 2rem !important;
   text-align: left;
-  text-decoration: none;
-  color: black;
   height: auto !important;
   width: 100% !important; /* Ensure the card takes up the full width of its grid column */
 
@@ -37,21 +38,20 @@ const Card = styled(motion.div)`
 `;
 
 const CardImage = styled.img`
-  width: calc(100% + 4rem) !important;; /* Adjust width to compensate for the padding in the Card */
-  //height: auto !important;
+  width: calc(100% + 4rem) !important; /* Adjust width to compensate for the padding in the Card */
   max-height: 14rem !important;
   margin-top: 1rem !important;
   margin-left: -2rem !important; /* Offset to the left to account for the card's padding */
-  margin-right: -2rem !important;/* Offset to the right to account for the card's padding */
+  margin-right: -2rem !important; /* Offset to the right to account for the card's padding */
   object-fit: cover !important;
 `;
 
 const Bubble = styled.div`
-  border-color:black;
+  border-color: black;
   border-width: 6px;
-  border-radius: 6px ;
+  border-radius: 6px;
   margin-top: 1rem !important;
-  padding: .7rem !important;
+  padding: 0.7rem !important;
   width: auto !important;
   max-width: 55%;
   margin-left: auto !important;
@@ -59,11 +59,9 @@ const Bubble = styled.div`
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
-
   background-color: var(--background-color);
   transition: box-shadow 0.3s ease, transform 0.3s ease;
 `;
-
 
 const CardText = styled.p`
   font-size: 1rem;
@@ -108,30 +106,27 @@ const CardComponent = ({ cards }) => {
         );
 
         return (
-          <Card 
-            key={index} 
-            variants={cardAnimation}
-            initial={{ boxShadow: "1rem 0.6rem 0rem 0rem rgba(0, 0, 0, 1)" }} // Set the initial box shadow
-            animate={{ boxShadow: "1rem 0.6rem 0rem 0rem rgba(0, 0, 0, 1)" }} // Maintain the default box shadow
-            whileHover={{ 
-              translateY: "-2rem", 
-              bordeWidth: "1rem",
-              borderColor: "#f9ec5c",
-              boxShadow: "2rem 1rem 0rem 0rem rgba(0, 0, 0, 1)"            }}      
-            >
-            {isExternal ? (
-              <a href={card.linkTo} target="_blank" rel="noopener noreferrer">
+          <Link href={card.linkTo} passHref key={index}>
+            <CardLink>
+              <Card
+                variants={cardAnimation}
+                initial={{ boxShadow: "1rem 0.6rem 0rem 0rem rgba(0, 0, 0, 1)" }}
+                animate={{ boxShadow: "1rem 0.6rem 0rem 0rem rgba(0, 0, 0, 1)" }}
+                whileHover={{
+                  translateY: "-2rem",
+                  borderWidth: "1rem",
+                  borderColor: "#f9ec5c",
+                  boxShadow: "2rem 1rem 0rem 0rem rgba(0, 0, 0, 1)",
+                }}
+              >
                 {CardContent}
-              </a>
-            ) : (
-              <Link href={card.linkTo}>{CardContent}</Link>
-            )}
-          </Card>
+              </Card>
+            </CardLink>
+          </Link>
         );
       })}
     </CardGrid>
   );
 };
-
 
 export default CardComponent;

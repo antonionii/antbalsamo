@@ -26,26 +26,6 @@ const PageHeaderText = ({ numOfItems, itemsText, variant, fontSize, fontColor, f
 
   const debouncedScrollY = useDebounce(scrollY, 300);
 
-  const getCircleXPosition1 = () => {
-    let targetPositionX1 = 0 - (scrollY - screenHeight / 2 / 1.5);
-    return targetPositionX1;
-  };
-
-  useEffect(() => {
-    setCircle1XPos(
-      debouncedScrollY > screenHeight / 3 ? getCircleXPosition1() : 0
-    );
-  }, [debouncedScrollY, screenHeight]);
-
-  let endXPosForCircle1;
-
-  if (isMediumDisplay) {
-    endXPosForCircle1 = -230;
-  } else if (isLargeDisplay) {
-    endXPosForCircle1 = -200;
-  } else {
-    endXPosForCircle1 = -100;
-  }
 
   // Ensure itemsText has enough text items for numOfItems
   const items = itemsText.slice(0, numOfItems);

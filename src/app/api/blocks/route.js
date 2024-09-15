@@ -8,11 +8,15 @@ const getPageMetadata = async (pageId) => {
     console.log('Fetching page metadata for:', pageId);
     const response = await notion.pages.retrieve({ page_id: pageId });
     console.log('Page metadata response:', response);
+    // Safely access the title field with error handling
+    const titleProperty = response.properties?.Project?.title;
+    const title = titleProperty && titleProperty.length > 0 ? titleProperty[0].text.content : 'Untitled';
+
     return {
-      title: response.properties.title.title[0]?.text.content,
+      title,  // Use the title or 'Untitled'
       coverImage: response.cover?.external?.url || response.cover?.file?.url,
       icon: response.icon?.emoji || null,
-      // properties: response.properties.properties
+       properties: response.properties
       // createdTime: response?.created_time,
       // lastEditedTime: response?.last_edited_time
     };

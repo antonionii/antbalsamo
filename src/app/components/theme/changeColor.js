@@ -9,6 +9,9 @@ export const colorSchemes = {
     accentTextColor: "black",
     cardColor: "white",
     linkColor: "#ff4062",
+    secCardColor: "white",
+    mutedTextColor: "#dcdbdc"
+
   },
   light: [
    
@@ -23,6 +26,9 @@ export const colorSchemes = {
       accentTextColor: "black",
       cardColor: "white",
       linkColor: "#ff4062",
+      secCardColor: "white",
+      mutedTextColor: "#525151"
+
     },
 
     
@@ -44,13 +50,16 @@ export const colorSchemes = {
       //Blue
       id: "3",
       backgroundColor: "#0061FC",
-      textColor: "white",
+      textColor: "black",
       lineColor: "white",
       textShadow: "black",
       accentColor: "white",
       accentTextColor: "black",
       cardColor: "white",
       linkColor: "#ff4062",
+      secCardColor: "white",
+      mutedTextColor: "#dcdbdc"
+
 
     },
     {
@@ -64,10 +73,20 @@ export const colorSchemes = {
       accentTextColor: "black",
       cardColor: "#28c074",
       linkColor: "#000050",
+      secCardColor: hexToRgba("#28c074", 0.5),
+      mutedTextColor: "#525151"
+
 
     },
   ],
 };
+function hexToRgba(hex, alpha) {
+  const r = parseInt(hex.slice(1, 3), 16);
+  const g = parseInt(hex.slice(3, 5), 16);
+  const b = parseInt(hex.slice(5, 7), 16);
+
+  return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+}
 
 const changeColor = (themeType = "light") => {
   let toBeAppliedScheme;
@@ -117,8 +136,16 @@ const changeColor = (themeType = "light") => {
     toBeAppliedScheme.accentTextColor
   );
   document.documentElement.style.setProperty(
+    "--mutedText-color",
+    toBeAppliedScheme.mutedTextColor
+  );
+  document.documentElement.style.setProperty(
     "--link-color",
     toBeAppliedScheme.linkColor
+  );
+  document.documentElement.style.setProperty(
+    "--secCard-color",
+    toBeAppliedScheme.secCardColor
   );
 };
 
