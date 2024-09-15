@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useCallback } from "react";
 import styled from "styled-components";
 import Link from "next/link";
 import { usePathname } from "next/navigation"; // Import usePathname
@@ -17,27 +17,54 @@ const Nav = ({ colorSchemeType, setColorSchemeType }) => {
   const animationContainer = useRef(null);
   const animRef = useRef(null); // Use a ref to hold the animation instance
 
+  // Memoize the startAnimation function
+  const startAnimation = useCallback(
+    (event) => {
+      if (event) {
+        event.stopPropagation(); // Stop propagation
+      }
+      if (!animRef.current) {
+        return;
+      }
+      animRef.current.setDirection(direction);
+      animRef.current.play();
+
+      // Change speed and color scheme based on direction
+      if (direction === -1) {
+        animRef.current.setSpeed(2);
+        changeColor("light");
+        setColorSchemeType("light");
+        setIsLight(true);
+      } else {
+        animRef.current.setSpeed(1);
+        changeColor("dark");
+        setColorSchemeType("dark");
+        setIsLight(false);
+      }
+
+      setDirection(direction * -1); // Toggle direction
+    },
+    [direction, setColorSchemeType]
+  );
+
   // Handle color scheme changes
   useEffect(() => {
     setIsLight(colorSchemeType === "light");
     const newDirection = colorSchemeType === "light" ? 1 : -1;
     if (newDirection !== direction) {
       setDirection(newDirection);
-      startAnimation();
+      startAnimation(); // Use memoized startAnimation
     }
-  }, [colorSchemeType]);
+  }, [colorSchemeType, direction, startAnimation]);
 
-  // useEffect to update activeItem based on pathname
+  // Update activeItem based on pathname
   useEffect(() => {
-    // Set the active item to Projects when the pathname is either /Projects or starts with /Blocks
     if (pathname.startsWith("/Projects") || pathname.startsWith("/Blocks")) {
       setActiveItem("/Projects");
-    }
-    else if (pathname.startsWith("/Blog") || pathname.startsWith("/Blogs")) {
+    } else if (pathname.startsWith("/Blog") || pathname.startsWith("/Blogs")) {
       setActiveItem("/Blog");
-    }
-    else {
-      setActiveItem(pathname); // Set active item to other paths (like "/")
+    } else {
+      setActiveItem(pathname);
     }
   }, [pathname]);
 
@@ -57,33 +84,10 @@ const Nav = ({ colorSchemeType, setColorSchemeType }) => {
     return () => {
       if (animRef.current) {
         animRef.current.destroy();
-        animRef.current = null; // Set it to null to avoid re-initialization
+        animRef.current = null;
       }
     };
   }, []);
-
-  function startAnimation(event) {
-    if (event) {
-      event.stopPropagation();
-    }
-    if (!animRef.current) {
-      return;
-    }
-    animRef.current.setDirection(direction);
-    animRef.current.play();
-    if (direction === -1) {
-      animRef.current.setSpeed(2);
-      changeColor("light");
-      setColorSchemeType("light");
-      setIsLight(true);
-    } else {
-      animRef.current.setSpeed(1);
-      changeColor("dark");
-      setColorSchemeType("dark");
-      setIsLight(false);
-    }
-    setDirection(direction * -1);
-  }
 
   return (
     <div className="nav-container">
@@ -115,25 +119,25 @@ const Nav = ({ colorSchemeType, setColorSchemeType }) => {
         </motion.div>
 
         <ul>
-        <NavItem isActive={activeItem === "/Projects"}>
-    <motion.div
-        initial="hidden"
-        animate="show"
-        variants={slidedownAnim(0.1)}
-    >
-        <Link href="/Projects" onClick={() => setActiveItem("/Projects")}>
-            Projects
-        </Link>
-    </motion.div>
+          <NavItem isActive={activeItem === "/Projects"}>
+            <motion.div
+              initial="hidden"
+              animate="show"
+              variants={slidedownAnim(0.1)}
+            >
+              <Link href="/Projects" onClick={() => setActiveItem("/Projects")}>
+                Projects
+              </Link>
+            </motion.div>
 
-    <Line
-        transition={{ duration: 0.5 }}
-        initial={{ width: "0%" }}
-        animate={{
-            width: activeItem === "/Projects" ? "80%" : "0%",
-        }}
-    />
-</NavItem>
+            <Line
+              transition={{ duration: 0.5 }}
+              initial={{ width: "0%" }}
+              animate={{
+                width: activeItem === "/Projects" ? "80%" : "0%",
+              }}
+            />
+          </NavItem>
 
           <NavItem isActive={activeItem === "/Blog"}>
             <motion.div

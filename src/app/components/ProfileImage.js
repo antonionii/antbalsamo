@@ -1,4 +1,5 @@
 import React from "react";
+import Image from 'next/image';
 
 const ProfileImage = ({ size = 128 }) => (
   <div
@@ -10,7 +11,7 @@ const ProfileImage = ({ size = 128 }) => (
       overflow: "hidden", // Ensure the image stays within the circle
     }}
   >
-    <img
+    <Image
       src="../ProfileImageCircle.png" // Make sure this path is correct relative to your public folder
       alt="Portrait photo of me"
       height={size}

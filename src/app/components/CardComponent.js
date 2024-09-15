@@ -110,9 +110,30 @@ const CardComponent = ({ cards, onCardClick }) => {
           </>
         );
 
-        return (
+        return isExternal ? (
+          <CardLink
+            href={card.linkTo}
+            target="_blank"
+            rel="noopener noreferrer"
+            key={index}
+          >
+            <Card
+              variants={cardAnimation}
+              initial={{ boxShadow: "1rem 0.6rem 0rem 0rem rgba(0, 0, 0, 1)" }}
+              animate={{ boxShadow: "1rem 0.6rem 0rem 0rem rgba(0, 0, 0, 1)" }}
+              whileHover={{
+                translateY: "-2rem",
+                borderWidth: "1rem",
+                borderColor: "#f9ec5c",
+                boxShadow: "2rem 1rem 0rem 0rem rgba(0, 0, 0, 1)",
+              }}
+            >
+              {CardContent}
+            </Card>
+          </CardLink>
+        ) : (
           <Link href={card.linkTo} passHref key={index}>
-            <CardLink onClick={onCardClick}> {/* Trigger onCardClick when the card is clicked */}
+            <CardLink onClick={onCardClick}>
               <Card
                 variants={cardAnimation}
                 initial={{ boxShadow: "1rem 0.6rem 0rem 0rem rgba(0, 0, 0, 1)" }}
@@ -133,5 +154,6 @@ const CardComponent = ({ cards, onCardClick }) => {
     </CardGrid>
   );
 };
+
 
 export default CardComponent;

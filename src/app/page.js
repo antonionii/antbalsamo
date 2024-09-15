@@ -1,30 +1,37 @@
 "use client";
-import React, { useState } from "react";import styled from "styled-components";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import styled from "styled-components";
+import { motion } from "framer-motion";
 import PageHeaderText from "./components/PageHeaderText";
 import HeroText from "./components/HeroText";
-//Animations
-import {motion} from "framer-motion";
 import CardComponent from "./components/CardComponent";
 import Button from "./components/ButtonComponent";
-import { useHistory } from "react-router-dom";
-import {BasicLayout} from "./styles/styles";
-import {pageAnimation, slidedownAnim, slideleftAnim, sliderightAnim, cardAnimation} from "./styles/animation";
 import Tags from "./components/Tags";
 import StyledSnackbar from "./components/StyledSnackbar";
-import projectCardData from "./data/projectCardData"; 
+import projectCardData from "./data/projectCardData";
+import { pageAnimation, cardAnimation, slideleftAnim, slidedownAnim } from './styles/animation';
 
 
 const Home = () => {
-  const accentTextColor = getComputedStyle(document.documentElement).getPropertyValue('--accentText-color').trim();
-  const cardColor = getComputedStyle(document.documentElement).getPropertyValue('--card-color').trim();
-  
-  const history = useHistory();
+  const [accentTextColor, setAccentTextColor] = useState("");
+  const [cardColor, setCardColor] = useState("");
+  const [isClient, setIsClient] = useState(false); // Track if it's client-side
+
+  useEffect(() => {
+    // Check if we are on the client side
+    if (typeof window !== "undefined") {
+      setIsClient(true);
+      const accentColor = getComputedStyle(document.documentElement).getPropertyValue('--accentText-color').trim();
+      const cardColor = getComputedStyle(document.documentElement).getPropertyValue('--card-color').trim();
+      setAccentTextColor(accentColor);
+      setCardColor(cardColor);
+    }
+  }, []);
+
   const [icon, setIcon] = useState("link");
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const [isWiggling, setIsWiggling] = useState(false);
-  
-  
+
   const handleCloseSnackbar = (event, reason) => {
     if (reason === 'clickaway') {
       return;
@@ -32,34 +39,33 @@ const Home = () => {
     setOpenSnackbar(false);
   };
 
-  const handleClick = (event) => {
-    event.preventDefault();
-    history.push("/Projects");
-  };
-
   const handleIconClick = () => {
-    setIsWiggling(true); 
+    setIsWiggling(true);
     setIcon("sentiment_satisfied");
     navigator.clipboard.writeText(window.location.href);
     setOpenSnackbar(true);
 
     setTimeout(() => {
       setIcon("link");
-    }, 1500); // Change back to "link" before the animation ends
+    }, 1500);
 
     setTimeout(() => {
       setIsWiggling(false);
-    }, 2000); // End the wiggle animation after 1.2 seconds
-
+    }, 2000);
   };
+
+  // Only render the component when on the client side
+  if (!isClient) {
+    return null; // Return null or a loading state for server-side rendering
+  }
 
   return (
     <motion.div 
-    variants={pageAnimation} 
-    initial="hidden" 
-    animate="show" 
-    exit="exit" 
-    style={{ display: 'block' }}
+      variants={pageAnimation} 
+      initial="hidden" 
+      animate="show" 
+      exit="exit" 
+      style={{ display: 'block' }}
     >
       <StyledSection variants={cardAnimation} className="bg-section">
         <HeroContainer>
@@ -100,7 +106,7 @@ const Home = () => {
         />
       </div>
       <CardComponent cards={projectCardData.slice(0, 4)} />
-      <Button onClick={handleClick}>See All Projects</Button>
+      <Button>See All Projects</Button>
     </motion.div>
   );
 };
@@ -112,13 +118,11 @@ const HeroContainer = styled.div`
   margin-bottom: 1rem;
 
   @media (max-width: 780px) {
-    flex-direction: column-reverse; /* Reverse the order of children (Icon above Text) */
-    align-items: flex-end; /* Align items to the start (left) */
-    margin-top: -1.5rem; /* Decrease space above the link button */
+    flex-direction: column-reverse;
+    align-items: flex-end;
+    margin-top: -1.5rem;
   }
 `;
-
-
 
 const CardText = styled.p`
   font-size: 1.2rem;
@@ -182,7 +186,6 @@ const ResponsiveHeroText = styled(HeroText)`
   }
 `;
 
-
 const StyledIcon = styled(motion.span)`
   font-size: 2rem;
   display: inline-block;
@@ -205,4 +208,5 @@ const StyledIcon = styled(motion.span)`
     }
   }
 `;
+
 export default Home;

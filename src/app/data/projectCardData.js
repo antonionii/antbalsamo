@@ -11,7 +11,7 @@ const projectCardData = [
         title: "Mingo",
         image: "https://i.imgur.com/UUYRNC8.gif",
         text: "A Platforming Space Odyssey.\n",
-        linkTo: "/Blocks/3328b05dcbba4ba7900873e790e145c4",
+        linkTo: "https://antonioni.itch.io/mingo-tech-demo",
         bubbleText: "Open Project",
         pageid: '3328b05dcbba4ba7900873e790e145c4',
       },

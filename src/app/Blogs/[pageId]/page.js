@@ -7,6 +7,7 @@ import PageHeaderText from "../../components/PageHeaderText";
 import { slidedownAnim } from "../../styles/animation";
 import { ModalContext } from "../../layout";  // Import Modal Context
 import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader";
+import Image from 'next/image';
 
 const Blogs = () => {
     const router = useRouter(); // Initialize useRouter for navigation
@@ -177,7 +178,7 @@ const Blogs = () => {
                 const imageFile = block.image.type === "external" ? block.image.external.url : block.image.file.url;
                 return (
                     <ImageContainer key={block.id}>
-                        <img src={imageFile} alt="image file" onClick={() => openImageModal(imageFile)} />
+                        <Image src={imageFile} alt="image file" onClick={() => openImageModal(imageFile)} />
                     </ImageContainer>
                 );
             }
@@ -300,7 +301,7 @@ const ModalImageWrapper = styled.div`
   align-items: center; // Center the image vertically
 `;
 
-const ModalImage = styled.img`
+const ModalImage = styled(Image)`
   max-width: 90%;
   max-height: 90%;
   transform: translate(${(props) =>
@@ -505,7 +506,7 @@ const ImageContainer = styled.div`
     cursor: zoom-in;  /* Show magnifying glass cursor on hover */
   }
 
-  img:hover {
+  img :hover {
     opacity: 0.96;  /* Optional: Slightly dim the image on hover */
   }
 `;

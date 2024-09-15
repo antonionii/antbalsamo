@@ -7,6 +7,7 @@ import PageHeaderText from "../../components/PageHeaderText";
 import { slidedownAnim } from "../../styles/animation";  
 import { ModalContext } from "../../layout";  // Import Modal Context
 import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader";
+import Image from 'next/image';
 
 const Blocks = () => {
   const { pageId } = useParams();
@@ -153,14 +154,21 @@ const Blocks = () => {
         return <Heading2 key={block.id}>{textLink(block.heading_2.rich_text)}</Heading2>;
       case 'heading_3':
         return <Heading3 key={block.id}>{textLink(block.heading_3.rich_text)}</Heading3>;
-        case "image": {
-          const imageFile = block.image.type === "external" ? block.image.external.url : block.image.file.url;
-          return (
-            <ImageContainer key={block.id}>
-              <img src={imageFile} alt="image file" onClick={() => openImageModal(imageFile)} />
-            </ImageContainer>
-          );
-        }
+      case "image": {
+        const imageFile = block.image.type === "external" ? block.image.external.url : block.image.file.url;
+        return (
+          <ImageContainer key={block.id}>
+            <Image
+              src={imageFile}
+              alt="image file"
+              width={800}  // Adjust this to fit your needs
+              height={600} // Adjust this to fit your needs
+              layout="responsive" // Use responsive layout to maintain aspect ratio
+              onClick={() => openImageModal(imageFile)}
+            />
+          </ImageContainer>
+        );
+      }
       case 'callout':
         if (block.callout.rich_text.length > 0) {
           return (
@@ -264,7 +272,7 @@ const ModalImageWrapper = styled.div`
   align-items: center; // Center the image vertically
 `;
 
-const ModalImage = styled.img`
+const ModalImage = styled(Image)`
   max-width: 90%;
   max-height: 90%;
   transform: translate(${(props) =>

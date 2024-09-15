@@ -24,14 +24,9 @@ const Blog = () => {
   // The blog data
   const blogs = [
     {
-      title: "Overscoping a memory match coding exercise",
-      link: "/Blogs/9d0ed34b21cf442a87542001fd9d07bc",
-      date: "Sept 6, 2024",
-    },
-    {
       title: "~Personal Website Refresh~",
       link: "/Blogs/9d0ed34b21cf442a87542001fd9d07bc",
-      date: "Sept 1, 2024",
+      date: "Sept 9, 2024",
     },
   ];
 
@@ -60,7 +55,7 @@ const Blog = () => {
         {/* Parent container to control the animation sequence */}
         <motion.div variants={pageAnimation} initial="hidden" animate="show" exit="exit">
           {/* Most Recent Section */}
-          <motion.div variants={cardAnimation} style={{ display: "block" }}>
+          {/* <motion.div variants={cardAnimation} style={{ display: "block" }}>
             <StyledSection>
               <HeaderContainter>
                 <ResponsiveHeroText
@@ -83,7 +78,7 @@ const Blog = () => {
                 <BlogDate>{mostRecentBlog.date}</BlogDate>
               </BlogItemContainer>
             </StyledSection>
-          </motion.div>
+          </motion.div> */}
 
           {/* 2024 Blogs Section */}
           <motion.div variants={cardAnimation} style={{ display: "block" }}>
