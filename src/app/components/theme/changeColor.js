@@ -8,6 +8,7 @@ export const colorSchemes = {
     accentColor: "#ffffff",
     accentTextColor: "black",
     cardColor: "white",
+    cardTextColor: "black",
     linkColor: "#ff4062",
     secCardColor: "white",
     mutedTextColor: "#dcdbdc"
@@ -25,6 +26,7 @@ export const colorSchemes = {
       accentColor: "black",
       accentTextColor: "black",
       cardColor: "white",
+      cardTextColor: "black",
       linkColor: "#ff4062",
       secCardColor: "white",
       mutedTextColor: "#525151"
@@ -50,12 +52,13 @@ export const colorSchemes = {
       //Blue
       id: "3",
       backgroundColor: "#0061FC",
-      textColor: "black",
+      textColor: "white",
       lineColor: "white",
       textShadow: "black",
       accentColor: "white",
       accentTextColor: "black",
       cardColor: "white",
+      cardTextColor: "black",
       linkColor: "#ff4062",
       secCardColor: "white",
       mutedTextColor: "#dcdbdc"
@@ -72,7 +75,8 @@ export const colorSchemes = {
       accentColor: "#28c074",
       accentTextColor: "black",
       cardColor: "#28c074",
-      linkColor: "#000050",
+      cardTextColor: "black",
+      linkColor: "#00007e",
       secCardColor: hexToRgba("#28c074", 0.5),
       mutedTextColor: "#525151"
 
@@ -146,6 +150,10 @@ const changeColor = (themeType = "light") => {
   document.documentElement.style.setProperty(
     "--secCard-color",
     toBeAppliedScheme.secCardColor
+  );
+  document.documentElement.style.setProperty(
+    "--cardText-color",
+    toBeAppliedScheme.cardTextColor
   );
 };
 

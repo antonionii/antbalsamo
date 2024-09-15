@@ -6,29 +6,27 @@ import { useParams } from "next/navigation";
 import PageHeaderText from "../../components/PageHeaderText";
 import { slidedownAnim } from "../../styles/animation";  
 import { ModalContext } from "../../layout";  // Import Modal Context
-import { BoxesLoader } from "react-awesome-loaders";
+import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader";
 
 const Blocks = () => {
   const { pageId } = useParams();
   const [metadata, setMetadata] = useState(null);
   const [blockData, setBlockData] = useState([]);
   const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);  // Track loading state
   const { openImageModal } = useContext(ModalContext); // Get modal function
 
   const [isClient, setIsClient] = useState(false); // Track if rendered on client side
   const linkColor = getComputedStyle(document.documentElement).getPropertyValue('--link-color').trim();
 
   useEffect(() => {
-    // Check if it's client-side before using getComputedStyle
-    if (typeof window !== "undefined") {
-      const linkColorComputed = getComputedStyle(document.documentElement).getPropertyValue('--link-color').trim();
-      setLinkColor(linkColorComputed); // Set the state for link color
-    }
+    setIsClient(true);  // Set to true after client-side mount
   }, []);
-
+  
   useEffect(() => {
     if (pageId) {
       const fetchBlockData = async () => {
+        setIsLoading(true);  // Start loading
         try {
           const res = await fetch(`/api/blocks?pageId=${pageId}`);
           const data = await res.json();
@@ -40,6 +38,8 @@ const Blocks = () => {
           }
         } catch (err) {
           setError("Failed to fetch data");
+        } finally {
+          setIsLoading(false);  // End loading
         }
       };
       fetchBlockData();
@@ -221,13 +221,13 @@ const Blocks = () => {
 
           </>
         ) : (
-          <LoaderWrapper>
-            <BoxesLoader boxColor={"#6366F1"} style={{ marginBottom: "20px" }} desktopSize={"128px"} mobileSize={"80px"} />
-          </LoaderWrapper>        )}
+          <LoaderContainer>
+          <ClimbingBoxLoader color="var(--text-color)" size={25} />
+        </LoaderContainer>        )}
         {blockData.length === 0 ? (
-          <LoaderWrapper>
-          <BoxesLoader boxColor={"#6366F1"} style={{ marginBottom: "20px" }} desktopSize={"128px"} mobileSize={"80px"} />
-        </LoaderWrapper>        ) : (
+ <LoaderContainer>
+ <ClimbingBoxLoader color="var(--text-color)" size={25} />
+</LoaderContainer>        ) : (
           <MainBlock>{blockData.map((block) => nestBlockChild(block))}</MainBlock>
         )}
       </MainContainer>
@@ -235,8 +235,13 @@ const Blocks = () => {
   );
 };
 
-/* Styled Components */
 
+const LoaderContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+`;
 const ModalOverlay = styled.div`
   position: fixed;
   top: 0;
@@ -313,28 +318,26 @@ const MetadataTitle = styled.h1`
 `;
 
 const FullWidthCoverImage = styled.div`
-  width: 100vw;
-  height: calc(100vh / 4); /* Make the height 1/4 of the viewport height */
+  width: 100vw;  /* Ensure it spans the full viewport width */
+  height: calc(100vh / 3);  /* Adjust the height based on viewport height */
   background-image: url(${(props) => props.src});
-background-position: 10% 75%;
+  background-position: center 6rem;  /* Center horizontally, 40% from top */
   background-repeat: no-repeat;
-  background-size: 120% auto; /* Default zoom out (for smaller screens) */
+  background-size: cover;  /* Ensure it covers the area while maintaining aspect ratio */
   position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
+  
+  /* Remove negative margins and let width handle alignment */
+  margin: 0;
 
   @media (min-width: 780px) {
-    background-size: 110% auto; /* Less zoom out on medium screens */
-    background-position: 10% 45%;
-
-  }
+  background-position: center 0px;  /* Center horizontally, 40% from top */
+  background-repeat: no-repeat;
+  background-size: cover;  /* Ensure it covers the area while maintaining aspect ratio */
+  position: relative;
+    }
 
   @media (min-width: 1300px) {
-    background-size: 100% auto; /* No zoom out on larger screens */
-    background-position: 10% 45%;
-
+    background-position: center;  /* Adjust for large screens */
   }
 `;
 

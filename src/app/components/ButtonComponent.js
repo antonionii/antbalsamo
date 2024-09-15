@@ -7,8 +7,8 @@ const StyledButton = styled.button`
   border-radius: 6px;
   margin-top: 4rem;
   padding: 1rem; /* Increase padding for better spacing */
-  width: 10rem; /* Fixed width */
-  height: 10rem; /* Fixed height to match width, creating a square */
+  width: 16rem; /* Fixed width */
+  height: 6rem; /* Fixed height to match width, creating a square */
   margin-left: auto;
   margin-right: auto;
   display: flex;

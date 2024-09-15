@@ -47,7 +47,6 @@ const CardImage = styled.img`
 `;
 
 const Bubble = styled.div`
-  border-color: black;
   border-width: 6px;
   border-radius: 6px;
   margin-top: 1rem !important;
@@ -65,6 +64,7 @@ const Bubble = styled.div`
 
 const CardText = styled.p`
   font-size: 1rem;
+  color: var(--cardText-color);
   font-weight: 500;
   margin-top: 5px;
   padding: 0.5rem 0rem 0rem 0rem;
@@ -77,7 +77,12 @@ const BubbleText = styled.h4`
   color: var(--text-color);
 `;
 
-const CardComponent = ({ cards }) => {
+const CardTitle = styled.h4`
+  color: var(--cardText-color);
+
+`
+
+const CardComponent = ({ cards, onCardClick }) => {
   return (
     <CardGrid
       variants={pageAnimation}
@@ -89,7 +94,7 @@ const CardComponent = ({ cards }) => {
         const isExternal = card.linkTo.startsWith("http");
         const CardContent = (
           <>
-            <h4>{card.title}</h4>
+            <CardTitle>{card.title}</CardTitle>
             <CardText>
               {card.text.split("\n").map((line, i) => (
                 <React.Fragment key={i}>
@@ -107,7 +112,7 @@ const CardComponent = ({ cards }) => {
 
         return (
           <Link href={card.linkTo} passHref key={index}>
-            <CardLink>
+            <CardLink onClick={onCardClick}> {/* Trigger onCardClick when the card is clicked */}
               <Card
                 variants={cardAnimation}
                 initial={{ boxShadow: "1rem 0.6rem 0rem 0rem rgba(0, 0, 0, 1)" }}

@@ -3,28 +3,20 @@
 import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import Link from "next/link";
-import {useIntersection} from "react-use";
-import { useRouter } from "next/navigation";
+import { usePathname } from "next/navigation"; // Import usePathname
 import { motion } from "framer-motion";
 import lottie from "lottie-web"; // Regular import
 import { slidedownAnim, slideleftAnim, textFade } from "../styles/animation";
 import { changeColor } from "./theme/changeColor";
 
 const Nav = ({ colorSchemeType, setColorSchemeType }) => {
-  const router = useRouter();
-  const { pathname } = router;
+  const pathname = usePathname(); // Get current pathname
   const [direction, setDirection] = useState(1);
   const [isLight, setIsLight] = useState(false);
   const [activeItem, setActiveItem] = useState("/");
   const animationContainer = useRef(null);
   const animRef = useRef(null); // Use a ref to hold the animation instance
-  const [hoveredMenuItem, sethoveredMenuItem] = useState("");
-  const sectionRef = useRef(null);
-  const intersection = useIntersection(sectionRef, {
-    root: null,
-    rootMargin: "200px",
-    threshold: 1,
-  });
+
   // Handle color scheme changes
   useEffect(() => {
     setIsLight(colorSchemeType === "light");
@@ -34,6 +26,20 @@ const Nav = ({ colorSchemeType, setColorSchemeType }) => {
       startAnimation();
     }
   }, [colorSchemeType]);
+
+  // useEffect to update activeItem based on pathname
+  useEffect(() => {
+    // Set the active item to Projects when the pathname is either /Projects or starts with /Blocks
+    if (pathname.startsWith("/Projects") || pathname.startsWith("/Blocks")) {
+      setActiveItem("/Projects");
+    }
+    else if (pathname.startsWith("/Blog") || pathname.startsWith("/Blogs")) {
+      setActiveItem("/Blog");
+    }
+    else {
+      setActiveItem(pathname); // Set active item to other paths (like "/")
+    }
+  }, [pathname]);
 
   // Load and initialize the lottie animation on the client side
   useEffect(() => {
@@ -81,80 +87,100 @@ const Nav = ({ colorSchemeType, setColorSchemeType }) => {
 
   return (
     <div className="nav-container">
-   <StyledNav id="nav" isLight= {isLight}>
-      <motion.div
-        transition-delay="0s"
+      <StyledNav id="nav" isLight={isLight}>
+        <motion.div
+          transition-delay="0s"
+          initial="hidden"
+          animate="show"
+          variants={textFade}
+        >
+          <NavItem
+            style={{ paddingLeft: "0" }}
+            isActive={activeItem === "/"}
+            onClick={() => setActiveItem("/")}
+          >
+            <motion.div initial="hidden" animate="show" variants={slidedownAnim()}>
+              <Link href="/" onClick={() => setActiveItem("/")}>
+                Anthony Balsamo
+              </Link>
+            </motion.div>
+            <Line
+              transition={{ duration: 0.5 }}
+              initial={{ width: "0%" }}
+              animate={{
+                width: activeItem === "/" ? "100%" : "0%",
+              }}
+            />
+          </NavItem>
+        </motion.div>
+
+        <ul>
+        <NavItem isActive={activeItem === "/Projects"}>
+    <motion.div
         initial="hidden"
         animate="show"
-        variants={textFade}
-      >
+        variants={slidedownAnim(0.1)}
+    >
+        <Link href="/Projects" onClick={() => setActiveItem("/Projects")}>
+            Projects
+        </Link>
+    </motion.div>
 
-   
-<NavItem style={{ paddingLeft: "0"  }} isActive={activeItem === '/'} onClick={() => setActiveItem('/')} >
-  <motion.div initial="hidden" animate="show" variants={slidedownAnim()}>
-    <Link href="/" onClick={() => setActiveItem('/')}>Anthony Balsamo</Link>
-  </motion.div>
-  <Line
-    transition={{ duration: 0.5 }}
-    initial={{ width: "0%" }}
-    animate={{
-      width: activeItem === "/" ? "100%" : "0%",
-    }}
-  />
+    <Line
+        transition={{ duration: 0.5 }}
+        initial={{ width: "0%" }}
+        animate={{
+            width: activeItem === "/Projects" ? "80%" : "0%",
+        }}
+    />
 </NavItem>
-        </motion.div>
-      <ul>
-        <NavItem isActive={activeItem === '/Projects'}>
-          <motion.div
-            initial="hidden"
-            animate="show"
-            variants={slidedownAnim(0.1)}
-          >
-            <Link href="/Projects" onClick={() => setActiveItem('/Projects')}>Projects </Link>
-          </motion.div>
 
-          <Line
-            transition={{ duration: 0.5 }}
-            initial={{ width: "0%" }}
-            animate={{
-              width: activeItem === "/Projects" ? "80%" : "0%",
-            }}
-          />
-        </NavItem>
-        <NavItem isActive={activeItem === "/Blog"}>
-          <motion.div
-            initial="hidden"
-            animate="show"
-            variants={slidedownAnim(0.2)}
-          >
-            <Link href="/Blog" onClick={() => setActiveItem('/Blog')}>Blog </Link>
-          </motion.div>
+          <NavItem isActive={activeItem === "/Blog"}>
+            <motion.div
+              initial="hidden"
+              animate="show"
+              variants={slidedownAnim(0.2)}
+            >
+              <Link href="/Blog" onClick={() => setActiveItem("/Blog")}>
+                Blog
+              </Link>
+            </motion.div>
 
-          <Line
-            transition={{ duration: 0.5 }}
-            initial={{ width: "0%" }}
-            animate={{
-              width: activeItem === "/Blog" ? "65%" : "0%",
-            }}
-          />
-        </NavItem>
-        
-        <li style={{ display: "flex", justifyContent: "flex-end", flex: 1 }}>
-          <motion.div initial="hidden" animate="show" variants={slideleftAnim(0.4)}>
-            <div
-              className="anime-contain"
-              ref={animationContainer}
-              onClick={startAnimation}
-              style={{ width: 30, height: 30, marginBottom: ".5rem", cursor: "pointer" }}
-            ></div>
-          </motion.div>
-        </li>
-      </ul>
-      <NavLine />
-    </StyledNav>
+            <Line
+              transition={{ duration: 0.5 }}
+              initial={{ width: "0%" }}
+              animate={{
+                width: activeItem === "/Blog" ? "65%" : "0%",
+              }}
+            />
+          </NavItem>
+
+          <li style={{ display: "flex", justifyContent: "flex-end", flex: 1 }}>
+            <motion.div
+              initial="hidden"
+              animate="show"
+              variants={slideleftAnim(0.4)}
+            >
+              <div
+                className="anime-contain"
+                ref={animationContainer}
+                onClick={startAnimation}
+                style={{
+                  width: 30,
+                  height: 30,
+                  marginBottom: ".5rem",
+                  cursor: "pointer",
+                }}
+              />
+            </motion.div>
+          </li>
+        </ul>
+        <NavLine />
+      </StyledNav>
     </div>
   );
 };
+
 
 const StyledNav = styled(motion.div)`
   .nav-container & {
@@ -209,7 +235,7 @@ const NavItem = styled.li`
   a {
     font-family: ${(props) => (props.isActive ? "Rubik, sans-serif" : "inherit")};
     font-size: ${(props) =>
-      props.noResize ? "1.8rem" : props.isActive ? "2.2rem" : "1.8rem"};
+    props.noResize ? "1.8rem" : props.isActive ? "2.2rem" : "1.8rem"};
     color: ${(props) => (props.isActive ? "var(--text-color)" : "inherit")};
     font-weight: ${(props) => (props.isActive ? "900" : "regular")};
   }

@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import Link from 'next/link';
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import PageHeaderText from "../components/PageHeaderText";
@@ -7,12 +8,11 @@ import HeroText from "../components/HeroText";
 import { pageAnimation, cardAnimation, slideleftAnim, slidedownAnim } from "../styles/animation";
 
 const Blog = () => {
-  const [accentTextColor, setAccentTextColor] = useState(""); // State to store the accent color
-  const [isClient, setIsClient] = useState(false); // State to track if we are on the client side
+  const [accentTextColor, setAccentTextColor] = useState("");
+  const [isClient, setIsClient] = useState(false);
+  const [selectedBlogTitle, setSelectedBlogTitle] = useState("");
 
-  // Ensure window-dependent code only runs on the client side
   useEffect(() => {
-    // Check if we are running on the client
     setIsClient(true);
 
     if (typeof window !== "undefined") {
@@ -25,12 +25,12 @@ const Blog = () => {
   const blogs = [
     {
       title: "Overscoping a memory match coding exercise",
-      link: "https://github.com/antonionii/antbalsamo",
+      link: "/Blogs/9d0ed34b21cf442a87542001fd9d07bc",
       date: "Sept 6, 2024",
     },
     {
-      title: "The line between scalable UX patterns and trends.",
-      link: "https://github.com/antonionii/antbalsamo",
+      title: "~Personal Website Refresh~",
+      link: "/Blogs/9d0ed34b21cf442a87542001fd9d07bc",
       date: "Sept 1, 2024",
     },
   ];
@@ -72,7 +72,12 @@ const Blog = () => {
               </HeaderContainter>
 
               <BlogItemContainer>
-                <BlogLink href={mostRecentBlog.link} target="_blank" rel="noopener noreferrer">
+                <BlogLink
+                  href={{
+                    pathname: mostRecentBlog.link,
+                    query: { title: mostRecentBlog.title }
+                  }}
+                >
                   {mostRecentBlog.title}
                 </BlogLink>
                 <BlogDate>{mostRecentBlog.date}</BlogDate>
@@ -91,10 +96,14 @@ const Blog = () => {
                   fontColor={accentTextColor}
                 />
               </HeaderContainter>
-
               {blogsIn2024.map((blog, index) => (
                 <BlogItemContainer key={index}>
-                  <BlogLink href={blog.link} target="_blank" rel="noopener noreferrer">
+                  <BlogLink
+                    href={{
+                      pathname: blog.link,
+                      query: { title: blog.title }
+                    }}
+                  >
                     {blog.title}
                   </BlogLink>
                   <BlogDate>{blog.date}</BlogDate>
@@ -115,7 +124,7 @@ const BlogItemContainer = styled.div`
   padding: 1rem 0;
 `;
 
-const BlogLink = styled.a`
+const BlogLink = styled(Link)`
   font-size: 1.2rem;
   color: var(--link-color);
   font-weight: bold;
@@ -126,6 +135,7 @@ const BlogLink = styled.a`
     text-decoration: underline;
   }
 `;
+
 
 const BlogDate = styled.span`
   font-size: 1rem;
@@ -184,5 +194,6 @@ const ResponsiveHeroText = styled(HeroText)`
     }
   }
 `;
+
 
 export default Blog;
