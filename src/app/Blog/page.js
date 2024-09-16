@@ -10,7 +10,6 @@ import { pageAnimation, cardAnimation, slideleftAnim, slidedownAnim } from "../s
 const Blog = () => {
   const [accentTextColor, setAccentTextColor] = useState("");
   const [isClient, setIsClient] = useState(false);
-  const [selectedBlogTitle, setSelectedBlogTitle] = useState("");
 
   useEffect(() => {
     setIsClient(true);
@@ -21,7 +20,6 @@ const Blog = () => {
     }
   }, []);
 
-  // The blog data
   const blogs = [
     {
       title: "~Personal Website Refresh~",
@@ -30,88 +28,67 @@ const Blog = () => {
     },
   ];
 
-  // Separate out the most recent blog and filter for 2024 blogs
   const mostRecentBlog = blogs[0];
   const blogsIn2024 = blogs.filter((blog) => blog.date.includes("2024"));
 
   return (
-    // Ensure the component renders only on the client side to prevent SSR issues
     isClient && (
-      <motion.div
-        variants={pageAnimation}
-        initial="hidden"
-        animate="show"
-        exit="exit"
-        style={{ textAlign: "center" }}
-      >
-        <BlogsHeaderContainer>
-        {/* Page Header */}
-        <PageHeaderText
-          numOfItems={4}
-          variant={slidedownAnim}
-          itemsText={["✏️", "Occasionally", "Blogging", "✏️"]}
-          fontSize="1.4rem"
-        />
-        </BlogsHeaderContainer>
-        {/* Parent container to control the animation sequence */}
-        <motion.div variants={pageAnimation} initial="hidden" animate="show" exit="exit">
-          {/* Most Recent Section */}
-          {/* <motion.div variants={cardAnimation} style={{ display: "block" }}>
-            <StyledSection>
-              <HeaderContainter>
-                <ResponsiveHeroText
-                  numOfItems={2}
-                  itemsText={["Most", "Recent"]}
-                  variant={slideleftAnim}
-                  fontColor={accentTextColor}
-                />
-              </HeaderContainter>
-
-              <BlogItemContainer>
-                <BlogLink
-                  href={{
-                    pathname: mostRecentBlog.link,
-                    query: { title: mostRecentBlog.title }
-                  }}
-                >
-                  {mostRecentBlog.title}
-                </BlogLink>
-                <BlogDate>{mostRecentBlog.date}</BlogDate>
-              </BlogItemContainer>
-            </StyledSection>
-          </motion.div> */}
-
-          {/* 2024 Blogs Section */}
-          <motion.div variants={cardAnimation} style={{ display: "block" }}>
-            <StyledSection>
-              <HeaderContainter>
-                <ResponsiveHeroText
-                  numOfItems={2}
-                  itemsText={["2024"]}
-                  variant={slideleftAnim}
-                  fontColor={accentTextColor}
-                />
-              </HeaderContainter>
-              {blogsIn2024.map((blog, index) => (
-                <BlogItemContainer key={index}>
-                  <BlogLink
-                    href={{
-                      pathname: blog.link,
-                      query: { title: blog.title }
-                    }}
-                  >
-                    {blog.title}
-                  </BlogLink>
-                  <BlogDate>{blog.date}</BlogDate>
-                </BlogItemContainer>
-              ))}
-            </StyledSection>
+      <PageContainer>
+        <motion.div
+          variants={pageAnimation}
+          initial="hidden"
+          animate="show"
+          exit="exit"
+          style={{ textAlign: "center" }}
+        >
+          <BlogsHeaderContainer>
+            <PageHeaderText
+              numOfItems={4}
+              variant={slidedownAnim}
+              itemsText={["✏️", "Occasionally", "Blogging", "✏️"]}
+              fontSize="1.4rem"
+            />
+          </BlogsHeaderContainer>
+          <motion.div variants={pageAnimation} initial="hidden" animate="show" exit="exit">
+            <motion.div variants={cardAnimation} style={{ display: "block" }}>
+              <StyledSection>
+                <HeaderContainter>
+                  <ResponsiveHeroText
+                    numOfItems={2}
+                    itemsText={["2024"]}
+                    variant={slideleftAnim}
+                    fontColor={accentTextColor}
+                  />
+                </HeaderContainter>
+                {blogsIn2024.map((blog, index) => (
+                  <BlogItemContainer key={index}>
+                    <BlogLink
+                      href={{
+                        pathname: blog.link,
+                        query: { title: blog.title }
+                      }}
+                    >
+                      {blog.title}
+                    </BlogLink>
+                    <BlogDate>{blog.date}</BlogDate>
+                  </BlogItemContainer>
+                ))}
+              </StyledSection>
+            </motion.div>
           </motion.div>
         </motion.div>
-      </motion.div>
+      </PageContainer>
     )
   );
 };
+
+// New container to apply min-height
+const PageContainer = styled.div`
+  min-height: 84vh; /* Ensure the container takes up the full viewport height */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* This pushes the footer down */
+`;
 
 const BlogItemContainer = styled.div`
   display: flex;
@@ -131,8 +108,9 @@ const BlogLink = styled(Link)`
     text-decoration: underline;
   }
 `;
+
 const BlogsHeaderContainer = styled(motion.div)`
-  margin: 4rem 0rem 0rem 0rem; /* Reduce top margin */
+  margin: 4rem 0rem 0rem 0rem;
 `;
 
 const BlogDate = styled.span`
@@ -192,6 +170,5 @@ const ResponsiveHeroText = styled(HeroText)`
     }
   }
 `;
-
 
 export default Blog;

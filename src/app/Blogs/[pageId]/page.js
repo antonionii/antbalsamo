@@ -40,11 +40,11 @@ const Blogs = () => {
         }
 
         if (typeof window !== "undefined") {
-          const accentColor = getComputedStyle(document.documentElement).getPropertyValue('--accentText-color').trim();
-          setAccentTextColor(accentColor);
+            const accentColor = getComputedStyle(document.documentElement).getPropertyValue('--accentText-color').trim();
+            setAccentTextColor(accentColor);
         }
-      }, []);
-    
+    }, []);
+
     useEffect(() => {
         if (pageId) {
             const fetchBlockData = async () => {
@@ -123,45 +123,45 @@ const Blogs = () => {
 
     const renderProperties = () => {
         if (!metadata || !metadata.properties) return null;
-    
+
         const filteredProperties = Object.keys(metadata.properties).filter((key) => key !== "Project");
-    
+
         return filteredProperties.map((key) => {
-          const property = metadata.properties[key];
-          let valueContent = null;
-    
-          switch (property.type) {
-            case "date":
-                if (property.date && property.date.start) {
-                    // Parse the date manually from the "YYYY-MM-DD" format without time zone shift
-                    const [year, month, day] = property.date.start.split('-');
-                    const dateObj = new Date(year, month - 1, day); // JS months are 0-indexed
+            const property = metadata.properties[key];
+            let valueContent = null;
 
-                    // Format the date using US Eastern Time (ET)
-                    const options = {
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric',
-                        timeZone: 'America/New_York' // Set to US Eastern Time
-                    };
-                    const formattedDate = new Intl.DateTimeFormat('en-US', options).format(dateObj);
-                    valueContent = <span>{formattedDate}</span>;
-                } else {
-                    valueContent = <span>Unknown Date</span>;
-                }
-                break;
-            default:
-                valueContent = <span>Unsupported property type</span>;
-        }
-    
-          return (
-            <PropertyRow key={property.id}>
+            switch (property.type) {
+                case "date":
+                    if (property.date && property.date.start) {
+                        // Parse the date manually from the "YYYY-MM-DD" format without time zone shift
+                        const [year, month, day] = property.date.start.split('-');
+                        const dateObj = new Date(year, month - 1, day); // JS months are 0-indexed
 
-              <PropertyValue>{valueContent}</PropertyValue>
-            </PropertyRow>
-          );
+                        // Format the date using US Eastern Time (ET)
+                        const options = {
+                            year: 'numeric',
+                            month: 'long',
+                            day: 'numeric',
+                            timeZone: 'America/New_York' // Set to US Eastern Time
+                        };
+                        const formattedDate = new Intl.DateTimeFormat('en-US', options).format(dateObj);
+                        valueContent = <span>{formattedDate}</span>;
+                    } else {
+                        valueContent = <span>Unknown Date</span>;
+                    }
+                    break;
+                default:
+                    valueContent = <span>Unsupported property type</span>;
+            }
+
+            return (
+                <PropertyRow key={property.id}>
+
+                    <PropertyValue>{valueContent}</PropertyValue>
+                </PropertyRow>
+            );
         });
-      };
+    };
 
 
     const nestBlock = (block) => {
@@ -233,38 +233,39 @@ const Blogs = () => {
                 exit="exit"
                 style={{ textAlign: "center" }}
             >
-
-                <PageHeaderText
-                    numOfItems={numOfItems} // Dynamically set based on word count
-                    itemsText={["✏️", ...itemsTextArray, "✏️"]} // Spread the words into itemsText
-                    variant={slidedownAnim}
-                    fontSize="1.4rem"
-                    fontColor={accentTextColor}
-                />
+                <BlogsHeaderContainer>
+                    <PageHeaderText
+                        numOfItems={numOfItems} // Dynamically set based on word count
+                        itemsText={["✏️", ...itemsTextArray, "✏️"]} // Spread the words into itemsText
+                        variant={slidedownAnim}
+                        fontSize="1.4rem"
+                        fontColor={accentTextColor}
+                    />
+                </BlogsHeaderContainer>
             </motion.div>
             {metadata && metadata.coverImage && (
-        <FullWidthCoverImage src={metadata.coverImage} alt="cover image" />
-      )}
-      <MainContainer>
-        {metadata ? (
-          <>
-            <LeftAlignedContainer>
-              <MetadataContainer>
+                <FullWidthCoverImage src={metadata.coverImage} alt="cover image" />
+            )}
+            <MainContainer>
+                {metadata ? (
+                    <>
+                        <LeftAlignedContainer>
+                            <MetadataContainer>
 
-                <PropertiesGrid>{renderProperties()}</PropertiesGrid>
-              </MetadataContainer>
-            </LeftAlignedContainer>
-            <LineSeparator />
+                                <PropertiesGrid>{renderProperties()}</PropertiesGrid>
+                            </MetadataContainer>
+                        </LeftAlignedContainer>
+                        <LineSeparator />
 
-          </>
-        ) : (
-          <LoaderContainer>
-          <ClimbingBoxLoader color="var(--text-color)" size={25} />
-        </LoaderContainer>        )}
-        {blockData.length === 0 ? (
- <LoaderContainer>
- <ClimbingBoxLoader color="var(--text-color)" size={25} />
-</LoaderContainer>        ) : (
+                    </>
+                ) : (
+                    <LoaderContainer>
+                        <ClimbingBoxLoader color="var(--text-color)" size={25} />
+                    </LoaderContainer>)}
+                {blockData.length === 0 ? (
+                    <LoaderContainer>
+                        <ClimbingBoxLoader color="var(--text-color)" size={25} />
+                    </LoaderContainer>) : (
                     <MainBlock>{blockData.map((block) => nestBlockChild(block))}</MainBlock>
                 )}
             </MainContainer>
@@ -272,6 +273,9 @@ const Blogs = () => {
     );
 };
 
+const BlogsHeaderContainer = styled(motion.div)`
+  margin: 4rem 0rem 0rem 0rem; /* Reduce top margin */
+`;
 
 const LoaderContainer = styled.div`
   display: flex;

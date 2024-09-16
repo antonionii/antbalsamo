@@ -36,7 +36,7 @@ const FooterDiv = styled(motion.div)`
     width: 100%;
     pointer-events: auto;
     box-sizing: border-box;
-    margin-top: 42rem; /* Add margin-top to create space above the footer */
+    margin-top: 4rem; /* Add margin-top to create space above the footer */
 `;
 
 const ContentDiv = styled.div`

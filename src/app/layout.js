@@ -149,8 +149,19 @@ export default function RootLayout({ children }) {
             <MainContent>
               <AnimatePresence exitBeforeEnter>{children}</AnimatePresence>
             </MainContent>
-            <Footer /> {/* Footer component */}
-
+            <Footer>
+            <p>
+              <span>
+                <a
+                  href={"https://github.com/antonionii/antbalsamo"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  &lt;source code here&gt;
+                </a>
+              </span>
+            </p>
+          </Footer>
             {/* Render the modal only if an image is clicked */}
             {isModalOpen && (
               <ModalOverlay onClick={closeModal}>

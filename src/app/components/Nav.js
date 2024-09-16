@@ -237,7 +237,6 @@ const NavItem = styled.li`
   height: 2.8rem;
   line-height: 2.1rem;
   a {
-    font-family: ${(props) => (props.isActive ? "Rubik, sans-serif" : "inherit")};
     font-size: ${(props) =>
     props.noResize ? "1.8rem" : props.isActive ? "2.2rem" : "1.8rem"};
     color: ${(props) => (props.isActive ? "var(--text-color)" : "inherit")};
