@@ -47,14 +47,7 @@ const projectCardData = [
         bubbleText: "Open Project",
         pageId: '3d08e0534d344646821003dbb27b8f12'
       },
-      {
-        title: "Seal the Spoiler King",
-        image: "https://i.imgur.com/vFh0hCo.png",
-        text: "A memory match coding exercise taken to the dark fantasy realm.",
-        linkTo: "/Blocks/3d08e0534d344646821003dbb27b8f12",
-        bubbleText: "Open Project",
-        pageId: '3d08e0534d344646821003dbb27b8f12'
-      },
+
   ];
   
   export default projectCardData;

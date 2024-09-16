@@ -1,4 +1,4 @@
-"use client";
+"use client"; // Make sure this is at the top for client-side functionality
 
 import React, { useEffect, useState, createContext } from "react";
 import dynamic from 'next/dynamic';
@@ -6,11 +6,13 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 import { AnimatePresence } from "framer-motion";
 import GlobalStyle from "./styles/GlobalStyle";
-import Footer from "./components/Footer";
+import Footer from "./components/Footer"; // Import Footer
 import { changeColor } from "./components/theme/changeColor";
 import Script from "next/script";
 
+// Dynamically import Nav with SSR disabled
 const Nav = dynamic(() => import('./components/Nav'), { ssr: false });
+
 // Create ModalContext to share modal functions across the app
 export const ModalContext = createContext();
 
@@ -51,7 +53,6 @@ export default function RootLayout({ children }) {
     }
   };
 
- 
   // Open modal with image
   const openImageModal = (imageSrc) => {
     setModalImage(imageSrc);
@@ -130,18 +131,9 @@ export default function RootLayout({ children }) {
           <Script src="/lottie-player.js" strategy="afterInteractive" />
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link
-            rel="preconnect"
-            href="https://fonts.gstatic.com"
-            crossOrigin="anonymous"
-          />
-
-          {/* Re-adding your original Inter font */}
-          <link
             href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
             rel="stylesheet"
           />
-
-          {/* Adding the Material Icons */}
           <link
             href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&display=swap"
             rel="stylesheet"
@@ -157,38 +149,39 @@ export default function RootLayout({ children }) {
             <MainContent>
               <AnimatePresence exitBeforeEnter>{children}</AnimatePresence>
             </MainContent>
-            <Footer />
-          </ContainerDiv>
+            <Footer /> {/* Footer component */}
 
-          {/* Render the modal only if an image is clicked */}
-          {isModalOpen && (
-            <ModalOverlay onClick={closeModal}>
-              <ModalImageWrapper
-                onMouseDown={handleDragStart}
-                onMouseMove={handleDragMove}
-                onMouseUp={handleDragEnd}
-                zoomLevel={zoomLevel}
-                zoomPosition={zoomPosition}
-                dragPosition={dragPosition}
-                isZoomed={isZoomed}
-                onClick={(e) => e.stopPropagation()}
-              >
-                <ModalImage
-                  src={modalImage}
+            {/* Render the modal only if an image is clicked */}
+            {isModalOpen && (
+              <ModalOverlay onClick={closeModal}>
+                <ModalImageWrapper
+                  onMouseDown={handleDragStart}
+                  onMouseMove={handleDragMove}
+                  onMouseUp={handleDragEnd}
                   zoomLevel={zoomLevel}
                   zoomPosition={zoomPosition}
                   dragPosition={dragPosition}
                   isZoomed={isZoomed}
-                  onClick={handleZoomClick}
-                />
-              </ModalImageWrapper>
-            </ModalOverlay>
-          )}
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <ModalImage
+                    src={modalImage}
+                    zoomLevel={zoomLevel}
+                    zoomPosition={zoomPosition}
+                    dragPosition={dragPosition}
+                    isZoomed={isZoomed}
+                    onClick={handleZoomClick}
+                  />
+                </ModalImageWrapper>
+              </ModalOverlay>
+            )}
+          </ContainerDiv>
         </body>
       </html>
     </ModalContext.Provider>
   );
 }
+
 
 // Modal-related styles and logic
 const ContainerDiv = styled.div`
@@ -198,7 +191,9 @@ const ContainerDiv = styled.div`
 `;
 
 const MainContent = styled.div`
-  flex-grow: 1; /* Allows the main content to grow and push the footer down */
+  flex-grow: 1; /* Expands to push the footer to the bottom */
+  display: flex;
+  flex-direction: column;
 `;
 
 const ModalOverlay = styled.div`
@@ -224,13 +219,12 @@ const ModalImageWrapper = styled.div`
 `;
 
 const ModalImage = styled.img`
-  max-width: 80vw; /* Limit image width to 90% of the viewport width */
-  max-height: 80vh; /* Limit image height to 90% of the viewport height */
-  object-fit: contain; /* Ensure the image scales to fit within the container while maintaining aspect ratio */
+  max-width: 80vw;
+  max-height: 80vh;
+  object-fit: contain;
   transform: translate(
-      ${(props) => `${(0.5 - props.zoomPosition.x) * (props.zoomLevel - 1) * 100}%`},
-      ${(props) => `${(0.5 - props.zoomPosition.y) * (props.zoomLevel - 1) * 100}%`}
-    )
-    scale(${(props) => props.zoomLevel});
+    ${(props) => `${(0.5 - props.zoomPosition.x) * (props.zoomLevel - 1) * 100}%`},
+    ${(props) => `${(0.5 - props.zoomPosition.y) * (props.zoomLevel - 1) * 100}%`}
+  ) scale(${(props) => props.zoomLevel});
   transition: transform 0.3s ease-in-out;
 `;
