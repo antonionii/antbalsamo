@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import Link from "next/link"; // Import Link from Next.js
 import PageHeaderText from "./components/PageHeaderText";
 import HeroText from "./components/HeroText";
 import CardComponent from "./components/CardComponent";
@@ -10,7 +11,6 @@ import Tags from "./components/Tags";
 import StyledSnackbar from "./components/StyledSnackbar";
 import projectCardData from "./data/projectCardData";
 import { pageAnimation, cardAnimation, slideleftAnim, slidedownAnim } from './styles/animation';
-
 
 const Home = () => {
   const [accentTextColor, setAccentTextColor] = useState("");
@@ -106,7 +106,10 @@ const Home = () => {
         />
       </div>
       <CardComponent cards={projectCardData.slice(0, 4)} />
-      <Button>See All Projects</Button>
+      {/* Use Link for navigation */}
+      <Link href="/Projects" passHref>
+        <Button>See All Projects</Button>
+      </Link>
     </motion.div>
   );
 };

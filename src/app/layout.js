@@ -1,15 +1,16 @@
 "use client";
 
 import React, { useEffect, useState, createContext } from "react";
+import dynamic from 'next/dynamic';
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { AnimatePresence } from "framer-motion";
 import GlobalStyle from "./styles/GlobalStyle";
-import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 import { changeColor } from "./components/theme/changeColor";
 import Script from "next/script";
 
+const Nav = dynamic(() => import('./components/Nav'), { ssr: false });
 // Create ModalContext to share modal functions across the app
 export const ModalContext = createContext();
 
@@ -50,6 +51,7 @@ export default function RootLayout({ children }) {
     }
   };
 
+ 
   // Open modal with image
   const openImageModal = (imageSrc) => {
     setModalImage(imageSrc);
