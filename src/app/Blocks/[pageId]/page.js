@@ -386,7 +386,7 @@ const StyledLink = styled.a`
 const Paragraph = styled.p`
  
 
-  line-height: 2rem;
+  line-height: 1.7rem;
   // color: ${({ color }) => color || 'inherit'};
   color: var(--accentText-color);
   font-weight: 500;

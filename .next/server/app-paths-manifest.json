@@ -1,11 +1,11 @@
 {
   "/_not-found/page": "app/_not-found/page.js",
+  "/Blocks/[pageId]/page": "app/Blocks/[pageId]/page.js",
   "/Blog/page": "app/Blog/page.js",
-  "/Blogs/[pageId]/page": "app/Blogs/[pageId]/page.js",
-  "/Projects/page": "app/Projects/page.js",
   "/Art/page": "app/Art/page.js",
-  "/api/blocks/route": "app/api/blocks/route.js",
-  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/Projects/page": "app/Projects/page.js",
   "/page": "app/page.js",
-  "/Blocks/[pageId]/page": "app/Blocks/[pageId]/page.js"
+  "/Blogs/[pageId]/page": "app/Blogs/[pageId]/page.js",
+  "/api/blocks/route": "app/api/blocks/route.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js"
 }
