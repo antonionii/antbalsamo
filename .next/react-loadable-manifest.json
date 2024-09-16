@@ -1,8 +1,10 @@
 {
   "app\\layout.js -> ./components/Nav": {
-    "id": "app\\layout.js -> ./components/Nav",
+    "id": 5006,
     "files": [
-      "static/chunks/_app-pages-browser_src_app_components_Nav_js.js"
+      "static/chunks/dc112a36.9ffa47d24853ffaf.js",
+      "static/chunks/138-0418fd9ee409007a.js",
+      "static/chunks/746.f681d0854fe62256.js"
     ]
   }
 }
