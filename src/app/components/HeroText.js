@@ -39,7 +39,7 @@ const HeroText = ({ numOfItems, itemsText, variant, fontSize, fontColor, fontWei
     flexWrap: "wrap",  // Enable wrapping only when necessary
     justifyContent: "flex-start",  // Align text to the left
     width: "100%",  // Make sure it spans the full width
-    gap: "0.2rem",  // Add consistent space between words, but not dynamic growth
+    gap: "0.5rem",  // Add consistent space between words, but not dynamic growth
   }}
 >
         {items.map((text, index) => (
