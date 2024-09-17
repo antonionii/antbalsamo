@@ -33,16 +33,20 @@ const HeroText = ({ numOfItems, itemsText, variant, fontSize, fontColor, fontWei
     <StyledDescription
       style={{ display: "flex", alignItems: "left", marginBottom: 0 }}
     >
-      <motion.div
-        style={{ display: "flex" }}
-      >
+<motion.div
+  style={{
+    display: "flex",
+    flexWrap: "wrap",  // Enable wrapping only when necessary
+    justifyContent: "flex-start",  // Align text to the left
+    width: "100%",  // Make sure it spans the full width
+    gap: "0.2rem",  // Add consistent space between words, but not dynamic growth
+  }}
+>
         {items.map((text, index) => (
-          <StyledMotionH1  
+          <StyledMotionH1
             key={index}
             style={{
               fontWeight: fontWeight || "700", // Apply the fontWeight prop or default to "400"
-              display: "inline-block",
-              marginRight: ".6rem",
               fontSize: fontSize || "2rem", // Apply the fontSize prop or default to "2rem"
               color: fontColor || "var(--accentText-color)", // Apply the fontColor prop or default to a CSS variable
             }}
@@ -53,14 +57,21 @@ const HeroText = ({ numOfItems, itemsText, variant, fontSize, fontColor, fontWei
             }
           >
             {text}
-            </StyledMotionH1>        ))}
+          </StyledMotionH1>))}
       </motion.div>
     </StyledDescription>
   );
 };
 
 const StyledMotionH1 = styled(motion.h1)`
-  margin-top: .2rem;
+  margin-top: 0.2rem;
+  white-space: normal;  // Ensure the text wraps when necessary
+  line-height: 1.3;
+  overflow-wrap: break-word; // Break long words if needed
+  text-align: left; // Ensure text aligns left, but wraps if needed
+  flex-shrink: 0; // Prevent the text from shrinking too much
+  display: inline-block; // Keep the items inline but allow wrapping
+  max-width: 100%; // Prevent it from overflowing beyond its container
 
   @media (min-width: 780px) {
     margin-top: 1rem;
@@ -70,4 +81,5 @@ const StyledMotionH1 = styled(motion.h1)`
     margin-top: 1rem;
   }
 `;
+
 export default HeroText;

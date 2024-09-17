@@ -163,11 +163,13 @@ const StyledSection = styled(motion.div)`
   color: var(--text-color);
   box-sizing: border-box;
   overflow: hidden;
+
   @media (min-width: 780px) {
     width: 55%;
     margin: 12rem auto 0 auto;
     padding: 0rem 2rem 2rem 2rem;
   }
+
   @media (min-width: 1300px) {
     width: 35%;
     margin: 12rem auto 0 auto;
@@ -177,17 +179,28 @@ const StyledSection = styled(motion.div)`
 
 const ResponsiveHeroText = styled(HeroText)`
   text-align: left;
+
   h1 {
     font-size: 1.5rem;
-    text-align: left;
-    @media (min-width: 780px) {
-      font-size: 2.2rem;
+    white-space: normal;
+    line-height: 1.3;
+    overflow-wrap: break-word;
+    flex-shrink: 0; // Prevent text from shrinking too much
+
+    @media (max-width: 780px) {
+      font-size: 1.2rem;  // Smaller size on mobile devices
     }
+
+    @media (min-width: 780px) {
+      font-size: 2rem;
+    }
+
     @media (min-width: 1300px) {
-      font-size: 3rem;
+      font-size: 2.8rem;
     }
   }
 `;
+
 
 const StyledIcon = styled(motion.span)`
   font-size: 2rem;
