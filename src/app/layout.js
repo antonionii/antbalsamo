@@ -9,6 +9,7 @@ import GlobalStyle from "./styles/GlobalStyle";
 import Footer from "./components/Footer"; // Import Footer
 import { changeColor } from "./components/theme/changeColor";
 import Script from "next/script";
+import Head from "next/head";
 
 // Dynamically import Nav with SSR disabled
 const Nav = dynamic(() => import('./components/Nav'), { ssr: false });
@@ -120,24 +121,55 @@ export default function RootLayout({ children }) {
           <meta charSet="utf-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <meta name="theme-color" content="#000000" />
-          <meta name="description" content="design and create" />
-          <link rel="icon" href="/favicon-16x16.png" />
+
+          {/* Preconnect for fonts */}
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
+          
+          {/* Google Fonts */}
+          <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet" />
+          <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&display=swap" rel="stylesheet" />
+          
           <style jsx global>{`
             .material-symbols-outlined {
               font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
             }
           `}</style>
-          <title>antbalsamo</title>
+
+          {/* Favicon and icons */}
+          <link rel="icon" href="/favicon.ico" />
+          <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+          <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+          <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+          <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png" />
+          <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png" />
+
+          {/* SEO Meta Tags */}
+          <meta property="og:image" content="/localImage.jpg" />
+          <meta name="description" content="Portfolio showcasing product and game design expertise. Specializing in UX/UI design and interactive experiences." />
+          <meta name="keywords" content="product design, game design, UX design, UI design, creative design, art, game designer, product designer" />
+          <meta name="author" content="Anthony Balsamo" />
+          <meta property="og:title" content="Product & Game Designer | Anthony Balsamo" />
+          <meta property="og:description" content="Portfolio showcasing product and game design expertise. Specializing in UX/UI design and interactive experiences." />
+          <meta property="og:url" content="https://www.antbalsamo.com" />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:title" content="Product Designer and Game Designer | Anthony Balsamo" />
+          <meta name="twitter:description" content="Portfolio showcasing product and game design expertise. Specializing in UX/UI design and interactive experiences." />
+          <meta name="twitter:image" content="/localImage.jpg" />
+
           <Script src="/lottie-player.js" strategy="afterInteractive" />
-          <link rel="preconnect" href="https://fonts.googleapis.com" />
-          <link
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
-            rel="stylesheet"
+          <Script
+            src="https://www.googletagmanager.com/gtag/js?id=G-TYV9TCCG65"
+            strategy="afterInteractive"
           />
-          <link
-            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&display=swap"
-            rel="stylesheet"
-          />
+          <Script id="google-analytics" strategy="afterInteractive">
+            {`
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-TYV9TCCG65');
+            `}
+          </Script>
         </head>
         <body>
           <ContainerDiv onClick={(evt) => handleBgClick(evt)}>
@@ -150,18 +182,18 @@ export default function RootLayout({ children }) {
               <AnimatePresence exitBeforeEnter>{children}</AnimatePresence>
             </MainContent>
             <Footer>
-            <p>
-              <span>
-                <a
-                  href={"https://github.com/antonionii/antbalsamo"}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  &lt;source code here&gt;
-                </a>
-              </span>
-            </p>
-          </Footer>
+              <p>
+                <span>
+                  <a
+                    href={"https://github.com/antonionii/antbalsamo"}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    &lt;source code here&gt;
+                  </a>
+                </span>
+              </p>
+            </Footer>
             {/* Render the modal only if an image is clicked */}
             {isModalOpen && (
               <ModalOverlay onClick={closeModal}>
@@ -187,6 +219,17 @@ export default function RootLayout({ children }) {
               </ModalOverlay>
             )}
           </ContainerDiv>
+              {/* Analytics and Scripts */}
+              <Script src="/lottie-player.js" strategy="afterInteractive" />
+          <Script src="https://www.googletagmanager.com/gtag/js?id=G-TYV9TCCG65" strategy="afterInteractive" />
+          <Script id="google-analytics" strategy="afterInteractive">
+            {`
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-TYV9TCCG65');
+            `}
+          </Script>
         </body>
       </html>
     </ModalContext.Provider>
