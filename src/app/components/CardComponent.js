@@ -26,7 +26,7 @@ const Card = styled(motion.div)`
   border-radius: 12px;
   padding: 1rem 2rem !important;
   text-align: left;
-  max-height: 350px;
+height:auto;
   width: 100% !important; /* Ensure the card takes up the full width of its grid column */
 
   &:hover {
@@ -51,8 +51,7 @@ const Bubble = styled.div`
   border-width: 6px;
   border-radius: 6px;
   margin-top: 1rem !important;
-    margin-bottom: 1rem !important;
-
+  
   padding: 0.7rem !important;
   width: auto !important;
   max-width: 65%;
