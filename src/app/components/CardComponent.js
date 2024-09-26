@@ -67,8 +67,12 @@ const CardText = styled.p`
   color: var(--cardText-color);
   font-weight: 500;
   margin-top: 5px;
-  padding: 0.5rem 0rem 0rem 0rem;
+  padding: 0rem 0rem 0rem 0rem;
   transition: font-weight 0.3s ease, text-shadow 0.3s ease;
+  
+  strong {
+      font-weight: bold; /* Bold specific words */
+  }
 `;
 
 const BubbleText = styled.h4`
@@ -92,23 +96,26 @@ const CardComponent = ({ cards, onCardClick }) => {
     >
       {cards.map((card, index) => {
         const isExternal = card.linkTo.startsWith("http");
-        const CardContent = (
-          <>
-            <CardTitle>{card.title}</CardTitle>
-            <CardText>
-              {card.text.split("\n").map((line, i) => (
-                <React.Fragment key={i}>
-                  {line}
-                  <br />
-                </React.Fragment>
-              ))}
-            </CardText>
-            <CardImage src={card.image} alt={card.title} />
-            <Bubble>
-              <BubbleText>{card.bubbleText}</BubbleText>
-            </Bubble>
-          </>
-        );
+     // Replace "App Feature" or "Game" with italicized versions
+     const formattedText = card.text
+     .replace("App Feature", "<strong>App Feature</strong><br />")
+     .replace("Game", "<strong>Game</strong><br />");
+
+   const CardContent = (
+     <>
+       <CardTitle>{card.title}</CardTitle>
+       <CardText
+         dangerouslySetInnerHTML={{
+           __html: formattedText.split(" \n").join("<br />"),
+         }}
+       />
+       <CardImage src={card.image} alt={card.title} />
+       <Bubble>
+         <BubbleText>{card.bubbleText}</BubbleText>
+       </Bubble>
+     </>
+   );
+
 
         return isExternal ? (
           <CardLink

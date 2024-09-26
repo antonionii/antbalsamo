@@ -71,7 +71,7 @@ const Home = () => {
         <HeroContainer>
           <ResponsiveHeroText
             numOfItems={5}
-            itemsText={["Product", "+", "Game ", "  Designer"]}
+            itemsText={["Product", "+", "Game ", "Designer"]}
             variant={slideleftAnim}
             fontColor={accentTextColor}
           />
