@@ -26,7 +26,7 @@ const Card = styled(motion.div)`
   border-radius: 12px;
   padding: 1rem 2rem !important;
   text-align: left;
-  height: auto !important;
+  max-height: 350px;
   width: 100% !important; /* Ensure the card takes up the full width of its grid column */
 
   &:hover {
@@ -44,6 +44,7 @@ const CardImage = styled.img`
   margin-left: -2rem !important; /* Offset to the left to account for the card's padding */
   margin-right: -2rem !important; /* Offset to the right to account for the card's padding */
   object-fit: cover !important;
+    flex-grow: 1; /* Allow the image to take up remaining space in the card */
 `;
 
 const Bubble = styled.div`
@@ -67,7 +68,7 @@ const CardText = styled.p`
   color: var(--cardText-color);
   font-weight: 500;
   margin-top: 5px;
-  padding: 0rem 0rem 0rem 0rem;
+  padding: 0.5rem 0rem 0rem 0rem;
   transition: font-weight 0.3s ease, text-shadow 0.3s ease;
   
   strong {
@@ -96,26 +97,31 @@ const CardComponent = ({ cards, onCardClick }) => {
     >
       {cards.map((card, index) => {
         const isExternal = card.linkTo.startsWith("http");
-     // Replace "App Feature" or "Game" with italicized versions
-     const formattedText = card.text
-     .replace("App Feature", "<strong>App Feature</strong><br />")
-     .replace("Game", "<strong>Game</strong><br />");
 
-   const CardContent = (
-     <>
-       <CardTitle>{card.title}</CardTitle>
-       <CardText
-         dangerouslySetInnerHTML={{
-           __html: formattedText.split(" \n").join("<br />"),
-         }}
-       />
-       <CardImage src={card.image} alt={card.title} />
-       <Bubble>
-         <BubbleText>{card.bubbleText}</BubbleText>
-       </Bubble>
-     </>
-   );
+        // Replace "App Feature" or "Game" with bold text and line breaks
+        let formattedText = card.text
+          .replace("App Feature", "<strong>App Feature</strong><br />")
+          .replace("Game", "<strong>Game</strong><br />");
 
+        // Add the number of extra line breaks based on the `lineBreaks` property
+        for (let i = 0; i < card.lineBreaks; i++) {
+          formattedText += '<br />';
+        }
+
+        const CardContent = (
+          <>
+            <CardTitle>{card.title}</CardTitle>
+            <CardText
+              dangerouslySetInnerHTML={{
+                __html: formattedText,
+              }}
+            />
+            <CardImage src={card.image} alt={card.title} />
+            <Bubble>
+              <BubbleText>{card.bubbleText}</BubbleText>
+            </Bubble>
+          </>
+        );
 
         return isExternal ? (
           <CardLink

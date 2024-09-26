@@ -15,10 +15,10 @@
       "static/chunks/main-app.js",
       "static/chunks/app/Projects/page.js"
     ],
-    "/Blog/page": [
+    "/Blocks/[pageId]/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/Blog/page.js"
+      "static/chunks/app/Blocks/[pageId]/page.js"
     ]
   }
 }
