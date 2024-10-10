@@ -18,16 +18,16 @@ const projectCardData = [
       lineBreaks: 2 // Add 1 extra line break
   },
   {
-      title: "Grouped Card View",
+      title: "Insights Feature Redesign",
       image: "https://i.imgur.com/Cjkqvhv.png",
-      text: "App Feature A UX refresh with an inviting interface.",
+      text: "App Feature A UX overhaul with an inviting interface.",
       linkTo: "/Blocks/3328b05dcbba4ba7900873e790e145c6",
       bubbleText: "Open Project",
       pageId: '3328b05dcbba4ba7900873e790e145c6',
       lineBreaks: 2 // Add 1 extra line break
   },
   {
-      title: "Insights & Workflows",
+      title: "Leading Workflow Design",
       image: "https://i.imgur.com/VMYlrXR.png",
       text: "App Feature Curated walkthrough of developments for a SaSS app.",
       linkTo: "/Blocks/0a625c571aa34731ad7fd2d2c7f37a95",
