@@ -2,12 +2,11 @@ import React from "react";
 import styled from "styled-components";
 
 const StyledButton = styled.button`
-  border-color: black;
   border-width: 6px;
-  border-radius: 6px;
+  border-radius: 16px;
   margin-top: 4rem;
   padding: 1rem; /* Increase padding for better spacing */
-  width: 16rem; /* Fixed width */
+  width: auto; /* Fixed width */
   height: 6rem; /* Fixed height to match width, creating a square */
   margin-left: auto;
   margin-right: auto;
@@ -15,7 +14,7 @@ const StyledButton = styled.button`
   justify-content: center;
   align-items: center; /* Center text vertically and horizontally */
   background-color: var(--background-color);
-  box-shadow: 0.6rem 0.6rem 0rem 0rem black;
+  box-shadow: 0.3rem 0.3rem 0rem 0rem black;
   cursor: pointer;
   transition: box-shadow 0.3s ease, transform 0.3s ease;
   font-size: 1.4rem; /* Adjust size as needed */
