@@ -70,8 +70,8 @@ const Home = () => {
       <StyledSection variants={cardAnimation} className="bg-section">
         <HeroContainer>
           <ResponsiveHeroText
-            numOfItems={5}
-            itemsText={["Product", "+", "Game ", "Designer"]}
+            numOfItems={6}
+            itemsText={["Designer:", "Product,", "UX,", "Game" ]}
             variant={slideleftAnim}
             fontColor={accentTextColor}
           />
