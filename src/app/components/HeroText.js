@@ -76,7 +76,6 @@ const StyledMotionH1 = styled(motion.h1)`
 
   &.break-after {
     flex-basis: 100%; // Force it to take up the entire row on small screens
-    margin-bottom: 0.5rem;
 
     @media (min-width: 500px) {
       flex-basis: auto; // Revert to normal behavior on larger screens
