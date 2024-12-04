@@ -9,6 +9,21 @@
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/layout.js"
+    ],
+    "/Blocks/[pageId]/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/Blocks/[pageId]/page.js"
+    ],
+    "/Blog/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/Blog/page.js"
+    ],
+    "/Projects/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/Projects/page.js"
     ]
   }
 }

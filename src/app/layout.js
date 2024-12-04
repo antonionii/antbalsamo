@@ -79,7 +79,7 @@ export default function RootLayout({ children }) {
       const y = (e.clientY - rect.top) / rect.height;
 
       setZoomPosition({ x, y });
-      setZoomLevel(1.5); // Zoom to 150%
+      setZoomLevel(2.4); // Zoom to 150%
       setIsZoomed(true);
     } else {
       setZoomLevel(1); // Zoom out

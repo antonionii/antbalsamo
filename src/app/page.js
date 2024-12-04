@@ -86,7 +86,7 @@ const Home = () => {
             {icon}
           </StyledIcon>
         </HeroContainer>
-        <HeroImage src={"https://i.imgur.com/kxtX2ZX.png"} alt={"picture of me"} />
+        {/*<HeroImage src={"https://i.imgur.com/kxtX2ZX.png"} alt={"picture of me"} />*/}
         <CardText>Designing creative and delightful experiences into scalable products.</CardText>
         <CardText>If you&apos;d like to work together, drop me a message at my email below.</CardText>
         <Tags />
@@ -144,6 +144,7 @@ const HeroImage = styled.img`
   margin-left: -1rem;
   margin-right: -1rem;
   object-fit: cover;
+  
   object-position: center 16%;
   @media (min-width: 780px) {
     width: calc(100% + 4rem);
