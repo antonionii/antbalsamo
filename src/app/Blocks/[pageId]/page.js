@@ -146,30 +146,64 @@ const Blocks = () => {
 
   const nestBlock = (block) => {
     switch (block.type) {
-      case 'paragraph':
-        return <Paragraph>{textLink(block.paragraph.rich_text)}</Paragraph>;
-      case 'heading_1':
-        return <Heading1 key={block.id}>{textLink(block.heading_1.rich_text)}</Heading1>;
-      case 'heading_2':
-        return <Heading2 key={block.id}>{textLink(block.heading_2.rich_text)}</Heading2>;
-      case 'heading_3':
-        return <Heading3 key={block.id}>{textLink(block.heading_3.rich_text)}</Heading3>;
       case "image": {
-        const imageFile = block.image.type === "external" ? block.image.external.url : block.image.file.url;
+        const imageFile =
+          block.image.type === "external"
+            ? block.image.external.url
+            : block.image.file.url;
+  
+        const caption = block.image.caption || [];
+        const hyperlink = caption.find((item) => item.href)?.href;
+  
+        // Extract name from the hyperlink for hover display
+        const linkName = hyperlink
+          ? decodeURIComponent(hyperlink.split("/").pop().split("?")[0])
+              .replace(/-/g, " ")
+              .replace(/_/g, " ")
+          : "";
+  
+        if (hyperlink) {
+          return (
+            <ImageContainer key={block.id} hasLink>
+              <a href={hyperlink} target="_blank" rel="noopener noreferrer">
+                <Image
+                  src={imageFile}
+                  alt="image file"
+                  width={800}
+                  height={600}
+                  layout="responsive"
+                />
+                <HoverOverlay>
+                  <ExternalLinkIcon>🔗</ExternalLinkIcon>
+                  <LinkName>{linkName}</LinkName>
+                </HoverOverlay>
+              </a>
+            </ImageContainer>
+          );
+        }
+  
         return (
           <ImageContainer key={block.id}>
             <Image
               src={imageFile}
               alt="image file"
-              width={800}  // Adjust this to fit your needs
-              height={600} // Adjust this to fit your needs
-              layout="responsive" // Use responsive layout to maintain aspect ratio
+              width={800}
+              height={600}
+              layout="responsive"
               onClick={() => openImageModal(imageFile)}
             />
           </ImageContainer>
         );
       }
-      case 'callout':
+      case "paragraph":
+        return <Paragraph>{textLink(block.paragraph.rich_text)}</Paragraph>;
+      case "heading_1":
+        return <Heading1 key={block.id}>{textLink(block.heading_1.rich_text)}</Heading1>;
+      case "heading_2":
+        return <Heading2 key={block.id}>{textLink(block.heading_2.rich_text)}</Heading2>;
+      case "heading_3":
+        return <Heading3 key={block.id}>{textLink(block.heading_3.rich_text)}</Heading3>;
+      case "callout":
         if (block.callout.rich_text.length > 0) {
           return (
             <Callout style={{ backgroundColor: block.callout.color }}>
@@ -182,7 +216,7 @@ const Blocks = () => {
         } else {
           return null;
         }
-      case 'bulleted_list_item':
+      case "bulleted_list_item":
         return (
           <BulletedList key={block.id}>
             <li>{textLink(block.bulleted_list_item.rich_text)}</li>
@@ -192,7 +226,7 @@ const Blocks = () => {
         return null;
     }
   };
-
+  
   const nestBlockChild = (block, parentIsCallout = false) => {
     const isCallout = block.type === 'callout';
 
@@ -465,26 +499,52 @@ const BlockParagraph = styled.p`
 `;
 
 const ImageContainer = styled.div`
+  position: relative;
   text-align: center;
   margin: 1rem 0;
-  max-width:100%;
-  width:100%;
-  justify-content:center;
-  align-items:center;
-  margin: auto;
-  color:black;
-  
+  max-width: 100%;
+  display: inline-block; /* Ensures container size matches the image exactly */
+  cursor: ${(props) => (props.hasLink ? "default" : "zoom-in")};
+
   img {
     max-width: 100%;
     height: auto;
-    cursor: zoom-in;  /* Show magnifying glass cursor on hover */
-  }
-
-  img:hover {
-    opacity: 0.96;  /* Optional: Slightly dim the image on hover */
+    display: block; /* Prevent extra space below the image */
   }
 `;
 
+const HoverOverlay = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; /* Ensures the overlay matches the container's height */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding: 0.5rem;
+  background: rgba(0, 0, 0, 0.4);
+  color: white;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+
+  ${ImageContainer}:hover & {
+    opacity: 1;
+  }
+`;
+
+
+const ExternalLinkIcon = styled.span`
+  font-size: 1.2rem;
+  margin-right: 0.5rem;
+`;
+
+const LinkName = styled.span`
+  font-size: 1rem;
+  text-transform: capitalize;
+  white-space: nowrap;
+`;
 // const Callout = styled.div`
 //   border-left: 4px solid var(--accent-color);
 //   padding-left: 1rem;
