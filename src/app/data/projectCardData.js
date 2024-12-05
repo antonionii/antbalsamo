@@ -9,16 +9,7 @@ const projectCardData = [
       lineBreaks: 0 // No extra line breaks needed
   },
   {
-      title: "Mingo",
-      image: "https://i.imgur.com/UUYRNC8.gif",
-      text: "Game A Platforming Space Odyssey.\n",
-      linkTo: "https://antonioni.itch.io/mingo-tech-demo",
-      bubbleText: "Open Project",
-      pageid: '3328b05dcbba4ba7900873e790e145c4',
-      lineBreaks: 2 // Add 1 extra line break
-  },
-  {
-      title: "Insights Feature Redesign",
+      title: "Feature Redesign",
       image: "https://i.imgur.com/Cjkqvhv.png",
       text: "App Feature A UX overhaul with an inviting interface.",
       linkTo: "/Blocks/3328b05dcbba4ba7900873e790e145c6",
@@ -35,6 +26,15 @@ const projectCardData = [
       pageId: '0a625c571aa34731ad7fd2d2c7f37a95',
       lineBreaks: 0 // No extra line breaks needed
   },
+  {
+    title: "Mingo",
+    image: "https://i.imgur.com/UUYRNC8.gif",
+    text: "Game A Platforming Space Odyssey.\n",
+    linkTo: "https://antonioni.itch.io/mingo-tech-demo",
+    bubbleText: "Open Project",
+    pageid: '3328b05dcbba4ba7900873e790e145c4',
+    lineBreaks: 2 // Add 1 extra line break
+},
   {
       title: "Activity Feed",
       image: "https://i.imgur.com/Kp9t8OG.png",
