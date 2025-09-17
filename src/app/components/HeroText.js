@@ -65,13 +65,13 @@ useEffect(() => {
 };
 
 const StyledMotionH1 = styled(motion.h1)`
-  margin-top: 4rem;
+  margin-top: 0.2rem;
   white-space: normal; // Ensure the text wraps when necessary
   line-height: 1.3;
   overflow-wrap: break-word; // Break long words if needed
   text-align: left; // Ensure text aligns left, but wraps if needed
   flex-shrink: 0; // Prevent the text from shrinking too much
-  display: inline-block; // Keep the items inline but allow wrapping
+  display: flex; // Keep the items inline but allow wrapping
   max-width: 100%; // Prevent it from overflowing beyond its container
 
   &.break-after {

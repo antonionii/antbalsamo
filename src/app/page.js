@@ -252,17 +252,15 @@ const StyledSection = styled(motion.div)`
 const ResponsiveHeroText = styled(HeroText)`
   display: flex;
   flex-wrap: wrap; /* Allow wrapping */
-  align-items: flex-start;
-
+  align-items: center; /* Center vertically */
+  
   h1 {
-    font-size: 1.5rem;
     margin-right: 0.4rem; /* Consistent spacing */
     line-height: 1.3;
-    white-space: nowrap; /* Prevent text breaking within each item */
-    flex: 0 0 auto; /* Prevent shrinking */
+  
 
     @media (max-width: 780px) {
-      font-size: 1.2rem; /* Smaller font size on mobile */
+      font-size: 1rem; /* Smaller font size on mobile */
     }
 
     @media (min-width: 780px) {
@@ -275,8 +273,7 @@ const ResponsiveHeroText = styled(HeroText)`
   }
 
   h1:first-of-type {
-    flex-basis: 100%; /* Push to a new line */
-    margin-bottom: 0.5rem; /* Add spacing below */
+
     
     @media (min-width: 780px) {
       flex-basis: auto; /* Revert for larger screens */
