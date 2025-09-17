@@ -68,12 +68,16 @@ const Projects = () => {
         style={{ textAlign: "center" }}
       >
         <ProjectsContainer>
+            <ProjectsHeaderWrapper>
+
           <PageHeaderText
             numOfItems={8}
             itemsText={["🐸", "Hop", "around", "my", "projects", "🐸"]}
             variant={slidedownAnim}
             fontSize="1.4rem"
           />
+            </ProjectsHeaderWrapper>
+
         </ProjectsContainer>
       </motion.div>
       <CardComponent
@@ -99,6 +103,18 @@ const Projects = () => {
 // Styled components
 const ProjectsContainer = styled(motion.div)`
   margin: 4rem 0rem 0rem 0rem; /* Reduce top margin */
+`;
+
+const ProjectsHeaderWrapper = styled.div`
+  margin-top: 12rem;
+
+  @media (min-width: 780px) {
+    margin-top: 8rem;
+  }
+
+  @media (min-width: 1280px) {
+    margin-top: 8rem;
+  }
 `;
 
 export default Projects;

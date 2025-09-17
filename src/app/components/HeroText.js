@@ -65,7 +65,6 @@ useEffect(() => {
 };
 
 const StyledMotionH1 = styled(motion.h1)`
-  margin-top: 0.2rem;
   white-space: normal; // Ensure the text wraps when necessary
   line-height: 1.3;
   overflow-wrap: break-word; // Break long words if needed
@@ -79,17 +78,10 @@ const StyledMotionH1 = styled(motion.h1)`
 
     @media (min-width: 500px) {
       flex-basis: auto; // Revert to normal behavior on larger screens
-      margin-bottom: 0;
     }
   }
 
-  @media (min-width: 780px) {
-    margin-top: 1rem;
-  }
 
-  @media (min-width: 1300px) {
-    margin-top: 1rem;
-  }
 `;
 
 export default HeroText;

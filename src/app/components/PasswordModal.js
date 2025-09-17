@@ -107,7 +107,7 @@ const ErrorContainer = styled.div`
 const ModalInput = styled.input`
   width: 100%;
   height: 32px;
-  font-size: .8rem;
+  font-size: 1rem;
   padding: 0 1rem;
   border-radius: 8px;
   border: 2px solid #ccc;

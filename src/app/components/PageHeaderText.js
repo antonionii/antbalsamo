@@ -59,7 +59,6 @@ useEffect(() => {
 
 const StyledMotionText = styled.section`
   width: 100%;
-  margin: 12rem auto 0 auto;
   
   padding: .5rem 0;
   border-radius: 1rem;
@@ -73,7 +72,6 @@ const StyledMotionText = styled.section`
   width: auto;
     padding: .5rem .5rem;
     max-width: 700px;
-      margin: 6rem auto 0 auto;
 
   }
 

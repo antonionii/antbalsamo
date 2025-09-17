@@ -153,6 +153,7 @@ useEffect(() => {
         message="Copied link: Tony's Website"
       />
       <div style={{ textAlign: "center" }}>
+        <HomeHeaderWrapper>
         <PageHeaderText 
           numOfItems={7} 
           itemsText={["✨", "Design", "Highlights ", "✨"]} 
@@ -160,6 +161,7 @@ useEffect(() => {
           fontSize="1.4rem" 
           fontColor={colorForegroundTextDefault}
         />
+        </HomeHeaderWrapper>
       </div>
       <CardComponent 
       cards={projectCardData.slice(0, 4) } 
@@ -304,6 +306,17 @@ const StyledIcon = styled(motion.span)`
     &:hover {
       background-color: transparent; 
     }
+  }
+`;
+const HomeHeaderWrapper = styled.div`
+  margin-top: 8rem;
+
+  @media (min-width: 780px) {
+    margin-top: 8rem;
+  }
+
+  @media (min-width: 1280px) {
+    margin-top: 8rem;
   }
 `;
 
