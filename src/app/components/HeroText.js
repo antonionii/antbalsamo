@@ -7,21 +7,21 @@ import useDebounce from "../hooks/use-debounce";
 import styled from "styled-components";
 
 const HeroText = ({ numOfItems, itemsText, variant, fontSize, fontColor, fontWeight }) => {
-  const [scrollY, setScrollY] = useState(window.scrollY);
-  const [screenHeight, setScreenHeight] = useState(null);
+const [scrollY, setScrollY] = useState(0); 
+
   const isMediumDisplay = useMediaQuery("(min-width: 780px)");
   const isLargeDisplay = useMediaQuery("(min-width: 1300px)");
-
-  useWindowScroll(() => {
+useEffect(() => {
+  if (typeof window !== "undefined") {
     setScrollY(window.scrollY);
-  });
+  }
+}, []);
 
-  useEffect(() => {
-    if (!window) {
-      return; // do not fail on Server Side Render (in future)
-    }
+useEffect(() => {
+  if (typeof window !== "undefined") {
     setScreenHeight(window.screen.availHeight);
-  }, []);
+  }
+}, []);
 
   const debouncedScrollY = useDebounce(scrollY, 300);
 
