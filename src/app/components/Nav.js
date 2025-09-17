@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 import lottie from "lottie-web"; // Regular import
 import { slidedownAnim, slideleftAnim, textFade } from "../styles/animation";
 import { changeColor } from "./theme/changeColor";
-
+import { PageContainer } from "../styles/PageContainer";
 const Nav = ({ colorSchemeType, setColorSchemeType }) => {
   const pathname = usePathname(); // Get current pathname
   const [direction, setDirection] = useState(1);
@@ -90,8 +90,10 @@ const Nav = ({ colorSchemeType, setColorSchemeType }) => {
   }, []);
 
   return (
+    <PageContainer>
     <div className="nav-container">
       <StyledNav id="nav" isLight={isLight}>
+        <NavInner>
         <motion.div
           transition-delay="0s"
           initial="hidden"
@@ -139,7 +141,7 @@ const Nav = ({ colorSchemeType, setColorSchemeType }) => {
             />
           </NavItem>
 
-          <NavItem isActive={activeItem === "/Blog"}>
+          {/* <NavItem isActive={activeItem === "/Blog"}>
             <motion.div
               initial="hidden"
               animate="show"
@@ -157,7 +159,25 @@ const Nav = ({ colorSchemeType, setColorSchemeType }) => {
                 width: activeItem === "/Blog" ? "65%" : "0%",
               }}
             />
-          </NavItem>
+          </NavItem> */}
+
+          <NavItem>
+  <motion.div
+    initial="hidden"
+    animate="show"
+    variants={slidedownAnim(0.3)}
+  >
+    <a
+      href="/Anthony_Balsamo_-_Senior_Product_Designer.pdf"
+      target="_blank"
+      rel="noopener noreferrer"
+      style={{ textDecoration: "none" }}
+    >
+      Resume
+    </a>
+  </motion.div>
+  {/* No underline Line for external link, but you can add if you want */}
+</NavItem>
 
           <li style={{ display: "flex", justifyContent: "flex-end", flex: 1 }}>
             <motion.div
@@ -179,9 +199,11 @@ const Nav = ({ colorSchemeType, setColorSchemeType }) => {
             </motion.div>
           </li>
         </ul>
+        </NavInner>
         <NavLine />
       </StyledNav>
     </div>
+    </PageContainer>
   );
 };
 
@@ -200,7 +222,7 @@ const StyledNav = styled(motion.div)`
   left: 0;
   right: 0;
   z-index: 15;
-  background: var(--background-color);
+  background: var(--color-Background-Base);
   pointer-events: none;
   h1 {
     pointer-events: auto;
@@ -215,7 +237,7 @@ const StyledNav = styled(motion.div)`
   @media (max-width: 667px) {
     flex-direction: column;
     padding: 2rem 1rem;
-    background: var(--background-color);
+    background: var(--color-Background-Base);
     ul {
       padding: 1rem;
       width: 100%;
@@ -231,6 +253,31 @@ const StyledNav = styled(motion.div)`
 }
 `;
 
+const NavInner = styled(motion.div)`
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  color: var(--color-Foreground-Text-Base);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+   @media (max-width: 667px) {
+    flex-direction: column;
+    background: var(--color-Background-Base);
+    ul {
+      padding: 1rem;
+      width: 100%;
+      gap: 5%;
+      margin: auto;
+      justify-content: center;
+      align-items: center;
+      li {
+        padding: 0;
+      }
+    }
+  }
+`;
+
 const NavItem = styled.li`
   position: relative;
   list-style: none;
@@ -239,14 +286,14 @@ const NavItem = styled.li`
   a {
     font-size: ${(props) =>
     props.noResize ? "1.8rem" : props.isActive ? "2.2rem" : "1.8rem"};
-    color: ${(props) => (props.isActive ? "var(--text-color)" : "inherit")};
+    color: ${(props) => (props.isActive ? "var(--color-Foreground-Text-Base)" : "inherit")};
     font-weight: ${(props) => (props.isActive ? "900" : "regular")};
   }
 `;
 
 const Line = styled(motion.div)`
   height: 0.5rem;
-  background: var(--line-color, "#000");
+  background: var(--color-Foreground-Border-Default);
   width: 0%;
   position: absolute;
   border-radius: 6rem;

@@ -41,18 +41,18 @@ export default function RootLayout({ children }) {
   }, []);
 
   // Background click handler
-  const handleBgClick = (evt) => {
-    const isNavLink = evt.target.closest("a");
-    const isButton = evt.target.closest("button");
-    const isIcon = evt.target.closest('[data-icon="true"]');
-    const isImage = evt.target.tagName === "IMG"; // Check if click is on an image
+  // const handleBgClick = (evt) => {
+  //   const isNavLink = evt.target.closest("a");
+  //   const isButton = evt.target.closest("button");
+  //   const isIcon = evt.target.closest('[data-icon="true"]');
+  //   const isImage = evt.target.tagName === "IMG"; // Check if click is on an image
 
-    // Only change background color if the modal is not open and if it's not a nav, button, icon, or image
-    if (!isNavLink && !isButton && !isIcon && !isImage && !isModalOpen) {
-      setColorSchemeType("light");
-      changeColor("light");
-    }
-  };
+  //   // Only change background color if the modal is not open and if it's not a nav, button, icon, or image
+  //   if (!isNavLink && !isButton && !isIcon && !isImage && !isModalOpen) {
+  //     setColorSchemeType("light");
+  //     changeColor("light");
+  //   }
+  // };
 
   // Open modal with image
   const openImageModal = (imageSrc) => {
@@ -172,7 +172,6 @@ export default function RootLayout({ children }) {
           </Script>
         </head>
         <body>
-          <ContainerDiv onClick={(evt) => handleBgClick(evt)}>
             <GlobalStyle />
             <Nav
               colorSchemeType={colorSchemeType}
@@ -218,7 +217,7 @@ export default function RootLayout({ children }) {
                 </ModalImageWrapper>
               </ModalOverlay>
             )}
-          </ContainerDiv>
+          
               {/* Analytics and Scripts */}
               <Script src="/lottie-player.js" strategy="afterInteractive" />
           <Script src="https://www.googletagmanager.com/gtag/js?id=G-TYV9TCCG65" strategy="afterInteractive" />

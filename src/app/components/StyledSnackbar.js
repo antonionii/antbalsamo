@@ -4,8 +4,8 @@ import styled from "styled-components";
 
 // Custom StyledSnackbar component
 const StyledSnackbar = ({ open, onClose, message, autoHideDuration = 3200, ...props }) => {
-  const accentTextColor = getComputedStyle(document.documentElement).getPropertyValue('--accentText-color').trim();
-  const cardColor = getComputedStyle(document.documentElement).getPropertyValue('--card-color').trim();
+  const colorForegroundTextDefault = getComputedStyle(document.documentElement).getPropertyValue('--color-Foreground-Text-Default').trim();
+  const colorBackgroundDefault = getComputedStyle(document.documentElement).getPropertyValue('--color-Background-Default').trim();
 
   // Snackbar queue state
   const [snackbarQueue, setSnackbarQueue] = useState([]);
@@ -48,12 +48,12 @@ const StyledSnackbar = ({ open, onClose, message, autoHideDuration = 3200, ...pr
           anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
           sx={{
             '& .MuiSnackbarContent-root': {
-              backgroundColor: cardColor,
-              color: accentTextColor,
+              backgroundColor: colorBackgroundDefault,
+              color: colorForegroundTextDefault,
               fontSize: '1.4rem',
               fontWeight: 500,
               fontFamily: "Inter",
-              boxShadow: "1rem 0.6rem 0rem 0rem black",
+              boxShadow: ".6rem 0.6rem 0rem 0rem black",
               width: '100%',
               maxWidth: '600px',
               position: 'relative',

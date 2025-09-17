@@ -1,6 +1,17 @@
 import { NextResponse } from 'next/server';
 import { Client } from '@notionhq/client';
 
+
+export async function POST(req) {
+  const { password } = await req.json();
+    const PROJECT_PASSWORD = process.env.PROJECT_PASSWORD; 
+
+  if (password === PROJECT_PASSWORD) {
+    // Optionally, set a cookie or JWT here for session persistence
+    return NextResponse.json({ success: true });
+  }
+  return NextResponse.json({ success: false, message: 'Incorrect password' }, { status: 401 });
+}
 const notion = new Client({ auth: process.env.NOTION_API_KEY });
 
 const getPageMetadata = async (pageId) => {

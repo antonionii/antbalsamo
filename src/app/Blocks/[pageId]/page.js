@@ -8,6 +8,7 @@ import { slidedownAnim } from "../../styles/animation";
 import { ModalContext } from "../../layout";  // Import Modal Context
 import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader";
 import Image from 'next/image';
+import { PageContainer } from "../../styles/PageContainer"; 
 
 const Blocks = () => {
   const { pageId } = useParams();
@@ -57,7 +58,7 @@ const Blocks = () => {
             href={text.href}
             target="_blank"
             rel="noopener noreferrer"
-            style={{ color: linkColor, fontSize:"1.2rem", textDecoration: "underline" }}
+            style={{ fontSize:"1rem", textDecoration: "underline" }}
           >
             {textAnnotations(text)}
           </a>
@@ -249,6 +250,7 @@ const Blocks = () => {
       {metadata && metadata.coverImage && (
         <FullWidthCoverImage src={metadata.coverImage} alt="cover image" />
       )}
+      <PageContainer>
       <MainContainer>
         {metadata ? (
           <>
@@ -264,15 +266,16 @@ const Blocks = () => {
           </>
         ) : (
           <LoaderContainer>
-          <ClimbingBoxLoader color="var(--text-color)" size={25} />
+          <ClimbingBoxLoader color="var(--color-Foreground-Text-Default)" size={25} />
         </LoaderContainer>        )}
         {blockData.length === 0 ? (
  <LoaderContainer>
- <ClimbingBoxLoader color="var(--text-color)" size={25} />
+ <ClimbingBoxLoader color="var(--color-Foreground-Text-Default)" size={25} />
 </LoaderContainer>        ) : (
           <MainBlock>{blockData.map((block) => nestBlockChild(block))}</MainBlock>
         )}
       </MainContainer>
+      </PageContainer>
     </>
   );
 };
@@ -320,23 +323,23 @@ const ModalImage = styled(Image)`
 const MainContainer = styled(motion.div)`
   display: flex;
   flex-direction: column;
-  width:90%;
+  //width:90%;
   justify-content:center;
   align-items: center;
   padding: 2rem;
-   margin: 0 auto 0 auto;
+  //margin: 0 auto 0 auto;
 
   box-sizing: border-box;
   overflow: hidden;
   @media (min-width: 780px) {
-    width: 65%;
-    margin: 0 auto 0 auto;
-    padding: 0rem 2rem 2rem 2rem;
+    //width: 65%;
+    //margin: 0 auto 0 auto;
+    //padding: 0rem 2rem 2rem 2rem;
   }
    @media (min-width: 1300px) {
-     width: 45%;
-     margin: 0 auto 0 auto;
-     padding: 0rem 2rem 2rem 2rem;
+     //width: 45%;
+     //margin: 0 auto 0 auto;
+     //padding: 0rem 2rem 2rem 2rem;
 `;
 
 const LeftAlignedContainer = styled.div`
@@ -348,14 +351,13 @@ const LeftAlignedContainer = styled.div`
 const MainBlock = styled(motion.div)``
 
 const MetadataContainer = styled.div`
-  color: var(--text-color);
+  color: var(--color-Foreground-Text-Base);
 `;
 const MetadataTitle = styled.h1`
-  font-size: 3rem;
+  font-size: 2rem;
   color: black;
   color: var(--accent-text-color);
-    padding: 1rem 0 ;
-  margin: 1rem 0 1rem 0;
+  padding: 1rem 0 ;
   text-align: left; /* Ensure text is aligned to the left */
 `;
 
@@ -379,13 +381,16 @@ const FullWidthCoverImage = styled.div`
     }
 
   @media (min-width: 1300px) {
+    height: calc(100vh / 3);  /* Adjust the height based on viewport height */
+    background-position: center 12rem;  /* Center horizontally, 40% from top */
+
     background-position: center;  /* Adjust for large screens */
   }
 `;
 
 
 const MetadataIcon = styled.div`
-  font-size: 1.5rem;
+  font-size: 1rem;
    color:black;
 `;
 
@@ -409,6 +414,7 @@ const ErrorContainer = styled.div`
 
 
 const StyledLink = styled.a`
+  font-size: 1rem;
   color: var(--link-color);
   text-decoration: underline;
 
@@ -418,13 +424,11 @@ const StyledLink = styled.a`
 `;
 
 const Paragraph = styled.p`
- 
-
-  line-height: 1.7rem;
+  line-height: 1.5rem;
   // color: ${({ color }) => color || 'inherit'};
-  color: var(--accentText-color);
+  color: var(--color-Foreground-Text-Default);
   font-weight: 500;
-  font-size:1.2rem;
+  font-size:1rem;
   margin-top: 5px;
   padding: 0.5rem 0rem 0rem 0rem;
   transition: font-weight 0.3s ease, text-shadow 0.3s ease;
@@ -443,7 +447,6 @@ const Paragraph = styled.p`
   }
 
   code {
-    // background-color: #f5f5f5;
     padding: 0.2rem;
     border-radius: 0.3rem;
   }
@@ -454,7 +457,7 @@ const Paragraph = styled.p`
 const Callout = styled.div`
 `;
 const CalloutContainer = styled.div`
-  background-color: var(--secCard-color);
+  background-color: var(--color-Background-Default);
   border-radius: 6px;
   padding: .5rem 2rem;
 `;
@@ -464,36 +467,34 @@ const BlockContainer = styled.div`
 
 `;
 const Heading1 = styled.h1`
-  font-size: 2.5rem;
-  color: black;
+  font-size: 2rem;
+  color: var(--color-Foreground-Text-Default);
   font-weight: bold;
-    background-color: var(--secCard-color);
+  background-color: var(--color-Background-Default);
   border-radius: 12px;
   padding: .5rem 1rem;
         
 
 `;
 const Heading2 = styled.h2`
-  font-size: 2rem;
+  font-size: 1.4rem;
+  text-decoration: underline;
+  font-weight: 700;
+  line-height: 1;
   
-  margin-bottom: 2.4rem;
-    text-decoration: underline;
+   color: var(--color-Foreground-Text-Default);
 
-    font-weight: 700;
-
-  line-height: 1.4;
-   color:black;
 `;
 
 const Heading3 = styled.h3`
-  font-size: 1.75rem;
-  line-height: 1.5;
+  font-size: 1.2rem;
+  line-height: 1.4;
   margin: 1rem 0;
-    color:black;
+    color: var(--color-Foreground-Text-Default);
 `;
 
 const BlockParagraph = styled.p`
-  font-size: 2.25rem;
+  font-size: 1rem;
   line-height: 1.6;
   margin: 1rem 0;
 `;
@@ -501,7 +502,7 @@ const BlockParagraph = styled.p`
 const ImageContainer = styled.div`
   position: relative;
   text-align: center;
-  margin: 1rem 0;
+  margin: 1rem auto;
   max-width: 100%;
   display: inline-block; /* Ensures container size matches the image exactly */
   cursor: ${(props) => (props.hasLink ? "default" : "zoom-in")};
@@ -525,7 +526,7 @@ const HoverOverlay = styled.div`
   align-items: flex-start;
   padding: 0.5rem;
   background: rgba(0, 0, 0, 0.4);
-  color: white;
+  color: var(--color-Neutral-White);
   opacity: 0;
   transition: opacity 0.3s ease;
 
@@ -536,7 +537,7 @@ const HoverOverlay = styled.div`
 
 
 const ExternalLinkIcon = styled.span`
-  font-size: 1.2rem;
+  font-size: 1rem;
   margin-right: 0.5rem;
 `;
 
@@ -561,7 +562,7 @@ const LinkName = styled.span`
 const BulletedList = styled.ul`
   list-style-type: disc;
   padding-left: 0.75rem; /* Reduce padding on the left */
-  color: black;
+  color: var(--color-Foreground-Text-Default);
 
 
   li {
@@ -569,7 +570,7 @@ const BulletedList = styled.ul`
   padding-right: 2rem;
       padding-left: 1rem; /* Keep this to maintain proper alignment */
   font-weight: 500;
-  font-size:1.2rem;
+  font-size: 1rem;
 
   }
 `;
@@ -583,7 +584,7 @@ const LineSeparator = styled.div`
 `;
 const PropertiesGrid = styled.div`
   display: grid;
-  gap: 1rem;
+  gap: 0.5rem;
   margin-bottom: 1.8rem;
   
 `;
@@ -600,13 +601,13 @@ const PropertyName = styled.div`
   gap: 0.5rem;
   color: var(--mutedText-color);
   font-weight: 500;
-  font-size: 1.2rem;
+  font-size: 0.8rem;
 `;
 
 const PropertyValue = styled.div`
   font-weight: 500;
-  font-size: 1.2rem;
-  color: var(--text-color);
+  font-size: 0.8rem;
+  color: var(--color-Foreground-Text-Base);
 `;
 export default Blocks;
 

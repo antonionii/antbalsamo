@@ -8,10 +8,10 @@ const CardGrid = styled(motion.div)`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr)); /* Ensure the grid items are flexible */
   gap: 4rem 4rem; /* 4rem top/bottom, 4rem left/right */
-  width: 90%; /* Full width for the grid */
+  width: 100%; /* Full width for the grid */
   max-width: 60rem; /* Maximum width of the grid */
   margin: 0 auto; /* Center the grid horizontally */
-  padding: 4rem 2rem; /* Adjust padding if necessary */
+  padding: 4rem 0rem; /* Adjust padding if necessary */
 `;
 
 const CardLink = styled.a`
@@ -21,7 +21,7 @@ const CardLink = styled.a`
 `;
 
 const Card = styled(motion.div)`
-  background-color: var(--card-color);
+  background-color: var(--color-Background-Default);
   box-shadow: 1rem 0.6rem 0rem 0rem black;
   border-radius: 12px;
   padding: 1rem 2rem !important;
@@ -32,7 +32,7 @@ height:auto;
   &:hover {
     box-shadow: 2rem 1rem 0rem 0rem rgba(0, 0, 0, 1); // Use rem for hover state
     transform: translateY(-1rem); // Use rem for translate as well
-    border-color: #f9ec5c;
+    border-color: var(--color-Foreground-Border-Default);
     border-width: 0.6rem; // Use rem for border-width as well
   }
 `;
@@ -60,13 +60,13 @@ const Bubble = styled.div`
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
-  background-color: var(--background-color);
+  background-color: var(--color-Background-Base);
   transition: box-shadow 0.3s ease, transform 0.3s ease;
 `;
 
 const CardText = styled.p`
   font-size: 1rem;
-  color: var(--cardText-color);
+  color: var(--color-Foreground-Text-Default);
   font-weight: 500;
   margin-top: 5px;
   padding: 0.5rem 0rem 0rem 0rem;
@@ -80,15 +80,31 @@ const CardText = styled.p`
 const BubbleText = styled.h4`
   font-size: 1.4rem;
   margin: 0;
-  color: var(--text-color);
+  color: var(--color-Foreground-Text-Base);
 `;
 
 const CardTitle = styled.h4`
-  color: var(--cardText-color);
+  color: var(--color-Foreground-Text-Default);
 
 `
+const TagList = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+`;
 
-const CardComponent = ({ cards, onCardClick }) => {
+const Tag = styled.span`
+  background: #cbd5e0;
+  color: var(--color-Foreground-Text-Default);
+  border-radius: 999px;
+  margin-top: 0.5rem;
+  padding: 0.2rem 0.8rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: inline-block;
+`;
+const CardComponent = ({ cards, onCardClick, onProtectedCardClick }) => {
   return (
     <CardGrid
       variants={pageAnimation}
@@ -99,19 +115,25 @@ const CardComponent = ({ cards, onCardClick }) => {
       {cards.map((card, index) => {
         const isExternal = card.linkTo.startsWith("http");
 
-        // Replace "App Feature" or "Game" with bold text and line breaks
-        let formattedText = card.text
-          .replace("App Feature", "<strong>App Feature</strong><br />")
-          .replace("Game", "<strong>Game</strong><br />");
+        // // Replace "App Feature" or "Game" with bold text and line breaks
+         let formattedText = card.text
+        //   .replace("App Feature", "<strong>App Feature</strong><br />")
+        //   .replace("Game", "<strong>Game</strong><br />");
 
         // Add the number of extra line breaks based on the `lineBreaks` property
         for (let i = 0; i < card.lineBreaks; i++) {
           formattedText += '<br />';
         }
 
+
         const CardContent = (
           <>
             <CardTitle>{card.title}</CardTitle>
+                <TagList>
+      {card.tags && card.tags.map((tag, i) => (
+        <Tag key={i}>{tag}</Tag>
+      ))}
+    </TagList>
             <CardText
               dangerouslySetInnerHTML={{
                 __html: formattedText,
@@ -123,6 +145,15 @@ const CardComponent = ({ cards, onCardClick }) => {
             </Bubble>
           </>
         );
+
+            // Handler for internal links
+        const handleInternalClick = (e) => {
+          if (card.passwordProtected) {
+            e.preventDefault();
+            onProtectedCardClick(card);
+          }
+          // else, allow normal navigation
+        };
 
         return isExternal ? (
           <CardLink
@@ -138,7 +169,7 @@ const CardComponent = ({ cards, onCardClick }) => {
               whileHover={{
                 translateY: "-2rem",
                 borderWidth: "1rem",
-                borderColor: "#f9ec5c",
+                borderColor: "var(--color-Foreground-Border-Default)",
                 boxShadow: "2rem 1rem 0rem 0rem rgba(0, 0, 0, 1)",
               }}
             >
@@ -147,7 +178,7 @@ const CardComponent = ({ cards, onCardClick }) => {
           </CardLink>
         ) : (
           <Link href={card.linkTo} passHref key={index}>
-            <CardLink onClick={onCardClick}>
+            <CardLink onClick={handleInternalClick}>
               <Card
                 variants={cardAnimation}
                 initial={{ boxShadow: "1rem 0.6rem 0rem 0rem rgba(0, 0, 0, 1)" }}
@@ -155,7 +186,7 @@ const CardComponent = ({ cards, onCardClick }) => {
                 whileHover={{
                   translateY: "-2rem",
                   borderWidth: "1rem",
-                  borderColor: "#f9ec5c",
+                borderColor: "var(--color-Foreground-Border-Default)",
                   boxShadow: "2rem 1rem 0rem 0rem rgba(0, 0, 0, 1)",
                 }}
               >

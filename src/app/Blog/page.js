@@ -8,15 +8,15 @@ import HeroText from "../components/HeroText";
 import { pageAnimation, cardAnimation, slideleftAnim, slidedownAnim } from "../styles/animation";
 
 const Blog = () => {
-  const [accentTextColor, setAccentTextColor] = useState("");
+  const [colorForegroundTextDefault, setColorForegroundTextDefault] = useState("");
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
     setIsClient(true);
 
     if (typeof window !== "undefined") {
-      const accentColor = getComputedStyle(document.documentElement).getPropertyValue('--accentText-color').trim();
-      setAccentTextColor(accentColor);
+      const colorForegroundTextDefault = getComputedStyle(document.documentElement).getPropertyValue('--color-Foreground-Text-Default').trim();
+      setColorForegroundTextDefault(colorForegroundTextDefault);
     }
   }, []);
 
@@ -57,7 +57,7 @@ const Blog = () => {
                     numOfItems={2}
                     itemsText={["2024"]}
                     variant={slideleftAnim}
-                    fontColor={accentTextColor}
+                    fontColor={colorForegroundTextDefault}
                   />
                 </HeaderContainter>
                 {blogsIn2024.map((blog, index) => (
@@ -138,8 +138,8 @@ const StyledSection = styled(motion.div)`
   margin: 4rem auto 0 auto;
   padding: 1rem;
   border-radius: 1rem;
-  background-color: var(--card-color);
-  color: var(--text-color);
+  background-color: var(--color-Background-Default);
+  color: var(--color-Foreground-Text-Default);
   box-sizing: border-box;
   overflow: hidden;
 

@@ -2,56 +2,79 @@ const projectCardData = [
   {
       title: "Notification System",
       image: "https://i.imgur.com/9Fd7bXq.png",
-      text: "App Feature Deeply configurable notification system built for admins and workgroups.",
+      text: "Deeply configurable notification system built for admins and workgroups.",
       linkTo: "/Blocks/80e79e864f4f4c57b029a0b3439b4889",
       bubbleText: "Open Project",
       pageId: '80e79e864f4f4c57b029a0b3439b4889',
-      lineBreaks: 0 // No extra line breaks needed
+      lineBreaks: 0, 
+      tags: ["SaaS","Enterprise","Workflows"],
+
+      passwordProtected: true, 
+
   },
   {
       title: "Feature Redesign",
       image: "https://i.imgur.com/Cjkqvhv.png",
-      text: "App Feature A UX overhaul with an inviting interface.",
+      text: "A UX overhaul with an inviting interface.",
       linkTo: "/Blocks/3328b05dcbba4ba7900873e790e145c6",
       bubbleText: "Open Project",
       pageId: '3328b05dcbba4ba7900873e790e145c6',
-      lineBreaks: 2 // Add 1 extra line break
+      lineBreaks: 2, 
+      tags: ["Enterprise", "B2B Workflows"],
+
+      passwordProtected: true, 
+
   },
   {
       title: "Leading Workflow Design",
       image: "https://i.imgur.com/VMYlrXR.png",
-      text: "App Feature Curated walkthrough of developments for a SaSS app.",
+      text: "Curated walkthrough of developments for a SaSS app.",
       linkTo: "/Blocks/0a625c571aa34731ad7fd2d2c7f37a95",
       bubbleText: "Open Project",
       pageId: '0a625c571aa34731ad7fd2d2c7f37a95',
-      lineBreaks: 0 // No extra line breaks needed
+      tags: ["Human-Centered Design", "Workflows"], 
+
+      lineBreaks: 0,
+      passwordProtected: true, 
+
   },
   {
     title: "Mingo",
     image: "https://i.imgur.com/UUYRNC8.gif",
-    text: "Game A Platforming Space Odyssey.\n",
+    text: "A Platforming Space Odyssey.\n",
     linkTo: "https://antonioni.itch.io/mingo-tech-demo",
     bubbleText: "Open Project",
-    pageid: '3328b05dcbba4ba7900873e790e145c4',
-    lineBreaks: 2 // Add 1 extra line break
+    pageId: '3328b05dcbba4ba7900873e790e145c4',
+    tags: ["Game Dev", "Coming Soon"],
+
+    lineBreaks: 2, // Add 1 extra line break
+    passwordProtected: false, // <-- Only this card triggers the modal
+
 },
   {
       title: "Activity Feed",
       image: "https://i.imgur.com/Kp9t8OG.png",
-      text: "App Feature History log capturing all relevant system and user activity.",
+      text: "History log capturing all relevant system and user activity.",
       linkTo: "/Blocks/f1e49709532546b8959c5c3d69070e71",
       bubbleText: "Open Project",
       pageId: 'f1e49709532546b8959c5c3d69070e71',
-      lineBreaks: 0 // No extra line breaks needed
+      tags: ["B2B Workflows"], 
+
+      lineBreaks: 0, // No extra line breaks needed
+      passwordProtected: true, // <-- Only this card triggers the modal
+
   },
   {
       title: "Monitor Diagnostics",
       image: "https://i.imgur.com/YOch4l7.png",
-      text: "App Feature Equipping users with tools to identify root cause issues.",
+      text: "Equipping users with tools to identify root cause issues.",
       linkTo: "/Blocks/3d08e0534d344646821003dbb27b8f12",
       bubbleText: "Open Project",
       pageId: '3d08e0534d344646821003dbb27b8f12',
-      lineBreaks: 0 // No extra line breaks needed
+      tags: ["B2B Workflows", "Data Visualization"], 
+      lineBreaks: 0, // No extra line breaks needed
+      passwordProtected: true, // <-- Only this card triggers the modal
+
   },
 ];
 

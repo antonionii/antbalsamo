@@ -3,16 +3,15 @@ import { createGlobalStyle } from "styled-components";
 const GlobalStyle = createGlobalStyle`
 
 :root {
-  --background-color: #d6aa9e;
-  --text-color: shadow-color;
-  --line-color: shadow-color;
-  --shadow-color: white; /* Default shadow color */ ;
-    --green: #28c074;
-    --red: #ff4062;
-    --black: #050914;
-    --white: #fff5eb;
-    --gray: #7a7a7a;}
-
+  --color-neutral-black: #3E3E3E;
+  --color-neutral-white: #FFFFFF;
+  --color-red-100: #FFF5F3;
+  --color-red-500: #B93715;
+  --color-green-100: #F3FFF4;
+  --color-green-500: #5DAE64;
+  --color-blue-100: #F3F9FF;
+  --color-blue-500: #1979B9;
+}
 *{
     margin:0;
     padding: 0;
@@ -21,30 +20,20 @@ const GlobalStyle = createGlobalStyle`
 
 html{
   overflow-x:hidden;
-  
-    @media (max-width: 1700px){
-        font-size: 75%;
-    }
-
-    
-
 }
 body {
-    background: var(--background-color);
-    font-family: "Rubik", sans-serif;
+    background: var(--color-Background-Base);
+    font-family: "Noto Sans", sans-serif;
     font-weight: 900;
     overflow-x: hidden;
-    color: var(--text-color);
+    color: var(--color-Foreground-Text-Base);
     position: relative;
     margin:0;
     padding: 0;
     width: 100%;
 
   font-optical-sizing: auto;
-  font-weight: <weight>;
   font-style: normal;
-}
-
 }
 
 img {
@@ -59,7 +48,6 @@ img {
   background-color: transparent;
   position: fixed;
   border-radius: 50%;
-  border: 1px solid shadow-color;
   transform: translate3d(-50%, -50%, 0)
 }
 
@@ -73,21 +61,17 @@ img {
 
 button{
     font-weight: bold;
-    color: var(--text-color);
+    color: var(--color-Foreground-Text-Default);
     cursor: pointer;
     font-size: 2rem;
     padding: 1rem 2rem;
-    border: 3px solid var(--text-color);
-    background: transparent;
     transition: all 0.5s ease;
-  font-family: "Inter", system-ui;
+    font-family: "Noto Sans", sans-serif;
     &:hover{
-        background-color: var(--background-color);
-        color: white
+  
     }
 
 }
-
 
     h4{
         font-weight: bold;
@@ -99,7 +83,7 @@ button{
             
     }
     p{
-        font-family: "Inter", system-ui;
+    font-family: "Noto Sans", sans-serif;
         font-weight: thin;
 
         padding: 3rem 0rem;
@@ -110,15 +94,15 @@ button{
         stroke: "120000";
     }
     li {
-    font-family: "Inter", system-ui;
+    font-family: "Noto Sans", sans-serif;
     padding-left: 3rem;
     position: relative;
-    font-family: "Inter", system-ui;
+    font-family: "Noto Sans", sans-serif;
     font-weight: regular;
   }
   a {
-    font-family: "Inter", system-ui;
-    font-size: 1.2rem;
+    font-family: "Noto Sans", sans-serif;
+    font-size: 1rem;
 
 
     text-decoration: none;
@@ -218,7 +202,7 @@ display: flex;
 
 .bg-section {
 
-    background-color: var(--card-color); /* Equivalent to bg-gray-100 */
+    background-color: var(--color-Background-Default); /* Equivalent to bg-gray-100 */
 }
 
 .container {

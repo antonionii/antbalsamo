@@ -44,7 +44,7 @@ const ContentDiv = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--card-color); 
+    background-color: var(--color-Background-Default); 
     border-radius: 12px 12px 0 0; 
     border-bottom: none; 
     box-sizing: border-box;

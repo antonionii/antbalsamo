@@ -58,7 +58,7 @@ export const StyledDescription = styled(motion.div)`
 
   h1 {
       font-weight: bolder;
-      color: var(--text-color);
+      color: var(--color-Foreground-Text-Default);
       width: "100%";
       height: "auto";
       font-size: 1.6rem;

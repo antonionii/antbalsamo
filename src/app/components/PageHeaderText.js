@@ -42,7 +42,7 @@ const PageHeaderText = ({ numOfItems, itemsText, variant, fontSize, fontColor, f
 
                 fontWeight: fontWeight || "600",
                 fontSize: fontSize || "4rem",
-                color: fontColor || "var(--accentText-color)"
+                color: fontColor || "var(--color-Foreground-Text-Default)",
               }}
               variants={typeof variant === "function" ? variant(0.1 * (index + 1)) : variant}
             >
@@ -57,12 +57,13 @@ const PageHeaderText = ({ numOfItems, itemsText, variant, fontSize, fontColor, f
 
 
 const StyledMotionText = styled.section`
+width: 100%;
   display: inline-block; /* Ensure the width and height hug the content */
   margin: 8rem auto 0 auto;  /* Center horizontally and set top margin */
-  padding: .5rem .5rem; /* Add padding for better visual spacing */
+  padding: .5rem 0; /* Add padding for better visual spacing */
   border-radius: 1rem;
-  background-color: var(--card-color);
-  color: var(--text-color);
+  background-color: var(--color-Background-Default);
+  color: var(--color-Foreground-Text-Base);
   box-sizing: border-box;
   text-align: center; /* Center text content */
 
@@ -70,8 +71,9 @@ const StyledMotionText = styled.section`
     padding: .5rem .5rem; /* Increase padding on larger screens */
   }
 
-  @media (min-width: 1300px) {
-    padding: .5rem .5rem; /* Increase padding on larger screens */
+  @media (min-width: 1280px) {
+  width: auto;
+    padding: .5rem 1rem; /* Increase padding on larger screens */
   }
 `;
 

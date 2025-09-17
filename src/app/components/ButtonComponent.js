@@ -1,42 +1,40 @@
 import React from "react";
 import styled from "styled-components";
 
-const StyledButton = styled.button`
-  border-width: 6px;
-  border-radius: 16px;
+const BigSpecialButton = styled.button`
+  border: none; 
+  border-radius: 99px;
   margin-top: 4rem;
-  padding: 1rem; /* Increase padding for better spacing */
-  width: auto; /* Fixed width */
-  height: 6rem; /* Fixed height to match width, creating a square */
+  padding: 1rem;
+  width: auto;
   margin-left: auto;
   margin-right: auto;
   display: flex;
   justify-content: center;
-  align-items: center; /* Center text vertically and horizontally */
-  background-color: var(--background-color);
-  box-shadow: 0.3rem 0.3rem 0rem 0rem black;
+  align-items: center;
   cursor: pointer;
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
-  font-size: 1.4rem; /* Adjust size as needed */
-  color: var(--text-color); /* Use a variable for text color, or a specific color */
-  text-align: center; /* Center the text horizontally */
-  white-space: normal; /* Allow text to wrap */
-  word-wrap: break-word; /* Wrap long words to prevent overflow */
-  word-break: break-word; /* Ensure text wraps inside the box */
-  overflow: hidden; /* Prevent overflowing content */
-  &:hover {
-    background-color: var(--card-color);
+  transition: box-shadow 0.1s ease;
+  font-size: 1rem;
+  background-color: var(--color-Intent-Positive-Primary);
+  color: var(--color-Foreground-Text-Inverse);
+  text-align: center;
+  white-space: normal;
+  word-wrap: break-word;
+  word-break: break-word;
+  overflow: hidden;
 
-    box-shadow: 1rem 1rem 0rem 0rem black;
-    transform: translateY(-10px);
-    color: black; /* Use a variable for text color, or a specific color */
+    box-shadow: 0 0 0 0px var(--color-Foreground-Text-Inverse);
+
+  &:hover {
+
+    box-shadow: 0 0 0 4px var(--color-Foreground-Text-Inverse);
   }
 `;
 
 
 
 const Button = ({ children, onClick }) => {
-  return <StyledButton onClick={onClick}>{children}</StyledButton>;
+  return <BigSpecialButton onClick={onClick}>{children}</BigSpecialButton>;
 };
 
 export default Button;

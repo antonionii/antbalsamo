@@ -1,85 +1,104 @@
+export const colorNeutralBlack = "#3E3E3E";
+export const colorNeutralWhite = "#FFFFFF";
+
+export const colorRed100 = "#FFF5F3";
+export const colorRed300 = "#FFB9B2";
+export const colorRed500 = "#B93715";
+
+export const colorGreen100 = "#F3FFF4";
+export const colorGreen500 = "#5DAE64";
+
+export const colorBlue100 = "#F3F9FF";
+export const colorBlue500 = "#1979B9";
+
+
+export const colorIntentPositivePrimary = "#5DAE64";
+export const colorIntentPositiveAccent = "#F3FFF4";
+
+export const colorIntentNegativePrimary = "#B93715";
+export const colorIntentNegativeAccent = "#ffb8b257";
+
 export const colorSchemes = {
   dark: {
     id: "b1",
-    backgroundColor: "#4a4a4a",
-    textColor: "#ffffff",
-    lineColor: "#ffffff",
-    textShadow: "black",
-    accentColor: "#ffffff",
-    accentTextColor: "black",
-    cardColor: "white",
-    cardTextColor: "black",
-    linkColor: "#ff4062",
-    secCardColor: "white",
-    mutedTextColor: "#dcdbdc"
+    backgroundColor: "#212121",
+    textColor: colorNeutralWhite,
+    lineColor: colorNeutralWhite,
+    textShadow: colorNeutralBlack,
+    accentColor: colorNeutralWhite,
+    accentTextColor: colorNeutralWhite,
+    colorBackgroundDefault: colorNeutralWhite,
+    cardTextColor: colorNeutralBlack,
+    linkColor: colorBlue500,
+    seccolorBackgroundDefault: colorNeutralWhite,
+    mutedTextColor: "#dcdbdc",
+
+
+      colorForegroundTextBase: colorNeutralWhite,
+      colorForegroundTextDefault: colorNeutralBlack,
+      colorForegroundTextInverse: colorNeutralWhite,
+
+      colorForegroundBorderDefault: colorNeutralWhite,
+
+
+      colorBackgroundDefault: colorNeutralWhite,
+      colorBackgroundBase: "#212121",
+      
+      
+      colorIntentPositivePrimary: colorIntentPositivePrimary,
+
+
+      colorBackgroundPositive: colorIntentPositiveAccent,
+      colorBackgroundNegative: colorIntentNegativeAccent,
+
+      colorRed500: colorRed500,
+      colorIntentNegativePrimary: colorIntentNegativePrimary,
+      colorBlue500: colorBlue500,
+    
 
   },
   light: [
    
     {
-      //Yellow
-      id: "1",
-      backgroundColor: "#F0C865",
-      textColor: "black",
-      lineColor: "black",
-      textShadow: "white",
-      accentColor: "black",
-      accentTextColor: "black",
-      cardColor: "white",
-      cardTextColor: "black",
-      linkColor: "#ff4062",
-      secCardColor: "white",
-      mutedTextColor: "#525151"
+      //Neutral
+      id: "5",
+      backgroundColor: "#E1D4C7",
 
-    },
+      textColor: colorNeutralBlack,
+      lineColor: colorNeutralBlack,
+      textShadow: colorNeutralBlack,
 
-    
-      /*
-      {
-      //Green
-      id: "2",
-      backgroundColor: "#B1BF93",
-      textColor: "black",
-      lineColor: "black",
-      textShadow: "white",
-      accentColor: "black",y
-      accentTextColor: "black",
+      accentColor: colorNeutralWhite,
+      accentTextColor: colorNeutralBlack,
 
-      cardColor: "white"
+      seccolorBackgroundDefault: hexToRgba("#fff5eb", 0.5),
 
-    },*/
-    {
-      //Blue
-      id: "3",
-      backgroundColor: "#0061FC",
-      textColor: "white",
-      lineColor: "white",
-      textShadow: "black",
-      accentColor: "white",
-      accentTextColor: "black",
-      cardColor: "white",
-      cardTextColor: "black",
-      linkColor: "#ff4062",
-      secCardColor: "white",
-      mutedTextColor: "#dcdbdc"
+      cardTextColor: colorNeutralBlack,
+      
+      linkColor: colorBlue500,
+      mutedTextColor: "#525151",
+
+      buttonHoverBg: colorNeutralWhite,
+
+      colorForegroundTextBase: colorNeutralBlack,
+      colorForegroundTextDefault: colorNeutralBlack,
+      colorForegroundTextInverse: colorNeutralWhite,
+
+      colorForegroundBorderDefault: colorNeutralBlack,
 
 
-    },
-    {
-      //Cream
-      id: "4",
-      backgroundColor: "#fff5eb",
-      textColor: "black",
-      lineColor: "black",
-      textShadow: "black",
-      accentColor: "#28c074",
-      accentTextColor: "black",
-      cardColor: "#28c074",
-      cardTextColor: "black",
-      linkColor: "#00007e",
-      secCardColor: hexToRgba("#28c074", 0.5),
-      mutedTextColor: "#525151"
+      colorBackgroundDefault: colorNeutralWhite,
+      colorBackgroundBase: "#E1D4C7",
+      
+      colorIntentPositivePrimary: colorIntentPositivePrimary,
 
+
+      colorBackgroundPositive: colorIntentPositiveAccent,
+      colorBackgroundNegative: colorIntentNegativeAccent,
+
+      colorRed500: colorRed500,
+      colorIntentNegativePrimary: colorIntentNegativePrimary,
+      colorBlue500: colorBlue500,
 
     },
   ],
@@ -93,6 +112,7 @@ function hexToRgba(hex, alpha) {
 }
 
 const changeColor = (themeType = "light") => {
+  if (window.isPasswordModalOpen) return;
   let toBeAppliedScheme;
   if (themeType === "light") {
     const currentSchemeId = document.documentElement.style.getPropertyValue(
@@ -102,8 +122,13 @@ const changeColor = (themeType = "light") => {
       (item) => item.id !== currentSchemeId
     );
 
-    toBeAppliedScheme =
-      nextLightThemes[Math.floor(Math.random() * nextLightThemes.length)];
+    // Fallback: if no other themes, use the current one
+    if (nextLightThemes.length === 0) {
+      toBeAppliedScheme = colorSchemes.light.find(item => item.id === currentSchemeId) || colorSchemes.light[0];
+    } else {
+      toBeAppliedScheme =
+        nextLightThemes[Math.floor(Math.random() * nextLightThemes.length)];
+    }
   } else {
     toBeAppliedScheme = colorSchemes.dark;
   }
@@ -112,16 +137,24 @@ const changeColor = (themeType = "light") => {
     toBeAppliedScheme.id
   );
   document.documentElement.style.setProperty(
-    "--background-color",
-    toBeAppliedScheme.backgroundColor
+    "--color-Background-Base",
+    toBeAppliedScheme.colorBackgroundBase
+  );
+    document.documentElement.style.setProperty(
+    "--color-Foreground-Text-Base",
+    toBeAppliedScheme.colorForegroundTextBase
   );
   document.documentElement.style.setProperty(
-    "--text-color",
-    toBeAppliedScheme.textColor
+    "--color-Foreground-Text-Default",
+    toBeAppliedScheme.colorForegroundTextDefault
+  );
+    document.documentElement.style.setProperty(
+    "--color-Foreground-Text-Inverse",
+    toBeAppliedScheme.colorForegroundTextInverse
   );
   document.documentElement.style.setProperty(
-    "--line-color",
-    toBeAppliedScheme.lineColor
+    "--color-Foreground-Border-Default",
+    toBeAppliedScheme.colorForegroundBorderDefault
   );
   document.documentElement.style.setProperty(
     "--shadow-color",
@@ -132,8 +165,8 @@ const changeColor = (themeType = "light") => {
     toBeAppliedScheme.accentColor
   );
   document.documentElement.style.setProperty(
-    "--card-color",
-    toBeAppliedScheme.cardColor
+    "--color-Background-Default",
+    toBeAppliedScheme.colorBackgroundDefault
   );
   document.documentElement.style.setProperty(
     "--accentText-color",
@@ -149,11 +182,84 @@ const changeColor = (themeType = "light") => {
   );
   document.documentElement.style.setProperty(
     "--secCard-color",
-    toBeAppliedScheme.secCardColor
+    toBeAppliedScheme.seccolorBackgroundDefault
   );
   document.documentElement.style.setProperty(
     "--cardText-color",
     toBeAppliedScheme.cardTextColor
+  );
+  document.documentElement.style.setProperty(
+    "--buttonHoverBg",
+    toBeAppliedScheme.buttonHoverBg
+  );
+
+    document.documentElement.style.setProperty(
+    "--color-Neutral-Black",
+    toBeAppliedScheme.colorNeutralBlack
+  );
+    document.documentElement.style.setProperty(
+    "--color-Neutral-White",
+    toBeAppliedScheme.colorNeutralWhite
+  );
+  
+    document.documentElement.style.setProperty(
+    "--color-Red-100",
+    toBeAppliedScheme.colorRed100
+  );
+    document.documentElement.style.setProperty(
+    "--color-Red-500",
+    toBeAppliedScheme.colorRed500
+  );   
+    document.documentElement.style.setProperty(
+    "--color-Red-100",
+    toBeAppliedScheme.colorRed100
+  );
+    document.documentElement.style.setProperty(
+    "--color-Red-500",
+    toBeAppliedScheme.colorRed500
+  );   
+      document.documentElement.style.setProperty(
+    "--color-Green-100",
+    toBeAppliedScheme.colorGreen100
+  );
+    document.documentElement.style.setProperty(
+    "--color-Green-500",
+    toBeAppliedScheme.colorGreen500
+  );    
+    document.documentElement.style.setProperty(
+    "--color-Intent-Base",
+    toBeAppliedScheme.colorIntentBase
+  );    
+    document.documentElement.style.setProperty(
+    "--color-Intent-Positive-Primary",
+    toBeAppliedScheme.colorIntentPositivePrimary
+  );
+
+  
+    document.documentElement.style.setProperty(
+    "--color-Intent-Positive-Accent",
+    toBeAppliedScheme.colorIntentPositiveAccent
+  );
+    document.documentElement.style.setProperty(
+    "--color-Intent-Negative-Primary",
+    toBeAppliedScheme.colorIntentNegativePrimary
+  );
+    document.documentElement.style.setProperty(
+    "--color-Intent-Negative-Accent",
+    toBeAppliedScheme.colorIntentNegativeAccent
+  );
+  document.documentElement.style.setProperty(
+    "--color-Background-Positive",
+    toBeAppliedScheme.colorBackgroundPositive
+  );
+  document.documentElement.style.setProperty(
+    "--color-Background-Negative",
+    toBeAppliedScheme.colorBackgroundNegative
+  );
+
+  document.documentElement.style.setProperty(
+    "--color-Blue-500",
+    toBeAppliedScheme.colorBlue500
   );
 };
 

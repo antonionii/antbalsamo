@@ -260,11 +260,11 @@ const Blogs = () => {
                     </>
                 ) : (
                     <LoaderContainer>
-                        <ClimbingBoxLoader color="var(--text-color)" size={25} />
+                        <ClimbingBoxLoader color="var(--color-Foreground-Text-Default)" size={25} />
                     </LoaderContainer>)}
                 {blockData.length === 0 ? (
                     <LoaderContainer>
-                        <ClimbingBoxLoader color="var(--text-color)" size={25} />
+                        <ClimbingBoxLoader color="var(--color-Foreground-Text-Default)" size={25} />
                     </LoaderContainer>) : (
                     <MainBlock>{blockData.map((block) => nestBlockChild(block))}</MainBlock>
                 )}
@@ -347,7 +347,7 @@ const LeftAlignedContainer = styled.div`
 const MainBlock = styled(motion.div)``
 
 const MetadataContainer = styled.div`
-  color: var(--text-color);
+  color: var(--color-Foreground-Text-Default);
 `;
 const MetadataTitle = styled.h1`
   font-size: 3rem;
@@ -576,7 +576,7 @@ const PropertyName = styled.div`
 const PropertyValue = styled.div`
   font-weight: 500;
   font-size: 1.2rem;
-  color: var(--text-color);
+  color: var(--color-Foreground-Text-Default);
 `;
 export default Blogs;
 

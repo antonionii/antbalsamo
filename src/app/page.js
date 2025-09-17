@@ -11,26 +11,57 @@ import Tags from "./components/Tags";
 import StyledSnackbar from "./components/StyledSnackbar";
 import projectCardData from "./data/projectCardData";
 import { pageAnimation, cardAnimation, slideleftAnim, slidedownAnim } from './styles/animation';
-
+import { useRouter } from "next/navigation";
+import PasswordModal from "./components/PasswordModal"; 
+import { PageContainer } from "./styles/PageContainer"; 
 const Home = () => {
-  const [accentTextColor, setAccentTextColor] = useState("");
-  const [cardColor, setCardColor] = useState("");
+  const [colorForegroundTextDefault, setcolorForegroundTextDefault] = useState("");
+  const [colorBackgroundDefault, setcolorBackgroundDefault] = useState("");
   const [isClient, setIsClient] = useState(false); // Track if it's client-side
+
+  const [pendingCard, setPendingCard] = useState(null);
+  const [showPasswordModal, setShowPasswordModal] = useState(false);
 
   useEffect(() => {
     // Check if we are on the client side
     if (typeof window !== "undefined") {
       setIsClient(true);
-      const accentColor = getComputedStyle(document.documentElement).getPropertyValue('--accentText-color').trim();
-      const cardColor = getComputedStyle(document.documentElement).getPropertyValue('--card-color').trim();
-      setAccentTextColor(accentColor);
-      setCardColor(cardColor);
+      const colorForegroundTextDefault = getComputedStyle(document.documentElement).getPropertyValue('--color-Foreground-Text-Default').trim();
+      const colorBackgroundDefault = getComputedStyle(document.documentElement).getPropertyValue('--color-Background-Default').trim();
+      setcolorForegroundTextDefault(colorForegroundTextDefault);
+      setcolorBackgroundDefault(colorBackgroundDefault);
     }
   }, []);
+
+
 
   const [icon, setIcon] = useState("link");
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const [isWiggling, setIsWiggling] = useState(false);
+const [theme, setTheme] = useState("light");
+
+useEffect(() => {
+  // Read the theme from the CSS variable
+  const getTheme = () => {
+    const themeId = getComputedStyle(document.documentElement)
+      .getPropertyValue('--theme-id')
+      .trim();
+    // If you use "b1" for dark, otherwise adjust as needed
+    return themeId === "b1" ? "dark" : "light";
+  };
+
+  // Set initial theme
+  setTheme(getTheme());
+
+  // Listen for theme changes (optional: use a custom event if you trigger one in changeColor)
+  const observer = new MutationObserver(() => {
+    setTheme(getTheme());
+  });
+  observer.observe(document.documentElement, { attributes: true, attributeFilter: ['style'] });
+
+  return () => observer.disconnect();
+}, []);
+
 
   const handleCloseSnackbar = (event, reason) => {
     if (reason === 'clickaway') {
@@ -54,12 +85,28 @@ const Home = () => {
     }, 2000);
   };
 
+  const router = useRouter();
+
+  const handlePasswordSuccess = () => {
+    setShowPasswordModal(false);
+    if (pendingCard) {
+      router.push(pendingCard.linkTo);
+      setPendingCard(null);
+    }
+  };
+
+  useEffect(() => {
+    window.isPasswordModalOpen = showPasswordModal;
+  }, [showPasswordModal]);
+
   // Only render the component when on the client side
   if (!isClient) {
     return null; // Return null or a loading state for server-side rendering
   }
-
+//https://i.imgur.com/IUJufqm.png
   return (
+    <PageContainer>
+
     <motion.div 
       variants={pageAnimation} 
       initial="hidden" 
@@ -71,9 +118,9 @@ const Home = () => {
         <HeroContainer>
           <ResponsiveHeroText
             numOfItems={6}
-            itemsText={["Designer:", "Product,", "UX,", "Game" ]}
+            itemsText={[ "Product Designer" ]}
             variant={slideleftAnim}
-            fontColor={accentTextColor}
+            fontColor={colorForegroundTextDefault}
           />
           
           <StyledIcon
@@ -86,7 +133,14 @@ const Home = () => {
             {icon}
           </StyledIcon>
         </HeroContainer>
-        {/*<HeroImage src={"https://i.imgur.com/kxtX2ZX.png"} alt={"picture of me"} />*/}
+        <HeroImage
+  src={
+    theme === "dark"
+      ? "https://i.imgur.com/71KHhPR.png"
+      : "https://i.imgur.com/ItIuUEc.png"
+  }
+  alt="picture of me"
+/>
         <CardText>Designing creative and delightful experiences into scalable products.</CardText>
         <CardText>If you&apos;d like to work together, drop me a message at my email below.</CardText>
         <Tags />
@@ -99,18 +153,35 @@ const Home = () => {
       <div style={{ textAlign: "center" }}>
         <PageHeaderText 
           numOfItems={7} 
-          itemsText={["👇", "Here ", "are ", "some ", "recent ", "highlights.", "👇"]} 
+          itemsText={["Here ", "are ", "some ", "recent ", "highlights."]} 
           variant={slidedownAnim} 
           fontSize="1.4rem" 
-          fontColor={accentTextColor}
+          fontColor={colorForegroundTextDefault}
         />
       </div>
-      <CardComponent cards={projectCardData.slice(0, 4)} />
+      <CardComponent 
+      cards={projectCardData.slice(0, 4) } 
+      onCardClick={card => {}}
+      onProtectedCardClick={card => {
+        setPendingCard(card);
+        setShowPasswordModal(true);
+}}
+       />
       {/* Use Link for navigation */}
-      <Link href="/Projects" passHref>
-        <Button>See All Projects</Button>
-      </Link>
+      <Button onClick={() => router.push("/Projects")}>
+        See All Projects
+      </Button>
+  
+      {showPasswordModal && (
+        <PasswordModal
+          isOpen={showPasswordModal}
+          onClose={() => setShowPasswordModal(false)}
+          onSuccess={handlePasswordSuccess}
+        />
+      )}
     </motion.div>
+        </PageContainer>
+
   );
 };
 
@@ -120,16 +191,12 @@ const HeroContainer = styled.div`
   align-items: center;
   margin-bottom: 1rem;
 
-  @media (max-width: 780px) {
-    flex-direction: column-reverse;
-    align-items: flex-end;
-    margin-top: -1.5rem;
-  }
+
 `;
 
 const CardText = styled.p`
   font-size: 1.2rem;
-  color: black;
+  color: var(--color-Foreground-Text-Default);
   font-weight: 500;
   margin-top: 5px;
   padding: 0.5rem 0rem 0rem 0rem;
@@ -137,31 +204,34 @@ const CardText = styled.p`
 `;
 
 const HeroImage = styled.img`
-  width: calc(100% + 2rem);
+  width: auto;
   height: auto;
-  max-height: 20rem;
-  margin-top: 1rem;
-  margin-left: -1rem;
-  margin-right: -1rem;
-  object-fit: cover;
+  display: block;                // Make image a block element
+  margin-left: auto;             // Center horizontally
+  margin-right: auto;
+  
   
   object-position: center 16%;
   @media (min-width: 780px) {
-    width: calc(100% + 4rem);
-    margin-left: -2rem;
+
   }
   @media (min-width: 1300px) {
-    width: calc(100% + 4rem);
-  }
+  width: auto;
+  height: auto;  
+    width: 60%;    
+      object-position: center;
+      padding: 0rem 2rem 0rem 0rem;
+
+}
 `;
 
 const StyledSection = styled(motion.div)`
-  width: 80%;
+  width: 100%;
   margin: 12rem auto 0 auto;
   padding: 1rem;
   border-radius: 1rem;
-  background-color: var(--card-color);
-  color: var(--text-color);
+  background-color: var(--color-Background-Default);
+  color: var(--color-Foreground-Text-Default);
   box-sizing: border-box;
   overflow: hidden;
 
@@ -173,7 +243,7 @@ const StyledSection = styled(motion.div)`
 
   @media (min-width: 1300px) {
     width: 35%;
-    margin: 12rem auto 0 auto;
+    margin: 8rem auto 0 auto;
     padding: 0rem 2rem 2rem 2rem;
   }
 `;
@@ -221,7 +291,7 @@ const StyledIcon = styled(motion.span)`
   display: inline-block;
   vertical-align: middle;
   margin-top: 0.8rem;
-  color: var(--accentText-color);
+  color: var(--color-Foreground-Text-Default);
   cursor: pointer;
   padding: .5rem;
   border-radius: 10%;
