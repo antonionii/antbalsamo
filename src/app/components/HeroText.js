@@ -8,7 +8,7 @@ import styled from "styled-components";
 
 const HeroText = ({ numOfItems, itemsText, variant, fontSize, fontColor, fontWeight }) => {
 const [scrollY, setScrollY] = useState(0); 
-
+const [screenHeight, setScreenHeight] = useState(null);
   const isMediumDisplay = useMediaQuery("(min-width: 780px)");
   const isLargeDisplay = useMediaQuery("(min-width: 1300px)");
 useEffect(() => {
