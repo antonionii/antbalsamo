@@ -112,8 +112,10 @@ function hexToRgba(hex, alpha) {
 }
 
 const changeColor = (themeType = "light") => {
-  if (typeof window === "undefined") return;
-  if (window.isPasswordModalOpen) return;    let toBeAppliedScheme;
+if (typeof window !== "undefined") {
+    if (window.isPasswordModalOpen) return;
+  }
+  let toBeAppliedScheme;
   if (themeType === "light") {
     const currentSchemeId = document.documentElement.style.getPropertyValue(
       "--theme-id"

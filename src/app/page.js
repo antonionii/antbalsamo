@@ -96,9 +96,9 @@ useEffect(() => {
   };
 
   useEffect(() => {
-      if (typeof window === "undefined") return;
-
-    window.isPasswordModalOpen = showPasswordModal;
+    if (typeof window !== 'undefined') {
+      window.isPasswordModalOpen = showPasswordModal;
+    }
   }, [showPasswordModal]);
 
   // Only render the component when on the client side
