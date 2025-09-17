@@ -14,8 +14,8 @@ const ModalBox = styled.div`
   padding: 1.2rem;
   border-radius: 12px;
   min-width: 0;
-  max-width: 95vw;
-  width: 95vw;
+  max-width: 85vw;
+  width: 85vw;
   box-shadow: 0px 16px 48px 0px rgba(0,0,0,0.175);
   margin: 0 auto;
 
@@ -55,33 +55,49 @@ const ModalBody = styled.p`
 
 `;
 const InputWrapper = styled.div`
-  display: flex;
-  margin-left: auto; // aligns to the right
+  position: relative;
   width: 100%;
-  margin-top:2rem;
+  margin-top: 2rem;
   margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
 `;
+
+const ModalInput = styled.input`
+  width: 100%;
+  height: 32px;
+  font-size: 1rem;
+  padding: 0 2.5rem 0 1rem; /* Add right padding for the icon */
+  border-radius: 8px;
+  border: 2px solid #ccc;
+  box-sizing: border-box;
+  font-family: "Inter", system-ui;
+
+  &:focus {
+    outline: none;
+    border-color: var(--color-Blue-500);
+  }
+`;
+
 const VisibilityToggle = styled.span`
-  margin-left: 0.5rem;
+  position: absolute;
+  right: 0.7rem;
+  top: 50%;
+  transform: translateY(-50%);
   cursor: pointer;
   color: #ccc;
-  transition: all 0.3s ease;
+  transition: color 0.3s ease;
   font-size: 1.5rem;
   user-select: none;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #e9e9ed63;
-  
-  width: auto;
-  height: auto;
-  padding: 0 0.2rem;
+  background: none; /* Remove background */
   border-radius: 10%;
   box-sizing: border-box;
 
   &:hover {
     color: var(--color-Foreground-Text-Default);
-    border-color: var(--color-Foreground-Text-Default);
   }
 
   .material-symbols-outlined {
@@ -104,21 +120,7 @@ const ErrorContainer = styled.div`
   justify-content: center;
   align-items: center;
 `;
-const ModalInput = styled.input`
-  width: 100%;
-  height: 32px;
-  font-size: 1rem;
-  padding: 0 1rem;
-  border-radius: 8px;
-  border: 2px solid #ccc;
-  box-sizing: border-box;
-  font-family: "Inter", system-ui;
 
-  &:focus {
-    outline: none;
-    border-color: var(--color-Blue-500);
-  }
-`;
 const ButtonRow = styled.div`
   display: flex;
   gap: 1rem;
