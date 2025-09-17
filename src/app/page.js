@@ -206,20 +206,19 @@ const CardText = styled.p`
 `;
 
 const HeroImage = styled.img`
-  width: auto;
-  height: auto;
+
   display: block;                // Make image a block element
   margin-left: auto;             // Center horizontally
   margin-right: auto;
-  
+  width: 40vw;           // Smaller width on mobile
+  max-width: 240px;      // Prevents it from being too large
   
   object-position: center 16%;
   @media (min-width: 780px) {
 
   }
   @media (min-width: 1300px) {
-  width: auto;
-  height: auto;  
+
     width: 60%;    
       object-position: center;
       padding: 0rem 2rem 0rem 0rem;
@@ -229,7 +228,7 @@ const HeroImage = styled.img`
 
 const StyledSection = styled(motion.div)`
   width: 100%;
-  margin: 12rem auto 0 auto;
+  margin: 12rem auto -2rem auto;
   padding: 1rem;
   border-radius: 1rem;
   background-color: var(--color-Background-Default);
@@ -239,13 +238,13 @@ const StyledSection = styled(motion.div)`
 
   @media (min-width: 780px) {
     width: 55%;
-    margin: 12rem auto 0 auto;
+    margin: 12rem auto -2rem auto;
     padding: 0rem 2rem 2rem 2rem;
   }
 
   @media (min-width: 1300px) {
     width: 35%;
-    margin: 8rem auto 0 auto;
+    margin: 8rem auto -2rem auto;
     padding: 0rem 2rem 2rem 2rem;
   }
 `;

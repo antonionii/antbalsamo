@@ -4,24 +4,27 @@ import React, { useState, useEffect } from "react";
 
 
 const ModalOverlay = styled.div`
-  position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+  position: fixed; top: 0; left: 0; width: 100vw; min-height: 100vh;
   background: rgba(0,0,0,0.7); display: flex; align-items: center; justify-content: center; z-index: 1000;
 `;
 const ModalBox = styled.div`
   background: rgba(255, 255, 255, 1) !important;
   color: var(--color-Foreground-Default);
   opacity: 1 !important;
-  padding: 2rem;
+  padding: 1.2rem;
   border-radius: 12px;
-  min-width: 320px;
-  max-width: 420px;         
+  min-width: 0;
+  max-width: 95vw;
+  width: 95vw;
   box-shadow: 0px 16px 48px 0px rgba(0,0,0,0.175);
-  @media (max-width: 768px) {
-    width: 80%;
-    max-width: 95vw;
+  margin: 0 auto;
+
+  @media (min-width: 480px) {
+    width: 340px;
+    max-width: 420px;
+    padding: 2rem;
   }
 `;
-
 
 const ModalTitle = styled.h2`
   font-size: 2rem;
@@ -236,7 +239,6 @@ return (
     type={showPassword ? "text" : "password"}
     value={password}
     onChange={e => setPassword(e.target.value)}
-    autoFocus
     placeholder="Enter your password"
     disabled={loading}
   />

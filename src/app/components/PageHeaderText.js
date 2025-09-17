@@ -58,23 +58,25 @@ useEffect(() => {
 
 
 const StyledMotionText = styled.section`
-width: 100%;
-  display: inline-block; /* Ensure the width and height hug the content */
-  margin: 8rem auto 0 auto;  /* Center horizontally and set top margin */
-  padding: .5rem 0; /* Add padding for better visual spacing */
+  width: 100%;
+  margin: 8rem auto 0 auto;
+  
+  padding: .5rem 0;
   border-radius: 1rem;
   background-color: var(--color-Background-Default);
   color: var(--color-Foreground-Text-Base);
   box-sizing: border-box;
-  text-align: center; /* Center text content */
+  text-align: center;
 
   @media (min-width: 780px) {
-    padding: .5rem .5rem; /* Increase padding on larger screens */
+    padding: .5rem .5rem;
+    max-width: 700px;
   }
 
   @media (min-width: 1280px) {
-  width: auto;
-    padding: .5rem 1rem; /* Increase padding on larger screens */
+    width: auto;
+    padding: .5rem 1rem;
+    max-width: 900px;
   }
 `;
 

@@ -46,9 +46,9 @@ const Projects = () => {
   };
 
     useEffect(() => {
-        if (typeof window === "undefined") return;
-
-      window.isPasswordModalOpen = showPasswordModal;
+      if (typeof window !== 'undefined') {
+        window.isPasswordModalOpen = showPasswordModal;
+      }
     }, [showPasswordModal]);
 
 
@@ -70,7 +70,7 @@ const Projects = () => {
         <ProjectsContainer>
           <PageHeaderText
             numOfItems={8}
-            itemsText={["🐸", "I'm", "endlessly", "adding", "to", "this", "page.", "🐸"]}
+            itemsText={["🐸", "Hop", "around", "my", "projects", "🐸"]}
             variant={slidedownAnim}
             fontSize="1.4rem"
           />
