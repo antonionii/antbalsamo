@@ -155,7 +155,7 @@ useEffect(() => {
       <div style={{ textAlign: "center" }}>
         <PageHeaderText 
           numOfItems={7} 
-          itemsText={["Here ", "are ", "some ", "recent ", "highlights."]} 
+          itemsText={["✨", "Design", "Highlights ", "✨"]} 
           variant={slidedownAnim} 
           fontSize="1.4rem" 
           fontColor={colorForegroundTextDefault}

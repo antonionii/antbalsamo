@@ -59,7 +59,7 @@ useEffect(() => {
 
 const StyledMotionText = styled.section`
   width: 100%;
-  margin: 8rem auto 0 auto;
+  margin: 12rem auto 0 auto;
   
   padding: .5rem 0;
   border-radius: 1rem;
@@ -69,15 +69,20 @@ const StyledMotionText = styled.section`
   text-align: center;
 
   @media (min-width: 780px) {
+    display: inline-block;
+  width: auto;
     padding: .5rem .5rem;
     max-width: 700px;
+      margin: 6rem auto 0 auto;
+
   }
 
-  @media (min-width: 1280px) {
-    width: auto;
-    padding: .5rem 1rem;
-    max-width: 900px;
-  }
+@media (min-width: 1280px) {
+  display: inline-block;
+  width: auto;
+  padding: .5rem 1rem;
+  max-width: none;
+}
 `;
 
 

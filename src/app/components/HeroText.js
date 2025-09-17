@@ -65,7 +65,7 @@ useEffect(() => {
 };
 
 const StyledMotionH1 = styled(motion.h1)`
-  margin-top: 0.2rem;
+  margin-top: 4rem;
   white-space: normal; // Ensure the text wraps when necessary
   line-height: 1.3;
   overflow-wrap: break-word; // Break long words if needed
