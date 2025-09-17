@@ -46,6 +46,8 @@ const Projects = () => {
   };
 
     useEffect(() => {
+        if (typeof window === "undefined") return;
+
       window.isPasswordModalOpen = showPasswordModal;
     }, [showPasswordModal]);
 
