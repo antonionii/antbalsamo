@@ -255,6 +255,7 @@ const ResponsiveHeroText = styled(HeroText)`
   display: flex;
   flex-wrap: wrap; /* Allow wrapping */
   align-items: center; /* Center vertically */
+  font-color: var(--color-Foreground-Text-Default);
   
   h1 {
     margin-right: 0.4rem; /* Consistent spacing */
