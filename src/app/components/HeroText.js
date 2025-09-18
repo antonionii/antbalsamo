@@ -72,6 +72,7 @@ const StyledMotionH1 = styled(motion.h1)`
   flex-shrink: 0; // Prevent the text from shrinking too much
   display: flex; // Keep the items inline but allow wrapping
   max-width: 100%; // Prevent it from overflowing beyond its container
+  color: var(--color-Foreground-Text-Default);
 
   &.break-after {
     flex-basis: 100%; // Force it to take up the entire row on small screens
