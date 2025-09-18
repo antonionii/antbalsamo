@@ -122,7 +122,6 @@ useEffect(() => {
             numOfItems={6}
             itemsText={[ "Product Designer" ]}
             variant={slideleftAnim}
-            fontColor={colorForegroundTextDefault}
           />
           
           <StyledIcon

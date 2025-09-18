@@ -48,7 +48,6 @@ useEffect(() => {
             style={{
               fontWeight: fontWeight || "700",
               fontSize: fontSize || "2rem",
-              color: fontColor || "var(--accentText-color)",
             }}
             variants={
               typeof variant === "function"
