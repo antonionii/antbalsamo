@@ -168,7 +168,7 @@ const Nav = ({ colorSchemeType, setColorSchemeType }) => {
     variants={slidedownAnim(0.3)}
   >
     <a
-      href="/Anthony_Balsamo_-_Senior_Product_Designer.pdf"
+      href="/Anthony Balsamo Resume.pdf"
       target="_blank"
       rel="noopener noreferrer"
       style={{ textDecoration: "none" }}
