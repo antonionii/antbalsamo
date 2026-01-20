@@ -192,7 +192,6 @@ const Nav = ({ colorSchemeType, setColorSchemeType }) => {
                 style={{
                   width: 30,
                   height: 30,
-                  marginBottom: ".5rem",
                   cursor: "pointer",
                 }}
               />
@@ -212,11 +211,11 @@ const StyledNav = styled(motion.div)`
   .nav-container & {
 
   min-height: 7vh;
-  display: flex;
+  display:;
   margin: auto;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 10rem;
+  padding: 1rem 10rem 0rem 10rem;
   position: fixed;
   top: 0;
   left: 0;
@@ -236,7 +235,7 @@ const StyledNav = styled(motion.div)`
   }
   @media (max-width: 667px) {
     flex-direction: column;
-    padding: 2rem 1rem;
+    padding: 2rem 1rem 0rem 1rem;
     background: var(--color-Background-Base);
     ul {
       padding: 1rem;
@@ -261,7 +260,7 @@ const NavInner = styled(motion.div)`
   display: flex;
   justify-content: space-between;
   align-items: center;
-   @media (max-width: 667px) {
+   @media (max-width: 1100px) {
     flex-direction: column;
     background: var(--color-Background-Base);
     ul {
@@ -285,7 +284,7 @@ const NavItem = styled.li`
   line-height: 2.1rem;
   a {
     font-size: ${(props) =>
-    props.noResize ? "1.8rem" : props.isActive ? "2.2rem" : "1.8rem"};
+    props.noResize ? "1.6rem" : props.isActive ? "2rem" : "1.6rem"};
     color: ${(props) => (props.isActive ? "var(--color-Foreground-Text-Base)" : "inherit")};
     font-weight: ${(props) => (props.isActive ? "900" : "regular")};
   }
