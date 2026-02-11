@@ -146,15 +146,15 @@ export default function RootLayout({ children }) {
 
           {/* SEO Meta Tags */}
           <meta property="og:image" content="/localImage.jpg" />
-          <meta name="description" content="Portfolio showcasing product and game design expertise. Specializing in UX/UI design and interactive experiences." />
-          <meta name="keywords" content="product design, game design, UX design, UI design, creative design, art, game designer, product designer" />
+          <meta name="description" content="Portfolio showcasing senior product design expertise. Specializing in UX/UI design and interactive experiences." />
+          <meta name="keywords" content="senior product design, UX design, UI design, creative design, art, product designer" />
           <meta name="author" content="Anthony Balsamo" />
-          <meta property="og:title" content="Product & Game Designer | Anthony Balsamo" />
-          <meta property="og:description" content="Portfolio showcasing product and game design expertise. Specializing in UX/UI design and interactive experiences." />
+          <meta property="og:title" content="Senior Product Designer | Anthony Balsamo" />
+          <meta property="og:description" content="Portfolio showcasing senior product design expertise. Specializing in UX/UI design and interactive experiences." />
           <meta property="og:url" content="https://www.antbalsamo.com" />
           <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:title" content="Product Designer and Game Designer | Anthony Balsamo" />
-          <meta name="twitter:description" content="Portfolio showcasing product and game design expertise. Specializing in UX/UI design and interactive experiences." />
+          <meta name="twitter:title" content="Senior Product Designer | Anthony Balsamo" />
+          <meta name="twitter:description" content="Portfolio showcasing senior product design expertise. Specializing in UX/UI design and interactive experiences." />
           <meta name="twitter:image" content="/localImage.jpg" />
 
           <Script src="/lottie-player.js" strategy="afterInteractive" />
