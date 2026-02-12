@@ -1,4 +1,16 @@
 const projectCardData = [
+{
+      title: "MyRescues",
+      image: "https://i.imgur.com/jN34GdI.jpeg",
+      text: " Link-in-bio style SaaS platform for animal rescue fosters. Public Beta Launch: Winter 2026",
+      linkTo: "https://myrescu.es",
+      bubbleText: "Open Project",
+      pageId: '80e79e864f4f4c57b029a0b3439b4889',
+      lineBreaks: 0, 
+      tags: ["End-to-End Product Design","SaaS"],
+
+    passwordProtected: false, 
+  },
   {
       title: "Notification System",
       image: "https://i.imgur.com/9Fd7bXq.png",
@@ -47,9 +59,8 @@ const projectCardData = [
     pageId: '3328b05dcbba4ba7900873e790e145c4',
     tags: ["Game Dev", "Coming Soon"],
 
-    lineBreaks: 2, // Add 1 extra line break
-    passwordProtected: false, // <-- Only this card triggers the modal
-
+    lineBreaks: 2, 
+    passwordProtected: false, 
 },
   {
       title: "Activity Feed",
@@ -60,8 +71,8 @@ const projectCardData = [
       pageId: 'f1e49709532546b8959c5c3d69070e71',
       tags: ["B2B Workflows"], 
 
-      lineBreaks: 0, // No extra line breaks needed
-      passwordProtected: true, // <-- Only this card triggers the modal
+      lineBreaks: 0, 
+      passwordProtected: true, 
 
   },
   {
@@ -72,8 +83,8 @@ const projectCardData = [
       bubbleText: "Open Project",
       pageId: '3d08e0534d344646821003dbb27b8f12',
       tags: ["B2B Workflows", "Data Visualization"], 
-      lineBreaks: 0, // No extra line breaks needed
-      passwordProtected: true, // <-- Only this card triggers the modal
+      lineBreaks: 0, 
+      passwordProtected: true, 
 
   },
 ];
