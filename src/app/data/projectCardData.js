@@ -2,10 +2,10 @@ const projectCardData = [
 {
       title: "MyRescues",
       image: "https://i.imgur.com/jN34GdI.jpeg",
-      text: " Link-in-bio style SaaS platform for animal rescue fosters. Public Beta Launch: Winter 2026",
-      linkTo: "https://myrescu.es",
+      text: " Link-in-bio style SaaS platform for animal rescue fosters. Public Beta Launch: Spring 2026",
+      linkTo: "/Blocks/304a7b3ec04280fda123caf5c52a8c0c",
       bubbleText: "Open Project",
-      pageId: '80e79e864f4f4c57b029a0b3439b4889',
+      pageId: '304a7b3ec04280fda123caf5c52a8c0c',
       lineBreaks: 0, 
       tags: ["End-to-End Product Design","SaaS"],
 

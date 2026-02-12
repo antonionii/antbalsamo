@@ -323,11 +323,11 @@ const ModalImage = styled(Image)`
 const MainContainer = styled(motion.div)`
   display: flex;
   flex-direction: column;
-  //width:90%;
+  width:65%;
   justify-content:center;
   align-items: center;
   padding: 2rem;
-  //margin: 0 auto 0 auto;
+  margin: 0 auto 0 auto;
 
   box-sizing: border-box;
   overflow: hidden;
