@@ -11,8 +11,8 @@ import { changeColor } from "./components/theme/changeColor";
 import Script from "next/script";
 import Head from "next/head";
 
-// Dynamically import Nav with SSR disabled
-const Nav = dynamic(() => import('./components/Nav'), { ssr: false });
+// Dynamically import NavHeader with SSR disabled
+const NavHeader = dynamic(() => import('./components/NavHeader'), { ssr: false });
 
 // Create ModalContext to share modal functions across the app
 export const ModalContext = createContext();
@@ -173,7 +173,8 @@ export default function RootLayout({ children }) {
         </head>
         <body>
             <GlobalStyle />
-            <Nav
+            <LayoutWrapper>
+            <NavHeader
               colorSchemeType={colorSchemeType}
               setColorSchemeType={setColorSchemeType}
             />
@@ -193,6 +194,7 @@ export default function RootLayout({ children }) {
                 </span>
               </p>
             </Footer>
+            </LayoutWrapper>
             {/* Render the modal only if an image is clicked */}
             {isModalOpen && (
               <ModalOverlay onClick={closeModal}>
@@ -236,15 +238,15 @@ export default function RootLayout({ children }) {
 }
 
 
-// Modal-related styles and logic
-const ContainerDiv = styled.div`
+// Styled components
+const LayoutWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* Ensure the container takes up the full viewport height */
+  min-height: 100vh;
 `;
 
-const MainContent = styled.div`
-  flex-grow: 1; /* Expands to push the footer to the bottom */
+const MainContent = styled.main`
+  flex: 1;
   display: flex;
   flex-direction: column;
 `;

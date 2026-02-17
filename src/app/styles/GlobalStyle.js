@@ -19,16 +19,15 @@ const GlobalStyle = createGlobalStyle`
 }
 
 html{
-  overflow-x:hidden;
+  overflow-x: clip;
 }
 body {
     background: var(--color-Background-Base);
     font-family: "Noto Sans", sans-serif;
     font-weight: 900;
-    overflow-x: hidden;
+    overflow-x: clip;
     color: var(--color-Foreground-Text-Base);
-    position: relative;
-    margin:0;
+    margin: 0;
     padding: 0;
     width: 100%;
 

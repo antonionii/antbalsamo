@@ -17,7 +17,7 @@
 }
 
 html {
-  overflow-x: hidden;
+  overflow-x: clip;
 
   @media (max-width: 1700px) {
     font-size: 75%;
@@ -29,9 +29,8 @@ body {
   background: var(--color-Background-Base);
   font-family: "Rubik", sans-serif;
   font-weight: 900;
-  overflow-x: hidden;
+  overflow-x: clip;
   color: var(--color-Foreground-Text-Default);
-  position: relative;
   margin: 0;
   padding: 0;
   width: 100%;

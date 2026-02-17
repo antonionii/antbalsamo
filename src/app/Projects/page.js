@@ -60,6 +60,7 @@ const Projects = () => {
       initial="hidden"
       animate="show"
       exit="exit"
+      style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}
     >
       <motion.div
         initial="hidden"
@@ -101,20 +102,10 @@ const Projects = () => {
 };
 
 // Styled components
-const ProjectsContainer = styled(motion.div)`
-  margin: 4rem 0rem 0rem 0rem; /* Reduce top margin */
-`;
+const ProjectsContainer = styled(motion.div)``;
 
 const ProjectsHeaderWrapper = styled.div`
-  margin-top: 12rem;
-
-  @media (min-width: 780px) {
-    margin-top: 8rem;
-  }
-
-  @media (min-width: 1280px) {
-    margin-top: 8rem;
-  }
+  margin-top: 0;
 `;
 
 export default Projects;

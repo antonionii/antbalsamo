@@ -326,7 +326,7 @@ const MainContainer = styled(motion.div)`
   width:65%;
   justify-content:center;
   align-items: center;
-  padding: 2rem;
+  padding: 1rem;
   margin: 0 auto 0 auto;
 
   box-sizing: border-box;
@@ -585,7 +585,6 @@ const LineSeparator = styled.div`
 const PropertiesGrid = styled.div`
   display: grid;
   gap: 0.5rem;
-  margin-bottom: 1.8rem;
   
 `;
 

@@ -114,7 +114,7 @@ useEffect(() => {
       initial="hidden" 
       animate="show" 
       exit="exit" 
-      style={{ display: 'block' }}
+      style={{ display: 'flex', flexDirection: 'column', gap: '6rem' }}
     >
       <StyledSection variants={cardAnimation} className="bg-section">
         <HeroContainer>
@@ -151,7 +151,7 @@ useEffect(() => {
         onClose={handleCloseSnackbar}
         message="Copied link: Tony's Website"
       />
-      <div style={{ textAlign: "center" }}>
+      <div style={{ textAlign: "center", paddingBottom: "0rem" }}>
         <HomeHeaderWrapper>
         <PageHeaderText 
           numOfItems={7} 
@@ -192,8 +192,7 @@ const HeroContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1rem;
-
+  padding-bottom: 1rem;
 
 `;
 
@@ -229,7 +228,6 @@ const HeroImage = styled.img`
 
 const StyledSection = styled(motion.div)`
   width: 100%;
-  margin: 12rem auto -2rem auto;
   padding: 1rem;
   border-radius: 1rem;
   background-color: var(--color-Background-Default);
@@ -239,13 +237,15 @@ const StyledSection = styled(motion.div)`
 
   @media (min-width: 780px) {
     width: 55%;
-    margin: 12rem auto -2rem auto;
+    margin-left: auto;
+    margin-right: auto;
     padding: 0rem 2rem 2rem 2rem;
   }
 
   @media (min-width: 1300px) {
     width: 35%;
-    margin: 8rem auto -2rem auto;
+    margin-left: auto;
+    margin-right: auto;
     padding: 0rem 2rem 2rem 2rem;
   }
 `;
@@ -309,15 +309,7 @@ const StyledIcon = styled(motion.span)`
   }
 `;
 const HomeHeaderWrapper = styled.div`
-  margin-top: 8rem;
-
-  @media (min-width: 780px) {
-    margin-top: 8rem;
-  }
-
-  @media (min-width: 1280px) {
-    margin-top: 8rem;
-  }
+  margin-top: 0;
 `;
 
 export default Home;

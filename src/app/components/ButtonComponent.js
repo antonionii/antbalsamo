@@ -4,7 +4,7 @@ import styled from "styled-components";
 const BigSpecialButton = styled.button`
   border: none; 
   border-radius: 99px;
-  margin-top: 4rem;
+
   padding: 1rem;
   width: auto;
   margin-left: auto;

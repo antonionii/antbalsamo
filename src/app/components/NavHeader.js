@@ -3,24 +3,24 @@
 import React, { useEffect, useRef, useState, useCallback } from "react";
 import styled from "styled-components";
 import Link from "next/link";
-import { usePathname } from "next/navigation"; // Import usePathname
+import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
-import lottie from "lottie-web"; // Regular import
+import lottie from "lottie-web";
 import { slidedownAnim, slideleftAnim, textFade } from "../styles/animation";
 import { changeColor } from "./theme/changeColor";
-const Nav = ({ colorSchemeType, setColorSchemeType }) => {
-  const pathname = usePathname(); // Get current pathname
+
+const NavHeader = ({ colorSchemeType, setColorSchemeType }) => {
+  const pathname = usePathname();
   const [direction, setDirection] = useState(1);
   const [isLight, setIsLight] = useState(false);
   const [activeItem, setActiveItem] = useState("/");
   const animationContainer = useRef(null);
-  const animRef = useRef(null); // Use a ref to hold the animation instance
+  const animRef = useRef(null);
 
-  // Memoize the startAnimation function
   const startAnimation = useCallback(
     (event) => {
       if (event) {
-        event.stopPropagation(); // Stop propagation
+        event.stopPropagation();
       }
       if (!animRef.current) {
         return;
@@ -28,7 +28,6 @@ const Nav = ({ colorSchemeType, setColorSchemeType }) => {
       animRef.current.setDirection(direction);
       animRef.current.play();
 
-      // Change speed and color scheme based on direction
       if (direction === -1) {
         animRef.current.setSpeed(2);
         changeColor("light");
@@ -41,22 +40,20 @@ const Nav = ({ colorSchemeType, setColorSchemeType }) => {
         setIsLight(false);
       }
 
-      setDirection(direction * -1); // Toggle direction
+      setDirection(direction * -1);
     },
     [direction, setColorSchemeType]
   );
 
-  // Handle color scheme changes
   useEffect(() => {
     setIsLight(colorSchemeType === "light");
     const newDirection = colorSchemeType === "light" ? 1 : -1;
     if (newDirection !== direction) {
       setDirection(newDirection);
-      startAnimation(); // Use memoized startAnimation
+      startAnimation();
     }
   }, [colorSchemeType, direction, startAnimation]);
 
-  // Update activeItem based on pathname
   useEffect(() => {
     if (pathname.startsWith("/Projects") || pathname.startsWith("/Blocks")) {
       setActiveItem("/Projects");
@@ -67,7 +64,6 @@ const Nav = ({ colorSchemeType, setColorSchemeType }) => {
     }
   }, [pathname]);
 
-  // Load and initialize the lottie animation on the client side
   useEffect(() => {
     if (!animRef.current && typeof window !== "undefined") {
       animRef.current = lottie.loadAnimation({
@@ -79,7 +75,6 @@ const Nav = ({ colorSchemeType, setColorSchemeType }) => {
       });
     }
 
-    // Cleanup function to destroy the animation when the component unmounts
     return () => {
       if (animRef.current) {
         animRef.current.destroy();
@@ -89,36 +84,35 @@ const Nav = ({ colorSchemeType, setColorSchemeType }) => {
   }, []);
 
   return (
-    <div className="nav-container">
-      <StyledNav id="nav" isLight={isLight}>
-        <NavInner>
-        <motion.div
-          transition-delay="0s"
-          initial="hidden"
-          animate="show"
-          variants={textFade}
-        >
-          <NavItem
-            style={{ paddingLeft: "0" }}
-            isActive={activeItem === "/"}
-            onClick={() => setActiveItem("/")}
-          >
-            <motion.div initial="hidden" animate="show" variants={slidedownAnim()}>
-              <Link href="/" onClick={() => setActiveItem("/")}>
-                Anthony Balsamo
-              </Link>
-            </motion.div>
-            <Line
-              transition={{ duration: 0.5 }}
-              initial={{ width: "0%" }}
-              animate={{
-                width: activeItem === "/" ? "100%" : "0%",
-              }}
-            />
-          </NavItem>
-        </motion.div>
-
+    <StickyHeader>
+      <NavInner>
         <ul>
+          <motion.div
+            transition-delay="0s"
+            initial="hidden"
+            animate="show"
+            variants={textFade}
+          >
+            <NavItem
+              style={{ paddingLeft: "0" }}
+              isActive={activeItem === "/"}
+              onClick={() => setActiveItem("/")}
+            >
+              <motion.div initial="hidden" animate="show" variants={slidedownAnim()}>
+                <Link href="/" onClick={() => setActiveItem("/")}>
+                  Anthony Balsamo
+                </Link>
+              </motion.div>
+              <Line
+                transition={{ duration: 0.5 }}
+                initial={{ width: "0%" }}
+                animate={{
+                  width: activeItem === "/" ? "100%" : "0%",
+                }}
+              />
+            </NavItem>
+          </motion.div>
+
           <NavItem isActive={activeItem === "/Projects"}>
             <motion.div
               initial="hidden"
@@ -129,7 +123,6 @@ const Nav = ({ colorSchemeType, setColorSchemeType }) => {
                 Projects
               </Link>
             </motion.div>
-
             <Line
               transition={{ duration: 0.5 }}
               initial={{ width: "0%" }}
@@ -149,7 +142,6 @@ const Nav = ({ colorSchemeType, setColorSchemeType }) => {
                 Blog
               </Link>
             </motion.div>
-
             <Line
               transition={{ duration: 0.5 }}
               initial={{ width: "0%" }}
@@ -160,22 +152,21 @@ const Nav = ({ colorSchemeType, setColorSchemeType }) => {
           </NavItem> */}
 
           <NavItem>
-  <motion.div
-    initial="hidden"
-    animate="show"
-    variants={slidedownAnim(0.3)}
-  >
-    <a
-      href="/Anthony Balsamo Resume.pdf"
-      target="_blank"
-      rel="noopener noreferrer"
-      style={{ textDecoration: "none" }}
-    >
-      Resume
-    </a>
-  </motion.div>
-  {/* No underline Line for external link, but you can add if you want */}
-</NavItem>
+            <motion.div
+              initial="hidden"
+              animate="show"
+              variants={slidedownAnim(0.3)}
+            >
+              <a
+                href="/Anthony Balsamo Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ textDecoration: "none" }}
+              >
+                Resume
+              </a>
+            </motion.div>
+          </NavItem>
 
           <li style={{ display: "flex", justifyContent: "flex-end", flex: 1 }}>
             <motion.div
@@ -196,56 +187,28 @@ const Nav = ({ colorSchemeType, setColorSchemeType }) => {
             </motion.div>
           </li>
         </ul>
-        </NavInner>
-        <NavLine />
-      </StyledNav>
-    </div>
+      </NavInner>
+      <NavLine />
+    </StickyHeader>
   );
 };
 
+/* ── Styled Components ── */
 
-const StyledNav = styled(motion.div)`
-  .nav-container & {
-
-  display: flex;
-  margin: auto;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 10rem 0 10rem;
-  position: fixed;
+const StickyHeader = styled.header`
+  position: sticky;
   top: 0;
-  left: 0;
-  right: 0;
   z-index: 15;
   background: var(--color-Background-Base);
-  pointer-events: none;
-  h1 {
-    pointer-events: auto;
+  padding: 1rem 2rem 1rem;
+
+  @media (min-width: 768px) {
+    padding: 1rem 2.5rem 1rem;
   }
-  ul {
-    display: flex;
-    flex: 1;
-    align-items: center;
-    list-style: none;
-    pointer-events: auto;
+
+  @media (min-width: 1280px) {
+    padding: 1rem 4rem 1rem;
   }
-  @media (max-width: 667px) {
-    flex-direction: column;
-    padding: 2rem 1rem 0rem 1rem;
-    background: var(--color-Background-Base);
-    ul {
-      padding: 1rem;
-      width: 100%;
-      gap: 5%;
-      margin: auto;
-      justify-content: center;
-      align-items: center;
-      li {
-        padding: 0;
-      }
-    }
-  }
-}
 `;
 
 const NavInner = styled(motion.div)`
@@ -253,22 +216,27 @@ const NavInner = styled(motion.div)`
   margin: 0 auto;
   width: 100%;
   color: var(--color-Foreground-Text-Base);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-   @media (max-width: 1100px) {
-    flex-direction: column;
-    background: var(--color-Background-Base);
+
+  ul {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 0;
+  }
+
+  @media (max-width: 1100px) {
     ul {
-      padding: 1rem;
-      width: 100%;
-      gap: 5%;
-      margin: auto;
+      flex-wrap: wrap;
       justify-content: center;
-      align-items: center;
-      li {
-        padding: 0;
-      }
+      gap: 5%;
+    }
+  }
+
+  @media (max-width: 667px) {
+    ul {
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 5%;
     }
   }
 `;
@@ -278,10 +246,13 @@ const NavItem = styled.li`
   list-style: none;
   height: 2.8rem;
   line-height: 2.1rem;
+  padding-left: 1rem;
+
   a {
     font-size: ${(props) =>
-    props.noResize ? "1.6rem" : props.isActive ? "2rem" : "1.6rem"};
-    color: ${(props) => (props.isActive ? "var(--color-Foreground-Text-Base)" : "inherit")};
+      props.noResize ? "1.6rem" : props.isActive ? "2rem" : "1.6rem"};
+    color: ${(props) =>
+      props.isActive ? "var(--color-Foreground-Text-Base)" : "inherit"};
     font-weight: ${(props) => (props.isActive ? "900" : "regular")};
   }
 `;
@@ -302,6 +273,7 @@ const NavLine = styled(motion.div)`
   top: -10%;
   bottom: 0%;
   left: 0%;
+
   &:after {
     height: 4px;
     background: #ffff00;
@@ -311,9 +283,10 @@ const NavLine = styled(motion.div)`
     bottom: 0%;
     left: 0%;
   }
+
   @media (max-width: 1300px) {
     left: 0%;
   }
 `;
 
-export default Nav;
+export default NavHeader;

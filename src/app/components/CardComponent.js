@@ -11,7 +11,7 @@ const CardGrid = styled(motion.div)`
   width: 100%; /* Full width for the grid */
   max-width: 60rem; /* Maximum width of the grid */
   margin: 0 auto; /* Center the grid horizontally */
-  padding: 4rem 0rem; /* Adjust padding if necessary */
+  padding: 0; /* Spacing handled by parent gap */
 `;
 
 const CardLink = styled.a`
