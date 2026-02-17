@@ -30,10 +30,18 @@ height:auto;
   width: 100% !important; /* Ensure the card takes up the full width of its grid column */
 
   &:hover {
-    box-shadow: 2rem 1rem 0rem 0rem rgba(0, 0, 0, 1); // Use rem for hover state
-    transform: translateY(-1rem); // Use rem for translate as well
+    box-shadow: 2rem 1rem 0rem 0rem rgba(0, 0, 0, 1);
+    transform: translateY(-1rem);
     border-color: var(--color-Foreground-Border-Default);
-    border-width: 0.6rem; // Use rem for border-width as well
+    border-width: 0.6rem;
+  }
+
+  @media (max-width: 779px) {
+    box-shadow: none;
+
+    &:hover {
+      box-shadow: none;
+    }
   }
 `;
 
@@ -164,13 +172,10 @@ const CardComponent = ({ cards, onCardClick, onProtectedCardClick }) => {
           >
             <Card
               variants={cardAnimation}
-              initial={{ boxShadow: "1rem 0.6rem 0rem 0rem rgba(0, 0, 0, 1)" }}
-              animate={{ boxShadow: "1rem 0.6rem 0rem 0rem rgba(0, 0, 0, 1)" }}
               whileHover={{
                 translateY: "-2rem",
                 borderWidth: "1rem",
                 borderColor: "var(--color-Foreground-Border-Default)",
-                boxShadow: "2rem 1rem 0rem 0rem rgba(0, 0, 0, 1)",
               }}
             >
               {CardContent}
@@ -181,13 +186,10 @@ const CardComponent = ({ cards, onCardClick, onProtectedCardClick }) => {
             <CardLink onClick={handleInternalClick}>
               <Card
                 variants={cardAnimation}
-                initial={{ boxShadow: "1rem 0.6rem 0rem 0rem rgba(0, 0, 0, 1)" }}
-                animate={{ boxShadow: "1rem 0.6rem 0rem 0rem rgba(0, 0, 0, 1)" }}
                 whileHover={{
                   translateY: "-2rem",
                   borderWidth: "1rem",
-                borderColor: "var(--color-Foreground-Border-Default)",
-                  boxShadow: "2rem 1rem 0rem 0rem rgba(0, 0, 0, 1)",
+                  borderColor: "var(--color-Foreground-Border-Default)",
                 }}
               >
                 {CardContent}
