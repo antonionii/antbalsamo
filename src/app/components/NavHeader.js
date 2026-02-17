@@ -86,7 +86,7 @@ const NavHeader = ({ colorSchemeType, setColorSchemeType }) => {
   return (
     <StickyHeader>
       <NavInner>
-        <ul>
+        <NameRow>
           <motion.div
             transition-delay="0s"
             initial="hidden"
@@ -112,6 +112,9 @@ const NavHeader = ({ colorSchemeType, setColorSchemeType }) => {
               />
             </NavItem>
           </motion.div>
+        </NameRow>
+
+        <LinksRow>
 
           <NavItem isActive={activeItem === "/Projects"}>
             <motion.div
@@ -186,7 +189,7 @@ const NavHeader = ({ colorSchemeType, setColorSchemeType }) => {
               />
             </motion.div>
           </li>
-        </ul>
+        </LinksRow>
       </NavInner>
       <NavLine />
     </StickyHeader>
@@ -200,14 +203,14 @@ const StickyHeader = styled.header`
   top: 0;
   z-index: 15;
   background: var(--color-Background-Base);
-  padding: 1rem 2rem 1rem;
+  padding: 0.5rem 1rem;
 
   @media (min-width: 768px) {
-    padding: 1rem 2.5rem 1rem;
+    padding: 1rem 2.5rem;
   }
 
   @media (min-width: 1280px) {
-    padding: 1rem 4rem 1rem;
+    padding: 1rem 4rem;
   }
 `;
 
@@ -216,28 +219,51 @@ const NavInner = styled(motion.div)`
   margin: 0 auto;
   width: 100%;
   color: var(--color-Foreground-Text-Base);
-
-  ul {
-    display: flex;
-    align-items: center;
-    list-style: none;
-    gap: 0;
-  }
-
-  @media (max-width: 1100px) {
-    ul {
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 5%;
-    }
-  }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
   @media (max-width: 667px) {
-    ul {
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 5%;
-    }
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  @media (max-width: 1100px) and (min-width: 668px) {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+`;
+
+const NameRow = styled.div`
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin-right: 1rem;
+
+  @media (max-width: 1100px) {
+    margin-right: 0;
+  }
+`;
+
+const LinksRow = styled.ul`
+  display: flex;
+  align-items: center;
+  list-style: none;
+  flex: 1;
+  justify-content: flex-end;
+
+  @media (max-width: 667px) {
+    justify-content: center;
+    width: 100%;
+    gap: 5%;
+  }
+
+  @media (max-width: 1100px) and (min-width: 668px) {
+    justify-content: center;
+    width: 100%;
+    gap: 5%;
   }
 `;
 

@@ -6,7 +6,7 @@ export const PageContainer = styled.div`
   gap: 2rem;
   margin-left: auto;
   margin-right: auto;
-  padding: 2rem;
+  padding: 2rem 1rem;
   width: 100%;
   box-sizing: border-box;
 

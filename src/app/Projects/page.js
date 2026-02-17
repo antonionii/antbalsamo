@@ -60,7 +60,7 @@ const Projects = () => {
       initial="hidden"
       animate="show"
       exit="exit"
-      style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}
+      style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}
     >
       <motion.div
         initial="hidden"

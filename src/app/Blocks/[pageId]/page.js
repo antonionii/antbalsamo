@@ -323,23 +323,23 @@ const ModalImage = styled(Image)`
 const MainContainer = styled(motion.div)`
   display: flex;
   flex-direction: column;
-  width:65%;
-  justify-content:center;
+  width: 100%;
   align-items: center;
-  padding: 1rem;
-  margin: 0 auto 0 auto;
-
+  padding: 0;
   box-sizing: border-box;
   overflow: hidden;
+
   @media (min-width: 780px) {
-    //width: 65%;
-    //margin: 0 auto 0 auto;
-    //padding: 0rem 2rem 2rem 2rem;
+    width: 65%;
+    margin: 0 auto;
+    padding: 1rem;
   }
-   @media (min-width: 1300px) {
-     //width: 45%;
-     //margin: 0 auto 0 auto;
-     //padding: 0rem 2rem 2rem 2rem;
+
+  @media (min-width: 1300px) {
+    width: 65%;
+    margin: 0 auto;
+    padding: 1rem;
+  }
 `;
 
 const LeftAlignedContainer = styled.div`
@@ -365,26 +365,19 @@ const FullWidthCoverImage = styled.div`
   width: 100vw;  /* Ensure it spans the full viewport width */
   height: calc(100vh / 3);  /* Adjust the height based on viewport height */
   background-image: url(${(props) => props.src});
-  background-position: center 6rem;  /* Center horizontally, 40% from top */
+  background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;  /* Ensure it covers the area while maintaining aspect ratio */
+  background-size: cover;
   position: relative;
-  
-  /* Remove negative margins and let width handle alignment */
-  margin: 0;
 
   @media (min-width: 780px) {
-  background-position: center 0px;  /* Center horizontally, 40% from top */
-  background-repeat: no-repeat;
-  background-size: cover;  /* Ensure it covers the area while maintaining aspect ratio */
-  position: relative;
-    }
+    background-position: center;
+    background-size: cover;
+  }
 
   @media (min-width: 1300px) {
-    height: calc(100vh / 3);  /* Adjust the height based on viewport height */
-    background-position: center 12rem;  /* Center horizontally, 40% from top */
-
-    background-position: center;  /* Adjust for large screens */
+    height: calc(100vh / 3);
+    background-position: center;
   }
 `;
 
