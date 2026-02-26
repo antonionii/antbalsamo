@@ -47,6 +47,7 @@ export const colorSchemes = {
       
       colorIntentPositivePrimary: colorIntentPositivePrimary,
 
+      colorTagBackground: "#CAC4B4",
 
       colorBackgroundPositive: colorIntentPositiveAccent,
       colorBackgroundNegative: colorIntentNegativeAccent,
@@ -92,6 +93,7 @@ export const colorSchemes = {
       
       colorIntentPositivePrimary: colorIntentPositivePrimary,
 
+      colorTagBackground: "#CAC4B4",
 
       colorBackgroundPositive: colorIntentPositiveAccent,
       colorBackgroundNegative: colorIntentNegativeAccent,
@@ -256,6 +258,11 @@ const changeColor = (themeType = "light") => {
   document.documentElement.style.setProperty(
     "--color-Background-Negative",
     toBeAppliedScheme.colorBackgroundNegative
+  );
+
+  document.documentElement.style.setProperty(
+    "--color-Tag-Background",
+    toBeAppliedScheme.colorTagBackground
   );
 
   document.documentElement.style.setProperty(

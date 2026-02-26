@@ -6,6 +6,7 @@ import Link from "next/link"; // Import Link from Next.js
 import PageHeaderText from "./components/PageHeaderText";
 import HeroText from "./components/HeroText";
 import CardComponent from "./components/CardComponent";
+import ProjectLinksComponent from "./components/ProjectLinksComponent";
 import Button from "./components/ButtonComponent";
 import Tags from "./components/Tags";
 import StyledSnackbar from "./components/StyledSnackbar";
@@ -21,11 +22,13 @@ const Home = () => {
 
   const [pendingCard, setPendingCard] = useState(null);
   const [showPasswordModal, setShowPasswordModal] = useState(false);
+  const [useCards, setUseCards] = useState(false); // Toggle: true = cards, false = links
 
   useEffect(() => {
     // Check if we are on the client side
     if (typeof window !== "undefined") {
       setIsClient(true);
+      window.dispatchEvent(new CustomEvent('toggleViewMode', { detail: { useCards: false } }));
       const colorForegroundTextDefault = getComputedStyle(document.documentElement).getPropertyValue('--color-Foreground-Text-Default').trim();
       const colorBackgroundDefault = getComputedStyle(document.documentElement).getPropertyValue('--color-Background-Default').trim();
       setcolorForegroundTextDefault(colorForegroundTextDefault);
@@ -107,74 +110,144 @@ useEffect(() => {
   }
 //https://i.imgur.com/IUJufqm.png
   return (
-    <PageContainer>
+    <>
+      {/* <ToggleButton onClick={() => {
+        const next = !useCards;
+        setUseCards(next);
+        window.dispatchEvent(new CustomEvent('toggleViewMode', { detail: { useCards: next } }));
+      }}>
+        {useCards ? "Switch to Links" : "Switch to Cards"}
+      </ToggleButton> */}
 
-    <motion.div 
-      variants={pageAnimation} 
-      initial="hidden" 
-      animate="show" 
-      exit="exit" 
-      style={{ display: 'flex', flexDirection: 'column', gap: '6rem' }}
-    >
-      <StyledSection variants={cardAnimation} className="bg-section">
-        <HeroContainer>
-          <ResponsiveHeroText
-            numOfItems={6}
-            itemsText={[ "Product Designer" ]}
-            variant={slideleftAnim}
-          />
-          
-          <StyledIcon
-            className="material-symbols-outlined"
-            data-icon="true" 
-            animate={isWiggling ? { rotate: [0, 30, -30, 30, -30, 0] } : {}}
-            transition={{ type: "spring", stiffness: 500, damping: 2, duration: 2 }}
-            onClick={handleIconClick}
+      {useCards ? (
+        <PageContainer>
+          <motion.div 
+            variants={pageAnimation} 
+            initial="hidden" 
+            animate="show" 
+            exit="exit" 
+            style={{ display: 'flex', flexDirection: 'column', gap: '6rem' }}
           >
-            {icon}
-          </StyledIcon>
-        </HeroContainer>
-        <HeroImage
-  src={
-    theme === "dark"
-      ? "https://i.imgur.com/71KHhPR.png"
-      : "https://i.imgur.com/ItIuUEc.png"
-  }
-  alt="picture of me"
-/>
-        <CardText>Designing creative and delightful experiences into scalable products.</CardText>
-        <CardText>If you&apos;d like to work together, drop me a message at my email below.</CardText>
-        <Tags />
-      </StyledSection>
-      <StyledSnackbar
-        open={openSnackbar}
-        onClose={handleCloseSnackbar}
-        message="Copied link: Tony's Website"
-      />
-      <div style={{ textAlign: "center", paddingBottom: "0rem" }}>
-        <HomeHeaderWrapper>
-        <PageHeaderText 
-          numOfItems={7} 
-          itemsText={["✨", "Design", "Highlights ", "✨"]} 
-          variant={slidedownAnim} 
-          fontSize="1.4rem" 
-          fontColor={colorForegroundTextDefault}
-        />
-        </HomeHeaderWrapper>
-      </div>
-      <CardComponent 
-      cards={projectCardData.slice(0, 4) } 
-      onCardClick={card => {}}
-      onProtectedCardClick={card => {
-        setPendingCard(card);
-        setShowPasswordModal(true);
-}}
-       />
-      {/* Use Link for navigation */}
-      <Button onClick={() => router.push("/Projects")}>
-        See All Projects
-      </Button>
-  
+            <StyledSection variants={cardAnimation} className="bg-section">
+              <HeroContainer>
+                <ResponsiveHeroText
+                  numOfItems={6}
+                  itemsText={[ "Product Designer" ]}
+                  variant={slideleftAnim}
+                />
+                
+                <StyledIcon
+                  className="material-symbols-outlined"
+                  data-icon="true" 
+                  animate={isWiggling ? { rotate: [0, 30, -30, 30, -30, 0] } : {}}
+                  transition={{ type: "spring", stiffness: 500, damping: 2, duration: 2 }}
+                  onClick={handleIconClick}
+                >
+                  {icon}
+                </StyledIcon>
+              </HeroContainer>
+              <HeroImage
+                src={
+                  theme === "dark"
+                    ? "https://i.imgur.com/71KHhPR.png"
+                    : "https://i.imgur.com/ItIuUEc.png"
+                }
+                alt="picture of me"
+              />
+              <CardText>Designing creative and delightful experiences into scalable products.</CardText>
+              <CardText>If you&apos;d like to work together, drop me a message at my email below.</CardText>
+              <Tags />
+            </StyledSection>
+            <StyledSnackbar
+              open={openSnackbar}
+              onClose={handleCloseSnackbar}
+              message="Copied link: Tony's Website"
+            />
+            <div style={{ textAlign: "center" }}>
+              <HomeHeaderWrapper>
+              <PageHeaderText 
+                numOfItems={7} 
+                itemsText={["✨", "Design", "Highlights ", "✨"]} 
+                variant={slidedownAnim} 
+                fontSize="1.4rem" 
+                fontColor={colorForegroundTextDefault}
+              />
+              </HomeHeaderWrapper>
+            </div>
+            <CardComponent 
+              cards={projectCardData.slice(0, 4)} 
+              onCardClick={card => {}}
+              onProtectedCardClick={card => {
+                setPendingCard(card);
+                setShowPasswordModal(true);
+              }}
+            />
+            <Button onClick={() => router.push("/Projects")}>
+              See All Projects
+            </Button>
+          </motion.div>
+        </PageContainer>
+      ) : (
+        <LinksPageWrapper>
+          <HeroLinksRow>
+          <HeroCardContainer>
+            <HeroCard>
+              <HeroContainer>
+                <ResponsiveHeroText
+                  numOfItems={6}
+                  itemsText={[ "Product Designer" ]}
+                  variant={slideleftAnim}
+                />
+                <span
+                  className="material-symbols-outlined"
+                  data-icon="true" 
+                  onClick={handleIconClick}
+                  style={{
+                    fontSize: '2rem',
+                    display: 'inline-block',
+                    verticalAlign: 'middle',
+                    marginTop: '0.8rem',
+                    color: 'var(--color-Foreground-Text-Default)',
+                    cursor: 'pointer',
+                    padding: '.5rem',
+                    borderRadius: '10%',
+                  }}
+                >
+                  {icon}
+                </span>
+              </HeroContainer>
+              <HeroImage
+                src={
+                  theme === "dark"
+                    ? "https://i.imgur.com/71KHhPR.png"
+                    : "https://i.imgur.com/ItIuUEc.png"
+                }
+                alt="picture of me"
+              />
+              <CardText>Designing creative and delightful experiences into scalable products.</CardText>
+              <CardText>If you&apos;d like to work together, drop me a message at my email below.</CardText>
+              <Tags animated={false} />
+            </HeroCard>
+          </HeroCardContainer>
+            <LinksColumn>
+              <ProjectLinksComponent 
+                cards={projectCardData} 
+                onCardClick={card => {}}
+                onProtectedCardClick={card => {
+                  setPendingCard(card);
+                  setShowPasswordModal(true);
+                }}
+              />
+            </LinksColumn>
+          </HeroLinksRow>
+          <StyledSnackbar
+            open={openSnackbar}
+            onClose={handleCloseSnackbar}
+            message="Copied link: Tony's Website"
+          />
+        </LinksPageWrapper>
+      )}
+
       {showPasswordModal && (
         <PasswordModal
           isOpen={showPasswordModal}
@@ -182,9 +255,7 @@ useEffect(() => {
           onSuccess={handlePasswordSuccess}
         />
       )}
-    </motion.div>
-        </PageContainer>
-
+    </>
   );
 };
 
@@ -310,6 +381,110 @@ const StyledIcon = styled(motion.span)`
 `;
 const HomeHeaderWrapper = styled.div`
   margin-top: 0;
+`;
+
+const HeroLinksRow = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+
+  @media (min-width: 1000px) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 4rem;
+  }
+`;
+
+const LinksPageWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: calc(100vh - 6rem);
+  justify-content: center;
+  padding: 2rem 1rem;
+  box-sizing: border-box;
+
+  @media (min-width: 768px) {
+    padding: 2rem 2.5rem;
+  }
+
+  @media (min-width: 1280px) {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 2rem 0;
+  }
+`;
+
+const HeroCardContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  width: 100%;
+
+  @media (min-width: 1000px) {
+    width: 50%;
+  }
+`;
+
+const HeroCard = styled.div`
+  width: 100%;
+  padding: 1rem;
+  border-radius: 1rem;
+  background-color: var(--color-Background-Default);
+  color: var(--color-Foreground-Text-Default);
+  box-sizing: border-box;
+  overflow: hidden;
+
+  @media (min-width: 780px) {
+    width: 55%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0rem 2rem 2rem 2rem;
+  }
+
+  @media (min-width: 1000px) {
+    width: 100%;
+    max-width: 35rem;
+    margin: 0 auto;
+  }
+
+  @media (min-width: 1300px) {
+    padding: 0rem 2rem 2rem 2rem;
+  }
+`;
+
+const LinksColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  flex: 1;
+  max-width: 32rem;
+  width: 100%;
+`;
+
+const ToggleButton = styled.button`
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 9999;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  border: 2px solid var(--color-Foreground-Text-Default);
+  background: var(--color-Background-Default);
+  color: var(--color-Foreground-Text-Default);
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  transition: opacity 0.2s;
+
+  &:hover {
+    opacity: 0.75;
+  }
 `;
 
 export default Home;

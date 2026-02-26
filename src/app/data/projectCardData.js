@@ -31,20 +31,20 @@ const projectCardData = [
       bubbleText: "Open Project",
       pageId: '80e79e864f4f4c57b029a0b3439b4889',
       lineBreaks: 0, 
-      tags: ["SaaS","Enterprise","Workflows"],
+      tags: ["Enterprise","Workflows"],
 
       passwordProtected: true, 
 
   },
   {
-      title: "Workflow Uplift",
+      title: "Insights Feature Redesign",
       image: "https://i.imgur.com/Cjkqvhv.png",
       text: "A UX overhaul with a compelling interface.",
       linkTo: "/Blocks/3328b05dcbba4ba7900873e790e145c6",
       bubbleText: "Open Project",
       pageId: '3328b05dcbba4ba7900873e790e145c6',
       lineBreaks: 2, 
-      tags: ["Enterprise", "B2B Workflows"],
+      tags: ["SaaS", "Workflows"],
 
       passwordProtected: true, 
 
@@ -62,18 +62,18 @@ const projectCardData = [
       passwordProtected: true, 
 
   },
-//   {
-//     title: "Mingo",
-//     image: "https://i.imgur.com/UUYRNC8.gif",
-//     text: "A Platforming Space Odyssey.\n",
-//     linkTo: "https://antonioni.itch.io/mingo-tech-demo",
-//     bubbleText: "Open Project",
-//     pageId: '3328b05dcbba4ba7900873e790e145c4',
-//     tags: ["Game Dev", "Coming Soon"],
+  {
+    title: "Mingo",
+    image: "https://i.imgur.com/UUYRNC8.gif",
+    text: "A Platforming Space Odyssey.\n",
+    linkTo: "https://antonioni.itch.io/mingo-tech-demo",
+    bubbleText: "Open Project",
+    pageId: '3328b05dcbba4ba7900873e790e145c4',
+    tags: ["Game Dev", "Test Build"],
 
-//     lineBreaks: 2, 
-//     passwordProtected: false, 
-// },
+    lineBreaks: 2, 
+    passwordProtected: false, 
+},
   {
       title: "Activity Feed",
       image: "https://i.imgur.com/Kp9t8OG.png",
@@ -94,7 +94,7 @@ const projectCardData = [
       linkTo: "/Blocks/3d08e0534d344646821003dbb27b8f12",
       bubbleText: "Open Project",
       pageId: '3d08e0534d344646821003dbb27b8f12',
-      tags: ["B2B Workflows", "Data Visualization"], 
+      tags: ["B2B Workflows", "Data Viz"], 
       lineBreaks: 0, 
       passwordProtected: true, 
 

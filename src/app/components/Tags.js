@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { slideleftAnim, sliderightAnim } from "../styles/animation";
 import StyledSnackbar from "./StyledSnackbar"; // Import StyledSnackbar
 
-const Tags = () => {
+const Tags = ({ animated = true }) => {
   const [emailText, setEmailText] = useState("antbalsamo@gmail.com");
   const [isCopied, setIsCopied] = useState(false);
   const [openSnackbar, setOpenSnackbar] = useState(false); // State for controlling Snackbar visibility
@@ -28,6 +28,39 @@ const Tags = () => {
       setIsCopied(false);
     }, 2000); // Change back after 2 seconds
   };
+
+  if (!animated) {
+    return (
+      <div className="link-container">
+        <a className="link github" href="https://github.com/antonionii/">
+          GitHub
+        </a>
+        <a className="link twitter" href="https://www.linkedin.com/in/antbalsamo/">
+          LinkedIn
+        </a>
+        <div
+          onClick={handleEmailClick}
+          className="link dribbble"
+          style={{
+            cursor: "pointer",
+            display: "inline-block",
+            minWidth: "200px",
+            textAlign: "center",
+            borderRadius: "8px",
+          }}
+        >
+          <a style={{ display: "block", whiteSpace: "nowrap", opacity: isCopied ? 0.8 : 1 }}>
+            {emailText}
+          </a>
+        </div>
+        <StyledSnackbar
+          open={openSnackbar}
+          onClose={handleCloseSnackbar}
+          message="Copied link: Tony's Email"
+        />
+      </div>
+    );
+  }
 
   return (
     <div className="link-container">

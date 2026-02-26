@@ -14,8 +14,15 @@ const NavHeader = ({ colorSchemeType, setColorSchemeType }) => {
   const [direction, setDirection] = useState(1);
   const [isLight, setIsLight] = useState(false);
   const [activeItem, setActiveItem] = useState("/");
+  const [useCards, setUseCards] = useState(false);
   const animationContainer = useRef(null);
   const animRef = useRef(null);
+
+  useEffect(() => {
+    const handler = (e) => setUseCards(e.detail.useCards);
+    window.addEventListener('toggleViewMode', handler);
+    return () => window.removeEventListener('toggleViewMode', handler);
+  }, []);
 
   const startAnimation = useCallback(
     (event) => {
@@ -116,6 +123,7 @@ const NavHeader = ({ colorSchemeType, setColorSchemeType }) => {
 
         <LinksRow>
 
+          {useCards && (
           <NavItem isActive={activeItem === "/Projects"}>
             <motion.div
               initial="hidden"
@@ -134,6 +142,7 @@ const NavHeader = ({ colorSchemeType, setColorSchemeType }) => {
               }}
             />
           </NavItem>
+          )}
 
           {/* <NavItem isActive={activeItem === "/Blog"}>
             <motion.div
@@ -154,7 +163,7 @@ const NavHeader = ({ colorSchemeType, setColorSchemeType }) => {
             />
           </NavItem> */}
 
-          <NavItem>
+          <NavItem style={{ display: 'flex', alignItems: 'center' }}>
             <motion.div
               initial="hidden"
               animate="show"
@@ -171,7 +180,7 @@ const NavHeader = ({ colorSchemeType, setColorSchemeType }) => {
             </motion.div>
           </NavItem>
 
-          <li style={{ display: "flex", justifyContent: "flex-end", flex: 1 }}>
+          <li style={{ display: "flex", alignItems: "center", justifyContent: "flex-end" }}>
             <motion.div
               initial="hidden"
               animate="show"
