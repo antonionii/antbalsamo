@@ -93,8 +93,12 @@ const BubbleText = styled.h4`
 
 const CardTitle = styled.h4`
   color: var(--color-Foreground-Text-Default);
+  font-size: 1.3rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+`;
 
-`
 const TagList = styled.div`
   display: flex;
   flex-wrap: wrap;

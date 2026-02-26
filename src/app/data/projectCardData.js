@@ -12,6 +12,18 @@ const projectCardData = [
     passwordProtected: false, 
   },
   {
+      title: "Scalable Brand Design",
+      image: "https://i.imgur.com/CCyqnCX.jpeg",
+      text: " A multi-brand design system and redesign unifying 20+ brand identities into a conversion-driven UX.",
+      linkTo: "/Blocks/304a7b3ec04280d9b663f825d66748ed",
+      bubbleText: "Open Project",
+      pageId: '304a7b3ec04280d9b663f825d66748ed',
+      lineBreaks: 0, 
+      tags: ["Design System","B2C"],
+
+    passwordProtected: false, 
+  },
+  {
       title: "Notification System",
       image: "https://i.imgur.com/9Fd7bXq.png",
       text: "Deeply configurable notification system built for admins and workgroups.",
@@ -25,9 +37,9 @@ const projectCardData = [
 
   },
   {
-      title: "Feature Redesign",
+      title: "Workflow Uplift",
       image: "https://i.imgur.com/Cjkqvhv.png",
-      text: "A UX overhaul with an inviting interface.",
+      text: "A UX overhaul with a compelling interface.",
       linkTo: "/Blocks/3328b05dcbba4ba7900873e790e145c6",
       bubbleText: "Open Project",
       pageId: '3328b05dcbba4ba7900873e790e145c6',
@@ -50,18 +62,18 @@ const projectCardData = [
       passwordProtected: true, 
 
   },
-  {
-    title: "Mingo",
-    image: "https://i.imgur.com/UUYRNC8.gif",
-    text: "A Platforming Space Odyssey.\n",
-    linkTo: "https://antonioni.itch.io/mingo-tech-demo",
-    bubbleText: "Open Project",
-    pageId: '3328b05dcbba4ba7900873e790e145c4',
-    tags: ["Game Dev", "Coming Soon"],
+//   {
+//     title: "Mingo",
+//     image: "https://i.imgur.com/UUYRNC8.gif",
+//     text: "A Platforming Space Odyssey.\n",
+//     linkTo: "https://antonioni.itch.io/mingo-tech-demo",
+//     bubbleText: "Open Project",
+//     pageId: '3328b05dcbba4ba7900873e790e145c4',
+//     tags: ["Game Dev", "Coming Soon"],
 
-    lineBreaks: 2, 
-    passwordProtected: false, 
-},
+//     lineBreaks: 2, 
+//     passwordProtected: false, 
+// },
   {
       title: "Activity Feed",
       image: "https://i.imgur.com/Kp9t8OG.png",
