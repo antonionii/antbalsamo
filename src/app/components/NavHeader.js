@@ -11,8 +11,9 @@ import { changeColor } from "./theme/changeColor";
 
 const NavHeader = ({ colorSchemeType, setColorSchemeType }) => {
   const pathname = usePathname();
-  const [direction, setDirection] = useState(1);
-  const [isLight, setIsLight] = useState(false);
+  const isDark = colorSchemeType === "dark";
+  const [direction, setDirection] = useState(isDark ? -1 : 1);
+  const [isLight, setIsLight] = useState(!isDark);
   const [activeItem, setActiveItem] = useState("/");
   const [useCards, setUseCards] = useState(false);
   const animationContainer = useRef(null);
@@ -80,6 +81,12 @@ const NavHeader = ({ colorSchemeType, setColorSchemeType }) => {
         autoplay: false,
         path: "https://assets1.lottiefiles.com/packages/lf20_ebutdyzo.json",
       });
+
+      if (colorSchemeType === "dark") {
+        animRef.current.addEventListener("DOMLoaded", () => {
+          animRef.current.goToAndStop(animRef.current.totalFrames - 1, true);
+        });
+      }
     }
 
     return () => {
@@ -94,22 +101,17 @@ const NavHeader = ({ colorSchemeType, setColorSchemeType }) => {
     <StickyHeader>
       <NavInner>
         <NameRow>
-          <motion.div
-            transition-delay="0s"
-            initial="hidden"
-            animate="show"
-            variants={textFade}
-          >
+          <div>
             <NavItem
               style={{ paddingLeft: "0" }}
               isActive={activeItem === "/"}
               onClick={() => setActiveItem("/")}
             >
-              <motion.div initial="hidden" animate="show" variants={slidedownAnim()}>
+              <div>
                 <Link href="/" onClick={() => setActiveItem("/")}>
                   Anthony Balsamo
                 </Link>
-              </motion.div>
+              </div>
               <Line
                 transition={{ duration: 0.5 }}
                 initial={{ width: "0%" }}
@@ -118,22 +120,18 @@ const NavHeader = ({ colorSchemeType, setColorSchemeType }) => {
                 }}
               />
             </NavItem>
-          </motion.div>
+          </div>
         </NameRow>
 
         <LinksRow>
 
           {useCards && (
           <NavItem isActive={activeItem === "/Projects"}>
-            <motion.div
-              initial="hidden"
-              animate="show"
-              variants={slidedownAnim(0.1)}
-            >
+            <div>
               <Link href="/Projects" onClick={() => setActiveItem("/Projects")}>
                 Projects
               </Link>
-            </motion.div>
+            </div>
             <Line
               transition={{ duration: 0.5 }}
               initial={{ width: "0%" }}
@@ -145,15 +143,11 @@ const NavHeader = ({ colorSchemeType, setColorSchemeType }) => {
           )}
 
           {/* <NavItem isActive={activeItem === "/Blog"}>
-            <motion.div
-              initial="hidden"
-              animate="show"
-              variants={slidedownAnim(0.2)}
-            >
+            <div>
               <Link href="/Blog" onClick={() => setActiveItem("/Blog")}>
                 Blog
               </Link>
-            </motion.div>
+            </div>
             <Line
               transition={{ duration: 0.5 }}
               initial={{ width: "0%" }}
@@ -164,11 +158,7 @@ const NavHeader = ({ colorSchemeType, setColorSchemeType }) => {
           </NavItem> */}
 
           <NavItem style={{ display: 'flex', alignItems: 'center' }}>
-            <motion.div
-              initial="hidden"
-              animate="show"
-              variants={slidedownAnim(0.3)}
-            >
+            <div>
               <a
                 href="/Anthony Balsamo Resume.pdf"
                 target="_blank"
@@ -177,15 +167,11 @@ const NavHeader = ({ colorSchemeType, setColorSchemeType }) => {
               >
                 Resume
               </a>
-            </motion.div>
+            </div>
           </NavItem>
 
           <li style={{ display: "flex", alignItems: "center", padding: 0, margin: 0, listStyle: "none" }}>
-            <motion.div
-              initial="hidden"
-              animate="show"
-              variants={slideleftAnim(0.4)}
-            >
+            <div>
               <div
                 className="anime-contain"
                 ref={animationContainer}
@@ -196,7 +182,7 @@ const NavHeader = ({ colorSchemeType, setColorSchemeType }) => {
                   cursor: "pointer",
                 }}
               />
-            </motion.div>
+            </div>
           </li>
         </LinksRow>
       </NavInner>

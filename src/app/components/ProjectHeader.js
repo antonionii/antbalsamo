@@ -8,8 +8,9 @@ import { changeColor } from "./theme/changeColor";
 
 const ProjectHeader = ({ colorSchemeType, setColorSchemeType }) => {
   const router = useRouter();
-  const [direction, setDirection] = useState(1);
-  const [isLight, setIsLight] = useState(false);
+  const isDark = colorSchemeType === "dark";
+  const [direction, setDirection] = useState(isDark ? -1 : 1);
+  const [isLight, setIsLight] = useState(!isDark);
   const animationContainer = useRef(null);
   const animRef = useRef(null);
 
@@ -59,6 +60,13 @@ const ProjectHeader = ({ colorSchemeType, setColorSchemeType }) => {
         autoplay: false,
         path: "https://assets1.lottiefiles.com/packages/lf20_ebutdyzo.json",
       });
+
+      // If already in dark mode, jump to the end frame
+      if (colorSchemeType === "dark") {
+        animRef.current.addEventListener("DOMLoaded", () => {
+          animRef.current.goToAndStop(animRef.current.totalFrames - 1, true);
+        });
+      }
     }
 
     return () => {
@@ -72,21 +80,29 @@ const ProjectHeader = ({ colorSchemeType, setColorSchemeType }) => {
   return (
     <StickyHeader>
       <HeaderInner>
-        <BackButton onClick={() => router.back()}>
-          <span className="material-symbols-outlined">arrow_back</span>
-        </BackButton>
-        <DarkModeContainer>
-          <div
-            className="anime-contain"
-            ref={animationContainer}
-            onClick={startAnimation}
-            style={{
-              width: 30,
-              height: 30,
-              cursor: "pointer",
-            }}
-          />
-        </DarkModeContainer>
+        <LinksRow>
+          <li style={{ display: 'flex', alignItems: 'center', padding: 0, margin: 0, listStyle: 'none' }}>
+            <BackButton onClick={() => router.back()}>
+              <span className="material-symbols-outlined">arrow_back</span>
+            </BackButton>
+          </li>
+          <li style={{ display: 'flex', alignItems: 'center', padding: 0, margin: 0, listStyle: 'none', height: '2.8rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', height: '100%' }}>
+              <div
+                className="anime-contain"
+                ref={animationContainer}
+                onClick={startAnimation}
+                style={{
+                  width: 30,
+                  height: 30,
+                  cursor: "pointer",
+                  verticalAlign: 'middle',
+                  marginTop: '2px', // tweak this value if needed for pixel-perfect match
+                }}
+              />
+            </div>
+          </li>
+        </LinksRow>
       </HeaderInner>
       <NavLine />
     </StickyHeader>
@@ -116,6 +132,29 @@ const HeaderInner = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+`;
+
+const LinksRow = styled.ul`
+  display: flex;
+  align-items: center;
+  list-style: none;
+  flex: 1;
+  justify-content: space-between;
+  gap: 2rem;
+
+  @media (max-width: 667px) {
+    justify-content: space-between;
+    flex: unset;
+    gap: 1rem;
+    width: 100%;
+  }
+
+  @media (max-width: 1100px) and (min-width: 668px) {
+    justify-content: space-between;
+    flex: unset;
+    gap: 1rem;
+    width: 100%;
+  }
 `;
 
 const BackButton = styled.button`
