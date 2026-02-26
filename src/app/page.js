@@ -198,23 +198,15 @@ useEffect(() => {
                   itemsText={[ "Product Designer" ]}
                   variant={slideleftAnim}
                 />
-                <span
+                <StyledIcon
                   className="material-symbols-outlined"
                   data-icon="true" 
+                  animate={isWiggling ? { rotate: [0, 30, -30, 30, -30, 0] } : {}}
+                  transition={{ type: "spring", stiffness: 500, damping: 2, duration: 2 }}
                   onClick={handleIconClick}
-                  style={{
-                    fontSize: '2rem',
-                    display: 'inline-block',
-                    verticalAlign: 'middle',
-                    marginTop: '0.8rem',
-                    color: 'var(--color-Foreground-Text-Default)',
-                    cursor: 'pointer',
-                    padding: '.5rem',
-                    borderRadius: '10%',
-                  }}
                 >
                   {icon}
-                </span>
+                </StyledIcon>
               </HeroContainer>
               <HeroImage
                 src={
