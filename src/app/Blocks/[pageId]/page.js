@@ -251,7 +251,7 @@ const Blocks = () => {
       {metadata && metadata.coverImage && (
         <FullWidthCoverImage src={metadata.coverImage} alt="cover image" />
       )}
-      <PageContainer>
+      <BlocksPageContainer>
       <MainContainer>
         {metadata ? (
           <>
@@ -262,7 +262,6 @@ const Blocks = () => {
                 <PropertiesGrid>{renderProperties()}</PropertiesGrid>
               </MetadataContainer>
             </LeftAlignedContainer>
-            <LineSeparator />
 
           </>
         ) : (
@@ -276,11 +275,15 @@ const Blocks = () => {
           <MainBlock>{blockData.map((block) => nestBlockChild(block))}</MainBlock>
         )}
       </MainContainer>
-      </PageContainer>
+      </BlocksPageContainer>
     </>
   );
 };
 
+
+const BlocksPageContainer = styled(PageContainer)`
+  padding-top: 0;
+`;
 
 const LoaderContainer = styled.div`
   display: flex;
@@ -333,13 +336,13 @@ const MainContainer = styled(motion.div)`
   @media (min-width: 780px) {
     width: 65%;
     margin: 0 auto;
-    padding: 1rem;
+    padding: 0 1rem;
   }
 
   @media (min-width: 1300px) {
     width: 65%;
     margin: 0 auto;
-    padding: 1rem;
+    padding: 0 1rem;
   }
 `;
 
@@ -579,7 +582,7 @@ const LineSeparator = styled.div`
 const PropertiesGrid = styled.div`
   display: grid;
   gap: 0.5rem;
-  
+  margin-bottom: 2rem;
 `;
 
 const PropertyRow = styled.div`

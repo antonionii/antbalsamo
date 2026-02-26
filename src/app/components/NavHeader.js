@@ -180,7 +180,7 @@ const NavHeader = ({ colorSchemeType, setColorSchemeType }) => {
             </motion.div>
           </NavItem>
 
-          <li style={{ display: "flex", alignItems: "center", justifyContent: "flex-end" }}>
+          <li style={{ display: "flex", alignItems: "center", padding: 0, margin: 0, listStyle: "none" }}>
             <motion.div
               initial="hidden"
               animate="show"
@@ -234,14 +234,16 @@ const NavInner = styled(motion.div)`
 
   @media (max-width: 667px) {
     flex-direction: column;
-    align-items: center;
-    gap: 1rem;
+    align-items: flex-end;
+    gap: 0.5rem;
+    width: fit-content;
   }
 
   @media (max-width: 1100px) and (min-width: 668px) {
     flex-direction: column;
-    align-items: center;
-    gap: 1rem;
+    align-items: flex-end;
+    gap: 0.5rem;
+    width: fit-content;
   }
 `;
 
@@ -264,15 +266,15 @@ const LinksRow = styled.ul`
   justify-content: flex-end;
 
   @media (max-width: 667px) {
-    justify-content: center;
-    width: 100%;
-    gap: 5%;
+    justify-content: flex-end;
+    flex: unset;
+    gap: 1rem;
   }
 
   @media (max-width: 1100px) and (min-width: 668px) {
-    justify-content: center;
-    width: 100%;
-    gap: 5%;
+    justify-content: flex-end;
+    flex: unset;
+    gap: 1rem;
   }
 `;
 
@@ -282,6 +284,10 @@ const NavItem = styled.li`
   height: 2.8rem;
   line-height: 2.1rem;
   padding-left: 1rem;
+
+  @media (max-width: 1100px) {
+    padding-left: 0.25rem;
+  }
 
   a {
     font-size: ${(props) =>
