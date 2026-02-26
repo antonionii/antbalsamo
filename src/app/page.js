@@ -255,8 +255,6 @@ const HeroContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: 1rem;
-
 `;
 
 const CardText = styled.p`
@@ -353,7 +351,7 @@ const StyledIcon = styled(motion.span)`
   font-size: 2rem;
   display: inline-block;
   vertical-align: middle;
-  margin-top: 0.8rem;
+  margin-top: 0.2rem;
   color: var(--color-Foreground-Text-Default);
   cursor: pointer;
   padding: .5rem;
@@ -435,7 +433,7 @@ const HeroCard = styled.div`
     width: 55%;
     margin-left: auto;
     margin-right: auto;
-    padding: 0rem 2rem 2rem 2rem;
+    padding: 1rem 2rem 2rem 2rem;
   }
 
   @media (min-width: 1000px) {
@@ -445,7 +443,7 @@ const HeroCard = styled.div`
   }
 
   @media (min-width: 1300px) {
-    padding: 0rem 2rem 2rem 2rem;
+    padding: 1rem 2rem 2rem 2rem;
   }
 `;
 
