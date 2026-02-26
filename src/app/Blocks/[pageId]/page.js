@@ -154,6 +154,7 @@ const Blocks = () => {
             : block.image.file.url;
   
         const caption = block.image.caption || [];
+        const altText = caption.map((item) => item.plain_text).join("") || "Project image";
         const hyperlink = caption.find((item) => item.href)?.href;
   
         // Extract name from the hyperlink for hover display
@@ -169,7 +170,7 @@ const Blocks = () => {
               <a href={hyperlink} target="_blank" rel="noopener noreferrer">
                 <Image
                   src={imageFile}
-                  alt="image file"
+                  alt={altText}
                   width={800}
                   height={600}
                   layout="responsive"
@@ -187,7 +188,7 @@ const Blocks = () => {
           <ImageContainer key={block.id}>
             <Image
               src={imageFile}
-              alt="image file"
+              alt={altText}
               width={800}
               height={600}
               layout="responsive"
