@@ -4,5 +4,11 @@
     "files": [
       "static/chunks/_app-pages-browser_src_app_components_NavHeader_js.js"
     ]
+  },
+  "app\\layout.js -> ./components/ProjectHeader": {
+    "id": "app\\layout.js -> ./components/ProjectHeader",
+    "files": [
+      "static/chunks/_app-pages-browser_src_app_components_ProjectHeader_js.js"
+    ]
   }
 }

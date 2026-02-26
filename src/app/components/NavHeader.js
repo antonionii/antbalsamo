@@ -224,7 +224,7 @@ const StickyHeader = styled.header`
 `;
 
 const NavInner = styled(motion.div)`
-  max-width: 1200px;
+  max-width: 1100px;
   margin: 0 auto;
   width: 100%;
   color: var(--color-Foreground-Text-Base);
@@ -264,6 +264,7 @@ const LinksRow = styled.ul`
   list-style: none;
   flex: 1;
   justify-content: flex-end;
+  gap: 2rem;
 
   @media (max-width: 667px) {
     justify-content: flex-end;

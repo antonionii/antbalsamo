@@ -5,6 +5,7 @@ import dynamic from 'next/dynamic';
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { AnimatePresence } from "framer-motion";
+import { usePathname } from "next/navigation";
 import GlobalStyle from "./styles/GlobalStyle";
 import Footer from "./components/Footer"; // Import Footer
 import { changeColor } from "./components/theme/changeColor";
@@ -13,11 +14,14 @@ import Head from "next/head";
 
 // Dynamically import NavHeader with SSR disabled
 const NavHeader = dynamic(() => import('./components/NavHeader'), { ssr: false });
+const ProjectHeader = dynamic(() => import('./components/ProjectHeader'), { ssr: false });
 
 // Create ModalContext to share modal functions across the app
 export const ModalContext = createContext();
 
 export default function RootLayout({ children }) {
+  const pathname = usePathname();
+  const isProjectPage = pathname.startsWith("/Blocks");
   const [colorSchemeType, setColorSchemeType] = useState("light");
   const [isModalOpen, setIsModalOpen] = useState(false); // Track if modal is open
   const [modalImage, setModalImage] = useState(null); // Track modal image
@@ -145,8 +149,7 @@ export default function RootLayout({ children }) {
           <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png" />
 
           {/* SEO Meta Tags */}
-          <meta property="og:image" content="/localImage.jpg" />
-          <meta name="description" content="Portfolio showcasing senior product design expertise. Specializing in UX/UI design and interactive experiences." />
+=          <meta name="description" content="Portfolio showcasing senior product design expertise. Specializing in UX/UI design and interactive experiences." />
           <meta name="keywords" content="senior product design, UX design, UI design, creative design, art, product designer" />
           <meta name="author" content="Anthony Balsamo" />
           <meta property="og:title" content="Senior Product Designer | Anthony Balsamo" />
@@ -155,8 +158,7 @@ export default function RootLayout({ children }) {
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:title" content="Senior Product Designer | Anthony Balsamo" />
           <meta name="twitter:description" content="Portfolio showcasing senior product design expertise. Specializing in UX/UI design and interactive experiences." />
-          <meta name="twitter:image" content="/localImage.jpg" />
-
+=
           <Script src="/lottie-player.js" strategy="afterInteractive" />
           <Script
             src="https://www.googletagmanager.com/gtag/js?id=G-TYV9TCCG65"
@@ -174,10 +176,17 @@ export default function RootLayout({ children }) {
         <body>
             <GlobalStyle />
             <LayoutWrapper>
-            <NavHeader
-              colorSchemeType={colorSchemeType}
-              setColorSchemeType={setColorSchemeType}
-            />
+            {isProjectPage ? (
+              <ProjectHeader
+                colorSchemeType={colorSchemeType}
+                setColorSchemeType={setColorSchemeType}
+              />
+            ) : (
+              <NavHeader
+                colorSchemeType={colorSchemeType}
+                setColorSchemeType={setColorSchemeType}
+              />
+            )}
             <MainContent>
               <AnimatePresence exitBeforeEnter>{children}</AnimatePresence>
             </MainContent>

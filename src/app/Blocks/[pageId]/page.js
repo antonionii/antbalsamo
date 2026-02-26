@@ -361,7 +361,7 @@ const MetadataTitle = styled.h1`
   font-size: 2rem;
   color: black;
   color: var(--accent-text-color);
-  padding: 1rem 0 ;
+  padding: 0 0 1rem 0;
   text-align: left; /* Ensure text is aligned to the left */
 `;
 
