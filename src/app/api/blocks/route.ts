@@ -3,6 +3,7 @@ import { Client } from "@notionhq/client";
 import type {
   PageObjectResponse,
   BlockObjectResponse,
+  ListBlockChildrenResponse,
 } from "@notionhq/client/build/src/api-endpoints";
 
 /* ---- Password check ---- */
@@ -67,7 +68,7 @@ const getChildBlock = async (blockId: string): Promise<BlockWithChildren[]> => {
 
   /* Paginate through all children (Notion returns max 100 per call) */
   do {
-    const response = await notion.blocks.children.list({
+    const response: ListBlockChildrenResponse = await notion.blocks.children.list({
       block_id: blockId,
       start_cursor: cursor,
     });
