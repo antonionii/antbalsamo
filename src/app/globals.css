@@ -1,15 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================
+   DESIGN TOKENS
+   Semantic color system — mirrors Figma variables.
+   Light theme defaults in :root.
+   Dark theme values set via tokens.ts applyTheme().
+
+   Architecture:
+     Primitive ramps (tokens.ts)
+       → Semantic tokens (CSS custom properties below)
+         → Components reference semantic tokens only
+
+   Every value below traces to a primitive ramp step.
+   See tokens.ts for the full ramp definitions.
+   ============================================ */
+
 :root {
-  --color-neutral-black: #3E3E3E;
-  --color-neutral-white: #FFFFFF;
-  --color-red-100: #FFF5F3;
-  --color-red-500: #B93715;
-  --color-green-100: #F3FFF4;
-  --color-green-500: #5DAE64;
-  --color-blue-100: #F3F9FF;
-  --color-blue-500: #1979B9;
-  --color-Background-Base: #FFFFFF;
-  --color-Tag-Background: #CAC4B4;
+  /* ---- Font Families ---- */
+  --font-display: "Noto Sans", sans-serif;
+  --font-body: "Inter", system-ui;
+
+  /* ---- Background ---- */
+  /* warm-200 */
+  --color-bg-base: #E1D4C7;
+  /* white-50 */
+  --color-bg-surface: #FFFFFF;
+  /* warm-50 @ 50% alpha */
+  --color-bg-surface-alt: rgba(255, 245, 235, 0.5);
+
+  /* ---- Text ---- */
+  /* neutral-700 */
+  --color-text-primary: #3E3E3E;
+  /* neutral-700 */
+  --color-text-secondary: #3E3E3E;
+  /* neutral-600 */
+  --color-text-muted: #525151;
+  /* white-50 */
+  --color-text-inverse: #FFFFFF;
+  /* blue-500 */
+  --color-text-link: #1979B9;
+  /* neutral-700 */
+  --color-text-accent: #3E3E3E;
+
+  /* ---- Border & Shadow ---- */
+  /* neutral-700 */
+  --color-border-default: #3E3E3E;
+  /* neutral-400 */
+  --color-border-muted: #cccccc;
+  /* neutral-700 */
+  --color-shadow: #3E3E3E;
+
+  /* ---- Intent ---- */
+  /* green-500 */
+  --color-intent-positive: #5DAE64;
+  /* red-600 */
+  --color-intent-negative: #B93715;
+  /* green-50 */
+  --color-bg-positive: #F3FFF4;
+  /* red-200 @ 34% alpha */
+  --color-bg-negative: rgba(255, 184, 178, 0.34);
+
+  /* ---- Tags (project/card) ---- */
+  /* warm-400 */
+  --color-tag-bg: #CAC4B4;
+
+  /* ---- Interactive ---- */
+  /* black-alpha-100 */
+  --color-bg-hover: rgba(0, 0, 0, 0.08);
+
+  /* ---- Overlay ---- */
+  /* black-alpha-700 */
+  --color-overlay-backdrop: rgba(0, 0, 0, 0.70);
+  /* black-alpha-800 */
+  --color-overlay-heavy: rgba(0, 0, 0, 0.80);
+  /* black-alpha-400 */
+  --color-overlay-medium: rgba(0, 0, 0, 0.40);
+
+  /* ---- Static (not affected by theme switch) ---- */
+  /* neutral-700 */
+  --color-text-fixed-dark: #3E3E3E;
+
+  /* ---- Tags (social — static, don't change with theme) ---- */
+  /* slate-200 */
+  --color-tag-github: #e2e8f0;
+  /* slate-300 */
+  --color-tag-github-hover: #cbd5e0;
+  /* blue-100 */
+  --color-tag-linkedin: #cfe8ff;
+  /* blue-200 */
+  --color-tag-linkedin-hover: #9bd0ff;
+  /* pink-100 */
+  --color-tag-email: #fed7e2;
+  /* pink-200 */
+  --color-tag-email-hover: #fbb6ce;
+
+  /* ---- Decorative ---- */
+  /* red-400 */
+  --color-deco-red: #ef4444;
+  /* yellow-300 */
+  --color-deco-yellow: #facc15;
+
+  /* ---- Internal (used by tokens.ts) ---- */
+  --theme-id: 5;
 }
+
+/* ============================================
+   RESET
+   ============================================ */
 
 * {
   margin: 0;
@@ -19,212 +118,126 @@
 
 html {
   overflow-x: clip;
-
-  @media (max-width: 1700px) {
-    font-size: 75%;
-  }
-
 }
 
+/* ============================================
+   BASE ELEMENT STYLES
+   All font-family declarations reference --font-* tokens.
+   ============================================ */
+
 body {
-  background: var(--color-Background-Base);
-  font-family: "Rubik", sans-serif;
+  background: var(--color-bg-base);
+  font-family: var(--font-display);
   font-weight: 900;
   overflow-x: clip;
-  color: var(--color-Foreground-Text-Default);
-  margin: 0;
-  padding: 0;
+  color: var(--color-text-secondary);
   width: 100%;
-
   font-optical-sizing: auto;
   font-style: normal;
-};
-
-
+}
 
 img {
   width: 100%;
   height: auto;
 }
 
-
-
 button {
   font-weight: bold;
-  color: var(--color-Foreground-Text-Default);
+  color: var(--color-text-secondary);
   cursor: pointer;
   font-size: 2rem;
   padding: 1rem 2rem;
   background: transparent;
   transition: all 0.5s ease;
-  font-family: "Inter", system-ui;
+  font-family: var(--font-body);
   border: none;
-
-  &:hover {
-  }
-
 }
-
 
 h4 {
   font-weight: bold;
-
   font-size: 2rem;
 }
 
-span {}
-
 p {
-  font-family: "Inter", system-ui;
+  font-family: var(--font-body);
   font-weight: thin;
-
-  padding: 3rem 0rem;
   line-height: 150%;
 }
 
-#wave {
-  stroke: "120000";
-}
-
 li {
-  font-family: "Inter", system-ui;
+  font-family: var(--font-body);
   padding-left: 3rem;
   position: relative;
-  font-family: "Inter", system-ui;
   font-weight: regular;
 }
 
 a {
-  
-  font-family: "Noto Sans", sans-serif;
-
+  font-family: var(--font-display);
   font-size: 1rem;
-
-
   text-decoration: none;
   font-weight: regular;
   color: inherit;
   pointer-events: auto;
-
 }
 
-
-.introText {
-  margin: auto;
-  /* Reduce top margin */
+input, select, textarea {
+  font-family: var(--font-body);
 }
 
-@media (min-width: 780px) {
-  .introText {
-    margin: auto;
-    /* Reduce margin for medium screens */
-  }
-}
-
-@media (min-width: 1300px) {
-  .introText {
-    margin: auto;
-    /* Reduce margin for large screens */
-  }
-}
-
-
-
-
-.aboutContainer {
-  margin: 8rem 0rem 0rem 0rem;
-  /* Reduce top margin */
-  display: flex;
-
-  @media (min-width: 780px) {}
-
-
-  @media (mid-width: 1300px) {
-    display: flex;
-  }
-}
-
+/* ============================================
+   SOCIAL TAG LINKS
+   Flexbox container + gap (no child margins)
+   ============================================ */
 
 .link-container {
   max-width: 600px;
-  margin: 1rem auto 0rem auto;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  gap: 0.5rem;
+  /* Centering only — vertical spacing handled by parent gap */
+  margin-inline: auto;
 
   @media (min-width: 780px) {
-    margin: 1rem 0rem 0rem 0rem;
+    margin-inline: 0;
   }
-
-
-  @media (mid-width: 1300px) {
-    display: flex;
-  }
-}
-.project-tag{
-  margin: 0.25rem;
-  padding: 0.25rem 0.5rem;
-  border-radius: 0.375rem;
-  text-decoration: none;
-  color: #1a202c;
-  /* Default text color */
-  display: inline-block;
-  transition: background-color 0.3s ease;
-  background-color: #cfe8ff;
-
 }
 
 .link {
-  margin: 0.25rem;
   padding: 0.25rem 0.5rem;
-  border-radius: 0.375rem;
+  border-radius: 0.5rem;
   text-decoration: none;
-  color: #1a202c;
-  /* Default text color */
+  color: var(--color-text-secondary);
   display: inline-block;
   transition: background-color 0.3s ease;
+  font-family: 'Roboto Slab', serif;
 }
 
-
-
-
-
-.bg-section {
-
-  background-color: var(--color-Background-Default);
-  /* Equivalent to bg-gray-100 */
+.github {
+  background-color: var(--color-tag-github);
+}
+.github:hover {
+  background-color: var(--color-tag-github-hover);
 }
 
-.container {
-  max-width: 1200px;
+.linkedin {
+  background-color: var(--color-tag-linkedin);
+}
+.linkedin:hover {
+  background-color: var(--color-tag-linkedin-hover);
+}
+
+.email {
+  background-color: var(--color-tag-email);
+}
+.email:hover {
+  background-color: var(--color-tag-email-hover);
+}
+
+/* ============================================
+   LAYOUT UTILITIES
+   ============================================ */
+
+.introText {
   margin: auto;
-  padding: 0 1rem;
 }
-
-.content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 4rem 0;
-  margin-bottom: auto;
-
-}
-
-.heading {
-  font-size: 2.5rem;
-  font-weight: bold;
-  margin-top: 0.5rem;
-  margin-bottom: auto;
-  color: var(--color-Foreground-Text-Base);
-
-
-}
-
-.subheading {
-  font-size: 1.5rem;
-  color: var(--color-Foreground-Text-Base);
-  text-align: center;
-  margin-bottom: auto;
-}
-
-;

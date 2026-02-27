@@ -1,14 +1,14 @@
 {
-  "app\\layout.js -> ./components/NavHeader": {
-    "id": "app\\layout.js -> ./components/NavHeader",
+  "app\\layout.tsx -> ./components/NavHeader": {
+    "id": "app\\layout.tsx -> ./components/NavHeader",
     "files": [
-      "static/chunks/_app-pages-browser_src_app_components_NavHeader_js.js"
+      "static/chunks/_app-pages-browser_src_app_components_NavHeader_tsx.js"
     ]
   },
-  "app\\layout.js -> ./components/ProjectHeader": {
-    "id": "app\\layout.js -> ./components/ProjectHeader",
+  "app\\layout.tsx -> ./components/ProjectHeader": {
+    "id": "app\\layout.tsx -> ./components/ProjectHeader",
     "files": [
-      "static/chunks/_app-pages-browser_src_app_components_ProjectHeader_js.js"
+      "static/chunks/_app-pages-browser_src_app_components_ProjectHeader_tsx.js"
     ]
   }
 }
