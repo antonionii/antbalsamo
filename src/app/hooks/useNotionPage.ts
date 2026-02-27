@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import type { NotionBlock, NotionPageMetadata } from "../../types/notion";
+import type { NotionBlock, NotionPageMetadata } from "../types/notion";
 
 /* ============================================
    useNotionPage Hook

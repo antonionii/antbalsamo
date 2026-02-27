@@ -291,7 +291,7 @@ export const colorSchemes: { dark: ColorScheme; light: ColorScheme[] } = {
 
 const applyTheme = (themeType: "light" | "dark" = "light"): void => {
   if (typeof window === "undefined") return;
-  if ((window as Record<string, unknown>).isPasswordModalOpen) return;
+  if ((window as unknown as Record<string, unknown>).isPasswordModalOpen) return;
 
   let scheme: ColorScheme;
 

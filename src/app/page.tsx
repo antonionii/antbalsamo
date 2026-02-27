@@ -76,7 +76,7 @@ const Home = () => {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      (window as Record<string, unknown>).isPasswordModalOpen = showPasswordModal;
+      (window as unknown as Record<string, unknown>).isPasswordModalOpen = showPasswordModal;
     }
   }, [showPasswordModal]);
 
