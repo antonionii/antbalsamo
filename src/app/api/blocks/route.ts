@@ -41,7 +41,7 @@ const getPageMetadata = async (pageId: string): Promise<PageMetadata> => {
   const titleProperty = response.properties?.Project;
   let title = "Untitled";
   if (titleProperty?.type === "title" && titleProperty.title.length > 0) {
-    title = titleProperty.title[0].text.content;
+    title = titleProperty.title[0].plain_text;
   }
 
   return {
