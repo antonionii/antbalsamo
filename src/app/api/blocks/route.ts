@@ -57,9 +57,9 @@ const getPageMetadata = async (pageId: string): Promise<PageMetadata> => {
   };
 };
 
-interface BlockWithChildren extends BlockObjectResponse {
+type BlockWithChildren = BlockObjectResponse & {
   children?: BlockWithChildren[];
-}
+};
 
 const getChildBlock = async (blockId: string): Promise<BlockWithChildren[]> => {
   const allBlocks: BlockObjectResponse[] = [];
