@@ -1,17 +1,14 @@
 {
   "app\\layout.tsx -> ./components/NavHeader": {
-    "id": 6434,
+    "id": "app\\layout.tsx -> ./components/NavHeader",
     "files": [
-      "static/chunks/dc112a36.9ffa47d24853ffaf.js",
-      "static/chunks/138-20f562b98112437d.js",
-      "static/chunks/434.c0940f51c4a82748.js"
+      "static/chunks/_app-pages-browser_src_app_components_NavHeader_tsx.js"
     ]
   },
   "app\\layout.tsx -> ./components/ProjectHeader": {
-    "id": 6361,
+    "id": "app\\layout.tsx -> ./components/ProjectHeader",
     "files": [
-      "static/chunks/dc112a36.9ffa47d24853ffaf.js",
-      "static/chunks/361.a4a0ad637af95bb9.js"
+      "static/chunks/_app-pages-browser_src_app_components_ProjectHeader_tsx.js"
     ]
   }
 }

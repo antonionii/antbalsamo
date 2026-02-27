@@ -35,14 +35,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   const [dragPosition, setDragPosition] = useState({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
 
-  /* Scroll to top on mount */
+  /* Scroll to top on navigation — also forces mobile repaint of sticky header */
   useEffect(() => {
     if (typeof window === "undefined") return;
-    const timeout = setTimeout(() => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }, 500);
-    return () => clearTimeout(timeout);
-  }, []);
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }, [pathname]);
 
   /* Image modal handlers */
   const openImageModal = (imageSrc: string) => {
