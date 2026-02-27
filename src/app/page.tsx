@@ -229,7 +229,7 @@ const Home = () => {
             </div>
 
             {/* Links Column */}
-            <div className="flex flex-col gap-1 flex-1 w-full min-w-0 max-w-[36rem]">
+            <div className="flex flex-col gap-1 flex-1 w-full min-w-0 min-[1000px]:max-w-[24rem] xl:max-w-[36rem]">
               <ProjectLinksComponent
                 cards={projectCardData}
                 onCardClick={() => {}}
