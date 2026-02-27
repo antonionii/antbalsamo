@@ -10,6 +10,12 @@
       "static/chunks/main-app.js",
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
+    ],
+    "/Blocks/[pageId]/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/Blocks/[pageId]/page.css",
+      "static/chunks/app/Blocks/[pageId]/page.js"
     ]
   }
 }

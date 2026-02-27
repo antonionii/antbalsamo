@@ -25,6 +25,11 @@ export function useNotionPage(pageId: string | undefined): UseNotionPageReturn {
   useEffect(() => {
     if (!pageId) return;
 
+    /* Reset state so stale content from the previous page doesn't persist */
+    setMetadata(null);
+    setBlockData([]);
+    setError(null);
+
     const fetchBlockData = async () => {
       setIsLoading(true);
       try {

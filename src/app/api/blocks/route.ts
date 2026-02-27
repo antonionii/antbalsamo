@@ -108,11 +108,8 @@ export async function GET(req: NextRequest) {
 
     const response = NextResponse.json({ metadata, blocks }, { status: 200 });
 
-    /* Cache for 60s, serve stale for 5min while revalidating */
-    response.headers.set(
-      "Cache-Control",
-      "public, s-maxage=60, stale-while-revalidate=300"
-    );
+    /* Prevent CDN from serving cached data for a different pageId */
+    response.headers.set("Cache-Control", "private, no-cache");
 
     return response;
   } catch (error) {
