@@ -166,17 +166,19 @@ const Home = () => {
             flex flex-col flex-1 min-h-[calc(100vh-6rem)] justify-center
             px-4 py-8
             md:px-10
-            xl:max-w-[1200px] xl:mx-auto xl:w-full xl:px-0
+            xl:px-16
           "
         >
           <div
             className="
               flex flex-col items-center gap-12
-              min-[1000px]:flex-row min-[1000px]:items-stretch min-[1000px]:justify-center min-[1000px]:gap-16
+              max-w-[1120px] mx-auto w-full
+              min-[1000px]:flex-row min-[1000px]:items-center min-[1000px]:justify-center min-[1000px]:gap-8
+              xl:gap-10 2xl:gap-16
             "
           >
             {/* Hero Card Container */}
-            <div className="flex justify-center items-stretch shrink-0 w-full min-[1000px]:w-1/2">
+            <div className="flex justify-center items-start w-full min-[1000px]:w-auto min-[1000px]:basis-[28rem] min-[1000px]:shrink-0">
               <div
                 className="
                   flex flex-col gap-3
@@ -227,7 +229,7 @@ const Home = () => {
             </div>
 
             {/* Links Column */}
-            <div className="flex flex-col gap-1 flex-1 max-w-[32rem] w-full">
+            <div className="flex flex-col gap-1 flex-1 w-full min-w-0 max-w-[36rem]">
               <ProjectLinksComponent
                 cards={projectCardData}
                 onCardClick={() => {}}

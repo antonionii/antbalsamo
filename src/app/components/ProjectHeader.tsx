@@ -22,7 +22,7 @@ const ProjectHeader: React.FC<ProjectHeaderProps> = ({ colorSchemeType, setColor
         xl:px-16
       "
     >
-      <div className="max-w-[1100px] mx-auto w-full flex justify-between items-center md:pt-[0.2rem]">
+      <div className="max-w-[1120px] mx-auto w-full flex justify-between items-center md:pt-[0.2rem]">
         <button
           onClick={() => router.back()}
           className="

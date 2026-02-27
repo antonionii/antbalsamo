@@ -15,7 +15,7 @@ const ProjectLinksComponent: React.FC<ProjectLinksComponentProps> = ({
   onProtectedCardClick,
 }) => {
   return (
-    <div className="flex flex-col gap-8 w-full max-w-[20rem] mx-auto min-[1000px]:max-w-none">
+    <div className="flex flex-col gap-4 w-full max-w-[20rem] mx-auto min-[1000px]:max-w-none">
       {cards.map((card, index) => {
         const isExternal = card.linkTo.startsWith("http");
 
@@ -31,6 +31,7 @@ const ProjectLinksComponent: React.FC<ProjectLinksComponentProps> = ({
           cursor-pointer transition-opacity duration-200
           text-[var(--color-text-primary)] font-[family-name:'Roboto_Slab',serif]
           hover:opacity-65
+          min-[1000px]:text-[1.05rem] xl:text-[1.4rem]
         `;
 
         return (
@@ -67,6 +68,7 @@ const ProjectLinksComponent: React.FC<ProjectLinksComponentProps> = ({
                       text-xs font-bold uppercase tracking-wide whitespace-nowrap
                       bg-[var(--color-tag-bg)]
                       text-[var(--color-text-secondary)]
+                      min-[1000px]:text-[0.56rem] min-[1000px]:py-[0.1rem] min-[1000px]:px-[0.5rem] xl:text-xs xl:py-[0.15rem] xl:px-[0.65rem]
                     "
                   >
                     {tag}

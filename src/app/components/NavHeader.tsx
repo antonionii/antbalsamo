@@ -43,9 +43,9 @@ const NavHeader: React.FC<NavHeaderProps> = ({ colorSchemeType, setColorSchemeTy
     >
       <div
         className="
-          max-w-[1100px] mx-auto w-full flex justify-between items-center gap-4
+          max-w-[1120px] mx-auto w-full flex justify-between items-center gap-4
           text-[var(--color-text-primary)]
-          max-[1100px]:flex-col max-[1100px]:items-end max-[1100px]:gap-2 max-[1100px]:w-fit
+          max-[999px]:flex-col max-[999px]:items-end max-[999px]:gap-2 max-[999px]:w-fit
         "
       >
         {/* Name */}
@@ -79,7 +79,7 @@ const NavHeader: React.FC<NavHeaderProps> = ({ colorSchemeType, setColorSchemeTy
         <ul
           className="
             flex items-center list-none flex-1 justify-end gap-8
-            max-[1100px]:justify-end max-[1100px]:flex-none max-[1100px]:gap-4
+            max-[999px]:justify-end max-[999px]:flex-none max-[999px]:gap-4
           "
         >
           {useCards && (
