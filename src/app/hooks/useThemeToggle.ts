@@ -28,7 +28,7 @@ export function useThemeToggle({
   setColorSchemeType,
 }: UseThemeToggleProps): UseThemeToggleReturn {
   const isDark = colorSchemeType === "dark";
-  const [direction, setDirection] = useState(isDark ? -1 : 1);
+  const [direction, setDirection] = useState<1 | -1>(isDark ? -1 : 1);
   const [isLight, setIsLight] = useState(!isDark);
   const containerRef = useRef<HTMLDivElement | null>(null);
   const animRef = useRef<AnimationItem | null>(null);
@@ -53,7 +53,7 @@ export function useThemeToggle({
         setIsLight(false);
       }
 
-      setDirection(direction * -1);
+      setDirection((direction * -1) as 1 | -1);
     },
     [direction, setColorSchemeType],
   );
